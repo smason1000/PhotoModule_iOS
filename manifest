@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0
+apiversion: 2
+description: Safeguard Photo Module
+author: Safeguard Properties, LLC
+license: Commercial
+copyright: Copyright (c) 2012 by Safeguard Properties, LLC
+
+# these should not be edited
+name: phmod
+moduleid: com.phmod
+guid: 43b37644-6612-4212-886e-59d182803484
+platform: iphone
+minsdk: 2.0.2

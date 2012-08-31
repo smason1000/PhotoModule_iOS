@@ -1,0 +1,268 @@
+#!/usr/bin/env python
+# encoding: utf-8
+"""
+nimbus
+
+Most of the documentation is found in the ios module.
+
+Branched from Three20's ttmodule script 2011-06-07.
+Created by Jeff Verkoeyen on 2010-10-18.
+Copyright 2011 Jeff Verkoeyen
+Copyright 2009-2010 Facebook
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+import logging
+import re
+import os
+import sys
+from optparse import OptionParser
+import ios
+
+script_dir = os.path.dirname(os.path.realpath(__file__))
+src_dir = os.path.dirname(script_dir)
+
+def path_and_target_from_name(name):
+	parts = name.split(':')
+	name = parts[0]
+	
+	path = None
+	suggested_target = None
+	
+	if name:
+		path = name.strip('"')
+
+		if re.match('^[^/]+$', path):
+			# Not a path, create a path to a Nimbus library
+			path = os.path.join(src_dir, path, path+'.xcodeproj', 'project.pbxproj')
+
+		elif not re.match('project\.pbxproj$', path):
+			# Is a path, but doesn't include project.pbxproj
+			path = os.path.join(path, 'project.pbxproj')
+
+	# Make an educated guess at the target. We can't be certain until after we load the project
+	# as to whether this target exists.
+	if len(parts) > 1:
+		suggested_target = parts[1]
+
+	elif re.match('^[^/]+$', name):
+		# No path information in the name, so let's just assume that the target is the name.
+		suggested_target = name
+
+	else:
+		# The name is a path, so split out the xcodeproj's name and use that as the target.
+		result = re.search('([^/]+)\.xcodeproj', name)
+		if not result:
+			suggested_target = name
+
+		else:
+			(suggested_target, ) = result.groups()
+
+	return (path, suggested_target)
+
+# Print the given project's dependencies to stdout.
+def print_dependencies(name):
+	(path, target) = path_and_target_from_name(name)
+	proj = ios.pbxproj.get_pbxproj_by_path(path)
+	if not proj.is_loaded():
+		return
+	print "Printing dependencies for the following project:"
+	print str(proj)
+	print
+	print "Dependencies for target \""+target+"\":"
+	dependency_names = proj.dependency_names_for_target_name(target)
+	if dependency_names:
+		[sys.stdout.write("\t"+x+"\n") for x in dependency_names]
+
+def get_dependency_projects(dependency_names):
+	dependency_projects = {}
+	if not dependency_names:
+		return dependency_projects
+
+	for name in dependency_names:
+		(path, target) = path_and_target_from_name(name)
+		
+		project = ios.pbxproj.get_pbxproj_by_path(path)
+		dependency_projects[project.uniqueid_for_target(target)] = project
+		project.set_active_target(target)
+
+		dependency_paths = project.dependency_paths_for_target_name(target)
+		if dependency_paths is None:
+			print "Failed to get dependencies; it's possible that the given target doesn't exist."
+			sys.exit(0)
+
+		absolute_paths = absolute_paths_from_dependency_paths(dependency_paths, project)
+		
+		submodules = get_dependency_projects(absolute_paths)
+		for guid, subprojects in submodules.items():
+			dependency_projects[guid] = subprojects
+
+	return dependency_projects
+
+def absolute_path_to_lib_from_project(lib_path, project):
+	abs_path = lib_path
+	if not abs_path[0] == '/':
+		base_project_path = os.path.dirname(os.path.dirname(os.path.realpath(project.path())))
+		abs_path = os.path.join(base_project_path, lib_path)
+	return os.path.realpath(os.path.dirname(abs_path))
+
+def absolute_paths_from_dependency_paths(dependency_paths, project):
+	if dependency_paths is None:
+		logging.error("Failed to get dependencies.")
+		sys.exit(0)
+
+	absolute_paths = []
+	for name in dependency_paths:
+		(path, target) = path_and_target_from_name(name)
+		path = absolute_path_to_lib_from_project(path, project)
+		absolute_paths.append(path + ':' + target)
+	
+	return absolute_paths
+
+def add_modules_to_project(module_names, project, target, configs):
+	logging.info(project)
+	logging.info("Checking dependencies...")
+	dependency_paths = project.dependency_paths_for_target_name(target)
+	absolute_paths = absolute_paths_from_dependency_paths(dependency_paths, project)
+
+	if len(absolute_paths) == 0:
+		logging.info("\tNo dependencies.")
+	else:
+		logging.info("Existing dependencies:")
+		[logging.info("\t"+x) for x in absolute_paths]
+
+	modules = get_dependency_projects(module_names)
+
+	logging.info("Requested dependency list:")
+	[logging.info(str(x)+"\n") for k,x in modules.items()]
+	
+	logging.info("Adding dependencies...")
+	failed = []
+	for k,v in modules.items():
+		if not project.add_dependency(v):
+			failed.append(k)
+
+	return
+	
+	if configs:
+		for config in configs:
+			project.add_header_search_path(config)
+
+			project.add_build_setting(config, 'OTHER_LDFLAGS', '-ObjC')
+	else:
+		for configuration in project.configurations:
+			project.add_header_search_path(configuration[1])
+
+			for k,v in modules.items():
+				project.add_build_setting(configuration[1], 'OTHER_LDFLAGS', '-ObjC')
+
+	if len(failed) > 0:
+		logging.error("Some dependencies failed to be added:")
+		[logging.error("\t"+str(x)+"\n") for x in failed]
+
+def action_from_args(args, available_actions):
+	for arg in args:
+		if arg.lower() in available_actions:
+			return arg.lower()
+	return None
+
+def remove_actions_from_args(args, available_actions):
+	pruned_args = []
+	for arg in args:
+		if arg.lower() not in available_actions:
+			pruned_args.append(arg)
+	return pruned_args
+
+def main():
+	usage = '''%prog command (options)
+
+Nimbus library management.
+Easily add Nimbus libraries to your projects.
+
+VOCABULARY
+
+    library             An iOS static library. A library can be referred to by name if it is
+                        within the nimbus framework. Otherwise, libraries must be referred to by
+                        specifiying the path to the library's pbxproj directory.
+
+    target              A target within a library. Some libraries may have multiple targets.
+                        By default, the library's name is used as the target. If no such target
+                        exists, the first target is used. To specify a target explicitly, use
+                        library:target. For example: NimbusJSON:SBJSON.
+
+COMMANDS
+
+    add                 Add one or more libraries to the target project.
+
+    list                Show all existing dependencies for the target project.
+
+OPTIONS
+
+    -p "project path"   Set the target project's xcodeproj path.
+
+'''
+	parser = OptionParser(usage = usage)
+
+	parser.add_option("-v", "--verbose", dest="verbose",
+	                  action="store_true")
+
+	parser.add_option("-p", "--project", dest="projects", action="append")
+
+	parser.add_option("--xcode-version", dest="xcode_version")
+	
+	parser.add_option("-c", "--config", dest="configs", action="append")
+
+	(options, args) = parser.parse_args()
+
+	if options.verbose:
+		log_level = logging.INFO
+	else:
+		log_level = logging.WARNING
+
+	logger = logging.getLogger()
+	logger.setLevel(log_level)
+	ch = logging.StreamHandler()
+	formatter = logging.Formatter("%(message)s")
+	ch.setFormatter(formatter)
+	logger.addHandler(ch)
+
+	available_actions = ['add', 'list']
+	
+	action = action_from_args(args, available_actions)
+	args = remove_actions_from_args(args, available_actions)
+
+	if action == 'list' and options.projects is not None:
+		[print_dependencies(x) for x in options.projects]
+
+	elif action == 'add' and options.projects is not None:
+		if not options.xcode_version:
+			f=os.popen("xcodebuild -version")
+			xcodebuild_version = f.readlines()[0]
+			match = re.search('Xcode ([a-zA-Z0-9.]+)', xcodebuild_version)
+			if match:
+				(options.xcode_version, ) = match.groups()
+
+		for name in options.projects:
+			(path, target) = path_and_target_from_name(name)
+			project = ios.pbxproj.get_pbxproj_by_path(path, xcode_version = options.xcode_version)
+			project.set_active_target(target)
+			add_modules_to_project(args, project, target, options.configs)
+	else:
+		parser.print_help()
+
+	logger.removeHandler(ch)
+
+
+if __name__ == "__main__":
+	sys.exit(main())

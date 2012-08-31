@@ -1,0 +1,853 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF515C72425008C5364 /* ExpandyButton.h */; };
+		22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */; };
+		AA747D9F0F9514B9006C5449 /* ComPhmod_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComPhmod_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AE76FDE215770FE4006F380E /* MySingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9215770FE4006F380E /* MySingleton.h */; };
+		AE76FDE315770FE4006F380E /* MainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9315770FE4006F380E /* MainViewController.h */; };
+		AE76FDE415770FE4006F380E /* SampleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9415770FE4006F380E /* SampleViewController.h */; };
+		AE76FDE515770FE4006F380E /* SampleNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9515770FE4006F380E /* SampleNavigationController.h */; };
+		AE76FDE615770FE4006F380E /* PTDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9615770FE4006F380E /* PTDemoViewController.h */; };
+		AE76FDE715770FE4006F380E /* RootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9715770FE4006F380E /* RootViewController.h */; };
+		AE76FDE815770FE4006F380E /* DDBadgeViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9815770FE4006F380E /* DDBadgeViewCell.h */; };
+		AE76FDE915770FE4006F380E /* AVCamViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9915770FE4006F380E /* AVCamViewController.h */; };
+		AE76FDEB15770FE4006F380E /* AVCamRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9B15770FE4006F380E /* AVCamRecorder.h */; };
+		AE76FDEC15770FE4006F380E /* AVCamUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9C15770FE4006F380E /* AVCamUtilities.h */; };
+		AE76FDED15770FE4006F380E /* PTVideoThumbnailImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9D15770FE4006F380E /* PTVideoThumbnailImageView.h */; };
+		AE76FDEE15770FE4006F380E /* PTPdfThumbnailImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9E15770FE4006F380E /* PTPdfThumbnailImageView.h */; };
+		AE76FDEF15770FE4006F380E /* PTGroupDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9F15770FE4006F380E /* PTGroupDetailViewController.h */; };
+		AE76FDF015770FE4006F380E /* PTImageDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA015770FE4006F380E /* PTImageDetailViewController.h */; };
+		AE76FDF115770FE4006F380E /* PTShowcase.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA115770FE4006F380E /* PTShowcase.h */; };
+		AE76FDF215770FE4006F380E /* PTShowcaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA215770FE4006F380E /* PTShowcaseViewController.h */; };
+		AE76FDF315770FE4006F380E /* PTShowcaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA315770FE4006F380E /* PTShowcaseView.h */; };
+		AE76FDF415770FE4006F380E /* PTShowcaseViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA415770FE4006F380E /* PTShowcaseViewDelegate.h */; };
+		AE76FDF515770FE4006F380E /* PTShowcaseViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA515770FE4006F380E /* PTShowcaseViewDataSource.h */; };
+		AE76FDF615770FE4006F380E /* GMGridView-Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA615770FE4006F380E /* GMGridView-Constants.h */; };
+		AE76FDF715770FE4006F380E /* GMGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA715770FE4006F380E /* GMGridView.h */; };
+		AE76FDF815770FE4006F380E /* GMGridViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA815770FE4006F380E /* GMGridViewCell.h */; };
+		AE76FDF915770FE4006F380E /* GMGridViewCell+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDA915770FE4006F380E /* GMGridViewCell+Extended.h */; };
+		AE76FDFA15770FE4006F380E /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAA15770FE4006F380E /* UIGestureRecognizer+GMGridViewAdditions.h */; };
+		AE76FDFB15770FE4006F380E /* UIView+GMGridViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAB15770FE4006F380E /* UIView+GMGridViewAdditions.h */; };
+		AE76FDFC15770FE4006F380E /* NIBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAC15770FE4006F380E /* NIBlocks.h */; };
+		AE76FDFD15770FE4006F380E /* NICommonMetrics.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAD15770FE4006F380E /* NICommonMetrics.h */; };
+		AE76FDFE15770FE4006F380E /* NIDataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAE15770FE4006F380E /* NIDataStructures.h */; };
+		AE76FDFF15770FE4006F380E /* NIDebuggingTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDAF15770FE4006F380E /* NIDebuggingTools.h */; };
+		AE76FE0015770FE4006F380E /* NIDeviceOrientation.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB015770FE4006F380E /* NIDeviceOrientation.h */; };
+		AE76FE0115770FE4006F380E /* NIError.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB115770FE4006F380E /* NIError.h */; };
+		AE76FE0215770FE4006F380E /* NIFoundationMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB215770FE4006F380E /* NIFoundationMethods.h */; };
+		AE76FE0315770FE4006F380E /* NIInMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB315770FE4006F380E /* NIInMemoryCache.h */; };
+		AE76FE0415770FE4006F380E /* NimbusCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB415770FE4006F380E /* NimbusCore.h */; };
+		AE76FE0515770FE4006F380E /* NimbusCore+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB515770FE4006F380E /* NimbusCore+Additions.h */; };
+		AE76FE0615770FE4006F380E /* NimbusCore+Namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB615770FE4006F380E /* NimbusCore+Namespace.h */; };
+		AE76FE0715770FE4006F380E /* NINavigationAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB715770FE4006F380E /* NINavigationAppearance.h */; };
+		AE76FE0815770FE4006F380E /* NINetworkActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB815770FE4006F380E /* NINetworkActivity.h */; };
+		AE76FE0915770FE4006F380E /* NINonEmptyCollectionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDB915770FE4006F380E /* NINonEmptyCollectionTesting.h */; };
+		AE76FE0A15770FE4006F380E /* NINonRetainingCollections.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBA15770FE4006F380E /* NINonRetainingCollections.h */; };
+		AE76FE0B15770FE4006F380E /* NIOperations.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBB15770FE4006F380E /* NIOperations.h */; };
+		AE76FE0C15770FE4006F380E /* NIOperations+Subclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBC15770FE4006F380E /* NIOperations+Subclassing.h */; };
+		AE76FE0D15770FE4006F380E /* NIPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBD15770FE4006F380E /* NIPaths.h */; };
+		AE76FE0E15770FE4006F380E /* NIPreprocessorMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBE15770FE4006F380E /* NIPreprocessorMacros.h */; };
+		AE76FE0F15770FE4006F380E /* NIRuntimeClassModifications.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDBF15770FE4006F380E /* NIRuntimeClassModifications.h */; };
+		AE76FE1015770FE4006F380E /* NISDKAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC015770FE4006F380E /* NISDKAvailability.h */; };
+		AE76FE1115770FE4006F380E /* NIState.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC115770FE4006F380E /* NIState.h */; };
+		AE76FE1215770FE4006F380E /* NIViewRecycler.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC215770FE4006F380E /* NIViewRecycler.h */; };
+		AE76FE1315770FE4006F380E /* NSData+NimbusCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC315770FE4006F380E /* NSData+NimbusCore.h */; };
+		AE76FE1415770FE4006F380E /* NSString+NimbusCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC415770FE4006F380E /* NSString+NimbusCore.h */; };
+		AE76FE1515770FE4006F380E /* UIView+NimbusCore.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC515770FE4006F380E /* UIView+NimbusCore.h */; };
+		AE76FE1615770FE4006F380E /* NimbusNetworkImage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC615770FE4006F380E /* NimbusNetworkImage.h */; };
+		AE76FE1715770FE4006F380E /* NimbusNetworkImage+Namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC715770FE4006F380E /* NimbusNetworkImage+Namespace.h */; };
+		AE76FE1815770FE4006F380E /* NINetworkImageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC815770FE4006F380E /* NINetworkImageRequest.h */; };
+		AE76FE1915770FE4006F380E /* NINetworkImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDC915770FE4006F380E /* NINetworkImageView.h */; };
+		AE76FE1A15770FE4006F380E /* NimbusPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCA15770FE4006F380E /* NimbusPagingScrollView.h */; };
+		AE76FE1B15770FE4006F380E /* NimbusPagingScrollView+Namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCB15770FE4006F380E /* NimbusPagingScrollView+Namespace.h */; };
+		AE76FE1C15770FE4006F380E /* NIPageView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCC15770FE4006F380E /* NIPageView.h */; };
+		AE76FE1D15770FE4006F380E /* NIPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCD15770FE4006F380E /* NIPagingScrollView.h */; };
+		AE76FE1E15770FE4006F380E /* NIPagingScrollViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCE15770FE4006F380E /* NIPagingScrollViewDataSource.h */; };
+		AE76FE1F15770FE4006F380E /* NIPagingScrollViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDCF15770FE4006F380E /* NIPagingScrollViewDelegate.h */; };
+		AE76FE2015770FE4006F380E /* NIPagingScrollViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD015770FE4006F380E /* NIPagingScrollViewPage.h */; };
+		AE76FE2115770FE4006F380E /* NimbusPhotos.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD115770FE4006F380E /* NimbusPhotos.h */; };
+		AE76FE2215770FE4006F380E /* NimbusPhotos+Namespace.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD215770FE4006F380E /* NimbusPhotos+Namespace.h */; };
+		AE76FE2315770FE4006F380E /* NIPhotoAlbumScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD315770FE4006F380E /* NIPhotoAlbumScrollView.h */; };
+		AE76FE2415770FE4006F380E /* NIPhotoAlbumScrollViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD415770FE4006F380E /* NIPhotoAlbumScrollViewDataSource.h */; };
+		AE76FE2515770FE4006F380E /* NIPhotoAlbumScrollViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD515770FE4006F380E /* NIPhotoAlbumScrollViewDelegate.h */; };
+		AE76FE2615770FE4006F380E /* NIPhotoScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD615770FE4006F380E /* NIPhotoScrollView.h */; };
+		AE76FE2715770FE4006F380E /* NIPhotoScrollViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD715770FE4006F380E /* NIPhotoScrollViewDelegate.h */; };
+		AE76FE2815770FE4006F380E /* NIPhotoScrollViewPhotoSize.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD815770FE4006F380E /* NIPhotoScrollViewPhotoSize.h */; };
+		AE76FE2915770FE4006F380E /* NIPhotoScrubberView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDD915770FE4006F380E /* NIPhotoScrubberView.h */; };
+		AE76FE2B15770FE4006F380E /* NIToolbarPhotoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDDB15770FE4006F380E /* NIToolbarPhotoViewController.h */; };
+		AE76FE2C15770FE4006F380E /* PTImageAlbumViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDDC15770FE4006F380E /* PTImageAlbumViewController.h */; };
+		AE76FE2D15770FE4006F380E /* PTImageAlbumView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDDD15770FE4006F380E /* PTImageAlbumView.h */; };
+		AE76FE2E15770FE4006F380E /* PTImageAlbumViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDDE15770FE4006F380E /* PTImageAlbumViewDataSource.h */; };
+		AE76FE2F15770FE4006F380E /* NetworkPhotoAlbumViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDDF15770FE4006F380E /* NetworkPhotoAlbumViewController.h */; };
+		AE76FE3015770FE4006F380E /* SDURLCache.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDE015770FE4006F380E /* SDURLCache.h */; };
+		AE76FE3115770FE4006F380E /* PhotoHubLib.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FDE115770FE4006F380E /* PhotoHubLib.h */; };
+		AEDCF4D8156BF8B1001F7BFD /* libPhotoHubLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5CDA15156BEE57006FDD19 /* libPhotoHubLib.a */; };
+		AEDF4EF115770D6E00290F85 /* ComPhmodDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EDF15770D6E00290F85 /* ComPhmodDemoView.m */; };
+		AEDF4EF215770D6E00290F85 /* ComPhmodDemoViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE015770D6E00290F85 /* ComPhmodDemoViewProxy.m */; };
+		AEDF4EF315770D6E00290F85 /* ComPhmodKrollDemoProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE115770D6E00290F85 /* ComPhmodKrollDemoProxy.m */; };
+		AEDF4EF415770D6E00290F85 /* ComPhmodLifeCycleProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE215770D6E00290F85 /* ComPhmodLifeCycleProxy.m */; };
+		AEDF4EF515770D6E00290F85 /* ComPhmodMethodsDemoProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE315770D6E00290F85 /* ComPhmodMethodsDemoProxy.m */; };
+		AEDF4EF615770D6E00290F85 /* ComPhmodModule.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE415770D6E00290F85 /* ComPhmodModule.m */; };
+		AEDF4EF715770D6E00290F85 /* ComPhmodModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE515770D6E00290F85 /* ComPhmodModuleAssets.m */; };
+		AEDF4EF815770D6E00290F85 /* ComPhmodParametersDemoProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE615770D6E00290F85 /* ComPhmodParametersDemoProxy.m */; };
+		AEDF4EF915770D6E00290F85 /* ComPhmodSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDF4EE715770D6E00290F85 /* ComPhmodSingleton.m */; };
+		AEDF4EFA15770D6E00290F85 /* ComPhmodDemoView.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EE815770D6E00290F85 /* ComPhmodDemoView.h */; };
+		AEDF4EFB15770D6E00290F85 /* ComPhmodDemoViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EE915770D6E00290F85 /* ComPhmodDemoViewProxy.h */; };
+		AEDF4EFC15770D6E00290F85 /* ComPhmodKrollDemoProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EEA15770D6E00290F85 /* ComPhmodKrollDemoProxy.h */; };
+		AEDF4EFD15770D6E00290F85 /* ComPhmodLifeCycleProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EEB15770D6E00290F85 /* ComPhmodLifeCycleProxy.h */; };
+		AEDF4EFE15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EEC15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h */; };
+		AEDF4EFF15770D6E00290F85 /* ComPhmodModule.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EED15770D6E00290F85 /* ComPhmodModule.h */; };
+		AEDF4F0015770D6E00290F85 /* ComPhmodModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EEE15770D6E00290F85 /* ComPhmodModuleAssets.h */; };
+		AEDF4F0115770D6E00290F85 /* ComPhmodParametersDemoProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EEF15770D6E00290F85 /* ComPhmodParametersDemoProxy.h */; };
+		AEDF4F0215770D6E00290F85 /* ComPhmodSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AEDF4EF015770D6E00290F85 /* ComPhmodSingleton.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE5CDA12156BEE57006FDD19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50FC0D1514E3D44300F28648;
+			remoteInfo = PhotoHub;
+		};
+		AE5CDA14156BEE57006FDD19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AEA468851569FD2100743108;
+			remoteInfo = PhotoHubLib;
+		};
+		AE5CDA16156BEE7A006FDD19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AEA468841569FD2100743108;
+			remoteInfo = PhotoHubLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22E6ACF515C72425008C5364 /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandyButton.h; path = Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h; sourceTree = "<group>"; };
+		22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamCaptureManager.h; path = Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.h; sourceTree = "<group>"; };
+		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* ComPhmod_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPhmod_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PhotoHub.xcodeproj; path = Classes/sgph/Examples/ShowcaseDemo/PhotoHub.xcodeproj; sourceTree = "<group>"; };
+		AE76FD9215770FE4006F380E /* MySingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MySingleton.h; path = Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.h; sourceTree = "<group>"; };
+		AE76FD9315770FE4006F380E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.h; sourceTree = "<group>"; };
+		AE76FD9415770FE4006F380E /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleViewController.h; sourceTree = "<group>"; };
+		AE76FD9515770FE4006F380E /* SampleNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleNavigationController.h; path = Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleNavigationController.h; sourceTree = "<group>"; };
+		AE76FD9615770FE4006F380E /* PTDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTDemoViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/PTDemoViewController.h; sourceTree = "<group>"; };
+		AE76FD9715770FE4006F380E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/RootViewController.h; sourceTree = "<group>"; };
+		AE76FD9815770FE4006F380E /* DDBadgeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDBadgeViewCell.h; path = Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/DDBadgeViewCell.h; sourceTree = "<group>"; };
+		AE76FD9915770FE4006F380E /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamViewController.h; sourceTree = "<group>"; };
+		AE76FD9B15770FE4006F380E /* AVCamRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamRecorder.h; path = Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamRecorder.h; sourceTree = "<group>"; };
+		AE76FD9C15770FE4006F380E /* AVCamUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamUtilities.h; path = Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamUtilities.h; sourceTree = "<group>"; };
+		AE76FD9D15770FE4006F380E /* PTVideoThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTVideoThumbnailImageView.h; path = Classes/sgph/PTShowcaseViewController/PTVideoThumbnailImageView.h; sourceTree = "<group>"; };
+		AE76FD9E15770FE4006F380E /* PTPdfThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTPdfThumbnailImageView.h; path = Classes/sgph/PTShowcaseViewController/PTPdfThumbnailImageView.h; sourceTree = "<group>"; };
+		AE76FD9F15770FE4006F380E /* PTGroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTGroupDetailViewController.h; path = Classes/sgph/PTShowcaseViewController/PTGroupDetailViewController.h; sourceTree = "<group>"; };
+		AE76FDA015770FE4006F380E /* PTImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTImageDetailViewController.h; path = Classes/sgph/PTShowcaseViewController/PTImageDetailViewController.h; sourceTree = "<group>"; };
+		AE76FDA115770FE4006F380E /* PTShowcase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTShowcase.h; path = Classes/sgph/PTShowcaseViewController/PTShowcase.h; sourceTree = "<group>"; };
+		AE76FDA215770FE4006F380E /* PTShowcaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTShowcaseViewController.h; path = Classes/sgph/PTShowcaseViewController/PTShowcaseViewController.h; sourceTree = "<group>"; };
+		AE76FDA315770FE4006F380E /* PTShowcaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTShowcaseView.h; path = Classes/sgph/PTShowcaseViewController/PTShowcaseView.h; sourceTree = "<group>"; };
+		AE76FDA415770FE4006F380E /* PTShowcaseViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTShowcaseViewDelegate.h; path = Classes/sgph/PTShowcaseViewController/PTShowcaseViewDelegate.h; sourceTree = "<group>"; };
+		AE76FDA515770FE4006F380E /* PTShowcaseViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTShowcaseViewDataSource.h; path = Classes/sgph/PTShowcaseViewController/PTShowcaseViewDataSource.h; sourceTree = "<group>"; };
+		AE76FDA615770FE4006F380E /* GMGridView-Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMGridView-Constants.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView-Constants.h"; sourceTree = "<group>"; };
+		AE76FDA715770FE4006F380E /* GMGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGridView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.h; sourceTree = "<group>"; };
+		AE76FDA815770FE4006F380E /* GMGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMGridViewCell.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.h; sourceTree = "<group>"; };
+		AE76FDA915770FE4006F380E /* GMGridViewCell+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMGridViewCell+Extended.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell+Extended.h"; sourceTree = "<group>"; };
+		AE76FDAA15770FE4006F380E /* UIGestureRecognizer+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIGestureRecognizer+GMGridViewAdditions.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		AE76FDAB15770FE4006F380E /* UIView+GMGridViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+GMGridViewAdditions.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.h"; sourceTree = "<group>"; };
+		AE76FDAC15770FE4006F380E /* NIBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIBlocks.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIBlocks.h; sourceTree = "<group>"; };
+		AE76FDAD15770FE4006F380E /* NICommonMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NICommonMetrics.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.h; sourceTree = "<group>"; };
+		AE76FDAE15770FE4006F380E /* NIDataStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIDataStructures.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.h; sourceTree = "<group>"; };
+		AE76FDAF15770FE4006F380E /* NIDebuggingTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIDebuggingTools.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDebuggingTools.h; sourceTree = "<group>"; };
+		AE76FDB015770FE4006F380E /* NIDeviceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIDeviceOrientation.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDeviceOrientation.h; sourceTree = "<group>"; };
+		AE76FDB115770FE4006F380E /* NIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIError.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.h; sourceTree = "<group>"; };
+		AE76FDB215770FE4006F380E /* NIFoundationMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIFoundationMethods.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.h; sourceTree = "<group>"; };
+		AE76FDB315770FE4006F380E /* NIInMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIInMemoryCache.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.h; sourceTree = "<group>"; };
+		AE76FDB415770FE4006F380E /* NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NimbusCore.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NimbusCore.h; sourceTree = "<group>"; };
+		AE76FDB515770FE4006F380E /* NimbusCore+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NimbusCore+Additions.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NimbusCore+Additions.h"; sourceTree = "<group>"; };
+		AE76FDB615770FE4006F380E /* NimbusCore+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NimbusCore+Namespace.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NimbusCore+Namespace.h"; sourceTree = "<group>"; };
+		AE76FDB715770FE4006F380E /* NINavigationAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINavigationAppearance.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.h; sourceTree = "<group>"; };
+		AE76FDB815770FE4006F380E /* NINetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINetworkActivity.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINetworkActivity.h; sourceTree = "<group>"; };
+		AE76FDB915770FE4006F380E /* NINonEmptyCollectionTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINonEmptyCollectionTesting.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonEmptyCollectionTesting.h; sourceTree = "<group>"; };
+		AE76FDBA15770FE4006F380E /* NINonRetainingCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINonRetainingCollections.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonRetainingCollections.h; sourceTree = "<group>"; };
+		AE76FDBB15770FE4006F380E /* NIOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIOperations.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations.h; sourceTree = "<group>"; };
+		AE76FDBC15770FE4006F380E /* NIOperations+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NIOperations+Subclassing.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations+Subclassing.h"; sourceTree = "<group>"; };
+		AE76FDBD15770FE4006F380E /* NIPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPaths.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPaths.h; sourceTree = "<group>"; };
+		AE76FDBE15770FE4006F380E /* NIPreprocessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPreprocessorMacros.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPreprocessorMacros.h; sourceTree = "<group>"; };
+		AE76FDBF15770FE4006F380E /* NIRuntimeClassModifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIRuntimeClassModifications.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIRuntimeClassModifications.h; sourceTree = "<group>"; };
+		AE76FDC015770FE4006F380E /* NISDKAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NISDKAvailability.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NISDKAvailability.h; sourceTree = "<group>"; };
+		AE76FDC115770FE4006F380E /* NIState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIState.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIState.h; sourceTree = "<group>"; };
+		AE76FDC215770FE4006F380E /* NIViewRecycler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIViewRecycler.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIViewRecycler.h; sourceTree = "<group>"; };
+		AE76FDC315770FE4006F380E /* NSData+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+NimbusCore.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.h"; sourceTree = "<group>"; };
+		AE76FDC415770FE4006F380E /* NSString+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NimbusCore.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSString+NimbusCore.h"; sourceTree = "<group>"; };
+		AE76FDC515770FE4006F380E /* UIView+NimbusCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+NimbusCore.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/UIView+NimbusCore.h"; sourceTree = "<group>"; };
+		AE76FDC615770FE4006F380E /* NimbusNetworkImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NimbusNetworkImage.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NimbusNetworkImage.h; sourceTree = "<group>"; };
+		AE76FDC715770FE4006F380E /* NimbusNetworkImage+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NimbusNetworkImage+Namespace.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NimbusNetworkImage+Namespace.h"; sourceTree = "<group>"; };
+		AE76FDC815770FE4006F380E /* NINetworkImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINetworkImageRequest.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageRequest.h; sourceTree = "<group>"; };
+		AE76FDC915770FE4006F380E /* NINetworkImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NINetworkImageView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageView.h; sourceTree = "<group>"; };
+		AE76FDCA15770FE4006F380E /* NimbusPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NimbusPagingScrollView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NimbusPagingScrollView.h; sourceTree = "<group>"; };
+		AE76FDCB15770FE4006F380E /* NimbusPagingScrollView+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NimbusPagingScrollView+Namespace.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NimbusPagingScrollView+Namespace.h"; sourceTree = "<group>"; };
+		AE76FDCC15770FE4006F380E /* NIPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPageView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPageView.h; sourceTree = "<group>"; };
+		AE76FDCD15770FE4006F380E /* NIPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPagingScrollView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.h; sourceTree = "<group>"; };
+		AE76FDCE15770FE4006F380E /* NIPagingScrollViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPagingScrollViewDataSource.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewDataSource.h; sourceTree = "<group>"; };
+		AE76FDCF15770FE4006F380E /* NIPagingScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPagingScrollViewDelegate.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewDelegate.h; sourceTree = "<group>"; };
+		AE76FDD015770FE4006F380E /* NIPagingScrollViewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPagingScrollViewPage.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewPage.h; sourceTree = "<group>"; };
+		AE76FDD115770FE4006F380E /* NimbusPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NimbusPhotos.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NimbusPhotos.h; sourceTree = "<group>"; };
+		AE76FDD215770FE4006F380E /* NimbusPhotos+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NimbusPhotos+Namespace.h"; path = "Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NimbusPhotos+Namespace.h"; sourceTree = "<group>"; };
+		AE76FDD315770FE4006F380E /* NIPhotoAlbumScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoAlbumScrollView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.h; sourceTree = "<group>"; };
+		AE76FDD415770FE4006F380E /* NIPhotoAlbumScrollViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoAlbumScrollViewDataSource.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollViewDataSource.h; sourceTree = "<group>"; };
+		AE76FDD515770FE4006F380E /* NIPhotoAlbumScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoAlbumScrollViewDelegate.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollViewDelegate.h; sourceTree = "<group>"; };
+		AE76FDD615770FE4006F380E /* NIPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoScrollView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollView.h; sourceTree = "<group>"; };
+		AE76FDD715770FE4006F380E /* NIPhotoScrollViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoScrollViewDelegate.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollViewDelegate.h; sourceTree = "<group>"; };
+		AE76FDD815770FE4006F380E /* NIPhotoScrollViewPhotoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoScrollViewPhotoSize.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollViewPhotoSize.h; sourceTree = "<group>"; };
+		AE76FDD915770FE4006F380E /* NIPhotoScrubberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIPhotoScrubberView.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrubberView.h; sourceTree = "<group>"; };
+		AE76FDDB15770FE4006F380E /* NIToolbarPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NIToolbarPhotoViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIToolbarPhotoViewController.h; sourceTree = "<group>"; };
+		AE76FDDC15770FE4006F380E /* PTImageAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTImageAlbumViewController.h; path = Classes/sgph/Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.h; sourceTree = "<group>"; };
+		AE76FDDD15770FE4006F380E /* PTImageAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTImageAlbumView.h; path = Classes/sgph/Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.h; sourceTree = "<group>"; };
+		AE76FDDE15770FE4006F380E /* PTImageAlbumViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTImageAlbumViewDataSource.h; path = Classes/sgph/Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewDataSource.h; sourceTree = "<group>"; };
+		AE76FDDF15770FE4006F380E /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkPhotoAlbumViewController.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
+		AE76FDE015770FE4006F380E /* SDURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDURLCache.h; path = Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.h; sourceTree = "<group>"; };
+		AE76FDE115770FE4006F380E /* PhotoHubLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoHubLib.h; path = Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.h; sourceTree = "<group>"; };
+		AEDF4EDF15770D6E00290F85 /* ComPhmodDemoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodDemoView.m; path = Classes/ComPhmodDemoView.m; sourceTree = "<group>"; };
+		AEDF4EE015770D6E00290F85 /* ComPhmodDemoViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodDemoViewProxy.m; path = Classes/ComPhmodDemoViewProxy.m; sourceTree = "<group>"; };
+		AEDF4EE115770D6E00290F85 /* ComPhmodKrollDemoProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodKrollDemoProxy.m; path = Classes/ComPhmodKrollDemoProxy.m; sourceTree = "<group>"; };
+		AEDF4EE215770D6E00290F85 /* ComPhmodLifeCycleProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodLifeCycleProxy.m; path = Classes/ComPhmodLifeCycleProxy.m; sourceTree = "<group>"; };
+		AEDF4EE315770D6E00290F85 /* ComPhmodMethodsDemoProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodMethodsDemoProxy.m; path = Classes/ComPhmodMethodsDemoProxy.m; sourceTree = "<group>"; };
+		AEDF4EE415770D6E00290F85 /* ComPhmodModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodModule.m; path = Classes/ComPhmodModule.m; sourceTree = "<group>"; };
+		AEDF4EE515770D6E00290F85 /* ComPhmodModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodModuleAssets.m; path = Classes/ComPhmodModuleAssets.m; sourceTree = "<group>"; };
+		AEDF4EE615770D6E00290F85 /* ComPhmodParametersDemoProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodParametersDemoProxy.m; path = Classes/ComPhmodParametersDemoProxy.m; sourceTree = "<group>"; };
+		AEDF4EE715770D6E00290F85 /* ComPhmodSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComPhmodSingleton.m; path = Classes/ComPhmodSingleton.m; sourceTree = "<group>"; };
+		AEDF4EE815770D6E00290F85 /* ComPhmodDemoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodDemoView.h; path = Classes/ComPhmodDemoView.h; sourceTree = "<group>"; };
+		AEDF4EE915770D6E00290F85 /* ComPhmodDemoViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodDemoViewProxy.h; path = Classes/ComPhmodDemoViewProxy.h; sourceTree = "<group>"; };
+		AEDF4EEA15770D6E00290F85 /* ComPhmodKrollDemoProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodKrollDemoProxy.h; path = Classes/ComPhmodKrollDemoProxy.h; sourceTree = "<group>"; };
+		AEDF4EEB15770D6E00290F85 /* ComPhmodLifeCycleProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodLifeCycleProxy.h; path = Classes/ComPhmodLifeCycleProxy.h; sourceTree = "<group>"; };
+		AEDF4EEC15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodMethodsDemoProxy.h; path = Classes/ComPhmodMethodsDemoProxy.h; sourceTree = "<group>"; };
+		AEDF4EED15770D6E00290F85 /* ComPhmodModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodModule.h; path = Classes/ComPhmodModule.h; sourceTree = "<group>"; };
+		AEDF4EEE15770D6E00290F85 /* ComPhmodModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodModuleAssets.h; path = Classes/ComPhmodModuleAssets.h; sourceTree = "<group>"; };
+		AEDF4EEF15770D6E00290F85 /* ComPhmodParametersDemoProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodParametersDemoProxy.h; path = Classes/ComPhmodParametersDemoProxy.h; sourceTree = "<group>"; };
+		AEDF4EF015770D6E00290F85 /* ComPhmodSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComPhmodSingleton.h; path = Classes/ComPhmodSingleton.h; sourceTree = "<group>"; };
+		D2AAC07E0554694100DB518D /* libComPhmod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComPhmod.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDCF4D8156BF8B1001F7BFD /* libPhotoHubLib.a in Frameworks */,
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libComPhmod.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* phmod */ = {
+			isa = PBXGroup;
+			children = (
+				AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */,
+				AE5CDA18156BEF91006FDD19 /* importedheaders */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = phmod;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF4EE815770D6E00290F85 /* ComPhmodDemoView.h */,
+				AEDF4EDF15770D6E00290F85 /* ComPhmodDemoView.m */,
+				AEDF4EE915770D6E00290F85 /* ComPhmodDemoViewProxy.h */,
+				AEDF4EE015770D6E00290F85 /* ComPhmodDemoViewProxy.m */,
+				AEDF4EEA15770D6E00290F85 /* ComPhmodKrollDemoProxy.h */,
+				AEDF4EE115770D6E00290F85 /* ComPhmodKrollDemoProxy.m */,
+				AEDF4EE215770D6E00290F85 /* ComPhmodLifeCycleProxy.m */,
+				AEDF4EE315770D6E00290F85 /* ComPhmodMethodsDemoProxy.m */,
+				AEDF4EE415770D6E00290F85 /* ComPhmodModule.m */,
+				AEDF4EE515770D6E00290F85 /* ComPhmodModuleAssets.m */,
+				AEDF4EE615770D6E00290F85 /* ComPhmodParametersDemoProxy.m */,
+				AEDF4EF015770D6E00290F85 /* ComPhmodSingleton.h */,
+				AEDF4EE715770D6E00290F85 /* ComPhmodSingleton.m */,
+				AEDF4EEB15770D6E00290F85 /* ComPhmodLifeCycleProxy.h */,
+				AEDF4EEC15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h */,
+				AEDF4EED15770D6E00290F85 /* ComPhmodModule.h */,
+				AEDF4EEE15770D6E00290F85 /* ComPhmodModuleAssets.h */,
+				AEDF4EEF15770D6E00290F85 /* ComPhmodParametersDemoProxy.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* ComPhmod_Prefix.pch */,
+				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		AE5CDA0A156BEE57006FDD19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE5CDA13156BEE57006FDD19 /* PhotoHub.app */,
+				AE5CDA15156BEE57006FDD19 /* libPhotoHubLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE5CDA18156BEF91006FDD19 /* importedheaders */ = {
+			isa = PBXGroup;
+			children = (
+				AE76FD9215770FE4006F380E /* MySingleton.h */,
+				AE76FD9315770FE4006F380E /* MainViewController.h */,
+				AE76FD9415770FE4006F380E /* SampleViewController.h */,
+				AE76FD9515770FE4006F380E /* SampleNavigationController.h */,
+				AE76FD9615770FE4006F380E /* PTDemoViewController.h */,
+				AE76FD9715770FE4006F380E /* RootViewController.h */,
+				AE76FD9815770FE4006F380E /* DDBadgeViewCell.h */,
+				22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */,
+				AE76FD9915770FE4006F380E /* AVCamViewController.h */,
+				AE76FD9B15770FE4006F380E /* AVCamRecorder.h */,
+				AE76FD9C15770FE4006F380E /* AVCamUtilities.h */,
+				22E6ACF515C72425008C5364 /* ExpandyButton.h */,
+				AE76FD9D15770FE4006F380E /* PTVideoThumbnailImageView.h */,
+				AE76FD9E15770FE4006F380E /* PTPdfThumbnailImageView.h */,
+				AE76FD9F15770FE4006F380E /* PTGroupDetailViewController.h */,
+				AE76FDA015770FE4006F380E /* PTImageDetailViewController.h */,
+				AE76FDA115770FE4006F380E /* PTShowcase.h */,
+				AE76FDA215770FE4006F380E /* PTShowcaseViewController.h */,
+				AE76FDA315770FE4006F380E /* PTShowcaseView.h */,
+				AE76FDA415770FE4006F380E /* PTShowcaseViewDelegate.h */,
+				AE76FDA515770FE4006F380E /* PTShowcaseViewDataSource.h */,
+				AE76FDA615770FE4006F380E /* GMGridView-Constants.h */,
+				AE76FDA715770FE4006F380E /* GMGridView.h */,
+				AE76FDA815770FE4006F380E /* GMGridViewCell.h */,
+				AE76FDA915770FE4006F380E /* GMGridViewCell+Extended.h */,
+				AE76FDAA15770FE4006F380E /* UIGestureRecognizer+GMGridViewAdditions.h */,
+				AE76FDAB15770FE4006F380E /* UIView+GMGridViewAdditions.h */,
+				AE76FDAC15770FE4006F380E /* NIBlocks.h */,
+				AE76FDAD15770FE4006F380E /* NICommonMetrics.h */,
+				AE76FDAE15770FE4006F380E /* NIDataStructures.h */,
+				AE76FDAF15770FE4006F380E /* NIDebuggingTools.h */,
+				AE76FDB015770FE4006F380E /* NIDeviceOrientation.h */,
+				AE76FDB115770FE4006F380E /* NIError.h */,
+				AE76FDB215770FE4006F380E /* NIFoundationMethods.h */,
+				AE76FDB315770FE4006F380E /* NIInMemoryCache.h */,
+				AE76FDB415770FE4006F380E /* NimbusCore.h */,
+				AE76FDB515770FE4006F380E /* NimbusCore+Additions.h */,
+				AE76FDB615770FE4006F380E /* NimbusCore+Namespace.h */,
+				AE76FDB715770FE4006F380E /* NINavigationAppearance.h */,
+				AE76FDB815770FE4006F380E /* NINetworkActivity.h */,
+				AE76FDB915770FE4006F380E /* NINonEmptyCollectionTesting.h */,
+				AE76FDBA15770FE4006F380E /* NINonRetainingCollections.h */,
+				AE76FDBB15770FE4006F380E /* NIOperations.h */,
+				AE76FDBC15770FE4006F380E /* NIOperations+Subclassing.h */,
+				AE76FDBD15770FE4006F380E /* NIPaths.h */,
+				AE76FDBE15770FE4006F380E /* NIPreprocessorMacros.h */,
+				AE76FDBF15770FE4006F380E /* NIRuntimeClassModifications.h */,
+				AE76FDC015770FE4006F380E /* NISDKAvailability.h */,
+				AE76FDC115770FE4006F380E /* NIState.h */,
+				AE76FDC215770FE4006F380E /* NIViewRecycler.h */,
+				AE76FDC315770FE4006F380E /* NSData+NimbusCore.h */,
+				AE76FDC415770FE4006F380E /* NSString+NimbusCore.h */,
+				AE76FDC515770FE4006F380E /* UIView+NimbusCore.h */,
+				AE76FDC615770FE4006F380E /* NimbusNetworkImage.h */,
+				AE76FDC715770FE4006F380E /* NimbusNetworkImage+Namespace.h */,
+				AE76FDC815770FE4006F380E /* NINetworkImageRequest.h */,
+				AE76FDC915770FE4006F380E /* NINetworkImageView.h */,
+				AE76FDCA15770FE4006F380E /* NimbusPagingScrollView.h */,
+				AE76FDCB15770FE4006F380E /* NimbusPagingScrollView+Namespace.h */,
+				AE76FDCC15770FE4006F380E /* NIPageView.h */,
+				AE76FDCD15770FE4006F380E /* NIPagingScrollView.h */,
+				AE76FDCE15770FE4006F380E /* NIPagingScrollViewDataSource.h */,
+				AE76FDCF15770FE4006F380E /* NIPagingScrollViewDelegate.h */,
+				AE76FDD015770FE4006F380E /* NIPagingScrollViewPage.h */,
+				AE76FDD115770FE4006F380E /* NimbusPhotos.h */,
+				AE76FDD215770FE4006F380E /* NimbusPhotos+Namespace.h */,
+				AE76FDD315770FE4006F380E /* NIPhotoAlbumScrollView.h */,
+				AE76FDD415770FE4006F380E /* NIPhotoAlbumScrollViewDataSource.h */,
+				AE76FDD515770FE4006F380E /* NIPhotoAlbumScrollViewDelegate.h */,
+				AE76FDD615770FE4006F380E /* NIPhotoScrollView.h */,
+				AE76FDD715770FE4006F380E /* NIPhotoScrollViewDelegate.h */,
+				AE76FDD815770FE4006F380E /* NIPhotoScrollViewPhotoSize.h */,
+				AE76FDD915770FE4006F380E /* NIPhotoScrubberView.h */,
+				AE76FDDB15770FE4006F380E /* NIToolbarPhotoViewController.h */,
+				AE76FDDC15770FE4006F380E /* PTImageAlbumViewController.h */,
+				AE76FDDD15770FE4006F380E /* PTImageAlbumView.h */,
+				AE76FDDE15770FE4006F380E /* PTImageAlbumViewDataSource.h */,
+				AE76FDDF15770FE4006F380E /* NetworkPhotoAlbumViewController.h */,
+				AE76FDE015770FE4006F380E /* SDURLCache.h */,
+				AE76FDE115770FE4006F380E /* PhotoHubLib.h */,
+			);
+			name = importedheaders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* ComPhmod_Prefix.pch in Headers */,
+				AEDF4EFA15770D6E00290F85 /* ComPhmodDemoView.h in Headers */,
+				AEDF4EFB15770D6E00290F85 /* ComPhmodDemoViewProxy.h in Headers */,
+				AEDF4EFC15770D6E00290F85 /* ComPhmodKrollDemoProxy.h in Headers */,
+				AEDF4EFD15770D6E00290F85 /* ComPhmodLifeCycleProxy.h in Headers */,
+				AEDF4EFE15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h in Headers */,
+				AEDF4EFF15770D6E00290F85 /* ComPhmodModule.h in Headers */,
+				AEDF4F0015770D6E00290F85 /* ComPhmodModuleAssets.h in Headers */,
+				AEDF4F0115770D6E00290F85 /* ComPhmodParametersDemoProxy.h in Headers */,
+				AEDF4F0215770D6E00290F85 /* ComPhmodSingleton.h in Headers */,
+				AE76FDE215770FE4006F380E /* MySingleton.h in Headers */,
+				AE76FDE315770FE4006F380E /* MainViewController.h in Headers */,
+				AE76FDE415770FE4006F380E /* SampleViewController.h in Headers */,
+				AE76FDE515770FE4006F380E /* SampleNavigationController.h in Headers */,
+				AE76FDE615770FE4006F380E /* PTDemoViewController.h in Headers */,
+				AE76FDE715770FE4006F380E /* RootViewController.h in Headers */,
+				AE76FDE815770FE4006F380E /* DDBadgeViewCell.h in Headers */,
+				AE76FDE915770FE4006F380E /* AVCamViewController.h in Headers */,
+				AE76FDEB15770FE4006F380E /* AVCamRecorder.h in Headers */,
+				AE76FDEC15770FE4006F380E /* AVCamUtilities.h in Headers */,
+				AE76FDED15770FE4006F380E /* PTVideoThumbnailImageView.h in Headers */,
+				AE76FDEE15770FE4006F380E /* PTPdfThumbnailImageView.h in Headers */,
+				AE76FDEF15770FE4006F380E /* PTGroupDetailViewController.h in Headers */,
+				AE76FDF015770FE4006F380E /* PTImageDetailViewController.h in Headers */,
+				AE76FDF115770FE4006F380E /* PTShowcase.h in Headers */,
+				AE76FDF215770FE4006F380E /* PTShowcaseViewController.h in Headers */,
+				AE76FDF315770FE4006F380E /* PTShowcaseView.h in Headers */,
+				AE76FDF415770FE4006F380E /* PTShowcaseViewDelegate.h in Headers */,
+				AE76FDF515770FE4006F380E /* PTShowcaseViewDataSource.h in Headers */,
+				AE76FDF615770FE4006F380E /* GMGridView-Constants.h in Headers */,
+				AE76FDF715770FE4006F380E /* GMGridView.h in Headers */,
+				AE76FDF815770FE4006F380E /* GMGridViewCell.h in Headers */,
+				AE76FDF915770FE4006F380E /* GMGridViewCell+Extended.h in Headers */,
+				AE76FDFA15770FE4006F380E /* UIGestureRecognizer+GMGridViewAdditions.h in Headers */,
+				AE76FDFB15770FE4006F380E /* UIView+GMGridViewAdditions.h in Headers */,
+				AE76FDFC15770FE4006F380E /* NIBlocks.h in Headers */,
+				AE76FDFD15770FE4006F380E /* NICommonMetrics.h in Headers */,
+				AE76FDFE15770FE4006F380E /* NIDataStructures.h in Headers */,
+				AE76FDFF15770FE4006F380E /* NIDebuggingTools.h in Headers */,
+				AE76FE0015770FE4006F380E /* NIDeviceOrientation.h in Headers */,
+				AE76FE0115770FE4006F380E /* NIError.h in Headers */,
+				AE76FE0215770FE4006F380E /* NIFoundationMethods.h in Headers */,
+				AE76FE0315770FE4006F380E /* NIInMemoryCache.h in Headers */,
+				AE76FE0415770FE4006F380E /* NimbusCore.h in Headers */,
+				AE76FE0515770FE4006F380E /* NimbusCore+Additions.h in Headers */,
+				AE76FE0615770FE4006F380E /* NimbusCore+Namespace.h in Headers */,
+				AE76FE0715770FE4006F380E /* NINavigationAppearance.h in Headers */,
+				AE76FE0815770FE4006F380E /* NINetworkActivity.h in Headers */,
+				AE76FE0915770FE4006F380E /* NINonEmptyCollectionTesting.h in Headers */,
+				AE76FE0A15770FE4006F380E /* NINonRetainingCollections.h in Headers */,
+				AE76FE0B15770FE4006F380E /* NIOperations.h in Headers */,
+				AE76FE0C15770FE4006F380E /* NIOperations+Subclassing.h in Headers */,
+				AE76FE0D15770FE4006F380E /* NIPaths.h in Headers */,
+				AE76FE0E15770FE4006F380E /* NIPreprocessorMacros.h in Headers */,
+				AE76FE0F15770FE4006F380E /* NIRuntimeClassModifications.h in Headers */,
+				AE76FE1015770FE4006F380E /* NISDKAvailability.h in Headers */,
+				AE76FE1115770FE4006F380E /* NIState.h in Headers */,
+				AE76FE1215770FE4006F380E /* NIViewRecycler.h in Headers */,
+				AE76FE1315770FE4006F380E /* NSData+NimbusCore.h in Headers */,
+				AE76FE1415770FE4006F380E /* NSString+NimbusCore.h in Headers */,
+				AE76FE1515770FE4006F380E /* UIView+NimbusCore.h in Headers */,
+				AE76FE1615770FE4006F380E /* NimbusNetworkImage.h in Headers */,
+				AE76FE1715770FE4006F380E /* NimbusNetworkImage+Namespace.h in Headers */,
+				AE76FE1815770FE4006F380E /* NINetworkImageRequest.h in Headers */,
+				AE76FE1915770FE4006F380E /* NINetworkImageView.h in Headers */,
+				AE76FE1A15770FE4006F380E /* NimbusPagingScrollView.h in Headers */,
+				AE76FE1B15770FE4006F380E /* NimbusPagingScrollView+Namespace.h in Headers */,
+				AE76FE1C15770FE4006F380E /* NIPageView.h in Headers */,
+				AE76FE1D15770FE4006F380E /* NIPagingScrollView.h in Headers */,
+				AE76FE1E15770FE4006F380E /* NIPagingScrollViewDataSource.h in Headers */,
+				AE76FE1F15770FE4006F380E /* NIPagingScrollViewDelegate.h in Headers */,
+				AE76FE2015770FE4006F380E /* NIPagingScrollViewPage.h in Headers */,
+				AE76FE2115770FE4006F380E /* NimbusPhotos.h in Headers */,
+				AE76FE2215770FE4006F380E /* NimbusPhotos+Namespace.h in Headers */,
+				AE76FE2315770FE4006F380E /* NIPhotoAlbumScrollView.h in Headers */,
+				AE76FE2415770FE4006F380E /* NIPhotoAlbumScrollViewDataSource.h in Headers */,
+				AE76FE2515770FE4006F380E /* NIPhotoAlbumScrollViewDelegate.h in Headers */,
+				AE76FE2615770FE4006F380E /* NIPhotoScrollView.h in Headers */,
+				AE76FE2715770FE4006F380E /* NIPhotoScrollViewDelegate.h in Headers */,
+				AE76FE2815770FE4006F380E /* NIPhotoScrollViewPhotoSize.h in Headers */,
+				AE76FE2915770FE4006F380E /* NIPhotoScrubberView.h in Headers */,
+				AE76FE2B15770FE4006F380E /* NIToolbarPhotoViewController.h in Headers */,
+				AE76FE2C15770FE4006F380E /* PTImageAlbumViewController.h in Headers */,
+				AE76FE2D15770FE4006F380E /* PTImageAlbumView.h in Headers */,
+				AE76FE2E15770FE4006F380E /* PTImageAlbumViewDataSource.h in Headers */,
+				AE76FE2F15770FE4006F380E /* NetworkPhotoAlbumViewController.h in Headers */,
+				AE76FE3015770FE4006F380E /* SDURLCache.h in Headers */,
+				AE76FE3115770FE4006F380E /* PhotoHubLib.h in Headers */,
+				22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */,
+				22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* phmod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "phmod" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				AE0F27E6157538F900D9E8D6 /* Resources */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+				AEA00630156E170600371DB8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE5CDA17156BEE7A006FDD19 /* PBXTargetDependency */,
+			);
+			name = phmod;
+			productName = phmod;
+			productReference = D2AAC07E0554694100DB518D /* libComPhmod.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "phmod" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* phmod */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AE5CDA0A156BEE57006FDD19 /* Products */;
+					ProjectRef = AE5CDA09156BEE57006FDD19 /* PhotoHub.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* phmod */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AE5CDA13156BEE57006FDD19 /* PhotoHub.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = PhotoHub.app;
+			remoteRef = AE5CDA12156BEE57006FDD19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE5CDA15156BEE57006FDD19 /* libPhotoHubLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPhotoHubLib.a;
+			remoteRef = AE5CDA14156BEE57006FDD19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE0F27E6157538F900D9E8D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AEA00630156E170600371DB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEDF4EF115770D6E00290F85 /* ComPhmodDemoView.m in Sources */,
+				AEDF4EF215770D6E00290F85 /* ComPhmodDemoViewProxy.m in Sources */,
+				AEDF4EF715770D6E00290F85 /* ComPhmodModuleAssets.m in Sources */,
+				AEDF4EF315770D6E00290F85 /* ComPhmodKrollDemoProxy.m in Sources */,
+				AEDF4EF415770D6E00290F85 /* ComPhmodLifeCycleProxy.m in Sources */,
+				AEDF4EF515770D6E00290F85 /* ComPhmodMethodsDemoProxy.m in Sources */,
+				AEDF4EF615770D6E00290F85 /* ComPhmodModule.m in Sources */,
+				AEDF4EF815770D6E00290F85 /* ComPhmodParametersDemoProxy.m in Sources */,
+				AEDF4EF915770D6E00290F85 /* ComPhmodSingleton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE5CDA17156BEE7A006FDD19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PhotoHubLib;
+			targetProxy = AE5CDA16156BEE7A006FDD19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Safeguard Properties LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
+				DSTROOT = /tmp/ComPhmod.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComPhmod_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComPhmod;
+				PROVISIONING_PROFILE = "46FE4A14-BA2A-486D-BD75-51920A7F1C25";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "46FE4A14-BA2A-486D-BD75-51920A7F1C25";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Safeguard Properties LLC";
+				DSTROOT = /tmp/ComPhmod.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComPhmod_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComPhmod;
+				PROVISIONING_PROFILE = "46FE4A14-BA2A-486D-BD75-51920A7F1C25";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComPhmod.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComPhmod_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComPhmod;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphoneos*]" = (
+					armv6,
+					armv7,
+				);
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				DSTROOT = /tmp/ComPhmod.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComPhmod_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComPhmod;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "phmod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "phmod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

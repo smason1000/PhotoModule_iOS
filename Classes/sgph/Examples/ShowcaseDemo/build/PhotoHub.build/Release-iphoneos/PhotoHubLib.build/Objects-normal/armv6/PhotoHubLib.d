@@ -1,0 +1,23 @@
+dependencies: \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleNavigationController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTImageDetailViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewDataSource.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewDelegate.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcase.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewDataSource.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseView.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView-Constants.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/PTDemoViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamViewController.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h \
+  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/RootViewController.h

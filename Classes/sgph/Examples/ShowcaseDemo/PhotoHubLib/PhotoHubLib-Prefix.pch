@@ -1,0 +1,29 @@
+//
+// Prefix header for all source files of the 'PhotoHubLib' target in the 'PhotoHubLib' project
+//
+
+/*
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+*/
+
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+////////////////////////////////////////////////////////////////////////////
+#import "NimbusCore.h"
+#import "NimbusNetworkImage.h"
+#import <PSPDFKit/PSPDFKit.h>
+////////////////////////////////////////////////////////////////////////////
+#import "NimbusPhotos.h"
+
+
+#endif
