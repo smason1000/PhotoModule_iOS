@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m \
-  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h
+  /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m \
+  /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h

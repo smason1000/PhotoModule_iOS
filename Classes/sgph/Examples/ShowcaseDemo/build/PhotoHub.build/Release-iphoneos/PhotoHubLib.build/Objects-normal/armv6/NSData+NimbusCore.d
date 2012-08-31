@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.m \
-  /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.h
+  /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.m \
+  /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.h
