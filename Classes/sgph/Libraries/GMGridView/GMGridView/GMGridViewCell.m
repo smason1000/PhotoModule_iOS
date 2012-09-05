@@ -131,7 +131,10 @@
     
     if (doLab)
     {
-        self.lab.text = [gSingleton currentLabelString];
+        if ([[gSingleton currentLabelDescription] length] == 0)
+            self.lab.text = [gSingleton currentLabelString];
+        else
+            self.lab.text = [gSingleton currentLabelDescription];
         self.backgroundColor = [UIColor clearColor];
         self.flag = NO;
 

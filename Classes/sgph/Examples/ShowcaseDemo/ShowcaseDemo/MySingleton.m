@@ -636,6 +636,7 @@ MySingleton *gSingleton = nil;
     if (dict != nil)
     {
         NSString *curLabel = [dict objectForKey:@"label"];
+        NSString *curDesc = [dict objectForKey:@"description"];
         if (curLabel != nil)
         {
             if ([self isReqLab:curLabel])
@@ -645,10 +646,10 @@ MySingleton *gSingleton = nil;
             NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
                                    @"msg",@"property",
                                    @"update",@"op",
-                                   
                                    self.orderNumber, @"order_id",
                                    name, @"name",
                                    curLabel,@"label",
+                                   curDesc,@"description",
                                    req,@"required",
                                    nil];
             [self.msgQ addObject:myObj];
@@ -729,7 +730,6 @@ MySingleton *gSingleton = nil;
     NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"msg",@"property",
                            @"insert",@"op",
-                           
                            self.orderNumber, @"order_id",
                            name, @"name",
                            self.currentLabelString, @"label",
@@ -780,7 +780,6 @@ MySingleton *gSingleton = nil;
     NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
                            @"msg",@"property",
                            @"delete",@"op",
-                           
                            self.orderNumber, @"order_id",
                            name,@"name",
                            self.currentLabelString,@"label",

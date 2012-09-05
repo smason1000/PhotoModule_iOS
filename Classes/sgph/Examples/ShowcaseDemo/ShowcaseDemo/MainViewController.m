@@ -602,7 +602,12 @@
     
     if (gSingleton.dirContents.count > 0)
     {
-        self.curLabItem.title = [[gSingleton.infoDict objectForKey:[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex]] objectForKey:@"label"];
+        NSMutableDictionary* dict = [gSingleton.infoDict objectForKey:[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex]];
+        NSString* title = [dict objectForKey:@"description"];
+        if ([title length] == 0)
+            title = [dict objectForKey:@"label"];
+                                     
+        self.curLabItem.title = title;
     }
     
     //self.curLabItem.title = [self.ptController.showcaseView textForItemAtIndex:gSingleton.relativeIndex];
