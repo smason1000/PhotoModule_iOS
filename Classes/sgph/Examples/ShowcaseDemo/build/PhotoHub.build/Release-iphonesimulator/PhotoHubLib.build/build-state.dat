@@ -20,18 +20,18 @@ cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIGestureRecognizer+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewLayoutStrategies.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewLayoutStrategies.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIGestureRecognizer+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NICommonMetrics.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDataStructures.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDebuggingTools.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDebuggingTools.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDeviceOrientation.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDeviceOrientation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIError.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDataStructures.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIFoundationMethods.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIInMemoryCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIError.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINavigationAppearance.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIInMemoryCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkActivity.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINetworkActivity.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonEmptyCollectionTesting.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonEmptyCollectionTesting.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonRetainingCollections.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonRetainingCollections.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
@@ -48,16 +48,16 @@ cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPagingScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoAlbumScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoAlbumScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrubberView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrubberView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIToolbarPhotoViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIToolbarPhotoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NetworkPhotoAlbumViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SDURLCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/ExpandyButton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SDURLCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamCaptureManager.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cLibtool /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a normal i386
 
@@ -1279,255 +1279,830 @@ N/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Releas
 t1346073057
 s3201584
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView-Constants.h
+c00000000504101410000000000000704
+t1346437441
+s1796
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.h
+c000000005041014100000000000020C3
+t1346437441
+s8387
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.m
 c0000000050410141000000000000F00D
 t1346437441
 s61453
 
-N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m
-c0000000050410141000000000000325B
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell+Extended.h
+c000000005041014100000000000009DB
 t1346437441
-s12891
+s2523
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.h
+c000000005041014100000000000007E9
+t1346437441
+s2025
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m
+c0000000050478F2D00000000000032EE
+t1346866989
+s13038
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewLayoutStrategies.h
+c0000000050410141000000000000198B
+t1346437441
+s6539
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewLayoutStrategies.m
 c00000000504101410000000000004999
 t1346437441
 s18841
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.h
+c000000005041014100000000000005F0
+t1346437441
+s1520
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.m
 c000000005041014100000000000006C2
 t1346437441
 s1730
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.h
+c000000005041014100000000000005BE
+t1346437441
+s1470
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.m
 c000000005041014100000000000008DE
 t1346437441
 s2270
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFActionSheet.h
+c000000005041014100000000000005A2
+t1346437441
+s1442
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFAlertView.h
+c00000000504101410000000000000517
+t1346437441
+s1303
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFAnnotation.h
+c00000000504101410000000000000EFC
+t1346437441
+s3836
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFAnnotationParser.h
+c00000000504101410000000000000B69
+t1346437441
+s2921
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFAnnotationView.h
+c000000005041014100000000000002D6
+t1346437441
+s726
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFAttributedLabel.h
+c00000000504101410000000000003180
+t1346437441
+s12672
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFBaseViewController.h
+c000000005041014100000000000000C9
+t1346437441
+s201
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFCache.h
+c00000000504101410000000000001BD9
+t1346437441
+s7129
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFDocument.h
+c00000000504101410000000000002163
+t1346437441
+s8547
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFDocumentProvider.h
+c0000000050410141000000000000041D
+t1346437441
+s1053
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFDocumentSearcher.h
+c00000000504101410000000000000C00
+t1346437441
+s3072
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFGlobalLock.h
+c00000000504101410000000000000648
+t1346437441
+s1608
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFGridView.h
+c0000000050410141000000000000235A
+t1346437441
+s9050
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFGridViewCell.h
+c00000000504101410000000000000783
+t1346437441
+s1923
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFGridViewLayoutStrategies.h
+c000000005041014100000000000019C6
+t1346437441
+s6598
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFHUDView.h
+c000000005041014100000000000000AE
+t1346437441
+s174
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFHighlightAnnotationView.h
+c00000000504101410000000000000211
+t1346437441
+s529
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFKit.h
+c00000000504101410000000000000734
+t1346437441
+s1844
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFKitGlobal.h
+c00000000504101410000000000001C3D
+t1346437441
+s7229
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFLinkAnnotationView.h
+c0000000050410141000000000000060D
+t1346437441
+s1549
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFOutlineElement.h
+c00000000504101410000000000000391
+t1346437441
+s913
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFOutlineParser.h
+c0000000050410141000000000000048E
+t1346437441
+s1166
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFOutlineViewController.h
+c00000000504101410000000000000303
+t1346437441
+s771
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPageInfo.h
+c000000005041014100000000000007EF
+t1346437441
+s2031
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPageRenderer.h
+c000000005041014100000000000006E6
+t1346437441
+s1766
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPageView.h
+c00000000504101410000000000000980
+t1346437441
+s2432
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPageViewController.h
+c00000000504101410000000000000499
+t1346437441
+s1177
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPagedScrollView.h
+c000000005041014100000000000002AC
+t1346437441
+s684
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFPositionView.h
+c000000005041014100000000000002A4
+t1346437441
+s676
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFScrobbleBar.h
+c000000005041014100000000000003AA
+t1346437441
+s938
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFScrollView.h
+c00000000504101410000000000000B79
+t1346437441
+s2937
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFSearchHighlightView.h
+c00000000504101410000000000000266
+t1346437441
+s614
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFSearchResult.h
+c000000005041014100000000000002D5
+t1346437441
+s725
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFSearchViewController.h
+c000000005041014100000000000007B2
+t1346437441
+s1970
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFSimpleTextExtractor.h
+c0000000050410141000000000000028B
+t1346437441
+s651
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFSinglePageViewController.h
+c0000000050410141000000000000042E
+t1346437441
+s1070
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFThumbnailGridViewCell.h
+c0000000050410141000000000000053E
+t1346437441
+s1342
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFTilingView+Annotations.h
+c000000005041014100000000000005AF
+t1346437441
+s1455
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFTilingView.h
+c000000005041014100000000000004A9
+t1346437441
+s1193
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFTransparentToolbar.h
+c000000005041014100000000000000C3
+t1346437441
+s195
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFVideoAnnotationView.h
+c000000005041014100000000000002F8
+t1346437441
+s760
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFViewController.h
+c00000000504101410000000000003365
+t1346437441
+s13157
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFViewControllerDelegate.h
+c0000000050410141000000000000115B
+t1346437441
+s4443
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/PSPDFWebAnnotationView.h
+c00000000504101410000000000000257
+t1346437441
+s599
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/Headers/UIImage+PSPDFKitAdditions.h
+c0000000050410141000000000000073C
+t1346437441
+s1852
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit/PSPDFKit.framework/PSPDFKit
 c0000000050410141000000000047E81C
 t1346437441
 s4712476
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.h
+c0000000050410141000000000000021B
+t1346437441
+s539
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.m
 c00000000504101410000000000000CFB
 t1346437441
 s3323
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.h
+c00000000504101410000000000000149
+t1346437441
+s329
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.m
 c0000000050410141000000000000229B
 t1346437441
 s8859
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewDataSource.h
+c000000005041014100000000000002D5
+t1346437441
+s725
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.h
+c000000005041014100000000000006D4
+t1346437441
+s1748
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.m
 c00000000504101410000000000005809
 t1346437441
 s22537
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.h
+c00000000504101410000000000000F47
+t1346437441
+s3911
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.m
 c00000000504101410000000000001B4B
 t1346437441
 s6987
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIBlocks.h
+c00000000504101410000000000000345
+t1346437441
+s837
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.h
+c000000005041014100000000000014BE
+t1346437441
+s5310
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.m
 c00000000504101410000000000000A41
 t1346437441
 s2625
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.h
+c00000000504101410000000000003D25
+t1346437441
+s15653
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.m
 c00000000504101410000000000003BE4
 t1346437441
 s15332
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDebuggingTools.h
+c0000000050410141000000000000173E
+t1346437441
+s5950
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDebuggingTools.m
 c00000000504101410000000000000639
 t1346437441
 s1593
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDeviceOrientation.h
+c00000000504101410000000000000982
+t1346437441
+s2434
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDeviceOrientation.m
 c00000000504101410000000000000A40
 t1346437441
 s2624
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.h
+c0000000050410141000000000000070B
+t1346437441
+s1803
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.m
 c000000005041014100000000000002D2
 t1346437441
 s722
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.h
+c00000000504101410000000000000E1F
+t1346437441
+s3615
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.m
 c00000000504101410000000000000C07
 t1346437441
 s3079
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.h
+c000000005041014100000000000027AB
+t1346437441
+s10155
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.m
 c00000000504101410000000000003EC6
 t1346437441
 s16070
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.h
+c00000000504101410000000000000A8A
+t1346437441
+s2698
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.m
 c000000005041014100000000000010C4
 t1346437441
 s4292
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINetworkActivity.h
+c00000000504101410000000000000CB6
+t1346437441
+s3254
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINetworkActivity.m
 c00000000504101410000000000001201
 t1346437441
 s4609
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonEmptyCollectionTesting.h
+c000000005041014100000000000007A9
+t1346437441
+s1961
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonEmptyCollectionTesting.m
 c00000000504101410000000000000562
 t1346437441
 s1378
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonRetainingCollections.h
+c00000000504101410000000000000915
+t1346437441
+s2325
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonRetainingCollections.m
 c0000000050410141000000000000058B
 t1346437441
 s1419
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations+Subclassing.h
+c000000005041014100000000000002FE
+t1346437441
+s766
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations.h
+c00000000504101410000000000001C10
+t1346437441
+s7184
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations.m
 c00000000504101410000000000002013
 t1346437441
 s8211
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPaths.h
+c000000005041014100000000000007E5
+t1346437441
+s2021
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPaths.m
 c00000000504101410000000000000866
 t1346437441
 s2150
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPreprocessorMacros.h
+c00000000504101410000000000000996
+t1346437441
+s2454
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIRuntimeClassModifications.h
+c00000000504101410000000000000B00
+t1346437441
+s2816
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIRuntimeClassModifications.m
 c000000005041014100000000000005A9
 t1346437441
 s1449
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NISDKAvailability.h
+c00000000504101410000000000001683
+t1346437441
+s5763
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NISDKAvailability.m
 c00000000504101410000000000000AA4
 t1346437441
 s2724
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIState.h
+c00000000504101410000000000000B1D
+t1346437441
+s2845
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIState.m
 c00000000504101410000000000000901
 t1346437441
 s2305
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIViewRecycler.h
+c00000000504101410000000000000EDA
+t1346437441
+s3802
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIViewRecycler.m
 c00000000504101410000000000000ECF
 t1346437441
 s3791
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.h
+c0000000050410141000000000000038B
+t1346437441
+s907
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.m
 c00000000504101410000000000000A8A
 t1346437441
 s2698
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSString+NimbusCore.h
+c000000005041014100000000000005DD
+t1346437441
+s1501
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSString+NimbusCore.m
 c00000000504101410000000000002416
 t1346437441
 s9238
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NimbusCore.h
+c00000000504101410000000000000B47
+t1346437441
+s2887
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/UIView+NimbusCore.h
+c00000000504101410000000000000305
+t1346437441
+s773
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/UIView+NimbusCore.m
 c000000005041014100000000000005B7
 t1346437441
 s1463
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageRequest.h
+c000000005041014100000000000013BF
+t1346437441
+s5055
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageRequest.m
 c0000000050410141000000000000470B
 t1346437441
 s18187
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageView.h
+c00000000504101410000000000006095
+t1346437441
+s24725
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageView.m
 c00000000504101410000000000003FF5
 t1346437441
 s16373
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NimbusNetworkImage.h
+c00000000504101410000000000000D99
+t1346437441
+s3481
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPageView.h
+c00000000504101410000000000000492
+t1346437441
+s1170
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPageView.m
 c00000000504101410000000000000426
 t1346437441
 s1062
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.h
+c00000000504101410000000000001E75
+t1346437441
+s7797
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.m
 c000000005041014100000000000055B5
 t1346437441
 s21941
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewDataSource.h
+c00000000504101410000000000000640
+t1346437441
+s1600
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewDelegate.h
+c0000000050410141000000000000053E
+t1346437441
+s1342
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollViewPage.h
+c0000000050410141000000000000073D
+t1346437441
+s1853
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NimbusPagingScrollView.h
+c0000000050410141000000000000090C
+t1346437441
+s2316
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.h
+c00000000504101410000000000001598
+t1346437441
+s5528
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.m
 c0000000050410141000000000000272F
 t1346437441
 s10031
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollViewDataSource.h
+c00000000504101410000000000000F57
+t1346437441
+s3927
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollViewDelegate.h
+c0000000050410141000000000000067B
+t1346437441
+s1659
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollView.h
+c00000000504101410000000000001262
+t1346437441
+s4706
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollView.m
 c00000000504101410000000000005745
 t1346437441
 s22341
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollViewDelegate.h
+c000000005041014100000000000004EB
+t1346437441
+s1259
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollViewPhotoSize.h
+c000000005041014100000000000003B4
+t1346437441
+s948
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrubberView.h
+c000000005041014100000000000017EC
+t1346437441
+s6124
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrubberView.m
 c00000000504101410000000000004553
 t1346437441
 s17747
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIToolbarPhotoViewController.h
+c0000000050410141000000000000199B
+t1346437441
+s6555
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIToolbarPhotoViewController.m
 c00000000504101410000000000005706
 t1346437441
 s22278
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NimbusPhotos.h
+c00000000504101410000000000001676
+t1346437441
+s5750
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamRecorder.h
+c000000005041014100000000000003F0
+t1346437441
+s1008
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamRecorder.m
 c00000000504101410000000000000AEA
 t1346437441
 s2794
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamUtilities.h
+c000000005041014200000000000000E0
+t1346437442
+s224
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamUtilities.m
 c000000005041014200000000000001B6
 t1346437442
 s438
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamViewController.h
+c0000000050410142000000000000092D
+t1346437442
+s2349
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamViewController.m
 c0000000050410142000000000000BB7B
 t1346437442
 s47995
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/DDBadgeViewCell.h
+c0000000050410142000000000000024A
+t1346437442
+s586
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/DDBadgeViewCell.m
 c00000000504101420000000000001492
 t1346437442
 s5266
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTGroupDetailViewController.h
+c0000000050410142000000000000006E
+t1346437442
+s110
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTGroupDetailViewController.m
 c000000005041014200000000000003F3
 t1346437442
 s1011
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTImageDetailViewController.h
+c000000005041014200000000000000A0
+t1346437442
+s160
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTImageDetailViewController.m
 c00000000504101420000000000000637
 t1346437442
 s1591
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTPdfThumbnailImageView.h
+c0000000050410142000000000000010C
+t1346437442
+s268
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTPdfThumbnailImageView.m
 c0000000050410142000000000000050A
 t1346437442
 s1290
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcase.h
+c000000005041014200000000000000E2
+t1346437442
+s226
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseView.h
+c000000005041014200000000000003FE
+t1346437442
+s1022
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseView.m
 c000000005041014200000000000026BE
 t1346437442
 s9918
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewController.h
+c00000000504101420000000000000199
+t1346437442
+s409
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewController.m
 c00000000504101420000000000006A42
 t1346437442
 s27202
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewDataSource.h
+c000000005041014200000000000002E3
+t1346437442
+s739
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewDelegate.h
+c000000005041014200000000000000FD
+t1346437442
+s253
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTVideoThumbnailImageView.h
+c0000000050410142000000000000010E
+t1346437442
+s270
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTVideoThumbnailImageView.m
 c0000000050410142000000000000050D
 t1346437442
 s1293
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/RootViewController.h
+c000000005041014200000000000001F5
+t1346437442
+s501
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/RootViewController.m
 c000000005041014200000000000036AD
 t1346437442
 s13997
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.h
+c00000000504101410000000000001717
+t1346437441
+s5911
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.m
 c0000000050410141000000000000B70E
 t1346437441
 s46862
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h
+c00000000504101410000000000000D03
+t1346437441
+s3331
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m
 c00000000504101410000000000002750
@@ -1539,30 +2114,60 @@ c0000000050410141000000000000028A
 t1346437441
 s650
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.h
+c0000000050410141000000000000022C
+t1346437441
+s556
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m
 c00000000504101410000000000000A3D
 t1346437441
 s2621
 
-N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m
-c00000000504101410000000000008616
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.h
+c0000000050410141000000000000113A
 t1346437441
-s34326
+s4410
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m
+c0000000050478F2D00000000000086E0
+t1346866989
+s34528
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.h
+c00000000504101410000000000001119
+t1346437441
+s4377
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m
-c00000000504101410000000000005B89
+c0000000050478F2D0000000000005BA8
+t1346866989
+s23464
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/PTDemoViewController.h
+c00000000504101410000000000000071
 t1346437441
-s23433
+s113
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/PTDemoViewController.m
 c00000000504101410000000000001996
 t1346437441
 s6550
 
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleNavigationController.h
+c0000000050410141000000000000005E
+t1346437441
+s94
+
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleNavigationController.m
 c000000005041014100000000000009A3
 t1346437441
 s2467
+
+N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleViewController.h
+c0000000050410141000000000000006C
+t1346437441
+s108
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/SampleViewController.m
 c00000000504101410000000000000972
@@ -1570,237 +2175,237 @@ t1346437441
 s2418
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamCaptureManager.o
-t1346437441
-s124236
+t1346444690
+s124252
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamRecorder.o
-t1346437441
-s24532
+t1346444690
+s24540
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamUtilities.o
-t1346437441
-s7132
+t1346444690
+s7144
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamViewController.o
-t1346437441
-s154496
+t1346444690
+s154512
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/DDBadgeViewCell.o
-t1346437441
-s66092
+t1346444690
+s66108
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/ExpandyButton.o
-t1346437441
-s72048
+t1346444690
+s72056
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridView.o
-t1346437441
-s214784
+t1346444690
+s214800
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o
-t1346437441
-s99596
+t1346444690
+s99612
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewLayoutStrategies.o
-t1346437441
-s64296
+t1346444690
+s64312
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o
-t1346437441
-s179772
+t1346444690
+s179788
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o
-t1346437441
-s103660
+t1346444690
+s103668
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NICommonMetrics.o
-t1346437441
-s7632
+t1346444690
+s7648
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDataStructures.o
-t1346437441
-s44796
+t1346444690
+s44804
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDebuggingTools.o
-t1346437441
-s2524
+t1346444690
+s2536
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDeviceOrientation.o
-t1346437441
-s5060
+t1346444690
+s5072
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIError.o
-t1346437441
-s3180
+t1346444690
+s3196
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIFoundationMethods.o
-t1346437441
-s6388
+t1346444690
+s6400
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIInMemoryCache.o
-t1346437441
-s47948
+t1346444690
+s47964
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINavigationAppearance.o
-t1346437441
-s56272
+t1346444690
+s56288
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkActivity.o
-t1346437441
-s5672
+t1346444690
+s5684
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageRequest.o
-t1346437441
-s36520
+t1346444690
+s36536
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageView.o
-t1346437441
-s91188
+t1346444690
+s91204
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonEmptyCollectionTesting.o
-t1346437441
-s4448
+t1346444690
+s4460
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonRetainingCollections.o
-t1346437441
-s4248
+t1346444690
+s4260
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIOperations.o
-t1346437441
-s34528
+t1346444690
+s34544
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPageView.o
-t1346437441
-s50464
+t1346444690
+s50472
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPagingScrollView.o
-t1346437441
-s99120
+t1346444690
+s99136
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPaths.o
-t1346437441
-s7588
+t1346444690
+s7600
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoAlbumScrollView.o
-t1346437441
-s70328
+t1346444690
+s70352
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrollView.o
-t1346437441
-s89700
+t1346444690
+s89716
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrubberView.o
-t1346437441
-s82856
+t1346444690
+s82864
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIRuntimeClassModifications.o
-t1346437441
-s3592
+t1346444690
+s3604
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NISDKAvailability.o
-t1346437441
-s7244
+t1346444690
+s7252
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIState.o
-t1346437441
-s8624
+t1346444690
+s8636
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIToolbarPhotoViewController.o
-t1346437441
-s102096
+t1346444690
+s102120
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIViewRecycler.o
-t1346437441
-s51092
+t1346444690
+s51104
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NSData+NimbusCore.o
-t1346437441
-s7424
+t1346444690
+s7440
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NSString+NimbusCore.o
-t1346437441
-s22504
+t1346444690
+s22520
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NetworkPhotoAlbumViewController.o
-t1346437441
-s70012
+t1346444690
+s70028
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTDemoViewController.o
-t1346437441
-s60700
+t1346444690
+s60716
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTGroupDetailViewController.o
-t1346437441
-s46868
+t1346444690
+s46880
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumView.o
-t1346437441
-s59072
+t1346444690
+s59096
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumViewController.o
-t1346437441
-s79324
+t1346444690
+s79348
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageDetailViewController.o
-t1346437441
-s56592
+t1346444690
+s56624
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTPdfThumbnailImageView.o
-t1346437441
-s52076
+t1346444690
+s52100
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseView.o
-t1346437441
-s72288
+t1346444690
+s72304
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseViewController.o
-t1346437441
-s103320
+t1346444690
+s103360
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTVideoThumbnailImageView.o
-t1346437441
-s52124
+t1346444690
+s52148
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.LinkFileList
-c00000000504107B9000000000000266B
-t1346439097
+c0000000050411D92000000000000266B
+t1346444690
 s9835
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.o
-t1346437441
-s56364
+t1346444690
+s56388
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/RootViewController.o
-t1346437441
-s84184
+t1346444690
+s84200
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SDURLCache.o
-t1346437441
-s63380
+t1346444690
+s63388
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SampleNavigationController.o
-t1346437441
-s56560
+t1346444690
+s56576
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SampleViewController.o
-t1346437441
+t1346444690
 s54012
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIGestureRecognizer+GMGridViewAdditions.o
-t1346437441
-s45184
+t1346444690
+s45196
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+GMGridViewAdditions.o
-t1346437441
-s47504
+t1346444690
+s47512
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+NimbusCore.o
-t1346437441
-s44968
+t1346444690
+s44980
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a
-t1346437441
-s3203160
+t1346444690
+s3204008
 
 N/var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-blnhycmkrzgxuffpbpbodwaeujpb/PhotoHubLib-Prefix.pch.pth
 t1340307718
@@ -1819,12 +2424,12 @@ t1346073056
 s4817360
 
 N/var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch.pth
-t2
-s0
+t1346439097
+s4818408
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies05e16e393ff1b541^f8dd94393ff1b541^---0#1#0#--18"Check dependencies36"1188B5D4-A8B6-40DF-B92D-B1A3BAEA5891-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies90f65bbbc7f7b541^88f390bbc7f7b541^---0#1#0#--18"Check dependencies36"190E3845-979D-4C6B-B546-2BED65A90C81-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamCaptureManager.o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamCaptureManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s364444112.107919
@@ -2035,8 +2640,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection129"Compile /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m6c3d77462af1b541^5d35af462af1b541^---0#0#0#-19%DVTDocumentLocation2@137"file://localhost/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m0000000000000000^4136"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o ../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-evsedvarkwthhwfzktfhyoftjtql/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.d --serialize-diagnostics /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.dia -c /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m -o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o36"A6742F1A-A849-4ACC-936D-7C0CB706BD4D-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s368131898.189764
-e368131898.492534
+s368560059.588805
+e368560059.774903
 r1
 xCompileC
 xbuild/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o
@@ -2045,7 +2650,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection133"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m13ef303a3ff1b541^73127e3a3ff1b541^---0#0#0#-19%DVTDocumentLocation2@141"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m0000000000000000^4196"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o ../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o36"2930CFBD-5C0F-42A0-8219-6CB0A09CAAA3-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection133"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.mefe196bbc7f7b541^145ec6bbc7f7b541^---0#0#0#-19%DVTDocumentLocation2@141"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m0000000000000000^4196"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o ../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o36"20679DDF-E02A-43CE-ADB3-C7C55499409E-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewLayoutStrategies.o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewLayoutStrategies.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s367765856.985795
@@ -2087,8 +2692,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m52b876462af1b541^847fd9462af1b541^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m0000000000000000^4110"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o ShowcaseDemo/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-evsedvarkwthhwfzktfhyoftjtql/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.dia -c /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m -o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o36"B6D5F3B1-CDEA-4A02-BC99-5A00F7ECCCB2-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s368131897.891799
-e368131898.518169
+s368560059.586440
+e368560059.938906
 r1
 xCompileC
 xbuild/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o
@@ -2097,7 +2702,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m2c66e4393ff1b541^5e0f863a3ff1b541^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m0000000000000000^4170"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o ShowcaseDemo/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o36"0F2EE12F-D639-463A-A132-6929ED7EDBE7-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m0b4596bbc7f7b541^5f5ef0bbc7f7b541^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m0000000000000000^4170"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o ShowcaseDemo/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MainViewController.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o36"1030F7C9-3922-4248-A2D1-3E08B3FD34C1-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s368126534.463537
@@ -2113,8 +2718,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.mc6c476462af1b541^bdacc5462af1b541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m0000000000000000^4068"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-evsedvarkwthhwfzktfhyoftjtql/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.d --serialize-diagnostics /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.dia -c /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m -o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o36"CD37F875-7AEC-406B-8ADE-DA9D9824C2C8-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s368131897.895001
-e368131898.299986
+s368560059.586631
+e368560059.836583
 r1
 xCompileC
 xbuild/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o
@@ -2123,7 +2728,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m0135e5393ff1b541^f3cb4c3a3ff1b541^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m0000000000000000^4128"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o36"6C34F341-B192-4BF7-9AB5-74E878308417-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m4a4696bbc7f7b541^912ad6bbc7f7b541^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m0000000000000000^4128"CompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=50100 -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-generated-files.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-own-target-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-all-target-headers.hmap -iquote /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/PhotoHubLib-project-headers.hmap -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/include -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources/i386 -I/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/DerivedSources -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -F/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PSPDFKit -DNS_BLOCK_ASSERTIONS=1 -include /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-gtcqriaclbatjudssvhsxmusiapu/PhotoHubLib-Prefix.pch -MMD -MT dependencies -MF /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.d --serialize-diagnostics /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.dia -c /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o36"C6434D96-83E6-4077-B8BF-BBE99FD5EC4F-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NICommonMetrics.o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s367765857.132347
@@ -3308,8 +3913,8 @@ o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i3863868db462af1b541^8ae3ec462af1b541^-450"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib is a dynamic library, not added to the static library-0#0#0#--1628"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i386    cd /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -L/Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -filelist /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.LinkFileList -ObjC -framework CoreMedia -framework UIKit -framework Foundation -framework AssetsLibrary -framework CoreVideo -framework CoreGraphics -framework AVFoundation -framework MobileCoreServices -framework PSPDFKit -framework ImageIO /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib -framework MessageUI -framework CoreText -framework QuartzCore -framework MediaPlayer -o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a36"BA4C2302-2D67-4917-B021-61F0FFA641E9-
 
 CLibtool /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a normal i386
-s368131899.447033
-e368131899.490817
+s368560059.946549
+e368560060.014741
 r1
 xLibtool
 x/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a
@@ -3317,7 +3922,7 @@ xnormal
 xi386
 o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
 o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib is a dynamic library, not added to the static library
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i3862e8e723b3ff1b541^83a67d3b3ff1b541^-450"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib is a dynamic library, not added to the static library-0#0#0#--1644"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i386    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -L/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -filelist /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.LinkFileList -ObjC -framework CoreMedia -framework UIKit -framework Foundation -framework AssetsLibrary -framework CoreVideo -framework CoreGraphics -framework AVFoundation -framework MobileCoreServices -framework PSPDFKit -framework ImageIO /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib -framework MessageUI -framework CoreText -framework QuartzCore -framework MediaPlayer -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a36"72C58509-B828-4AEC-B546-09A507001953-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i3868d80f2bbc7f7b541^a8c603bcc7f7b541^-450"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib is a dynamic library, not added to the static library-0#0#0#--1644"Libtool build/Release-iphonesimulator/libPhotoHubLib.a normal i386    cd /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/opt/local/bin:/opt/local/sbin:/Users/sam/bin:/Developer/SDKs/AndroidSDK/tools:/Developer/SDKs/AndroidSDK/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk -L/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator -filelist /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.LinkFileList -ObjC -framework CoreMedia -framework UIKit -framework Foundation -framework AssetsLibrary -framework CoreVideo -framework CoreGraphics -framework AVFoundation -framework MobileCoreServices -framework PSPDFKit -framework ImageIO /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk/usr/lib/libz.dylib -framework MessageUI -framework CoreText -framework QuartzCore -framework MediaPlayer -o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a36"7ACF6103-57F9-4FB9-8614-F3EE29DC6314-
 
 CProcessPCH /var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-blnhycmkrzgxuffpbpbodwaeujpb/PhotoHubLib-Prefix.pch.pth PhotoHubLib/PhotoHubLib-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s362078823.037144
