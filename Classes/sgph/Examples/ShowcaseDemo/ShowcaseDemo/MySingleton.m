@@ -455,8 +455,12 @@ MySingleton *gSingleton = nil;
     {        
         NSDictionary *dict = [gSingleton.infoDict objectForKey:key];
         id value = [dict objectForKey:@"label"];
-        
-        NSLog(@"infoDict read: %@ for label %@", key, value);        
+        id desc = [dict objectForKey:@"description"];
+
+        if ([value isEqualToString:@"Other: With Description"])
+            NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
+        else
+            NSLog(@"infoDict read: %@ for label %@", key, value);
     }
 }
 

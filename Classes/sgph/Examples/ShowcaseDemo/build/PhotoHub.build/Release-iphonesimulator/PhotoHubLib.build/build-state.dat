@@ -9,10 +9,10 @@ cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTDemoViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/PTDemoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/DDBadgeViewCell.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/DDBadgeViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/RootViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamRecorder.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamRecorder.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ShowcaseDemo/MySingleton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamUtilities.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamUtilities.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamRecorder.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamRecorder.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTVideoThumbnailImageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTVideoThumbnailImageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTPdfThumbnailImageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTPdfThumbnailImageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTGroupDetailViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTGroupDetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
@@ -20,45 +20,45 @@ cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTShowcaseView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/PTShowcaseView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIGestureRecognizer+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewCell.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewLayoutStrategies.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/GMGridViewLayoutStrategies.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIGestureRecognizer+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIGestureRecognizer+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NICommonMetrics.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NICommonMetrics.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+GMGridViewAdditions.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/GMGridView/GMGridView/UIView+GMGridViewAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDataStructures.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDebuggingTools.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDebuggingTools.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDeviceOrientation.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDeviceOrientation.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIDataStructures.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIDataStructures.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIFoundationMethods.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIError.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIError.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINavigationAppearance.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIFoundationMethods.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIFoundationMethods.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIInMemoryCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIInMemoryCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkActivity.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINetworkActivity.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINavigationAppearance.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINavigationAppearance.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonEmptyCollectionTesting.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonEmptyCollectionTesting.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINonRetainingCollections.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NINonRetainingCollections.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIOperations.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIOperations.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPaths.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIPaths.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIRuntimeClassModifications.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIRuntimeClassModifications.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NISDKAvailability.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NISDKAvailability.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIState.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIViewRecycler.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIViewRecycler.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIState.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NIState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NSData+NimbusCore.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSData+NimbusCore.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NSString+NimbusCore.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/NSString+NimbusCore.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/UIView+NimbusCore.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/core/src/UIView+NimbusCore.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageRequest.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageRequest.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NINetworkImageRequest.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/networkimage/src/NINetworkImageRequest.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPageView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPageView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPagingScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoAlbumScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoAlbumScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPhotoScrubberView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIPhotoScrubberView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIPagingScrollView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/pagingscrollview/src/NIPagingScrollView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NIToolbarPhotoViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/src/photos/src/NIToolbarPhotoViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NetworkPhotoAlbumViewController.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/ExpandyButton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PTImageAlbumView.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/PTImageAlbumViewController/PTImageAlbumViewController/PTImageAlbumView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/SDURLCache.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/../../Libraries/SDURLCache/SDURLCache.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/PhotoHubLib.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/PhotoHubLib/PhotoHubLib.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamCaptureManager.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/ExpandyButton.o /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cLibtool /Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a normal i386
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.1.sdk
@@ -2203,20 +2203,20 @@ t1346444690
 s214800
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewCell.o
-t1346444690
-s99612
+t1346867259
+s99788
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/GMGridViewLayoutStrategies.o
 t1346444690
 s64312
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MainViewController.o
-t1346444690
-s179788
+t1346867259
+s180116
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/MySingleton.o
-t1346444690
-s103668
+t1346867259
+s103860
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/NICommonMetrics.o
 t1346444690
@@ -2404,8 +2404,8 @@ t1346444690
 s44980
 
 N/Users/sam/Projects/PhotoModule_iOS/Classes/sgph/Examples/ShowcaseDemo/build/Release-iphonesimulator/libPhotoHubLib.a
-t1346444690
-s3204008
+t1346867260
+s3204704
 
 N/var/folders/th/g1lwr3wn57jb_mxrrdshzj_40000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/PhotoHubLib-Prefix-blnhycmkrzgxuffpbpbodwaeujpb/PhotoHubLib-Prefix.pch.pth
 t1340307718
@@ -2429,7 +2429,7 @@ s4818408
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies90f65bbbc7f7b541^88f390bbc7f7b541^---0#1#0#--18"Check dependencies36"190E3845-979D-4C6B-B546-2BED65A90C81-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies70995785c8f7b541^a5168285c8f7b541^---0#1#0#--18"Check dependencies36"BDD52DCB-ECE5-4515-BB27-8543E8B0292A-
 
 CCompileC build/PhotoHub.build/Release-iphonesimulator/PhotoHubLib.build/Objects-normal/i386/AVCamCaptureManager.o /Users/sam/Projects/PhotoModule/Classes/sgph/Examples/ShowcaseDemo/../../PTShowcaseViewController/AVCamCaptureManager.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s364444112.107919

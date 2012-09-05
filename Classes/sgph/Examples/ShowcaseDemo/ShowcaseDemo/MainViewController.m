@@ -833,8 +833,12 @@
     {        
         NSDictionary *dict = [gSingleton.infoDict objectForKey:key];
         id value = [dict objectForKey:@"label"];
+        id desc = [dict objectForKey:@"description"];
         
-        NSLog(@"infoDict read: %@ for label %@", key, value);
+        if ([value isEqualToString:@"Other: With Description"])
+            NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
+        else
+            NSLog(@"infoDict read: %@ for label %@", key, value);
         
         if ([value isEqualToString:[gSingleton.labelArr objectAtIndex:0]])
         {
