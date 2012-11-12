@@ -16,6 +16,7 @@ MySingleton *gSingleton = nil;
 @synthesize applyCaptureDefaults;
 @synthesize orderNumber;
 @synthesize rootPhotoFolder;
+@synthesize todaysPhotoFolder;
 @synthesize hashVals;
 @synthesize curHashVals;
 @synthesize hashValsReq;
@@ -82,6 +83,14 @@ MySingleton *gSingleton = nil;
     if (self = [super init])
     {
         
+        // mimic the way INSPI will initialize the application
+        BOOL emu = NO;
+        NSString *model = [[UIDevice currentDevice] model];
+        if ([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPad Simulator"])
+        {
+            emu = YES;
+        }
+
         self.iPadDevice = NO;
         
 #ifdef UI_USER_INTERFACE_IDIOM
@@ -89,6 +98,16 @@ MySingleton *gSingleton = nil;
 #endif
         self.docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
+        if (emu)
+        {
+            [self setRootPhotoFolder:@"123_EASY_ST_12345678"];
+
+            NSDate *date = [NSDate date];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+            [dateFormat setDateFormat:@"YYYY_MM_dd"];
+            [self setTodaysPhotoFolder:[dateFormat stringFromDate:date]];
+        }
+
         self.orderNumber = @"0";
         
         self.curLetArray = [NSArray arrayWithObjects:
@@ -225,13 +244,6 @@ MySingleton *gSingleton = nil;
         [self setReqLabels: @"g2,a3,b3,c3,d3,e3" withUpdate:NO
          ];
         
-        // mimic the way INSPI will initialize the application
-        BOOL emu = NO;        
-        NSString *model = [[UIDevice currentDevice] model];
-        if ([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPad Simulator"])
-        {
-            emu = YES;
-        }
         if (emu)
         {
             self.openToGallery = NO;
@@ -239,8 +251,7 @@ MySingleton *gSingleton = nil;
             // labels set appropriately above
             //updatePHReqLabels({});
             
-            // photo folder already set
-            //krollDemo.photoFolder = getVal("photoFolder", currentOrderId);
+            // photo folder needs to be set before this point
             
             [self setOrderNum:@"12345678"];
         }
@@ -356,11 +367,6 @@ MySingleton *gSingleton = nil;
     self.doRef = YES;
 }
 
-- (void) setPhotoFolder:(NSString *)aFolder
-{    
-    self.rootPhotoFolder = aFolder;
-}
-    
 - (void) setReqCount:(NSString *)newCount
 {
     //NSLog(@"setReqCount %@", newCount);
@@ -543,7 +549,7 @@ MySingleton *gSingleton = nil;
 - (NSString*) getPhotoDirFull
 {
     NSString* res = [self.docDir stringByAppendingPathComponent:[self getPhotoDirRelative]];
-    [self checkDir:res];
+    [self checkDir:[NSString stringWithFormat:@"%@/%@", res, self.todaysPhotoFolder]];
     return res;
 }
 
@@ -556,15 +562,34 @@ MySingleton *gSingleton = nil;
 - (NSString*) getThumbDirFull
 {
     NSString* res = [self.docDir stringByAppendingPathComponent:[self getThumbDirRelative]];
-    [self checkDir:res];
+    [self checkDir:[NSString stringWithFormat:@"%@/%@", res, self.todaysPhotoFolder]];
     return res;
 }
 
-- (NSArray*) getPhotoDirContents
+- (NSMutableArray*) getPhotoDirContents
 {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    self.dirContents = [fm contentsOfDirectoryAtPath:[self getPhotoDirFull] error:nil];
-    
+    NSString *dir = [self getPhotoDirFull];
+    NSDirectoryEnumerator *de = [[NSFileManager defaultManager] enumeratorAtPath:dir];
+
+    // initialize the array
+    if (self.dirContents == nil)
+    {
+        self.dirContents = [[NSMutableArray alloc] init];
+    }
+    else
+    {
+        [self.dirContents removeAllObjects];
+    }
+
+    NSString *file;
+    while ((file = [de nextObject]))
+    {
+        if ([[file pathExtension] isEqualToString:@"jpg"])
+        {
+            NSLog(@"%@", file);
+            [self.dirContents addObject:file];
+        }
+    }
     return self.dirContents;
 }
 

@@ -1,6 +1,6 @@
 # Xcode
 build/*
-Classes/sgph/Examples/ShowcaseDemo/build/*
+/Classes/sgph/Examples/ShowcaseDemo/build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3

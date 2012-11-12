@@ -250,9 +250,14 @@
         [mSingleton.myPHS setOrderNum:newValue];
     }
 
-    if ([key isEqualToString:@"photoFolder"])
+    if ([key isEqualToString:@"rootPhotoFolder"])
     {
-        [mSingleton.myPHS setPhotoFolder:newValue];
+        [mSingleton.myPHS setRootPhotoFolder:newValue];
+    }
+
+    if ([key isEqualToString:@"todaysPhotoFolder"])
+    {
+        [mSingleton.myPHS setTodaysPhotoFolder:newValue];
     }
 
     if ([key isEqualToString:@"reqCount"])

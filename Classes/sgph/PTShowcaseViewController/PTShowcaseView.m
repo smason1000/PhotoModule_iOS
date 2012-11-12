@@ -116,7 +116,7 @@
 {
     NSLog(@"reloadData()");
     
-    NSArray *dirContents = [gSingleton getPhotoDirContents];
+    NSMutableArray *dirContents = [gSingleton getPhotoDirContents];
     NSInteger numberOfItems = [dirContents count];
     
     // Create an items' info array for reusing

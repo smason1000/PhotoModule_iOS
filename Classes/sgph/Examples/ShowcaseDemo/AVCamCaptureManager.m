@@ -569,7 +569,7 @@
         
     unsigned int timestamp = [[NSDate date] timeIntervalSince1970];
         
-    self.filename = [NSString stringWithFormat:@"p%i.jpg", timestamp];  
+    self.filename = [NSString stringWithFormat:@"%@/p%i.jpg", gSingleton.todaysPhotoFolder, timestamp];
     // change this when the key is refactored
     //curLS = [NSMutableString stringWithFormat:@"%@_%i.jpg", gSingleton.currentLabelString, timestamp];  
         

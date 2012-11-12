@@ -74,7 +74,7 @@ typedef enum
     NSString* docDir;
     
     
-    NSArray *dirContents;
+    NSMutableArray *dirContents;
     
     NSArray* curLetArray;
 }
@@ -101,7 +101,7 @@ typedef enum
 @property (nonatomic) NSInteger labeledCount;
 
 
-@property (nonatomic, retain) NSArray *dirContents;
+@property (nonatomic, retain) NSMutableArray *dirContents;
 @property (nonatomic, retain) NSArray* curLetArray;
 @property (nonatomic, retain) NSMutableArray* msgQ;
 
@@ -122,6 +122,7 @@ typedef enum
 
 @property (nonatomic, retain) NSString* orderNumber;
 @property (nonatomic, retain) NSString* rootPhotoFolder;
+@property (nonatomic, retain) NSString* todaysPhotoFolder;
 @property (nonatomic, retain) NSString* docDir;
 
 + (id)sharedSingleton;
@@ -140,7 +141,7 @@ typedef enum
 - (void) updateLabelHash;
 
 
-- (NSArray*) getPhotoDirContents;
+- (NSMutableArray*) getPhotoDirContents;
 - (NSInteger) getDirCount;
 - (void)delImage:(NSString *)name;
 - (void)saveImage:(UIImage *)image withName:(NSString *)name;
@@ -151,7 +152,8 @@ typedef enum
 - (void) setLabels:(NSString*)newLabels;
 - (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate;
 - (void) setOrderNum:(NSString *)orderNum;
-- (void) setPhotoFolder:(NSString *)aFolder;
+- (void) setRootPhotoFolder:(NSString *)aFolder;
+- (void) setTodaysPhotoFolder:(NSString *)aFolder;
 - (void) setReqCount:(NSString *)newCount;
 - (void) updateLabelDB:(NSString*)name;
 - (void) setHashReq:(BOOL)isReq;
