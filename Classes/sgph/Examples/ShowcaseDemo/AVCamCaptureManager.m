@@ -443,7 +443,8 @@
 
 - (UIImage *)fixOrientation:(UIImage*) imgToRotate 
 {   
-    NSLog(@"Image orientation: %d", imgToRotate.imageOrientation);
+    if (gSingleton.showTrace)
+        NSLog(@"Image orientation: %d", imgToRotate.imageOrientation);
     
     // No-op if the orientation is already correct
     if (imgToRotate.imageOrientation == UIImageOrientationUp)
@@ -557,7 +558,8 @@
 - (void) captureStillImage
 {
         
-    NSLog(@"captureStillImage()");
+    if (gSingleton.showTrace)
+        NSLog(@"captureStillImage()");
         
     BOOL emu = NO;
         

@@ -149,7 +149,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (PTItemOrientation)showcaseView:(PTShowcaseView *)showcaseView orientationForItemAtIndex:(NSInteger)index
 {
-    NSLog(@"orientationForItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"orientationForItemAtIndex()");
     return [[[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"Orientation"] integerValue];
 }
 
@@ -159,19 +160,22 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (NSInteger)numberOfItemsInShowcaseView:(PTShowcaseView *)showcaseView
 {
-    NSLog(@"numberOfItemsInShowcaseView()");
+    if (gSingleton.showTrace)
+        NSLog(@"numberOfItemsInShowcaseView()");
     return [[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] count];
 }
 
 - (PTContentType)showcaseView:(PTShowcaseView *)showcaseView contentTypeForItemAtIndex:(NSInteger)index
 {
-    NSLog(@"contentTypeForItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"contentTypeForItemAtIndex()");
     return PTContentTypeImage;// [[[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"ContentType"] integerValue];
 }
 
 - (NSString *)showcaseView:(PTShowcaseView *)showcaseView pathForItemAtIndex:(NSInteger)index
 {
-    NSLog(@"pathForItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"pathForItemAtIndex()");
     NSString *source = [[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"Source"];
     
     if (source != nil) {
@@ -183,13 +187,15 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (NSString *)showcaseView:(PTShowcaseView *)showcaseView uniqueNameForItemAtIndex:(NSInteger)index
 {
-    NSLog(@"uniqueNameForItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"uniqueNameForItemAtIndex()");
     return [[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"UniqueName"];
 }
 
 - (NSString *)showcaseView:(PTShowcaseView *)showcaseView sourceForThumbnailImageOfItemAtIndex:(NSInteger)index
 {
-    NSLog(@"sourceForThumbnailImageOfItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"sourceForThumbnailImageOfItemAtIndex()");
     NSString *source = [[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"Thumbnail"];
     if (source != nil) {
         return NIPathForBundleResource(nil, [NSString stringWithFormat:@"ShowcaseDemo.bundle/%@", source]);
@@ -200,7 +206,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (NSString *)showcaseView:(PTShowcaseView *)showcaseView textForItemAtIndex:(NSInteger)index
 {
-    NSLog(@"textForItemAtIndex()");
+    if (gSingleton.showTrace)
+        NSLog(@"textForItemAtIndex()");
     return [[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"Title"];
 }
 

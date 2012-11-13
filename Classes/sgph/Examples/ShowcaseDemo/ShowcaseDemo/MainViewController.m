@@ -221,6 +221,8 @@
 
 - (void)viewDidLoad
 {
+    if (gSingleton.showTrace)
+        NSLog(@"MainViewController viewDidLoad");
     
     fBounds = self.view.bounds;//CGRectMake(0.0, 0.0, 0.0, 0.0);
     hudHidden = NO;
@@ -543,7 +545,8 @@
     
     if (gSingleton.doRef)
     {
-        NSLog(@"doRefTimer");
+        if (gSingleton.showTrace)
+            NSLog(@"doRefTimer");
 
         gSingleton.doRef = NO;
         
@@ -565,7 +568,8 @@
 
 -(void)eventHandlerLabel: (NSNotification *) notification
 {
-    NSLog(@"labelEvent (MainViewController)");
+    if (gSingleton.showTrace)
+        NSLog(@"labelEvent (MainViewController)");
     
     if (gSingleton.currentAppState == PHASLabelFS)
     {
@@ -838,11 +842,14 @@
         NSDictionary *dict = [gSingleton.infoDict objectForKey:key];
         id value = [dict objectForKey:@"label"];
         id desc = [dict objectForKey:@"description"];
-        
-        if ([value isEqualToString:@"Other: With Description"])
-            NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
-        else
-            NSLog(@"infoDict read: %@ for label %@", key, value);
+
+        if (gSingleton.showTrace)
+        {
+            if ([value isEqualToString:@"Other: With Description"])
+                NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
+            else
+                NSLog(@"infoDict read: %@ for label %@", key, value);
+        }
         
         if ([value isEqualToString:[gSingleton.labelArr objectAtIndex:0]])
         {
@@ -853,7 +860,9 @@
             lCount++;
         }
     }
-    NSLog(@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, lCount, gSingleton.photoCount);
+    if (gSingleton.showTrace)
+        NSLog(@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, lCount, gSingleton.photoCount);
+    
     [titleLabel setText:[NSString stringWithFormat:@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, lCount, gSingleton.photoCount ]];
     
     //self.nreqCountItem.title = [NSString stringWithFormat:@"%d",[gSingleton.requiredLabelArr count]];

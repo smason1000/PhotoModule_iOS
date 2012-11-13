@@ -337,10 +337,13 @@ CGPoint effectiveTranslation;
 
 - (void)applyDefaults:(BOOL)hudHidden
 {
-    if (hudHidden)
-        NSLog(@"Applying capture defaults - showing HUD");
-    else
-        NSLog(@"Applying capture defaults - hiding HUD");
+    if (gSingleton.showTrace)
+    {
+        if (hudHidden)
+            NSLog(@"Applying capture defaults - showing HUD");
+        else
+            NSLog(@"Applying capture defaults - hiding HUD");
+    }
     
 	effectiveScale = 1.0;
 	effectiveRotationRadians = 0.0;
@@ -506,12 +509,14 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 {    
     if (gSingleton.applyCaptureDefaults)
     {
-        NSLog(@"********** CamViewController viewWillAppear - defaults needed **********");
+        if (gSingleton.showTrace)
+            NSLog(@"********** CamViewController viewWillAppear - defaults needed **********");
         [self applyDefaults:NO];
     }
     else
     {
-        NSLog(@"********** CamViewController viewWillAppear - defaults in place **********");
+        if (gSingleton.showTrace)
+            NSLog(@"********** CamViewController viewWillAppear - defaults in place **********");
     }
     [super viewWillAppear:animated];
 }
@@ -610,7 +615,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 -(void) zoomSliderAction:(UISlider*)sender
 {
     effectiveScale = [sender value];
-    NSLog(@"Slider value changed: %.2f", [sender value]);
+    //NSLog(@"Slider value changed: %.2f", [sender value]);
     
     [[self captureManager] setCameraZoom:effectiveScale];
     [self makeAndApplyAffineTransform];
@@ -640,7 +645,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
         if (effectiveScale > 6.0)
             effectiveScale = 6.0;
                 
-        NSLog(@"Pinch Zoom value changed: %.2f", effectiveScale);
+        //NSLog(@"Pinch Zoom value changed: %.2f", effectiveScale);
 
         [self.zoomSlider setValue:effectiveScale animated:YES];
 
@@ -696,7 +701,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 -(void)eventHandlerCamera: (NSNotification *) notification
 {
-    NSLog(@"eventHandlerCamera");
+    if (gSingleton.showTrace)
+        NSLog(@"eventHandlerCamera");
     
     // Capture a still image
     //[[self stillButton] setEnabled:NO];

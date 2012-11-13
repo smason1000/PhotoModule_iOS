@@ -22,7 +22,7 @@
 	// the method signature has an 'args' parameter it is not required to pass
 	// arguments from JavaScript to the method.
 	
-	NSLog(@"[METHODSDEMO] demoMethodNoReturn");
+    NSLog(@"[METHODSDEMO] demoMethodNoReturn");
 }
 
 -(NSNumber*) demoMethodNumberInt:(id)args

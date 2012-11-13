@@ -149,6 +149,7 @@ typedef enum
 
 
 
+- (void) setTrace:(BOOL)traceOn;
 - (void) setLabels:(NSString*)newLabels;
 - (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate;
 - (void) setOrderNum:(NSString *)orderNum;

@@ -106,7 +106,8 @@
 
 -(void)eventHandlerClear: (NSNotification *) notification
 {
-    NSLog(@"INTERNAL RELOAD FIRED");
+    if (gSingleton.showTrace)
+        NSLog(@"INTERNAL RELOAD FIRED");
     
     [self reloadData];
 }
@@ -114,7 +115,8 @@
 
 - (void)reloadData
 {
-    NSLog(@"reloadData()");
+    if (gSingleton.showTrace)
+        NSLog(@"reloadData()");
     
     NSMutableArray *dirContents = [gSingleton getPhotoDirContents];
     NSInteger numberOfItems = [dirContents count];

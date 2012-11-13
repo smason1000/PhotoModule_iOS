@@ -39,7 +39,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	
     mSingleton = [ComPhmodSingleton sharedSingleton];
     
-	NSLog(@"[INFO] %@ loaded",self);
+    if (mSingleton.showTrace)
+        NSLog(@"[INFO] %@ loaded",self);
 }
 
 -(void)shutdown:(id)sender
@@ -115,7 +116,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This is the designated initializer method and will always be called
 	// when the proxy is created.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] init");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] init");
 	
 	return [super init];
 }
@@ -125,7 +127,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is called from the dealloc method and is good place to
 	// release any objects and memory that have been allocated for the module.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] _destroy");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] _destroy");
 	
 	[super _destroy];
 }
@@ -135,7 +138,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is called when the proxy is being deallocated. The superclass
 	// method calls the _destroy method.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] dealloc");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] dealloc");
 	
 }
 
@@ -143,7 +147,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	// This method is called when the application is being suspended
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] suspend");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] suspend");
 	
 	[super suspend:sender];
 }
@@ -152,7 +157,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	// This method is called when the application is being resumed
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] resume");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] resume");
 	
 	[super resume:sender];
 }
@@ -161,7 +167,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	// This method is called when the application has been resumed
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] resumed");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] resumed");
 	
 	[super resumed:sender];
 }
@@ -173,7 +180,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is also called from the other _initWithPageContext method.
 	// The superclass method calls the init and _configure methods.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (no arguments)");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (no arguments)");
 	
 	return [super _initWithPageContext:context];
 }
@@ -185,7 +193,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// The superclass method calls the _initWithPageContext method without
 	// arguments.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (arguments)");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (arguments)");
 	
 	return [super _initWithPageContext:context_ args:args];
 }
@@ -196,7 +205,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// custom configuration of the module before startup. The superclass
 	// method calls the startup method.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] _configure");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] _configure");
 	
 	[super _configure];
 }
@@ -209,7 +219,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// proxy create method since most of the initialization has been completed
 	// at this point.
 	
-	NSLog(@"[MODULE LIFECYCLE EVENT] _initWithProperties");
+    if (mSingleton.showTrace)
+        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithProperties");
 	
 	[super _initWithProperties:properties];
 }
@@ -251,7 +262,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	ENSURE_SINGLE_ARG(args,NSString);
 	
-	NSLog(@"[ASSETSDEMO] loadImageFromModule %@", args);
+    if (mSingleton.showTrace)
+        NSLog(@"[ASSETSDEMO] loadImageFromModule %@", args);
 	
 	// Load the image from the module assets
 	NSString *imagePath = [self getPathToModuleAsset:args];
@@ -263,7 +275,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// The image must be converted to a TiBlob before returning
 	TiBlob *result = [[TiBlob alloc] initWithImage:image];
 	
-	NSLog(@"[ASSETSDEMO] %@", result);
+    if (mSingleton.showTrace)
+        NSLog(@"[ASSETSDEMO] %@", result);
 	
 	return result;	
 }
@@ -272,7 +285,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	ENSURE_SINGLE_ARG(args,NSString);
 	
-	NSLog(@"[ASSETSDEMO] loadImageFromApplication %@", args);
+    if (mSingleton.showTrace)
+        NSLog(@"[ASSETSDEMO] loadImageFromApplication %@", args);
 	
 	// Load the image from the application assets
 	NSString *imagePath = [self getPathToApplicationAsset:args];
@@ -284,7 +298,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// The image must be converted to a TiBlob before returning
 	TiBlob *result = [[TiBlob alloc] initWithImage:image];
 	
-	NSLog(@"[ASSETSDEMO] %@", result);
+    if (mSingleton.showTrace)
+        NSLog(@"[ASSETSDEMO] %@", result);
 	
 	return result;	
 }

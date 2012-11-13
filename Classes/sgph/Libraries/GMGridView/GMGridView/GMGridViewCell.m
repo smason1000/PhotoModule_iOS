@@ -99,7 +99,8 @@
 
 -(void)eventHandlerLabel: (NSNotification *) notification
 {
-    NSLog(@"labelEvent (GridViewCell) %d,%d,%d", gSingleton.relativeIndex, self.ind, gSingleton.expandOn);
+    if (gSingleton.showTrace)
+        NSLog(@"labelEvent (GridViewCell) %d,%d,%d", gSingleton.relativeIndex, self.ind, gSingleton.expandOn);
     
     BOOL doLab = NO;
     

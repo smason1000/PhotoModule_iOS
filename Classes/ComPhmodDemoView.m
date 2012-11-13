@@ -17,8 +17,7 @@
         NSLog(@"[VIEW LIFECYCLE EVENT] dealloc");
 	
 	// Release objects and memory allocated by the view
-	//RELEASE_TO_NIL(square);
-	
+    //RELEASE_TO_NIL(square);
 }
 
 -(void)willMoveToSuperview:(UIView *)newSuperview
@@ -58,7 +57,8 @@
 	// initialize it.
 	
     
-    if (square == nil) {
+    if (square == nil)
+    {
         if (mSingleton.showTrace)
             NSLog(@"[VIEW LIFECYCLE EVENT] square");
 		
@@ -74,7 +74,6 @@
         [self addSubview:square];
 	}
     
-	
 	return square;
 }
 

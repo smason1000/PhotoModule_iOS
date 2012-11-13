@@ -148,7 +148,7 @@ MySingleton *gSingleton = nil;
         self.openToGallery = NO;
         self.isModule = YES;
         
-        self.showTrace = YES;
+        self.showTrace = NO;
         
         self.currentFilterMode = PHFilterModeAll;
         self.currentAppState = PHASLabelFS;
@@ -344,6 +344,22 @@ MySingleton *gSingleton = nil;
     }
 }
 
+- (void) setTrace:(BOOL)traceOn
+{
+    if (traceOn)
+    {
+        NSLog(@"trace is ON");
+        self.showTrace = YES;
+        gSingleton.showTrace = YES;
+    }
+    else
+    {
+        NSLog(@"trace is OFF");
+        self.showTrace = NO;
+        gSingleton.showTrace = NO;
+    }
+}
+
 - (void) setOrderNum:(NSString *)orderNum
 {    
     self.orderNumber = orderNum;
@@ -463,10 +479,13 @@ MySingleton *gSingleton = nil;
         id value = [dict objectForKey:@"label"];
         id desc = [dict objectForKey:@"description"];
 
-        if ([value isEqualToString:@"Other: With Description"])
-            NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
-        else
-            NSLog(@"infoDict read: %@ for label %@", key, value);
+        if (gSingleton.showTrace)
+        {
+            if ([value isEqualToString:@"Other: With Description"])
+                NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
+            else
+                NSLog(@"infoDict read: %@ for label %@", key, value);
+        }
     }
 }
 
@@ -586,7 +605,8 @@ MySingleton *gSingleton = nil;
     {
         if ([[file pathExtension] isEqualToString:@"jpg"])
         {
-            NSLog(@"%@", file);
+            if (gSingleton.showTrace)
+                NSLog(@"%@", file);
             [self.dirContents addObject:file];
         }
     }
@@ -737,16 +757,20 @@ MySingleton *gSingleton = nil;
     
     NSData *data = UIImageJPEGRepresentation(largeImage, 1.0);
     NSString *fullPath = [[self getPhotoDirFull] stringByAppendingPathComponent:name];
-    NSLog(@"fullPath: %@", fullPath);    
+    if (gSingleton.showTrace)
+        NSLog(@"fullPath: %@", fullPath);
     NSString *relativePath = [[self getPhotoDirRelative] stringByAppendingPathComponent:name];
-    NSLog(@"relativePath: %@", relativePath);
+    if (gSingleton.showTrace)
+        NSLog(@"relativePath: %@", relativePath);
     [fileManager createFileAtPath:fullPath contents:data attributes:nil];
     
     NSData *data2 = UIImageJPEGRepresentation(smallImage, 1.0);
     NSString *fullPath2 = [[self getThumbDirFull] stringByAppendingPathComponent:name];
-    NSLog(@"fullPath2: %@", fullPath2);    
+    if (gSingleton.showTrace)
+        NSLog(@"fullPath2: %@", fullPath2);
     NSString *relativePath2 = [[self getThumbDirRelative] stringByAppendingPathComponent:name];
-    NSLog(@"relativePath2: %@", relativePath2);
+    if (gSingleton.showTrace)
+        NSLog(@"relativePath2: %@", relativePath2);
     [fileManager createFileAtPath:fullPath2 contents:data2 attributes:nil];
     
     NSString *req = @"0";
@@ -775,7 +799,8 @@ MySingleton *gSingleton = nil;
 
 - (void)renameImage:(NSString *)oldName withName:(NSString *)newName
 {
-    NSLog(@"renameImage %@ to %@", oldName, newName);
+    if (gSingleton.showTrace)
+        NSLog(@"renameImage %@ to %@", oldName, newName);
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     

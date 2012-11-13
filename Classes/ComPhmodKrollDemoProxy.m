@@ -58,14 +58,16 @@
 {
 	ENSURE_SINGLE_ARG(args,NSDictionary);
 	
-	NSLog(@"[KROLLDEMO] registerCallbacks called");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] registerCallbacks called");
 	
 	// Save the callback functions and retain them
 	successCallback = [args objectForKey:@"success"];
 	cancelCallback = [args objectForKey:@"cancel"];
 	requestDataCallback = [args objectForKey:@"requestData"];
 	
-	NSLog(@"[KROLLDEMO] Callbacks registered");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] Callbacks registered");
 }
 
 -(void)requestDataWithCallback:(id)args
@@ -76,14 +78,16 @@
 	// call the associated JavaScript function and get a return value.
 	id result = [requestDataCallback call:args thisObject:nil];
 	
-	NSLog(@"[KROLLDEMO] requestData callback returned %@", result);
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] requestData callback returned %@", result);
 }
 
 -(void)signalCallbackWithSuccess:(id)args
 {
 	ENSURE_UI_THREAD(signalCallbackWithSuccess,args);
 
-	NSLog(@"[KROLLDEMO] signalCallbackWithSuccess called");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] signalCallbackWithSuccess called");
 	
 	// Caller can pass in a value indicating if this is a success call or
 	// a cancel call. Default is 'NO'.
@@ -101,14 +105,16 @@
 		[self sendCancelEvent:@"Cancel" withTitle:title];
 	}
 	
-	NSLog(@"[KROLLDEMO] Event fired");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] Event fired");
 }
 
 -(void)signalEvent:(id)args
 {
 	ENSURE_UI_THREAD(signalEvent,args);
 	
-	NSLog(@"[KROLLDEMO] signalEvent called");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] signalEvent called");
 	
 	// It is a good idea to check if there are listeners for the event that
 	// is about to fired. There could be zero or multiple listeners for the
@@ -123,7 +129,8 @@
 							   ];
 		[self fireEvent:@"demoEvent" withObject:event];
 		
-		NSLog(@"[KROLLDEMO] demoEvent fired");
+        if (mSingleton.showTrace)
+            NSLog(@"[KROLLDEMO] demoEvent fired");
 	}
 }
 
@@ -134,7 +141,8 @@
 	// 'args' variable to the NSDictionary object.
 	ENSURE_SINGLE_ARG(args,NSDictionary);
 	
-	NSLog(@"[KROLLDEMO] callThisCallbackDirectly called");
+    if (mSingleton.showTrace)
+        NSLog(@"[KROLLDEMO] callThisCallbackDirectly called");
 	
 	KrollCallback* callback = [args objectForKey:@"callback"];
 	id data = [args objectForKey:@"data"];
@@ -150,7 +158,8 @@
 		// instance there is no return value for the callback.
 		[callback call:arrayOfValues thisObject:nil];
 		
-		NSLog(@"[KROLLDEMO] callback was called");
+        if (mSingleton.showTrace)
+            NSLog(@"[KROLLDEMO] callback was called");
 	}
 }
 
@@ -265,6 +274,13 @@
         [mSingleton.myPHS setReqCount:newValue];
     }
     
+    if ([key isEqualToString:@"showTrace"])
+    {
+        BOOL traceValue = [newValue isEqualToString:@"1"];
+        [mSingleton.myPHS setTrace:traceValue];
+        mSingleton.showTrace = traceValue;
+    }
+
     NSDictionary *event;
     
     BOOL logProp = YES;
@@ -288,7 +304,8 @@
     
     if (logProp)
     {
-        NSLog(@"[KROLLDEMO] Property %@ changed from %@ to %@", key, oldValue, newValue);
+        if (mSingleton.showTrace)
+            NSLog(@"[KROLLDEMO] Property %@ changed from %@ to %@", key, oldValue, newValue);
         
         // If is a good idea to check if there are listeners for the event that
         // is about to fired. There could be zero or multiple listeners for the

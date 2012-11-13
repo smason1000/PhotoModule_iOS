@@ -268,7 +268,8 @@
     if ([gSingleton.currentLabelString isEqualToString:@"Other: With Description"])
     {
         // user selected other, we need to gather the description
-        NSLog(@"Other selected, getting description...");
+        if (gSingleton.showTrace)
+            NSLog(@"Other selected, getting description...");
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Description is required" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
         alert.alertViewStyle = UIAlertViewStylePlainTextInput;
