@@ -10,7 +10,7 @@
 		220CDE7B15C47CF10074CC8D /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
 		22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
 		22CC0B6A15C62660002A3535 /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
-		22CC0B6B15C626A0002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		22CC0B6B15C626A0002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
 		50265E2C14FD45DA0094A642 /* PTVideoThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2B14FD45DA0094A642 /* PTVideoThumbnailImageView.m */; };
 		50265E2F14FD46080094A642 /* PTPdfThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2E14FD46080094A642 /* PTPdfThumbnailImageView.m */; };
 		50265E3614FE72D10094A642 /* PTGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E3514FE72D10094A642 /* PTGroupDetailViewController.m */; };
@@ -31,7 +31,7 @@
 		508F7CFC14EEA26A000140D6 /* PTImageAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F7CFA14EEA26A000140D6 /* PTImageAlbumView.m */; };
 		508F7D0014EEA358000140D6 /* PTImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F7CFF14EEA358000140D6 /* PTImageDetailViewController.m */; };
 		508F7D0614EEB066000140D6 /* NimbusPhotos.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 508F7D0514EEB066000140D6 /* NimbusPhotos.bundle */; };
-		50918CD114F508A00005AD9C /* SDURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50918CD014F508A00005AD9C /* SDURLCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		50918CD114F508A00005AD9C /* SDURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50918CD014F508A00005AD9C /* SDURLCache.m */; };
 		50925E0214F4032D009A05D1 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50925E0114F4032D009A05D1 /* NetworkPhotoAlbumViewController.m */; };
 		5093F24E14E532F1004DC805 /* PTShowcaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5093F24D14E532F1004DC805 /* PTShowcaseViewController.m */; };
 		5093F25314E53496004DC805 /* PTShowcaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5093F25214E53496004DC805 /* PTShowcaseView.m */; };
@@ -973,13 +973,16 @@
 				ARCHS = (
 					armv6,
 					armv7,
+					armv7s,
 				);
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
+					armv7s,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1000,6 +1003,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv6 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1010,13 +1014,15 @@
 				ARCHS = (
 					armv6,
 					armv7,
+					armv7s,
 				);
+				"ARCHS[sdk=*]" = i386;
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
 				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1032,6 +1038,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv6 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1043,6 +1050,7 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Libraries/PSPDFKit\"",
@@ -1051,7 +1059,7 @@
 				GCC_PREFIX_HEADER = "ShowcaseDemo/PhotoHub-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShowcaseDemo/PhotoHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PhotoHub;
@@ -1068,6 +1076,7 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Libraries/PSPDFKit\"",
@@ -1076,7 +1085,7 @@
 				GCC_PREFIX_HEADER = "ShowcaseDemo/PhotoHub-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "ShowcaseDemo/PhotoHub-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = PhotoHub;
@@ -1097,6 +1106,7 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/PhotoHubLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1128,6 +1138,7 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/PhotoHubLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (

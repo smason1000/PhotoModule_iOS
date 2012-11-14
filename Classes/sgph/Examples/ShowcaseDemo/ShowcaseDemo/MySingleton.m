@@ -845,8 +845,5 @@ MySingleton *gSingleton = nil;
 
 //####
 
-- (void)dealloc 
-{
-}
 
 @end

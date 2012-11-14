@@ -64,10 +64,14 @@ typedef enum
 @interface GMGridView : UIScrollView
 
 // Delegates
-@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewDataSource> *dataSource;                    // Required
-@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewActionDelegate> *actionDelegate;            // Optional - to get taps callback & deleting item
-@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewSortingDelegate> *sortingDelegate;          // Optional - to enable sorting
-@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewTransformationDelegate> *transformDelegate; // Optional - to enable fullsize mode
+//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewDataSource> *dataSource;                    // Required
+//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewActionDelegate> *actionDelegate;            // Optional - to get taps callback & deleting item
+//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewSortingDelegate> *sortingDelegate;          // Optional - to enable sorting
+//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewTransformationDelegate> *transformDelegate; // Optional - to enable fullsize mode
+@property (weak, nonatomic) IBOutlet NSObject<GMGridViewDataSource> *dataSource;                    // Required
+@property (weak, nonatomic) IBOutlet NSObject<GMGridViewActionDelegate> *actionDelegate;            // Optional - to get taps callback & deleting item
+@property (weak, nonatomic) IBOutlet NSObject<GMGridViewSortingDelegate> *sortingDelegate;          // Optional - to enable sorting
+@property (weak, nonatomic) IBOutlet NSObject<GMGridViewTransformationDelegate> *transformDelegate; // Optional - to enable fullsize mode
 
 // Layout Strategy
 @property (nonatomic, strong) IBOutlet id<GMGridViewLayoutStrategy> layoutStrategy; // Default is GMGridViewLayoutVerticalStrategy
@@ -77,7 +81,8 @@ typedef enum
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 
 // Customizing Options
-@property (nonatomic, gm_weak) IBOutlet UIView *mainSuperView;        // Default is self
+//@property (nonatomic, gm_weak) IBOutlet UIView *mainSuperView;        // Default is self
+@property (weak, nonatomic) IBOutlet UIView *mainSuperView;        // Default is self
 @property (nonatomic) GMGridViewStyle style;                          // Default is GMGridViewStyleSwap
 @property (nonatomic) NSInteger itemSpacing;                          // Default is 10
 @property (nonatomic) BOOL centerGrid;                                // Default is YES
@@ -85,7 +90,7 @@ typedef enum
 @property (nonatomic) CFTimeInterval minimumPressDuration;            // Default is 0.2; if set to 0, the scrollView will not be scrollable
 @property (nonatomic) BOOL showFullSizeViewWithAlphaWhenTransforming; // Default is YES - not working right now
 
-@property (nonatomic, readonly) UIScrollView *scrollView __attribute__((deprecated)); // The grid now inherits directly from UIScrollView
+@property (weak, nonatomic, readonly) UIScrollView *scrollView __attribute__((deprecated)); // The grid now inherits directly from UIScrollView
 
 // Reusable cells
 - (GMGridViewCell *)dequeueReusableCell;                              // Should be called in GMGridView:cellForItemAtIndex: to reuse a cell

@@ -9,12 +9,12 @@
     NSTimer *myTimer;
 }
 
-@property (nonatomic, assign) id<PTShowcaseViewDelegate> showcaseDelegate;
-@property (nonatomic, assign) id<PTShowcaseViewDataSource> showcaseDataSource;
+@property (nonatomic, weak) id<PTShowcaseViewDelegate> showcaseDelegate;
+@property (nonatomic, weak) id<PTShowcaseViewDataSource> showcaseDataSource;
 
-@property (nonatomic, retain, readonly) NSString *uniqueName;
+@property (nonatomic, strong, readonly) NSString *uniqueName;
 
-@property (nonatomic, readonly) NSArray *imageItems;
+@property (weak, nonatomic, readonly) NSArray *imageItems;
 
 - (id)initWithUniqueName:(NSString *)uniqueName;
 

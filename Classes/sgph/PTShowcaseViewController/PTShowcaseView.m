@@ -9,7 +9,7 @@
 
 @interface PTShowcaseView ()
 
-@property (nonatomic, retain) NSMutableArray *data;
+@property (nonatomic, strong) NSMutableArray *data;
 
 @end
 

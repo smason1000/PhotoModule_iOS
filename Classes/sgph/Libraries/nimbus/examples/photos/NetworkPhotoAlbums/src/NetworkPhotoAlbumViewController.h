@@ -65,7 +65,7 @@
  *
  * This is unloaded when the controller's view is unloaded from memory.
  */
-@property (nonatomic, readonly, retain) NIImageMemoryCache* highQualityImageCache;
+@property (nonatomic, readonly, strong) NIImageMemoryCache* highQualityImageCache;
 
 /**
  * The thumbnail image cache.
@@ -78,14 +78,14 @@
  *
  * This is unloaded when the controller's view is unloaded from memory.
  */
-@property (nonatomic, readonly, retain) NIImageMemoryCache* thumbnailImageCache;
+@property (nonatomic, readonly, strong) NIImageMemoryCache* thumbnailImageCache;
 
 /**
  * The operation queue that runs all of the network and processing operations.
  *
  * This is unloaded when the controller's view is unloaded from memory.
  */
-@property (nonatomic, readonly, retain) NSOperationQueue* queue;
+@property (nonatomic, readonly, strong) NSOperationQueue* queue;
 
 /**
  * Generate the in-memory cache key for the given index.

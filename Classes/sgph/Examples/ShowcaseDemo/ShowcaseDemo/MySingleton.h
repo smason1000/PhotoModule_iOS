@@ -101,29 +101,29 @@ typedef enum
 @property (nonatomic) NSInteger labeledCount;
 
 
-@property (nonatomic, retain) NSMutableArray *dirContents;
-@property (nonatomic, retain) NSArray* curLetArray;
-@property (nonatomic, retain) NSMutableArray* msgQ;
+@property (nonatomic, strong) NSMutableArray *dirContents;
+@property (nonatomic, strong) NSArray* curLetArray;
+@property (nonatomic, strong) NSMutableArray* msgQ;
 
-@property (nonatomic, retain) NSMutableArray* mainData;
-@property (nonatomic, retain) NSMutableDictionary* selDict;
-@property (nonatomic, retain) NSMutableDictionary* infoDict;
-@property (nonatomic, retain) NSMutableArray *labelArr;
-@property (nonatomic, retain) NSMutableArray *requiredLabelArr;
+@property (nonatomic, strong) NSMutableArray* mainData;
+@property (nonatomic, strong) NSMutableDictionary* selDict;
+@property (nonatomic, strong) NSMutableDictionary* infoDict;
+@property (nonatomic, strong) NSMutableArray *labelArr;
+@property (nonatomic, strong) NSMutableArray *requiredLabelArr;
 
-@property (nonatomic, retain) NSArray *curHashVals;
-@property (nonatomic, retain) NSArray *hashVals;
-@property (nonatomic, retain) NSArray *hashValsReq;
+@property (nonatomic, strong) NSArray *curHashVals;
+@property (nonatomic, strong) NSArray *hashVals;
+@property (nonatomic, strong) NSArray *hashValsReq;
 
-@property (nonatomic, retain) NSMutableArray *itemArray;
+@property (nonatomic, strong) NSMutableArray *itemArray;
 
-@property (nonatomic, retain) NSString *currentLabelString;
-@property (nonatomic, retain) NSString *currentLabelDescription;
+@property (nonatomic, strong) NSString *currentLabelString;
+@property (nonatomic, strong) NSString *currentLabelDescription;
 
-@property (nonatomic, retain) NSString* orderNumber;
-@property (nonatomic, retain) NSString* rootPhotoFolder;
-@property (nonatomic, retain) NSString* todaysPhotoFolder;
-@property (nonatomic, retain) NSString* docDir;
+@property (nonatomic, strong) NSString* orderNumber;
+@property (nonatomic, strong) NSString* rootPhotoFolder;
+@property (nonatomic, strong) NSString* todaysPhotoFolder;
+@property (nonatomic, strong) NSString* docDir;
 
 + (id)sharedSingleton;
 

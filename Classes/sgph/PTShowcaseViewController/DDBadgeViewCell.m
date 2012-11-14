@@ -8,7 +8,7 @@
     DDBadgeViewCell *cell;
 }
 
-@property (nonatomic, retain) DDBadgeViewCell *cell;
+@property (nonatomic, strong) DDBadgeViewCell *cell;
 - (id)initWithFrame:(CGRect)frame cell:(DDBadgeViewCell *)newCell;
 @end
 
@@ -117,10 +117,6 @@
 #pragma mark -
 #pragma mark init & dealloc
 
-- (void)dealloc {
-
-	
-}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	

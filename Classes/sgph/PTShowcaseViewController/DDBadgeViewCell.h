@@ -13,11 +13,11 @@
 	UIColor *		badgeHighlightedColor;
 }
 
-@property (nonatomic, retain) DDBadgeView * badgeView;
-@property (nonatomic, retain) NSString *    summary;
-@property (nonatomic, retain) NSString *    detail;
-@property (nonatomic, retain) NSString *	badgeText;
-@property (nonatomic, retain) UIColor *		badgeColor;
-@property (nonatomic, retain) UIColor *		badgeHighlightedColor;
+@property (nonatomic, strong) DDBadgeView * badgeView;
+@property (nonatomic, strong) NSString *    summary;
+@property (nonatomic, strong) NSString *    detail;
+@property (nonatomic, strong) NSString *	badgeText;
+@property (nonatomic, strong) UIColor *		badgeColor;
+@property (nonatomic, strong) UIColor *		badgeHighlightedColor;
 
 @end

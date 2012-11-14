@@ -53,11 +53,11 @@ static NSDateFormatter* CreateDateFormatter(NSString *format)
 
 
 @interface SDURLCache ()
-@property (nonatomic, retain) NSString *diskCachePath;
-@property (nonatomic, readonly) NSMutableDictionary *diskCacheInfo;
-@property (nonatomic, retain) NSOperationQueue *ioQueue;
-@property (retain) NSTimer *periodicMaintenanceTimer;
-@property (retain) NSOperation *periodicMaintenanceOperation;
+@property (nonatomic, strong) NSString *diskCachePath;
+@property (weak, nonatomic, readonly) NSMutableDictionary *diskCacheInfo;
+@property (nonatomic, strong) NSOperationQueue *ioQueue;
+@property (strong) NSTimer *periodicMaintenanceTimer;
+@property (strong) NSOperation *periodicMaintenanceOperation;
 - (void)periodicMaintenance;
 @end
 
@@ -602,11 +602,7 @@ static NSDateFormatter* CreateDateFormatter(NSString *format)
 - (void)dealloc
 {
     [periodicMaintenanceTimer invalidate];
-    self.periodicMaintenanceTimer = nil;
-    self.periodicMaintenanceOperation = nil;
-    self.diskCachePath = nil;
     //self.diskCacheInfo = nil;
-    self.ioQueue = nil;
     //[super dealloc];
 }
 

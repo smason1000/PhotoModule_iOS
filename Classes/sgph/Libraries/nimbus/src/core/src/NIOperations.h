@@ -63,7 +63,7 @@
 }
 
 @property (readwrite, assign) id<NIOperationDelegate> delegate;
-@property (readonly, retain) NSError* lastError;
+@property (readonly, strong) NSError* lastError;
 @property (readwrite, assign) NSInteger tag;
 
 
@@ -109,8 +109,8 @@
 @property (readwrite, copy) NSURL* url;
 @property (readwrite, assign) NSTimeInterval timeout; // Default: 60
 @property (readwrite, assign) NSURLRequestCachePolicy cachePolicy; // Default: NSURLRequestUseProtocolCachePolicy
-@property (readonly, retain) NSData* data;
-@property (readwrite, retain) id processedObject;
+@property (readonly, strong) NSData* data;
+@property (readwrite, strong) id processedObject;
 
 @end
 

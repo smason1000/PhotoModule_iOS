@@ -9,7 +9,7 @@
     BOOL detailOn;
 }
 
-@property (nonatomic, retain) PTShowcaseView *showcaseView;
+@property (nonatomic, strong) PTShowcaseView *showcaseView;
 @property (nonatomic) BOOL detailOn;
 
 - (id)initWithUniqueName:(NSString *)uniqueName;

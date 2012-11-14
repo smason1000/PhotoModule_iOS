@@ -102,7 +102,7 @@ extern const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin;
 
 #pragma mark Subclassing
 
-@property (nonatomic, readonly, retain) UIScrollView* pagingScrollView;
+@property (nonatomic, readonly, strong) UIScrollView* pagingScrollView;
 @property (nonatomic, readonly, copy) NSMutableSet* visiblePages;
 
 - (void)willDisplayPage:(UIView<NIPagingScrollViewPage> *)pageView;

@@ -26,7 +26,7 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
 
 @interface NIPagingScrollView()
 
-@property (nonatomic, readwrite, retain) UIScrollView* pagingScrollView;
+@property (nonatomic, readwrite, strong) UIScrollView* pagingScrollView;
 
 @end
 

@@ -50,7 +50,7 @@
 
 #pragma mark Results
 
-@property (retain) UIImage* imageCroppedAndSizedForDisplay;
+@property (strong) UIImage* imageCroppedAndSizedForDisplay;
 
 @end
 

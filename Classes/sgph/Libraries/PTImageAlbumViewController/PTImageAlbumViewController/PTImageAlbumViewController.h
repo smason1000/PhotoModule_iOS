@@ -6,7 +6,7 @@
 
 @interface PTImageAlbumViewController : NetworkPhotoAlbumViewController <PTImageAlbumViewDataSource>
 
-@property (nonatomic, retain) PTImageAlbumView *imageAlbumView;
+@property (nonatomic, strong) PTImageAlbumView *imageAlbumView;
 
 - (id)initWithImageAtIndex:(NSInteger)index;
 

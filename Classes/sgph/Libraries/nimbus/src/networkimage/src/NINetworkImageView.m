@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @interface NINetworkImageView()
 
-@property (nonatomic, readwrite, retain) NSOperation* operation;
+@property (nonatomic, readwrite, strong) NSOperation* operation;
 
 @property (nonatomic, readwrite, copy) NSString* lastPathToNetworkImage;
 

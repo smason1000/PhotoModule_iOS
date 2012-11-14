@@ -26,9 +26,9 @@
   NILinkedListNode* _prev;
   NILinkedListNode* _next;
 }
-@property (nonatomic, readwrite, retain) id object;
-@property (nonatomic, readwrite, retain) NILinkedListNode* prev;
-@property (nonatomic, readwrite, retain) NILinkedListNode* next;
+@property (nonatomic, readwrite, strong) id object;
+@property (nonatomic, readwrite, strong) NILinkedListNode* prev;
+@property (nonatomic, readwrite, strong) NILinkedListNode* next;
 @end
 
 @implementation NILinkedListNode
@@ -62,8 +62,8 @@
 
 @interface NILinkedList()
 // Exposed so that the linked list enumerator can iterate over the nodes directly.
-@property (nonatomic, readonly, retain) NILinkedListNode* head;
-@property (nonatomic, readonly, retain) NILinkedListNode* tail;
+@property (nonatomic, readonly, strong) NILinkedListNode* head;
+@property (nonatomic, readonly, strong) NILinkedListNode* tail;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

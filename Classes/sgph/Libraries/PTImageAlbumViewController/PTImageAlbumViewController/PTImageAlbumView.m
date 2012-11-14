@@ -4,7 +4,7 @@
 
 @interface PTImageAlbumView ()
 
-@property (nonatomic, retain) NSMutableArray *data;
+@property (nonatomic, strong) NSMutableArray *data;
 
 @end
 

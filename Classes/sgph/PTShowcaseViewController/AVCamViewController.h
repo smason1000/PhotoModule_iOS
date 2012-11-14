@@ -21,7 +21,7 @@
     UISlider *_zoomSlider;
 }
 
-@property (nonatomic, retain) AVCamCaptureManager *captureManager;
+@property (nonatomic, strong) AVCamCaptureManager *captureManager;
 @property (nonatomic, strong) UIView *videoPreviewView; //IBOutlet
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 //@property (nonatomic) IBOutlet UIBarButtonItem *cameraToggleButton;
@@ -29,17 +29,17 @@
 //@property (nonatomic) IBOutlet UIBarButtonItem *stillButton;
 //@property (nonatomic, strong) IBOutlet UILabel *focusModeLabel;
 
-@property (nonatomic,retain) ExpandyButton *flash;
-@property (nonatomic,retain) ExpandyButton *torch;
-@property (nonatomic,retain) ExpandyButton *focus;
-@property (nonatomic,retain) ExpandyButton *exposure;
-@property (nonatomic,retain) ExpandyButton *whiteBalance;
-@property (nonatomic,retain) ExpandyButton *preset;
-@property (nonatomic,retain) ExpandyButton *videoConnection;
-@property (nonatomic,retain) ExpandyButton *audioConnection;
-@property (nonatomic,retain) ExpandyButton *orientation;
-@property (nonatomic,retain) ExpandyButton *mirroring;
-@property (nonatomic,retain) UISlider *zoomSlider;
+@property (nonatomic,strong) ExpandyButton *flash;
+@property (nonatomic,strong) ExpandyButton *torch;
+@property (nonatomic,strong) ExpandyButton *focus;
+@property (nonatomic,strong) ExpandyButton *exposure;
+@property (nonatomic,strong) ExpandyButton *whiteBalance;
+@property (nonatomic,strong) ExpandyButton *preset;
+@property (nonatomic,strong) ExpandyButton *videoConnection;
+@property (nonatomic,strong) ExpandyButton *audioConnection;
+@property (nonatomic,strong) ExpandyButton *orientation;
+@property (nonatomic,strong) ExpandyButton *mirroring;
+@property (nonatomic,strong) UISlider *zoomSlider;
 
 #pragma mark Toolbar Actions
 /*

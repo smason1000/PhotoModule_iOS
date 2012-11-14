@@ -55,13 +55,13 @@
 
 @interface AVCamCaptureManager ()
 
-@property (nonatomic,retain) AVCaptureSession *session;
-@property (nonatomic,retain) AVCaptureDeviceInput *videoInput;
-@property (nonatomic,retain) AVCaptureDeviceInput *audioInput;
-@property (nonatomic,retain) AVCaptureMovieFileOutput *movieFileOutput;
-@property (nonatomic,retain) AVCaptureStillImageOutput *stillImageOutput;
-@property (nonatomic,retain) id deviceConnectedObserver;
-@property (nonatomic,retain) id deviceDisconnectedObserver;
+@property (nonatomic,strong) AVCaptureSession *session;
+@property (nonatomic,strong) AVCaptureDeviceInput *videoInput;
+@property (nonatomic,strong) AVCaptureDeviceInput *audioInput;
+@property (nonatomic,strong) AVCaptureMovieFileOutput *movieFileOutput;
+@property (nonatomic,strong) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic,strong) id deviceConnectedObserver;
+@property (nonatomic,strong) id deviceDisconnectedObserver;
 @property (nonatomic,assign) UIBackgroundTaskIdentifier backgroundRecordingID;
 
 @end
@@ -169,16 +169,8 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:[self deviceConnectedObserver]];
     [notificationCenter removeObserver:[self deviceDisconnectedObserver]];
-    [self setDeviceConnectedObserver:nil];
-    [self setDeviceDisconnectedObserver:nil];
 
     [[self session] stopRunning];
-    [self setSession:nil];
-    [self setVideoInput:nil];
-    [self setAudioInput:nil];
-    [self setMovieFileOutput:nil];
-    [self setStillImageOutput:nil];
-    [self setFilename:nil];
     //[super dealloc];
 }
 

@@ -95,14 +95,14 @@ typedef NSInteger AVCamMirroringMode;
     id <AVCamCaptureManagerDelegate> _delegate;
 }
 
-@property (nonatomic,readonly,retain) AVCaptureSession *session;
+@property (nonatomic,readonly,strong) AVCaptureSession *session;
 @property (nonatomic,assign) AVCaptureVideoOrientation orientation;
-@property (nonatomic,readonly,retain) AVCaptureAudioChannel *audioChannel;
-@property (nonatomic,assign) NSString *sessionPreset;
-@property (nonatomic,retain) NSString *filename;
+@property (nonatomic,readonly,strong) AVCaptureAudioChannel *audioChannel;
+@property (nonatomic,weak) NSString *sessionPreset;
+@property (nonatomic,strong) NSString *filename;
 @property (nonatomic,assign) AVCamMirroringMode mirroringMode;
-@property (nonatomic,readonly,retain) AVCaptureDeviceInput *videoInput;
-@property (nonatomic,readonly,retain) AVCaptureDeviceInput *audioInput;
+@property (nonatomic,readonly,strong) AVCaptureDeviceInput *videoInput;
+@property (nonatomic,readonly,strong) AVCaptureDeviceInput *audioInput;
 @property (nonatomic,assign) AVCaptureFlashMode flashMode;
 @property (nonatomic,assign) AVCaptureTorchMode torchMode;
 @property (nonatomic,assign) AVCaptureFocusMode focusMode;
@@ -110,8 +110,8 @@ typedef NSInteger AVCamMirroringMode;
 @property (nonatomic,assign) AVCaptureWhiteBalanceMode whiteBalanceMode;
 @property (nonatomic,assign) float cameraZoom;
 @property (nonatomic,assign) CGSize viewportSize;
-@property (nonatomic,readonly,retain) AVCaptureMovieFileOutput *movieFileOutput;
-@property (nonatomic,retain) id <AVCamCaptureManagerDelegate> delegate;
+@property (nonatomic,readonly,strong) AVCaptureMovieFileOutput *movieFileOutput;
+@property (nonatomic,strong) id <AVCamCaptureManagerDelegate> delegate;
 @property (nonatomic,readonly,getter=isRecording) BOOL recording;
 
 - (BOOL) setupSessionWithPreset:(NSString *)sessionPreset error:(NSError **)error;

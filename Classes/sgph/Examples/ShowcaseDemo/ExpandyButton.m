@@ -76,8 +76,8 @@ const CGFloat borderWidth = 1.f;
 @property (nonatomic,assign) CGRect frameExpanded;
 @property (nonatomic,assign) CGRect frameShrunk;
 @property (nonatomic,assign) CGFloat buttonWidth;
-@property (nonatomic,retain) UILabel *titleLabel;
-@property (nonatomic,retain) NSArray *labels;
+@property (nonatomic,strong) UILabel *titleLabel;
+@property (nonatomic,strong) NSArray *labels;
 
 @end
 
@@ -241,11 +241,6 @@ const CGFloat borderWidth = 1.f;
     }
 }
 
-- (void)dealloc {
-    [self setTitleLabel:nil];
-    [self setLabels:nil];
-    //[super dealloc];
-}
 
 
 @end
