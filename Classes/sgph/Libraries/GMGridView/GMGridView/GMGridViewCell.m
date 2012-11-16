@@ -211,6 +211,15 @@
 #pragma mark UIView
 //////////////////////////////////////////////////////////////
 
+- (void)setFrame:(CGRect)frame;
+{
+    if (gSingleton.showTrace)
+    {
+        NSLog(@"GridViewCell setFrame(%d, %.0f, %.0f, %.0f, %.0f)", self.ind, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    }
+    [super setFrame:frame];
+}
+
 - (void)layoutSubviews
 {
     if(self.inFullSizeMode)

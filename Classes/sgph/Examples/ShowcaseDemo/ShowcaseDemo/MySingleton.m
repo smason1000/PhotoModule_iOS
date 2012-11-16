@@ -148,7 +148,7 @@ MySingleton *gSingleton = nil;
         self.openToGallery = NO;
         self.isModule = YES;
         
-        self.showTrace = NO;
+        self.showTrace = YES;
         
         self.currentFilterMode = PHFilterModeAll;
         self.currentAppState = PHASLabelFS;

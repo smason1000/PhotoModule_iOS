@@ -31,7 +31,7 @@ ComPhmodSingleton *mSingleton = nil;
         [myPhotoHubLib initAll];
         
         myPHS = myPhotoHubLib.pSingleton;
-        showTrace = NO;
+        showTrace = YES;
     }
     return self;
 }

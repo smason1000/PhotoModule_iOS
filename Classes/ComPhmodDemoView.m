@@ -17,7 +17,7 @@
         NSLog(@"[VIEW LIFECYCLE EVENT] dealloc");
 	
 	// Release objects and memory allocated by the view
-    //RELEASE_TO_NIL(square);
+    square = nil;
 }
 
 -(void)willMoveToSuperview:(UIView *)newSuperview
@@ -104,20 +104,20 @@
 	// This method is called each time the frame / bounds / center changes
 	// within Titanium. 
 	
+    if (square == nil)
+        [self square];
+    
     if (mSingleton.showTrace)
         NSLog(@"[VIEW LIFECYCLE EVENT] frameSizeChanged");
-		  
-	if (square != nil) {
+
+    // You must call the special method 'setView:positionRect' against
+	// the TiUtils helper class. This method will correctly layout your
+	// child view within the correct layout boundaries of the new bounds
+	// of your view.
 		
-		// You must call the special method 'setView:positionRect' against
-		// the TiUtils helper class. This method will correctly layout your
-		// child view within the correct layout boundaries of the new bounds
-		// of your view.
-		
-		[TiUtils setView:square positionRect:bounds];
+	[TiUtils setView:square positionRect:bounds];
         
-        [mSingleton.myPhotoHubLib.mainViewController setBoundsAndLayout:bounds];        
-	}
+    [mSingleton.myPhotoHubLib.mainViewController setBoundsAndLayout:bounds];
 }
 
 -(void)setColor_:(id)color
@@ -126,17 +126,25 @@
 	// view. View property methods are named using a special, required
 	// convention (the underscore suffix).
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
+	if (square != nil)
+    {
+        if (mSingleton.showTrace)
+            NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
 	
-	// Use the TiUtils methods to get the values from the arguments
-	TiColor *newColor = [TiUtils colorValue:color];
-	UIColor *clr = [newColor _color];
-	UIView *sq = [self square];
-	sq.backgroundColor = [UIColor blackColor];
+        // Use the TiUtils methods to get the values from the arguments
+        TiColor *newColor = [TiUtils colorValue:color];
+        UIColor *clr = [newColor _color];
+        UIView *sq = [self square];
+        //sq.backgroundColor = [UIColor blackColor];
+        sq.backgroundColor = clr;
 	
-	// Signal a property change notification to demonstrate the use
-	// of the proxy for the event listeners
-	[self notifyOfColorChange:newColor];
+        // Signal a property change notification to demonstrate the use
+        // of the proxy for the event listeners
+        [self notifyOfColorChange:newColor];
+    }
+    else
+    {
+        NSLog(@"[VIEW LIFECYCLE EVENT] WARN: Property Set: setColor_ with null view");
+    }
 }
 @end

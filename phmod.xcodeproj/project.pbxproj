@@ -291,18 +291,18 @@
 				AEDF4EE015770D6E00290F85 /* ComPhmodDemoViewProxy.m */,
 				AEDF4EEA15770D6E00290F85 /* ComPhmodKrollDemoProxy.h */,
 				AEDF4EE115770D6E00290F85 /* ComPhmodKrollDemoProxy.m */,
+				AEDF4EEB15770D6E00290F85 /* ComPhmodLifeCycleProxy.h */,
 				AEDF4EE215770D6E00290F85 /* ComPhmodLifeCycleProxy.m */,
+				AEDF4EEC15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h */,
 				AEDF4EE315770D6E00290F85 /* ComPhmodMethodsDemoProxy.m */,
+				AEDF4EED15770D6E00290F85 /* ComPhmodModule.h */,
 				AEDF4EE415770D6E00290F85 /* ComPhmodModule.m */,
+				AEDF4EEE15770D6E00290F85 /* ComPhmodModuleAssets.h */,
 				AEDF4EE515770D6E00290F85 /* ComPhmodModuleAssets.m */,
+				AEDF4EEF15770D6E00290F85 /* ComPhmodParametersDemoProxy.h */,
 				AEDF4EE615770D6E00290F85 /* ComPhmodParametersDemoProxy.m */,
 				AEDF4EF015770D6E00290F85 /* ComPhmodSingleton.h */,
 				AEDF4EE715770D6E00290F85 /* ComPhmodSingleton.m */,
-				AEDF4EEB15770D6E00290F85 /* ComPhmodLifeCycleProxy.h */,
-				AEDF4EEC15770D6E00290F85 /* ComPhmodMethodsDemoProxy.h */,
-				AEDF4EED15770D6E00290F85 /* ComPhmodModule.h */,
-				AEDF4EEE15770D6E00290F85 /* ComPhmodModuleAssets.h */,
-				AEDF4EEF15770D6E00290F85 /* ComPhmodParametersDemoProxy.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -647,14 +647,7 @@
 				ARCHS = (
 					armv6,
 					armv7,
-					armv7s,
 				);
-				"ARCHS[sdk=iphoneos*]" = (
-					armv6,
-					armv7,
-					armv7s,
-				);
-				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Safeguard Properties LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/ComPhmod.dst;
@@ -665,7 +658,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_SHADOW = NO;
@@ -676,6 +669,7 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
@@ -687,6 +681,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -698,12 +693,10 @@
 				ARCHS = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/ComPhmod.dst;
@@ -714,7 +707,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_SHADOW = NO;
@@ -726,6 +719,7 @@
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ComPhmod;
@@ -733,6 +727,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -743,12 +738,10 @@
 				ARCHS = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -774,6 +767,7 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
 					"-DTI_POST_1_2",
@@ -785,7 +779,7 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv6 armv7 armv7s";
+				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -797,12 +791,10 @@
 				ARCHS = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				"ARCHS[sdk=iphoneos*]" = (
 					armv6,
 					armv7,
-					armv7s,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -826,13 +818,14 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ComPhmod;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv6 armv7 armv7s";
+				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Release;
 		};

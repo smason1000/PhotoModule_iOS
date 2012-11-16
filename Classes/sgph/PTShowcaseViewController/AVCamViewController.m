@@ -53,7 +53,7 @@ CGPoint effectiveTranslation;
     {
         [[self flash] setHidden:YES];
         //[[self torch] setHidden:YES];
-        //[[self focus] setHidden:YES];
+        [[self focus] setHidden:YES];
         //[[self exposure] setHidden:YES];
         //[[self whiteBalance] setHidden:YES];
         //[[self preset] setHidden:YES];
@@ -124,6 +124,7 @@ CGPoint effectiveTranslation;
         {
             [expandyButton setHidden:YES];
         }
+        */
         
         expandyButton = [self focus];
         if ([captureManager hasFocus])
@@ -151,7 +152,8 @@ CGPoint effectiveTranslation;
         {
             [expandyButton setHidden:YES];
         }
-
+        
+        /*
         expandyButton = [self exposure];
         if ([captureManager hasExposure])
         {
@@ -529,6 +531,10 @@ UITabBarItem *tabBarItem = [self tabBarItem];
         CGPoint tapPoint = [gestureRecognizer locationInView:[self videoPreviewView]];
         CGPoint convertedFocusPoint = [self convertToPointOfInterestFromViewCoordinates:tapPoint];
         [self.captureManager focusAtPoint:convertedFocusPoint];
+        if ([self focus] != nil)
+        {
+            [[self focus] setSelectedItem:[self.captureManager focusMode]];
+        }
     }
 }
 
@@ -536,7 +542,13 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 - (void)tapToContinouslyAutoFocus:(UIGestureRecognizer *)gestureRecognizer
 {
     if ([[[self.captureManager videoInput] device] isFocusPointOfInterestSupported])
+    {
         [self.captureManager continuousFocusAtPoint:CGPointMake(.5f, .5f)];
+        if ([self focus] != nil)
+        {
+            [[self focus] setSelectedItem:[self.captureManager focusMode]];
+        }
+    }
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer

@@ -229,7 +229,6 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    
     self.ptController = [[PTDemoViewController alloc] init];
     self.rvController = [[RootViewController alloc] init];
     self.avcController = [[AVCamViewController alloc] init];
@@ -906,7 +905,8 @@
 	return YES;
 }
 
-- (void) setBoundsAndLayout:(CGRect)frameRect {
+- (void) setBoundsAndLayout:(CGRect)frameRect
+{
     fBounds = frameRect;
     [self layoutForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
 }
@@ -915,12 +915,10 @@
 {
     
     if (gSingleton.showTrace)
-        NSLog(@"layoutForOrientation()");
+        NSLog(@"layoutForOrientation(%.0f x %.0f)", fBounds.size.width, fBounds.size.height);
  
     CGFloat w;
     CGFloat h;
-    
-    
     
     CGFloat borderSize = 0;
     
@@ -933,8 +931,8 @@
     
     CGFloat leftPaneWidth = 0;
     CGFloat rightPaneWidth = 0;
-    
-    
+    CGFloat contentPaneHeight = 0;
+    CGFloat contentPaneWidth = 0;
     
     /*
     if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
@@ -962,26 +960,25 @@
     headerView.frame = CGRectMake(0, 0, w, toolbarHeight);
     
     
-    
-    if (gSingleton.iPadDevice) {
-        
-        if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
+    if (gSingleton.iPadDevice)
+    {
+        if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
+        {
             leftPaneWidth = (w*2)/3;
             rightPaneWidth = w/3;
         }
-        else {
+        else
+        {
             leftPaneWidth = (w*3)/4;
             rightPaneWidth = w/4;
         }
         
-        
     }
-    else {
+    else
+    {
         leftPaneWidth = w/2;
         rightPaneWidth = w/2;
     }
-    
-    
     
     //[self.ssHolderViewController setToolbarHidden:YES];
     
@@ -994,7 +991,8 @@
     togHolderView.hidden = NO;
     
     
-    switch (gSingleton.currentAppState) {
+    switch (gSingleton.currentAppState)
+    {
         case PHASLabelFS:
             
             //[self.rvController.searchDC.searchBar setHidden:YES];
@@ -1004,17 +1002,22 @@
             ssHolderView.hidden = YES;
             togHolderView.hidden = YES;
             
-            rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, w - borderSize*2, h-toolbarHeight*2-borderSize*2);
+            contentPaneWidth = w - (borderSize * 2);
+            contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
+            rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             
             break;
         
         case PHASViewfinder:
+            
             rvHolderView.hidden = YES;
             ptHolderView.hidden = YES;
             ssHolderView.hidden = YES;
             togHolderView.hidden = YES;
             
-            avcHolderView.frame = CGRectMake(borderSize, borderSize+toolbarHeight, w - borderSize*2, h-toolbarHeight-borderSize*2);
+            contentPaneWidth = w - (borderSize * 2);
+            contentPaneHeight = h - (toolbarHeight + (borderSize * 2));
+            avcHolderView.frame = CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             
             break;
             
@@ -1022,22 +1025,23 @@
             
             avcHolderView.hidden = YES;
             
-            if (gSingleton.editOn) {
-                
-                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, leftPaneWidth - borderSize*2, h-toolbarHeight*2-borderSize*2);
-                rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - borderSize*2, (h-toolbarHeight*2) - borderSize*2);
-                
-                
-                
+            if (gSingleton.editOn)
+            {
+                contentPaneWidth = w - (borderSize * 2);
+                contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
+                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
             }
-            else {
+            else
+            {
                 ssHolderView.hidden = YES;
                 rvHolderView.hidden = YES;
                 togHolderView.hidden = YES;
                 
-                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, w - borderSize*2, h-toolbarHeight*2-borderSize*2);
-                rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, w - borderSize*2, h-toolbarHeight-borderSize*2);
-                
+                contentPaneWidth = w - (borderSize * 2);
+                contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
+                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             }
             
             ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);

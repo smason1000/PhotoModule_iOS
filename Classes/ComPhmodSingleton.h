@@ -11,8 +11,8 @@ extern ComPhmodSingleton *mSingleton;
     MySingleton *myPHS;
 }
 
-@property (nonatomic, retain) PhotoHubLib *myPhotoHubLib;
-@property (nonatomic, retain) MySingleton *myPHS;
+@property (nonatomic, strong) PhotoHubLib *myPhotoHubLib;
+@property (nonatomic, strong) MySingleton *myPHS;
 @property (nonatomic) BOOL showTrace;
 
 + (id)sharedSingleton;

@@ -3,14 +3,9 @@
 # Appcelerator Titanium Module Packager
 #
 #
-import os, sys, glob, string
+import os, subprocess, sys, glob, string
 import zipfile
 from datetime import date
-
-try:
-	import json
-except:
-	import simplejson as json
 
 cwd = os.path.abspath(os.path.dirname(sys._getframe(0).f_code.co_filename))
 os.chdir(cwd)
@@ -57,43 +52,44 @@ def generate_doc(config):
 	if not os.path.exists(docdir):
 		print "Couldn't find documentation file at: %s" % docdir
 		return None
-	sdk = find_sdk(config)
-	support_dir = os.path.join(sdk,'module','support')
-	sys.path.append(support_dir)
-	#import markdown2
+		
+	try:
+		import markdown2 as markdown
+	except ImportError:
+		import markdown
 	documentation = []
-	#for file in os.listdir(docdir):
-	#	if file in ignoreFiles or os.path.isdir(os.path.join(docdir, file)):
-	#		continue
-	#	md = open(os.path.join(docdir,file)).read()
-	#	html = markdown2.markdown(md)
-	#	documentation.append({file:html});
+	for file in os.listdir(docdir):
+		if file in ignoreFiles or os.path.isdir(os.path.join(docdir, file)):
+			continue
+		md = open(os.path.join(docdir,file)).read()
+		html = markdown.markdown(md)
+		documentation.append({file:html});
 	return documentation
 
 def compile_js(manifest,config):
 	js_file = os.path.join(cwd,'assets','shiny.objects.js')
-	if not os.path.exists(js_file): return
-	
-	sdk = find_sdk(config)
-	iphone_dir = os.path.join(sdk,'iphone')
-	sys.path.insert(0,iphone_dir)
+	if not os.path.exists(js_file): return	
+
 	from compiler import Compiler
+	try:
+		import json
+	except:
+		import simplejson as json
 	
 	path = os.path.basename(js_file)
 	compiler = Compiler(cwd, manifest['moduleid'], manifest['name'], 'commonjs')
-	metadata = compiler.make_function_from_file(path,js_file)
+	method = compiler.compile_commonjs_file(path,js_file)
 	
 	exports = open('metadata.json','w')
 	json.dump({'exports':compiler.exports }, exports)
 	exports.close()
 
-	method = metadata['method']
-	eq = path.replace('.','_')
-	method = '  return %s;' % method
+	method += '\treturn filterDataInRange([NSData dataWithBytesNoCopy:data length:sizeof(data) freeWhenDone:NO], ranges[0]);'
 	
 	f = os.path.join(cwd,'Classes','ShinyObjectsModuleAssets.m')
 	c = open(f).read()
-	idx = c.find('return ')
+	templ_search = ' moduleAsset\n{\n'
+	idx = c.find(templ_search) + len(templ_search)
 	before = c[0:idx]
 	after = """
 }
@@ -162,10 +158,13 @@ def glob_libfiles():
 	return files
 
 def build_module(manifest,config):
+	from tools import ensure_dev_path
+	ensure_dev_path()
+	
 	rc = os.system("xcodebuild -sdk iphoneos -configuration Release")
 	if rc != 0:
 		die("xcodebuild failed")
-	rc = os.system("xcodebuild -sdk iphonesimulator -configuration Release")
+	rc = os.system("xcodebuild -sdk iphonesimulator6.0 -configuration Release ARCHS=i386")
 	if rc != 0:
 		die("xcodebuild failed")
     # build the merged library using lipo
@@ -208,6 +207,11 @@ if __name__ == '__main__':
 	manifest,mf = validate_manifest()
 	validate_license()
 	config = read_ti_xcconfig()
+	
+	sdk = find_sdk(config)
+	sys.path.insert(0,os.path.join(sdk,'iphone'))
+	sys.path.append(os.path.join(sdk, "common"))
+	
 	compile_js(manifest,config)
 	build_module(manifest,config)
 	package_module(manifest,mf,config)

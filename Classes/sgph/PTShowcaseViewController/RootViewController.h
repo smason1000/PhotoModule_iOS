@@ -6,12 +6,12 @@
 {
     //PTAppDelegate *ptAppDelegate;
     NSArray* emptyArray;
-    NSMutableArray *__weak filteredListContent;
+    NSMutableArray* filteredListContent;
     //UISearchDisplayController *searchDC;
 }
 
 //@property (nonatomic, retain) PTAppDelegate *ptAppDelegate;
-@property (weak, nonatomic) NSMutableArray *filteredListContent;
+@property (nonatomic, strong) NSMutableArray *filteredListContent;
 //@property (nonatomic, strong) UISearchDisplayController *searchDC;
 
 @end
