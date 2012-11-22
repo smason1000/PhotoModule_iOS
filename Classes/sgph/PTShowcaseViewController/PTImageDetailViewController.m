@@ -21,13 +21,12 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    NSLog(@"PTImageDetailViewController viewDidLoad");
     [super viewDidLoad];
 }
-*/
 
 - (void)viewDidUnload
 {
@@ -36,6 +35,7 @@
     // e.g. self.myOutlet = nil;
     
     self.data = nil;
+    NSLog(@"PTImageDetailViewController viewDidUnload");
 }
 
 #pragma mark - PTImageAlbumViewDataSource

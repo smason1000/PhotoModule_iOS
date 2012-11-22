@@ -914,9 +914,6 @@
 - (void)layoutForOrientation:(UIInterfaceOrientation)orientation
 {
     
-    if (gSingleton.showTrace)
-        NSLog(@"layoutForOrientation(%.0f x %.0f)", fBounds.size.width, fBounds.size.height);
- 
     CGFloat w;
     CGFloat h;
     
@@ -1027,10 +1024,13 @@
             
             if (gSingleton.editOn)
             {
-                contentPaneWidth = w - (borderSize * 2);
+                contentPaneWidth = (w - (borderSize * 2)) / 2;
                 contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
                 ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                
                 rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
+                ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);
+                togHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y+rvHolderView.frame.size.height-toolbarHeight, rvHolderView.frame.size.width, toolbarHeight);
             }
             else
             {
@@ -1044,9 +1044,15 @@
                 rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             }
             
-            ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);
-            togHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y+rvHolderView.frame.size.height-toolbarHeight, rvHolderView.frame.size.width, toolbarHeight);
-            
+            // send the notification event to any detail view controllers listening
+            NSValue *rectValue = [NSValue valueWithCGRect:CGRectMake(0, 0, ptHolderView.frame.size.width, ptHolderView.frame.size.height)];
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:rectValue forKey:@"rectValue"];
+
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"contentFrameChangedEvent"
+             object:nil
+             userInfo:userInfo];
+
             break;
     }
     
@@ -1067,8 +1073,7 @@
     
     self.avcController.view.frame = CGRectMake(0, 0, avcHolderView.frame.size.width, avcHolderView.frame.size.height);
     self.ptController.view.frame = CGRectMake(0, 0, ptHolderView.frame.size.width, ptHolderView.frame.size.height);
-    self.rvController.view.frame = CGRectMake(0, rvViewTop, rvHolderView.frame.size.width, rvHolderView.frame.size.height-toolbarHeight*flagVal);
-    
+    self.rvController.view.frame = CGRectMake(0, rvViewTop, rvHolderView.frame.size.width, rvHolderView.frame.size.height-toolbarHeight*flagVal);    
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -305,7 +305,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         
         CGSize itemSize = [self.dataSource GMGridView:self sizeForItemsInInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
         
-        if (!CGSizeEqualToSize(_itemSize, itemSize)) 
+        if (!CGSizeEqualToSize(_itemSize, itemSize))
         {
             _itemSize = itemSize;
             
@@ -1071,7 +1071,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             
             CGRect finalFrameInScroll = CGRectMake(origin.x, origin.y, _itemSize.width, _itemSize.height);
             CGRect finalFrameInSuperview = [self convertRect:finalFrameInScroll toView:self.mainSuperView];
-            
+
             [transformingView switchToFullSizeMode:NO];
             transformingView.autoresizingMask = UIViewAutoresizingNone;
             
@@ -1090,7 +1090,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
                                  transformingView.contentView.frame = transformingView.bounds;
                                  [self addSubview:transformingView];
                                  
-                                 transformingView.fullSizeView = nil;
+                                  transformingView.fullSizeView = nil;
                                  _inFullSizeMode = NO;
                                  
                                  if ([self.transformDelegate respondsToSelector:@selector(GMGridView:didEndTransformingCell:)])
@@ -1266,7 +1266,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
                 NSInteger index = view.tag - kTagOffset;
                 CGPoint origin = [self.layoutStrategy originForItemAtPosition:index];
                 CGRect newFrame = CGRectMake(origin.x, origin.y, _itemSize.width, _itemSize.height);
-                
+        
                 // IF statement added for performance reasons (Time Profiling in instruments)
                 if (!CGRectEqualToRect(newFrame, view.frame)) 
                 {

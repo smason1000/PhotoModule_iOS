@@ -397,8 +397,8 @@
 }
 
 - (void)switchToFullSizeMode:(BOOL)fullSizeEnabled
-{
-    if (fullSizeEnabled) 
+{    
+    if (fullSizeEnabled)
     {
         self.fullSizeView.autoresizingMask = self.defaultFullsizeViewResizingMask;
         

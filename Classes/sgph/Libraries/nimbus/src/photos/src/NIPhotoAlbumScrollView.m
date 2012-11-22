@@ -36,8 +36,8 @@
 - (id)initWithFrame:(CGRect)frame {
   if ((self = [super initWithFrame:frame])) {
     // Default state.
-    self.zoomingIsEnabled = YES;
-    self.zoomingAboveOriginalSizeIsEnabled = YES;
+    self.zoomingIsEnabled = NO;
+    self.zoomingAboveOriginalSizeIsEnabled = NO;
   }
   return self;
 }

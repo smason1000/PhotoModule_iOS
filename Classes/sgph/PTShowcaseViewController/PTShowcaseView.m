@@ -351,7 +351,7 @@
      postNotificationName:@"ulcEvent"
      object:nil ];
     
-     [super reloadData];
+    [super reloadData];
 }
 
 @end

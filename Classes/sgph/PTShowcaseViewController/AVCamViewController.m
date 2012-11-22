@@ -47,6 +47,8 @@ float effectiveScale;
 float effectiveRotationRadians;
 CGPoint effectiveTranslation;
 
+UIView *focusView = nil;
+
 - (void)updateHudButtons:(BOOL)hudHidden
 {
     if (hudHidden) 
@@ -364,6 +366,24 @@ CGPoint effectiveTranslation;
     gSingleton.applyCaptureDefaults = NO;
 }
 
+- (NSString *)stringForFocusMode:(AVCaptureFocusMode)focusMode
+{
+    NSString *focusString = @"";
+    
+    switch (focusMode)
+    {
+        case AVCaptureFocusModeLocked:
+            focusString = @"Locked";
+            break;
+        case AVCaptureFocusModeAutoFocus:
+            focusString = @"Auto";
+            break;
+        case AVCaptureFocusModeContinuousAutoFocus:
+            focusString = @"Continuous";
+            break;
+    }
+    return focusString;
+}
 /*
 UITabBarItem *tabBarItem = [self tabBarItem];
 //UIImage *tabBarImage = [UIImage imageNamed:@"YOUR_IMAGE_NAME.png"];
@@ -452,8 +472,23 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 			//AVCaptureFocusMode initialFocusMode = [[[captureManager videoInput] device] focusMode];
 			//[newFocusModeLabel setText:[NSString stringWithFormat:@"focus: %@", [self stringForFocusMode:initialFocusMode]]];
 			//[view addSubview:newFocusModeLabel];
-			[self addObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode" options:NSKeyValueObservingOptionNew context:AVCamFocusModeObserverContext];
+			//[self addObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode" options:NSKeyValueObservingOptionNew context:AVCamFocusModeObserverContext];
 			//[self setFocusModeLabel:newFocusModeLabel];
+            
+            // Create the focus mode UI overlay
+            if ([[self captureManager] hasFocus])
+            {
+                focusView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 52, (self.view.frame.size.height / 2) - 70, 70, 70)];
+                [focusView setBackgroundColor:[UIColor clearColor]];
+                [[focusView layer] setBorderColor:[[UIColor whiteColor] CGColor]];
+                [[focusView layer] setBorderWidth:2.0f];
+                [view addSubview:focusView];
+            }
+            else
+            {
+                focusView = nil;
+            }
+            [self addObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode" options:NSKeyValueObservingOptionNew context:AVCamFocusModeObserverContext];
             
             // Add a single tap gesture to focus on the point tapped, then lock focus
 			UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToAutoFocus:)];
@@ -507,6 +542,25 @@ UITabBarItem *tabBarItem = [self tabBarItem];
     
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == AVCamFocusModeObserverContext)
+    {
+        // Update the focus UI overlay string when the focus mode changes
+        if ([self focus] != nil)
+        {
+            NSString *focusMode = [NSString stringWithFormat:@"%@", [self stringForFocusMode:(AVCaptureFocusMode)[[change objectForKey:NSKeyValueChangeNewKey] integerValue]]];
+            [[self focus] setSelectedItem:[self.captureManager focusMode]];
+            if ([focusMode isEqualToString:@"Locked"] && focusView != nil)
+                [focusView setHidden:YES];
+        }
+    }
+    else
+    {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {    
     if (gSingleton.applyCaptureDefaults)
@@ -530,6 +584,17 @@ UITabBarItem *tabBarItem = [self tabBarItem];
     {
         CGPoint tapPoint = [gestureRecognizer locationInView:[self videoPreviewView]];
         CGPoint convertedFocusPoint = [self convertToPointOfInterestFromViewCoordinates:tapPoint];
+
+        if (focusView != nil)
+        {
+            // Flash the focus rectangle and fade it out to give UI feedback that auto focus is in progress
+            CGRect rect = CGRectMake(tapPoint.x - 35, tapPoint.y - 22, 70, 70);
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.f];
+            focusView.frame = rect;
+            focusView.hidden = NO;
+            [UIView commitAnimations];
+        }
         [self.captureManager focusAtPoint:convertedFocusPoint];
         if ([self focus] != nil)
         {
@@ -676,16 +741,6 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 	[CATransaction setAnimationDuration:.025];
 	[captureVideoPreviewLayer setAffineTransform:affineTransform];
 	[CATransaction commit];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == AVCamFocusModeObserverContext) {
-        // Update the focus UI overlay string when the focus mode changes
-		//[focusModeLabel setText:[NSString stringWithFormat:@"focus: %@", [self stringForFocusMode:(AVCaptureFocusMode)[[change objectForKey:NSKeyValueChangeNewKey] integerValue]]]];
-	} else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
 }
 
 /*

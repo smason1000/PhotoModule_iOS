@@ -104,7 +104,6 @@
      selector:@selector(eventHandlerExpandOff:)
      name:@"expandOffEvent"
      object:nil ];
-    
 }
 
 - (void)viewDidUnload
@@ -264,7 +263,8 @@
     NSString *cellIdentifier = orientation == PTItemOrientationPortrait ? @"ImagePortraitCell" : @"ImageLandscapeCell";
 
     GMGridViewCell *cell = [gridView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[GMGridViewCell alloc] init];
         cell.reuseIdentifier = cellIdentifier;
         
@@ -308,7 +308,6 @@
             [cell addSubview:overlapView];
         }
     }
-    
     return cell;
 }
 
@@ -485,6 +484,8 @@
 
 -(void)eventHandlerExpandOn: (NSNotification *) notification
 {
+    NSLog(@"PTShowcaseViewController expand ON");
+    
     PTImageDetailViewController *detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.relativeIndex];
     detailViewController.data = self.showcaseView.imageItems;
     detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -516,8 +517,11 @@
 
 -(void)eventHandlerExpandOff: (NSNotification *) notification
 {
-    if (detailOn) {
-       [self dismissImageDetailViewController]; 
+    NSLog(@"PTShowcaseViewController expand OFF");
+
+    if (detailOn)
+    {
+       [self dismissImageDetailViewController];
     }
     
     gSingleton.expandOn = NO;

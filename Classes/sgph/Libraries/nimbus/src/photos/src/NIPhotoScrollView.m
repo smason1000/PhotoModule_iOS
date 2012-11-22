@@ -43,7 +43,8 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
   [super layoutSubviews];
 
   // Center the image as it becomes smaller than the size of the screen.
@@ -52,19 +53,37 @@
   CGSize boundsSize = self.bounds.size;
   CGRect frameToCenter = zoomingSubview.frame;
   
+    if (frameToCenter.origin.x > boundsSize.width)
+        return;
+    
+    if (frameToCenter.size.width > boundsSize.width)
+    {
+        frameToCenter.size.width = boundsSize.width;
+        frameToCenter.size.height = boundsSize.height;
+        frameToCenter.origin.x = 0;
+        frameToCenter.origin.y = 0;
+    }
+    NSLog(@"NICenteringScrollView layoutSubviews %@", NSStringFromCGRect(frameToCenter));
+    
   // Center horizontally.
-  if (frameToCenter.size.width < boundsSize.width) {
+  if (frameToCenter.size.width < boundsSize.width)
+  {
     frameToCenter.origin.x = floorf((boundsSize.width - frameToCenter.size.width) / 2);
 
-  } else {
+  }
+  else
+  {
     frameToCenter.origin.x = 0;
   }
 
   // Center vertically.
-  if (frameToCenter.size.height < boundsSize.height) {
+  if (frameToCenter.size.height < boundsSize.height)
+  {
     frameToCenter.origin.y = floorf((boundsSize.height - frameToCenter.size.height) / 2);
 
-  } else {
+  }
+  else
+  {
     frameToCenter.origin.y = 0;
   }
 
@@ -100,16 +119,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
+  if ((self = [super initWithFrame:frame]))
+  {
     // Default configuration.
-    self.zoomingIsEnabled = YES;
-    self.zoomingAboveOriginalSizeIsEnabled = YES;
-    self.doubleTapToZoomIsEnabled = YES;
+    self.zoomingIsEnabled = NO;
+    self.zoomingAboveOriginalSizeIsEnabled = NO;
+    self.doubleTapToZoomIsEnabled = NO;
 
     // Autorelease so that we don't have to worry about releasing the subviews in dealloc.
     _scrollView = [[NICenteringScrollView alloc] initWithFrame:self.bounds];
-    _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
-                                    | UIViewAutoresizingFlexibleHeight);
+    _scrollView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
     // We implement viewForZoomingInScrollView: and return the image view for zooming.
     _scrollView.delegate = self;
@@ -130,8 +149,21 @@
 
     [_scrollView addSubview:_imageView];
     [self addSubview:_scrollView];
+
+    [[NSNotificationCenter defaultCenter]
+       addObserver:self
+       selector:@selector(eventHandlerContentFrameChanged:)
+       name:@"contentFrameChangedEvent"
+       object:nil ];
   }
   return self;
+}
+
+- (void) dealloc
+{
+    NSLog(@"NIPhotoScrollView dealloc");
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter removeObserver:self];
 }
 
 
@@ -555,6 +587,13 @@
   [self restoreCenterPoint:restorePoint scale:restoreScale];
 
   [_scrollView setNeedsLayout];
+}
+
+-(void)eventHandlerContentFrameChanged: (NSNotification *) notification
+{
+    CGRect rect = [[notification.userInfo valueForKey:@"rectValue"] CGRectValue];
+    NSLog(@"NIPhotoScrollView frameChanged %@ to %@", NSStringFromCGRect(self.frame), NSStringFromCGRect(rect));
+    [_scrollView setFrame:rect];
 }
 
 
