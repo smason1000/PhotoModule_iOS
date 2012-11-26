@@ -77,7 +77,6 @@ MySingleton *gSingleton = nil;
     return shared;
 }
 
-
 - (id)init
 {
     if (self = [super init])
@@ -512,6 +511,23 @@ MySingleton *gSingleton = nil;
         }
     }
     return NO;
+}
+
+-(void)writeToLog:(NSString *)format, ...
+{
+    va_list args;
+    va_start(args, format);
+        NSString *formattedString = [[NSString alloc] initWithFormat: format arguments:args];
+    va_end(args);
+
+    NSString *logFile = [[self getDataDirFull] stringByAppendingPathComponent:@"photoinfo.log"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:logFile];
+    [fileHandle seekToEndOfFile];
+    [fileHandle writeData:[formattedString dataUsingEncoding:NSUTF8StringEncoding]];
+    [fileHandle closeFile];
+    
+    //[fileHandle release];
+    //[formattedString release];
 }
 
 
