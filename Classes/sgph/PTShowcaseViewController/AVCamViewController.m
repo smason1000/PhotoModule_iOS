@@ -358,7 +358,7 @@ UIView *focusView = nil;
     [[self captureManager] setOrientation:AVCaptureVideoOrientationPortrait];
     [[self captureManager] setSessionPreset:AVCaptureSessionPresetPhoto];
     [[self captureManager] setCameraZoom:1.0f];
-    [[self captureManager] setFocusMode:AVCaptureFocusModeAutoFocus];
+    [[self captureManager] setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
     [[self captureManager] setFlashMode:AVCaptureFlashModeAuto];
     [[self captureManager] setViewportSize:self.videoPreviewView.frame.size];
     
@@ -416,6 +416,11 @@ UITabBarItem *tabBarItem = [self tabBarItem];
          name:@"cameraEvent"
          object:nil ];
         
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(eventHandlerCameraContinuousFocus:)
+         name:@"labelEvent"
+         object:nil ];
 		
 		[[self captureManager] setDelegate:self];
 
@@ -482,6 +487,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
                 [focusView setBackgroundColor:[UIColor clearColor]];
                 [[focusView layer] setBorderColor:[[UIColor whiteColor] CGColor]];
                 [[focusView layer] setBorderWidth:2.0f];
+                [focusView setHidden:YES];
                 [view addSubview:focusView];
             }
             else
@@ -788,6 +794,14 @@ UITabBarItem *tabBarItem = [self tabBarItem];
                          [flashView removeFromSuperview];
                      }
      ];
+}
+
+-(void)eventHandlerCameraContinuousFocus: (NSNotification *) notification
+{
+    if (gSingleton.showTrace)
+        NSLog(@"eventHandlerCameraContinuousFocus");
+    
+    [[self focus] setSelectedItem:2];
 }
 
 #pragma mark HUD Actions

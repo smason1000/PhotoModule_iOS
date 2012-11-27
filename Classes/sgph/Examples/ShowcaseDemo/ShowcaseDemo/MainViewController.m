@@ -777,7 +777,7 @@
 -(void) editAction:(id) sender{
     if (gSingleton.editOn)
     {
-        [gSingleton saveList];
+        [gSingleton saveList];        
     }
     gSingleton.editOn = !gSingleton.editOn;
     
