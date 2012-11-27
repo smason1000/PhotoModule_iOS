@@ -380,6 +380,7 @@ MySingleton *gSingleton = nil;
     [self loadList];
     
     self.doRef = YES;
+    [self writeToLog:@"OrderNumber: %@, folder = %@", self.orderNumber, self.rootPhotoFolder];
 }
 
 - (void) setReqCount:(NSString *)newCount
@@ -546,6 +547,33 @@ MySingleton *gSingleton = nil;
 
 //####
 
+-(void)writeToLog:(NSString *)format, ...
+{
+    va_list args;
+    va_start(args, format);
+        NSString *formattedString = [[NSString alloc] initWithFormat:format arguments:args];
+        if (self.showTrace)
+            NSLog(@"%@", formattedString);
+    va_end(args);
+    
+    NSString *logFile = [[self getDataDirFull] stringByAppendingPathComponent:@"photoinfo.log"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:logFile];
+    if(fileHandle == nil)
+    {
+        [[NSFileManager defaultManager] createFileAtPath:logFile contents:nil attributes:nil];
+        fileHandle = [NSFileHandle fileHandleForWritingAtPath:logFile];
+    }
+    [fileHandle seekToEndOfFile];
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss zzz"];
+
+    [fileHandle writeData:[[NSString stringWithFormat:@"%@: %@\r\n", [dateFormat stringFromDate:date], formattedString] dataUsingEncoding:NSUTF8StringEncoding]];
+    [fileHandle closeFile];
+    
+    //[fileHandle release];
+    //[formattedString release];
+}
 
 - (void) checkDir:(NSString*) directory
 {
@@ -704,6 +732,11 @@ MySingleton *gSingleton = nil;
         NSString *curDesc = [dict objectForKey:@"description"];
         if (curLabel != nil)
         {
+            if (curDesc != nil && [curDesc length] == 0)
+                [self writeToLog:@"Labeling image - filename: %@ label: %@", name, curLabel];
+            else
+                [self writeToLog:@"Labeling image - filename: %@ label: %@: %@", name, curLabel, curDesc];
+
             if ([self isReqLab:curLabel])
             {
                 req = @"1";
@@ -740,8 +773,11 @@ MySingleton *gSingleton = nil;
     CGSize largeSize;
     CGSize smallSize;
     
-    NSLog(@"Saving image (%.f x %.f) with name %@", origSize.width, origSize.height, name);
-
+    if ([self.currentLabelDescription length] == 0)
+        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@", origSize.width, origSize.height, name, self.currentLabelString];
+    else
+        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@: %@", origSize.width, origSize.height, name, self.currentLabelString, self.currentLabelDescription];
+    
     if (origSize.height > origSize.width)
     {
         largeSize.height = 640;
@@ -835,6 +871,11 @@ MySingleton *gSingleton = nil;
 
 - (void)delImage:(NSString *)name
 {
+    if ([self.currentLabelDescription length] == 0)
+        [self writeToLog:@"Deleting image - filename: %@ label: %@", name, self.currentLabelString];
+    else
+        [self writeToLog:@"Deleting image - filename: %@ label: %@: %@", name, self.currentLabelString, self.currentLabelDescription];
+
     self.photoCount--;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
