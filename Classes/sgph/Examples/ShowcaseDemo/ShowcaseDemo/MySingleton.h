@@ -147,8 +147,7 @@ typedef enum
 - (void)saveImage:(UIImage *)image withName:(NSString *)name;
 - (void)renameImage:(NSString *)oldName withName:(NSString *)newName;
 
-
-
+- (void) writeToLog:(NSString *)format, ...;
 - (void) setLabels:(NSString*)newLabels;
 - (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate;
 - (void) setOrderNum:(NSString *)orderNum;
