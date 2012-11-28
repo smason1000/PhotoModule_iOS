@@ -4,6 +4,7 @@
 #import "RootViewController.h"
 #import "PTDemoViewController.h"
 
+#import "DataController.h"
 
 @implementation MainViewController
 
@@ -63,9 +64,15 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
-    }    
+
+        DataController *data = [[DataController alloc] init];
+        NSString *dbPath = [data dbPath:@"inspi"];
+        bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+        NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+    }
     
     if (gSingleton.showTrace)
         NSLog(@"MainViewController initWithNibName");    
@@ -224,6 +231,11 @@
     if (gSingleton.showTrace)
         NSLog(@"MainViewController viewDidLoad");
     
+    DataController *data = [[DataController alloc] init];
+    NSString *dbPath = [data dbPath:@"inspi"];
+    bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+    NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+
     fBounds = self.view.bounds;//CGRectMake(0.0, 0.0, 0.0, 0.0);
     hudHidden = NO;
     

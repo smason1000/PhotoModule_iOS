@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		220CDE7B15C47CF10074CC8D /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
+		221DDA91166661A400B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
+		221DDA92166661C100B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
+		221DDA931666640B00B62FE8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
+		221DDA941666649F00B62FE8 /* DBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* DBPhoto.m */; };
+		22CABB5E1665A07900E6CBBB /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
+		22CABB601665A12B00E6CBBB /* DBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* DBPhoto.m */; };
 		22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
 		22CC0B6A15C62660002A3535 /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
 		22CC0B6B15C626A0002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
@@ -161,6 +167,12 @@
 /* Begin PBXFileReference section */
 		220CDE7815C47CF10074CC8D /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandyButton.h; sourceTree = "<group>"; };
 		220CDE7915C47CF10074CC8D /* ExpandyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandyButton.m; sourceTree = "<group>"; };
+		221DDA90166661A400B62FE8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		22CABB5616659BD300E6CBBB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		22CABB5B16659C4E00E6CBBB /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		22CABB5C16659CED00E6CBBB /* DBPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBPhoto.h; sourceTree = "<group>"; };
+		22CABB5D1665A07900E6CBBB /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		22CABB5F1665A12B00E6CBBB /* DBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPhoto.m; sourceTree = "<group>"; };
 		22CC0B6615C61E42002A3535 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamCaptureManager.h; sourceTree = "<group>"; };
 		22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
 		50265E2A14FD45DA0094A642 /* PTVideoThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTVideoThumbnailImageView.h; sourceTree = "<group>"; };
@@ -342,6 +354,7 @@
 				AE9FA73C15514EBC00B554F2 /* MobileCoreServices.framework in Frameworks */,
 				5088D9CA1521EAEA00A1A9DE /* PSPDFKit.framework in Frameworks */,
 				5088D9D31521EC2B00A1A9DE /* ImageIO.framework in Frameworks */,
+				221DDA91166661A400B62FE8 /* libsqlite3.dylib in Frameworks */,
 				5088D9D11521EC2400A1A9DE /* libz.dylib in Frameworks */,
 				5088D9CF1521EC1800A1A9DE /* MessageUI.framework in Frameworks */,
 				5088D9CD1521EC0700A1A9DE /* CoreText.framework in Frameworks */,
@@ -364,6 +377,7 @@
 				AEA46922156A38D900743108 /* MobileCoreServices.framework in Frameworks */,
 				AEA46923156A38D900743108 /* PSPDFKit.framework in Frameworks */,
 				AEA46926156A38D900743108 /* ImageIO.framework in Frameworks */,
+				221DDA92166661C100B62FE8 /* libsqlite3.dylib in Frameworks */,
 				AEA46927156A38D900743108 /* libz.dylib in Frameworks */,
 				AEA46928156A38D900743108 /* MessageUI.framework in Frameworks */,
 				AEA46929156A38D900743108 /* CoreText.framework in Frameworks */,
@@ -375,6 +389,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22CABB5A16659C1800E6CBBB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				22CABB5B16659C4E00E6CBBB /* DataController.h */,
+				22CABB5D1665A07900E6CBBB /* DataController.m */,
+				22CABB5C16659CED00E6CBBB /* DBPhoto.h */,
+				22CABB5F1665A12B00E6CBBB /* DBPhoto.m */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		505AE84B14ED5FD900BBFC05 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +502,7 @@
 		5093F21314E51E07004DC805 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				22CABB5A16659C1800E6CBBB /* Database */,
 				50A6019014F536C9002076AB /* GMGridView */,
 				50B977B914EC10EB00873F87 /* Nimbus */,
 				505AE96014ED785700BBFC05 /* PTImageAlbumViewController */,
@@ -603,6 +629,7 @@
 		50FC0D0A14E3D44300F28648 = {
 			isa = PBXGroup;
 			children = (
+				221DDA90166661A400B62FE8 /* libsqlite3.dylib */,
 				50FC0D1F14E3D44300F28648 /* PhotoHub */,
 				AE28738E15584AA100B93478 /* BadgeList */,
 				AE28738B155822F700B93478 /* AVCam */,
@@ -626,6 +653,7 @@
 		50FC0D1814E3D44300F28648 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22CABB5616659BD300E6CBBB /* libsqlite3.0.dylib */,
 				AEA46BA8156AA47B00743108 /* CoreMedia.framework */,
 				AE9FA73F15514EE800B554F2 /* AssetsLibrary.framework */,
 				AE9FA73D15514ED800B554F2 /* CoreVideo.framework */,
@@ -886,6 +914,8 @@
 				AE9FA73915514E4500B554F2 /* AVCamUtilities.m in Sources */,
 				AE9FA73A15514E4500B554F2 /* AVCamViewController.m in Sources */,
 				AE1ED86C1563F07B003ACBFC /* MySingleton.m in Sources */,
+				22CABB5E1665A07900E6CBBB /* DataController.m in Sources */,
+				22CABB601665A12B00E6CBBB /* DBPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +923,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221DDA941666649F00B62FE8 /* DBPhoto.m in Sources */,
+				221DDA931666640B00B62FE8 /* DataController.m in Sources */,
 				AEA46BA1156A9A7C00743108 /* SampleViewController.m in Sources */,
 				AEA46B9C156A94F100743108 /* MainViewController.m in Sources */,
 				AEA46B9D156A94F100743108 /* SampleNavigationController.m in Sources */,
