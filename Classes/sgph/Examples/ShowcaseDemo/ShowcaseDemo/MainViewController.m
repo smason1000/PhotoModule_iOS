@@ -1036,13 +1036,14 @@
             
             if (gSingleton.editOn)
             {
-                contentPaneWidth = (w - (borderSize * 2)) / 2;
+                if (gSingleton.expandOn)
+                    contentPaneWidth = w - (borderSize * 2);
+                else
+                    contentPaneWidth = (w - (borderSize * 2)) / 2;
+                
                 contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
                 ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
-                
                 rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
-                ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);
-                togHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y+rvHolderView.frame.size.height-toolbarHeight, rvHolderView.frame.size.width, toolbarHeight);
             }
             else
             {
@@ -1056,15 +1057,9 @@
                 rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             }
             
-            // send the notification event to any detail view controllers listening
-            NSValue *rectValue = [NSValue valueWithCGRect:CGRectMake(0, 0, ptHolderView.frame.size.width, ptHolderView.frame.size.height)];
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:rectValue forKey:@"rectValue"];
-
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"contentFrameChangedEvent"
-             object:nil
-             userInfo:userInfo];
-
+            ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);
+            togHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y+rvHolderView.frame.size.height-toolbarHeight, rvHolderView.frame.size.width, toolbarHeight);
+            
             break;
     }
     
