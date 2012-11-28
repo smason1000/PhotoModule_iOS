@@ -68,7 +68,7 @@
     }    
     
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController initWithNibName");    
+        NSLog(@"MainViewController initWithNibName: %@", nibNameOrNil);
     return self;
 }
 
@@ -1027,7 +1027,11 @@
             
             if (gSingleton.editOn)
             {
-                contentPaneWidth = w - (borderSize * 2);
+                if (gSingleton.expandOn)
+                    contentPaneWidth = w - (borderSize * 2);
+                else
+                    contentPaneWidth = (w - (borderSize * 2)) / 2;
+                
                 contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
                 ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
                 rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
