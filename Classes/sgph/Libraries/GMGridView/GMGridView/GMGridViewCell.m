@@ -1,6 +1,7 @@
 #import "MySingleton.h"
 #import "GMGridViewCell+Extended.h"
 #import "UIView+GMGridViewAdditions.h"
+#import "Photo.h"
 
 //////////////////////////////////////////////////////////////
 #pragma mark - Interface Private
@@ -28,12 +29,13 @@
 @synthesize deleteButton = _deleteButton;
 @synthesize deleteBlock = _deleteBlock;
 @synthesize deleteButtonIcon = _deleteButtonIcon;
-@synthesize flag;
-@synthesize deleteButtonOffset;
-@synthesize reuseIdentifier;
-@synthesize lab;
-@synthesize fileName;
-@synthesize ind;
+@synthesize flag = _flag;
+@synthesize deleteButtonOffset = _deleteButtonOffset;
+@synthesize reuseIdentifier = _reuseIdentifier;
+@synthesize lab = _lab;
+@synthesize fileName = _fileName;
+@synthesize ind = _ind;
+@synthesize eventsInited = _eventsInited;
 
 //////////////////////////////////////////////////////////////
 #pragma mark Constructors
@@ -60,35 +62,19 @@
         self.deleteButton.alpha = 0;
         [self addSubview:deleteButton];
         [deleteButton addTarget:self action:@selector(actionDelete) forControlEvents:UIControlEventTouchUpInside];
+        self.ind = -1;
+        self.eventsInited = NO;
     }
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerClear:)
-     name:@"clearEvent"
-     object:nil ];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerLabel:)
-     name:@"labelEvent"
-     object:nil ];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerDel:)
-     name:@"delEvent"
-     object:nil ];
-    
-    
     return self;
 }
 
 -(void)updateKeys
 {
-    NSNumber* num =  [NSNumber numberWithBool:self.flag];
+    if (self.ind < 0)
+        return;
     
-    [[gSingleton.mainData objectAtIndex:self.ind] setObject:num forKey:@"selected"];
+    Photo *photo = (Photo *)[gSingleton.mainData objectAtIndex:self.ind];
+    photo.selected = self.flag;
 }
 
 -(void)eventHandlerClear: (NSNotification *) notification
@@ -99,14 +85,15 @@
 
 -(void)eventHandlerLabel: (NSNotification *) notification
 {
-    if (gSingleton.showTrace)
-        NSLog(@"labelEvent (GridViewCell) %d,%d,%d", gSingleton.relativeIndex, self.ind, gSingleton.expandOn);
+    if (self.ind < 0)
+        return;
     
     BOOL doLab = NO;
     
+    Photo *photo = (Photo *)[gSingleton.mainData objectAtIndex:self.ind];
     if (gSingleton.expandOn)
     {
-        if ( [[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex] isEqualToString:self.fileName] )
+        if (gSingleton.expandedViewIndex == self.ind)
         {
             doLab = YES;
         }
@@ -117,21 +104,17 @@
         {
             doLab = YES;
         }
-        
-        if ([gSingleton.mainData count] >= (self.ind + 1))
+        else if (photo.selected)
         {
-            if ( [[[gSingleton.mainData objectAtIndex:self.ind] objectForKey:@"selected"] intValue] != 0)
-            {
-                doLab = YES;
-            }
+            doLab = YES;
         }
     }
     
-    //
-    //[[gSingleton.mainData objectAtIndex:self.ind] setObject:gSingleton.currentLabelString forKey:@"text"];
-    
     if (doLab)
     {
+        if (gSingleton.showTrace)
+            NSLog(@"labelEvent (GridViewCell) %d, %d, %@", self.ind, gSingleton.expandedViewIndex, gSingleton.expandOn ? @"YES" : @"NO");
+
         if ([[gSingleton currentLabelDescription] length] == 0)
             self.lab.text = [gSingleton currentLabelString];
         else
@@ -142,7 +125,7 @@
         /*
         we must change the key to a unique identifier in order for this to work
         currently, the filename is intertwined into the code
-        refactoriong is necessary
+        refactoring is necessary
         unsigned int timestamp = [[NSDate date] timeIntervalSince1970];
         
         NSString *newName = [NSString stringWithFormat:@"%@_%i.jpg", gSingleton.currentLabelString, timestamp];
@@ -150,56 +133,24 @@
 
         self.fileName = newName;
         */
-    }
-}
-
--(void)eventHandlerDel: (NSNotification *) notification
-{//
-    BOOL doDel = NO;
-    
-    if (gSingleton.expandOn)
-    {
-        if ( [[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex] isEqualToString:self.fileName] )
-        {
-            doDel = YES;
-        }
+        [self updateKeys];
     }
     else
     {
-        if (self.flag)
-        {
-            doDel = YES;
-        }
-    }
-    
-    if (doDel)
-    {
-        self.flag = NO;
-        self.backgroundColor = [UIColor clearColor];
-        
-        //NSMutableDictionary *dict = [gSingleton getInfoEntry:self.fileName];
-        //[dict setObject: [gSingleton.labelArr objectAtIndex:0] forKey:@"label"];
-        
-        [gSingleton delImage:self.fileName];
-        
-        if (gSingleton.expandOn)
-        {
-            gSingleton.expandOn = NO;
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"expandOffEvent"
-             object:nil ];
-        }
-        
+        if (gSingleton.showTrace)
+            NSLog(@"labelEvent ignored (GridViewCell) %d, %d, %@", self.ind, gSingleton.expandedViewIndex, gSingleton.expandOn ? @"YES" : @"NO");
     }
 }
 
 - (void) toggleSel
 {
-    if (self.flag == NO) {
+    if (self.flag == NO)
+    {
         self.backgroundColor = [UIColor blueColor];
         self.flag = YES;
     }
-    else {
+    else
+    {
         self.backgroundColor = [UIColor clearColor];
         self.flag = NO;
     }
@@ -213,10 +164,10 @@
 
 - (void)setFrame:(CGRect)frame;
 {
-    if (gSingleton.showTrace)
-    {
-        NSLog(@"GridViewCell setFrame(%d, %.0f, %.0f, %.0f, %.0f)", self.ind, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
-    }
+    //if (gSingleton.showTrace)
+    //{
+    //    NSLog(@"GridViewCell setFrame(%d, %.0f, %.0f, %.0f, %.0f)", self.ind, frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    //}
     [super setFrame:frame];
 }
 
@@ -379,12 +330,41 @@
 #pragma mark Public methods
 //////////////////////////////////////////////////////////////
 
+-(void) initEvents
+{
+    if (!self.eventsInited)
+    {
+        self.eventsInited = YES;
+
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(eventHandlerClear:)
+         name:@"clearEvent"
+         object:nil ];
+    
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(eventHandlerLabel:)
+         name:@"labelEvent"
+         object:nil ];
+    }
+    //else
+    //{
+    //    NSLog(@"Warning (GridViewCell): Caught attempt to reinitialize label events");
+    //}
+}
+
 - (void)prepareForReuse
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
+    self.eventsInited = NO;
+
     self.fullSize = CGSizeZero;
     self.fullSizeView = nil;
     self.editing = NO;
     self.deleteBlock = nil;
+    self.ind = -1;
 }
 
 - (void)shake:(BOOL)on

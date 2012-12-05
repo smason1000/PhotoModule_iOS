@@ -1,6 +1,7 @@
 #import "MySingleton.h"
 #import "RootViewController.h"
 #import "DDBadgeViewCell.h"
+#import "Photo.h"
 
 @implementation RootViewController
 
@@ -49,8 +50,8 @@
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(eventHandlerClear:)
-     name:@"clearEvent"
+     selector:@selector(eventHandlerDelete:)
+     name:@"delEvent"
      object:nil ];
     
     //self.tableView.rowHeight = 50;
@@ -198,7 +199,6 @@
     }
 }
 
-
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -219,7 +219,7 @@
 #pragma mark Table view delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{ 
+{
     NSString *description = [[alertView textFieldAtIndex:0] text];
 
     if ([description length] == 0)
@@ -229,12 +229,14 @@
     else
     {
         gSingleton.currentLabelDescription = description;
-        [self doLabelSelection];
+        [self applyLabelSelection];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (gSingleton.showTrace)
+        NSLog(@"RootViewController: didSelectRowAtIndexPath (%d)", [indexPath row]);
     
 	/*
 	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -282,11 +284,11 @@
     else
     {
         gSingleton.currentLabelDescription = @"";
-        [self doLabelSelection];
+        [self applyLabelSelection];
     }
 }
 
--(void) doLabelSelection
+-(void) applyLabelSelection
 {
     //[self.searchDC.searchBar resignFirstResponder];
     
@@ -295,47 +297,53 @@
     if ([gSingleton.currentLabelDescription length] > 0)
         NSLog(@"Entered description: '%@'", gSingleton.currentLabelDescription);
     
-    NSInteger i;
-    NSString* tempstr;
-    BOOL ct;
+    BOOL wasLabeled;
+    BOOL isLabeled;
     
-    for (i = 0; i < [gSingleton.mainData count]; i++)
+    if (gSingleton.expandOn)
     {
+        Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+        wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
         
-        NSMutableDictionary* mdict = [gSingleton.mainData objectAtIndex:i];
-                
-        if ([[mdict objectForKey:@"selected"] intValue] == 0)
+        photo.label = gSingleton.currentLabelString;
+        photo.description = gSingleton.currentLabelDescription;
+        [photo updateDatabaseEntry];
+
+        isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+        if (wasLabeled != isLabeled)
         {
-            ct = NO;
-        }
-        else
-        {
-            ct = YES;
-        }
-        
-        tempstr = [mdict objectForKey:@"uniqueName"];
-        
-        if (gSingleton.expandOn)
-        {
-            if ( [[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex] isEqualToString:tempstr] )
-            {
-                ct = YES;
-            }
-        }
-        
-        if (ct)
-        {
-            [mdict setObject:gSingleton.currentLabelString forKey:@"text"];
-            NSMutableDictionary *dict = [gSingleton getInfoEntry:tempstr];
-            [dict setObject:(NSString *)gSingleton.currentLabelString forKey:@"label"];
-            [dict setObject:(NSString *)gSingleton.currentLabelDescription forKey:@"description"];
-            [gSingleton updateLabelDB:tempstr];
+            if (wasLabeled)
+                gSingleton.labeledCount--;
+            else
+                gSingleton.labeledCount++;
         }
     }
-    //
+    else
+    {
+        for (Photo *photo in gSingleton.mainData)
+        {
+            if (photo.selected)
+            {
+                wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+
+                photo.label = gSingleton.currentLabelString;
+                photo.description = gSingleton.currentLabelDescription;
+                [photo updateDatabaseEntry];
+
+                isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+                if (wasLabeled != isLabeled)
+                {
+                    if (wasLabeled)
+                        gSingleton.labeledCount--;
+                    else
+                        gSingleton.labeledCount++;
+                }
+            }
+        }
+    }
     
+    // deselect the label row
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
-    [gSingleton clearAllKeys];
 
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"labelEvent"
@@ -346,9 +354,32 @@
      object:nil ];
 }
 
--(void)eventHandlerClear: (NSNotification *) notification
+-(void)eventHandlerDelete:(NSNotification *) notification
 {
-    //gSingleton.currentLabelString = [gSingleton.labelArr objectAtIndex:0];
+    if (gSingleton.expandOn)
+    {
+        Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+        [gSingleton delImage:photo];
+        
+        gSingleton.expandOn = NO;
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"expandOffEvent"
+         object:nil ];
+    }
+    else
+    {
+        for (Photo *photo in gSingleton.mainData)
+        {
+            if (photo.selected)
+            {
+                [gSingleton delImage:photo];
+            }
+        }
+    }
+    // force a reload of the data to update images and indexes
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"clearEvent"
+     object:nil];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView

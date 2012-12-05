@@ -51,7 +51,6 @@
     return object == [NSNull null] ? nil : object;
 }
 
-
 - (void)reloadData
 {
     // Ask data source for number of images
@@ -59,7 +58,8 @@
     
     // Create an images' info array for reusing
     self.data = [NSMutableArray arrayWithCapacity:numberOfImages];
-    for (NSInteger i = 0; i < numberOfImages; i++) {
+    for (NSInteger i = 0; i < numberOfImages; i++)
+    {
         // Ask data source for image size
         CGSize size = [self.imageAlbumDataSource imageAlbumView:self sizeForImageAtIndex:i];
         
@@ -69,14 +69,16 @@
         
         // If image is nil, ask data source where to get it
         NSString *source;
-        if (!image) {
+        if (!image)
+        {
             source = [self.imageAlbumDataSource imageAlbumView:self sourceForImageAtIndex:i];
             NSAssert(source, @"cannot show image since you didn't neither returned it nor told us where to get it.");
         }
 
         // If thumbnail image is nil, ask data source where to get it
         NSString *thumbnailImageSource;
-        if (!thumbnailImage) {
+        if (!thumbnailImage)
+        {
             thumbnailImageSource = [self.imageAlbumDataSource imageAlbumView:self sourceForThumbnailImageAtIndex:i];
             NSAssert(thumbnailImageSource, @"cannot thumbnail show image since you didn't neither returned it nor told us where to get it.");
         }

@@ -3,8 +3,7 @@
 #import "AVCamViewController.h"
 #import "RootViewController.h"
 #import "PTDemoViewController.h"
-
-#import "DataController.h"
+#import "Photo.h"
 
 @implementation MainViewController
 
@@ -67,11 +66,6 @@
     if (self)
     {
         // Custom initialization
-
-        DataController *data = [[DataController alloc] init];
-        NSString *dbPath = [data dbPath:@"inspi"];
-        bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-        NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
     }
     
     if (gSingleton.showTrace)
@@ -231,11 +225,6 @@
     if (gSingleton.showTrace)
         NSLog(@"MainViewController viewDidLoad");
     
-    DataController *data = [[DataController alloc] init];
-    NSString *dbPath = [data dbPath:@"inspi"];
-    bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
-
     fBounds = self.view.bounds;//CGRectMake(0.0, 0.0, 0.0, 0.0);
     hudHidden = NO;
     
@@ -530,7 +519,7 @@
      object:nil ];
     
     
-     [[NSNotificationCenter defaultCenter]
+    [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(eventHandlerLabel:)
      name:@"labelEvent"
@@ -542,10 +531,10 @@
      name:@"cameraReadyEvent"
      object:nil ];
     
-    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                target:self selector:@selector(doRefTimer:)
-                                              userInfo:nil
-                                               repeats:YES];
+    //refTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+    //                                            target:self selector:@selector(doRefTimer:)
+    //                                          userInfo:nil
+    //                                           repeats:YES];
 }
 
 - (void)doRefTimer:(NSTimer *)timer
@@ -577,7 +566,7 @@
     }
 }
 
--(void)eventHandlerLabel: (NSNotification *) notification
+-(void)eventHandlerLabel:(NSNotification *) notification
 {
     if (gSingleton.showTrace)
         NSLog(@"labelEvent (MainViewController)");
@@ -607,30 +596,22 @@
                                                    target:self selector:@selector(camTimer:)
                                                  userInfo:nil
                                                   repeats:NO];
-        
     }
-    
 }
 
 -(void)eventHandlerGalScroll: (NSNotification *) notification
 {
-    
-    if (gSingleton.dirContents.count > 0)
+    if ([gSingleton.mainData count] > 0)
     {
-        NSMutableDictionary* dict = [gSingleton.infoDict objectForKey:[gSingleton.dirContents objectAtIndex:gSingleton.relativeIndex]];
-        NSString* label = [dict objectForKey:@"label"];
-        NSString* description = [dict objectForKey:@"description"];
-        gSingleton.currentLabelString = label;
-        gSingleton.currentLabelDescription = description;
+        if (gSingleton.showTrace)
+            NSLog(@"Gallery Scroll event (%d)", gSingleton.expandedViewIndex);
 
-        if ([description length] == 0)
-            self.curLabItem.title = label;
+        Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+        if ([photo.description length] == 0)
+            self.curLabItem.title = photo.label;
         else
-            self.curLabItem.title = description;
+            self.curLabItem.title = photo.description;
     }
-    
-    //self.curLabItem.title = [self.ptController.showcaseView textForItemAtIndex:gSingleton.relativeIndex];
-    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -662,11 +643,6 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"clearEvent"
      object:nil ];
-    
-    [gSingleton saveList];
-    
-    // we just deleted all the selected items, clear the selected array
-    [gSingleton clearAllKeys];
 }
 
 -(void) reqCountAction:(id) sender{
@@ -787,10 +763,6 @@
 }
 
 -(void) editAction:(id) sender{
-    if (gSingleton.editOn)
-    {
-        [gSingleton saveList];        
-    }
     gSingleton.editOn = !gSingleton.editOn;
     
     [self updateButtonLabels];
@@ -847,43 +819,25 @@
         self.editItem.title = @"Edit";
     }
     
-    int lCount = 0;
-    for(id key in gSingleton.infoDict)
-    {        
-        NSDictionary *dict = [gSingleton.infoDict objectForKey:key];
-        id value = [dict objectForKey:@"label"];
-        id desc = [dict objectForKey:@"description"];
-
-        if (gSingleton.showTrace)
-        {
-            if ([value isEqualToString:@"Other: With Description"])
-                NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
-            else
-                NSLog(@"infoDict read: %@ for label %@", key, value);
-        }
-        
-        if ([value isEqualToString:[gSingleton.labelArr objectAtIndex:0]])
-        {
-            // no op
-        }
-        else
-        {
-            lCount++;
-        }
-    }
-    if (gSingleton.showTrace)
-        NSLog(@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, lCount, gSingleton.photoCount);
-    
-    [titleLabel setText:[NSString stringWithFormat:@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, lCount, gSingleton.photoCount ]];
-    
-    //self.nreqCountItem.title = [NSString stringWithFormat:@"%d",[gSingleton.requiredLabelArr count]];
-    //self.nlabCountItem.title = [NSString stringWithFormat:@"%d",lCount];
-    //self.ntotCountItem.title = [NSString stringWithFormat:@"%d",gSingleton.photoCount];
+    [self updateStatusBar:nil];
     
     self.navViewController.toolbar.items = [bbarItems objectAtIndex:gSingleton.currentAppState];
     [self.navViewController.toolbar setNeedsDisplay];
     
     [self layoutForOrientation:[self interfaceOrientation]];
+}
+
+-(void)updateStatusBar:(NSNotification *)notification
+{
+    if (gSingleton.showTrace)
+        NSLog(@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, gSingleton.labeledCount, gSingleton.photoCount);
+    
+    [titleLabel setText:[NSString stringWithFormat:@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, gSingleton.labeledCount, gSingleton.photoCount ]];
+    
+    //self.nreqCountItem.title = [NSString stringWithFormat:@"%d",[gSingleton.requiredLabelArr count]];
+    //self.nlabCountItem.title = [NSString stringWithFormat:@"%d",lCount];
+    //self.ntotCountItem.title = [NSString stringWithFormat:@"%d",gSingleton.photoCount];
+
 }
 
 - (void)viewDidUnload

@@ -1,10 +1,11 @@
 #import "MySingleton.h"
+//#import "DataController.h"
+//#import "Photo.h"
 
 NSComparisonResult compareLetters(id t1, id t2, void* context)
 {    
     return [ [t1 lowercaseString] compare: [t2 lowercaseString] ];
 }
-
 
 MySingleton *gSingleton = nil;
 //static MySingleton *sharedMySingleton = nil;
@@ -14,7 +15,10 @@ MySingleton *gSingleton = nil;
 @synthesize doRef;
 @synthesize openToGallery;
 @synthesize applyCaptureDefaults;
+@synthesize dbController;
+@synthesize dbPath;
 @synthesize orderNumber;
+@synthesize userId;
 @synthesize rootPhotoFolder;
 @synthesize todaysPhotoFolder;
 @synthesize hashVals;
@@ -24,8 +28,6 @@ MySingleton *gSingleton = nil;
 @synthesize curLetArray;
 @synthesize mainData;
 @synthesize showTrace;
-
-@synthesize dirContents;
 
 @synthesize newPhotos;
 @synthesize expandOn;
@@ -37,15 +39,11 @@ MySingleton *gSingleton = nil;
 @synthesize currentFilterMode;
 @synthesize currentAppState;
 
-@synthesize relativeIndex;
+@synthesize expandedViewIndex;
 @synthesize photoCount;
 @synthesize requiredCount;
 @synthesize labeledCount;
 
-@synthesize msgQ;
-
-@synthesize infoDict;
-@synthesize selDict;
 @synthesize labelArr;
 @synthesize itemArray;
 @synthesize currentLabelString;
@@ -81,7 +79,8 @@ MySingleton *gSingleton = nil;
 {
     if (self = [super init])
     {
-        
+        self.mainData = [[NSMutableArray alloc] init];
+
         // mimic the way INSPI will initialize the application
         BOOL emu = NO;
         NSString *model = [[UIDevice currentDevice] model];
@@ -107,7 +106,7 @@ MySingleton *gSingleton = nil;
             [self setTodaysPhotoFolder:[dateFormat stringFromDate:date]];
         }
 
-        self.orderNumber = @"0";
+        //self.orderNumber = @"0";
         
         self.curLetArray = [NSArray arrayWithObjects:
                     @"#",
@@ -152,16 +151,10 @@ MySingleton *gSingleton = nil;
         self.currentFilterMode = PHFilterModeAll;
         self.currentAppState = PHASLabelFS;
 
-        self.relativeIndex = 0;
-        self.photoCount = [self getDirCount];
+        self.expandedViewIndex = -1;
+        self.photoCount = [[self mainData] count];
         self.requiredCount = 0;
         self.labeledCount = 0;
-        
-        self.mainData = nil;
-        self.infoDict = nil;
-        self.selDict = [[NSMutableDictionary alloc] init];
-        
-        self.msgQ = [[NSMutableArray alloc] init];
         
         //not mutable, so can't do this in a loop...(probably a way, but too lazy to look it up :D)
         self.hashVals = [[NSArray alloc] initWithObjects:
@@ -246,6 +239,8 @@ MySingleton *gSingleton = nil;
         if (emu)
         {
             self.openToGallery = NO;
+            [self setDBName:@"inspi"];
+            [self setUserId:@"PhotoHub"];
             
             // labels set appropriately above
             //updatePHReqLabels({});
@@ -359,11 +354,20 @@ MySingleton *gSingleton = nil;
     }
 }
 
+- (void) setDBName:(NSString *)name
+{
+    self.dbController = [[DataController alloc] init];
+    [self setDbPath:[self.dbController dbPath:name]];
+    bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+    NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+}
+
+
 - (void) setOrderNum:(NSString *)orderNum
 {    
     self.orderNumber = orderNum;
     self.currentAppState = PHASLabelFS;
-    self.photoCount = [self getDirCount];
+    //self.photoCount = [self getPhotoCount];
     // make sure requiredCount is set before this call
     //requiredCount = 0;
     self.editOn = YES;
@@ -377,10 +381,13 @@ MySingleton *gSingleton = nil;
         self.currentAppState = PHASGrid;
     }
 
-    [self loadList];
-    
     self.doRef = YES;
     [self writeToLog:@"OrderNumber: %@, folder = %@", self.orderNumber, self.rootPhotoFolder];
+
+    // force a reload of the data to update images and indexes
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"clearEvent"
+     object:nil];
 }
 
 - (void) setReqCount:(NSString *)newCount
@@ -450,53 +457,8 @@ MySingleton *gSingleton = nil;
     
     if (doDBUpdate)
     {
-        [self updateAllDB];
+        [self updateRequiredLabelsInDB];
     }
-}
-
-- (NSMutableDictionary*) getInfoEntry:(NSString *)key
-{
-    NSMutableDictionary *innerDict = [self.infoDict objectForKey:key];
-    
-    if (innerDict == nil)
-    {
-        innerDict = [NSMutableDictionary dictionaryWithObjects:
-                     [NSArray arrayWithObjects: @"", @"", @"", @"", nil]
-                     forKeys:[NSArray arrayWithObjects:@"label", @"description", @"orientation", @"status", nil]];
-        [self.infoDict setObject:innerDict forKey:key];
-    }
-    return innerDict;
-}
-
--(void)removeInfoEntry:(NSString*)key
-{
-    [self.infoDict removeObjectForKey:key];
-    
-    // debug remove code below
-    for(id key in self.infoDict)
-    {        
-        NSDictionary *dict = [gSingleton.infoDict objectForKey:key];
-        id value = [dict objectForKey:@"label"];
-        id desc = [dict objectForKey:@"description"];
-
-        if (gSingleton.showTrace)
-        {
-            if ([value isEqualToString:@"Other: With Description"])
-                NSLog(@"infoDict read: %@ for label Other: %@", key, desc);
-            else
-                NSLog(@"infoDict read: %@ for label %@", key, value);
-        }
-    }
-}
-
-- (void) loadList
-{    
-    self.infoDict = [self loadListSpec:@"photoinfo.plist"];
-}
-
-- (void) saveList
-{    
-    [self saveListSpec:self.infoDict withFileName:@"photoinfo.plist"];    
 }
 
 - (BOOL) isReqLab:(NSString*)testLabel
@@ -514,15 +476,11 @@ MySingleton *gSingleton = nil;
     return NO;
 }
 
--(void) clearAllKeys
+-(void) unselectAll
 {
-    NSNumber* num =  [NSNumber numberWithBool:NO];
-    
-    NSInteger i;
-    
-    for (i = 0; i < [gSingleton.mainData count]; i++)
+    for (Photo *photo in [self mainData])
     {
-        [[gSingleton.mainData objectAtIndex:i] setObject:num forKey:@"selected"];
+        photo.selected = NO;
     }
 }
 
@@ -611,63 +569,6 @@ MySingleton *gSingleton = nil;
     return res;
 }
 
-- (NSMutableArray*) getPhotoDirContents
-{
-    NSString *dir = [self getPhotoDirFull];
-    NSDirectoryEnumerator *de = [[NSFileManager defaultManager] enumeratorAtPath:dir];
-
-    // initialize the array
-    if (self.dirContents == nil)
-    {
-        self.dirContents = [[NSMutableArray alloc] init];
-    }
-    else
-    {
-        [self.dirContents removeAllObjects];
-    }
-
-    NSString *file;
-    while ((file = [de nextObject]))
-    {
-        if ([[file pathExtension] isEqualToString:@"jpg"])
-        {
-            if (gSingleton.showTrace)
-                NSLog(@"%@", file);
-            [self.dirContents addObject:file];
-        }
-    }
-    return self.dirContents;
-}
-
-- (NSInteger) getDirCount
-{
-    return [[self getPhotoDirContents] count];
-}
-
--(NSMutableDictionary*) loadListSpec:(NSString*)dFileName
-{
-    NSMutableDictionary* dToLoad;
-    NSString *ldFile = [[self getDataDirFull] stringByAppendingPathComponent:dFileName];
-    
-    NSLog(@"loadListSpec: %@", ldFile);
-
-    dToLoad = [[NSMutableDictionary alloc] initWithContentsOfFile:ldFile];
-    if (!dToLoad)
-    {
-        dToLoad = [NSMutableDictionary new];
-        [dToLoad writeToFile:ldFile atomically:YES];
-    }
-    
-    return dToLoad;
-}
-
-- (void) saveListSpec:(NSMutableDictionary*)dToSave withFileName:(NSString*)dFileName
-{    
-    NSString *ldFile = [[self getDataDirFull] stringByAppendingPathComponent:dFileName];
-    NSLog(@"saveListSpec: %@", ldFile);
-    [dToSave writeToFile:ldFile atomically:NO];
-}
-
 /*
 - (NSString*)base64forData:(NSData*)theData {
     
@@ -702,50 +603,25 @@ MySingleton *gSingleton = nil;
 }
 */
 
--(void) updateLabelDB:(NSString*)name
+-(void) updateRequiredLabelsInDB
 {
-    NSString *req = @"0";
+    NSMutableArray *photos = [Photo getPhotos:[self orderNumber] andUserId:[self userId]];
     
-    NSDictionary* dict = [self.infoDict objectForKey: name];
-    
-    if (dict != nil)
+    for (Photo *photo in photos)
     {
-        NSString *curLabel = [dict objectForKey:@"label"];
-        NSString *curDesc = [dict objectForKey:@"description"];
-        if (curLabel != nil)
+        if (photo.label != nil)
         {
-            if (curDesc != nil && [curDesc length] == 0)
-                [self writeToLog:@"Labeling image - filename: %@ label: %@", name, curLabel];
+            if (photo.description != nil && [photo.description length] == 0)
+                [self writeToLog:@"Labeling image - filename: %@ label: %@", photo.name, photo.label];
             else
-                [self writeToLog:@"Labeling image - filename: %@ label: %@: %@", name, curLabel, curDesc];
-
-            if ([self isReqLab:curLabel])
-            {
-                req = @"1";
-            }
-            NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                   @"msg",@"property",
-                                   @"update",@"op",
-                                   self.orderNumber, @"order_id",
-                                   name, @"name",
-                                   curLabel,@"label",
-                                   curDesc,@"description",
-                                   req,@"required",
-                                   nil];
-            [self.msgQ addObject:myObj];
+                [self writeToLog:@"Labeling image - filename: %@ label: %@: %@", photo.name, photo.label, photo.description];
+            
+            if ([self isReqLab:photo.label])
+                photo.required = 1;
+            else
+                photo.required = 0;
+            [photo updateDatabaseEntry];
         }
-    }
-}
-
--(void) updateAllDB
-{
-    NSArray* dirArr = [self getPhotoDirContents];
-    
-    NSInteger i;
-    
-    for (i = 0; i < [dirArr count]; i++)
-    {
-        [self updateLabelDB:[dirArr objectAtIndex:i]];
     }
 }
 
@@ -807,30 +683,30 @@ MySingleton *gSingleton = nil;
         NSLog(@"relativePath2: %@", relativePath2);
     [fileManager createFileAtPath:fullPath2 contents:data2 attributes:nil];
     
-    NSString *req = @"0";
-    
+    int req = 0;
     if ([self isReqLab:currentLabelString])
     {
-        req = @"1";
+        req = 1;
     }
     
-    NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"msg",@"property",
-                           @"insert",@"op",
-                           self.orderNumber, @"order_id",
-                           name, @"name",
-                           self.currentLabelString, @"label",
-                           self.currentLabelDescription, @"description",
-                           relativePath, @"photo_data",
-                           relativePath2, @"thumb_data",
-                           req, @"required",
-                           nil];
-    [self.msgQ addObject:myObj];
+    Photo *photo = [[Photo alloc] initWithOrderId:self.orderNumber andName:name andLabel:self.currentLabelString andDescription:self.currentLabelDescription andUploadStatus:NUMINT(kStatusPhotoNotReady) andUserId:gSingleton.userId andPhotoData:relativePath andThumbData:relativePath2 andRequired:NUMINT(req)];
+    photo.selected = NO;
+
+    UIInterfaceOrientation imgOr = [UIApplication sharedApplication].statusBarOrientation;
+    if (imgOr == UIInterfaceOrientationLandscapeLeft || imgOr == UIInterfaceOrientationLandscapeRight)
+        photo.orientation = PTItemOrientationLandscape;
+    else
+        photo.orientation = PTItemOrientationPortrait;
     
-    self.photoCount++;
-    self.newPhotos = YES;
+    if ([photo updateDatabaseEntry])
+    {
+        [mainData addObject:photo];
+        self.photoCount++;
+        self.newPhotos = YES;
+    }
 }
 
+/*
 - (void)renameImage:(NSString *)oldName withName:(NSString *)newName
 {
     if (gSingleton.showTrace)
@@ -850,36 +726,30 @@ MySingleton *gSingleton = nil;
     [self removeInfoEntry:oldName];
     //[self updateLabelDB:oldName renameTo:newName];
 }
+*/
 
-- (void)delImage:(NSString *)name
+- (void)delImage:(Photo *)photo
 {
-    if ([self.currentLabelDescription length] == 0)
-        [self writeToLog:@"Deleting image - filename: %@ label: %@", name, self.currentLabelString];
-    else
-        [self writeToLog:@"Deleting image - filename: %@ label: %@: %@", name, self.currentLabelString, self.currentLabelDescription];
-
-    self.photoCount--;
+    // ****************** WARNING ****************** //
     
+    // It is currently not safe to remove an image and the UI at the same time
+    // This routine will remove the image from the database and the filesystem, but a reload of the data will be needed after
+    // all deletions are processed to update the UI
+    
+    if ([photo.description length] == 0)
+        [self writeToLog:@"Deleting image - filename: %@ label: %@", photo.name, photo.label];
+    else
+        [self writeToLog:@"Deleting image - filename: %@ label: %@: %@", photo.name, photo.label, photo.description];
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *fullPath = [[self getPhotoDirFull] stringByAppendingPathComponent:name];
+    NSString *fullPath = [[self getPhotoDirFull] stringByAppendingPathComponent:photo.name];
     [fileManager removeItemAtPath:fullPath error:NULL];
     
-    NSString *fullPath2 = [[self getThumbDirFull] stringByAppendingPathComponent:name];
+    NSString *fullPath2 = [[self getThumbDirFull] stringByAppendingPathComponent:photo.name];
     [fileManager removeItemAtPath:fullPath2 error:NULL];
     
-    [self removeInfoEntry:name];
-    
-    NSDictionary *myObj = [[NSDictionary alloc] initWithObjectsAndKeys:
-                           @"msg",@"property",
-                           @"delete",@"op",
-                           self.orderNumber, @"order_id",
-                           name,@"name",
-                           self.currentLabelString,@"label",
-                           self.currentLabelDescription,@"description",
-                           //rr,@"required",
-                           nil];
-    [self.msgQ addObject:myObj];
+    [photo deleteDatabaseEntry];
 }
 
 //####

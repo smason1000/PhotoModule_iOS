@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "PTShowcase.h"
 /*
 from schema.js
  
@@ -29,7 +29,7 @@ var photosObj = {
 };
 */
 
-@interface DBPhoto : NSObject
+@interface Photo : NSObject
 {
     NSInteger   order_id;
     NSInteger   question_row;
@@ -45,36 +45,43 @@ var photosObj = {
     NSInteger   *required;
     NSString    *question_id;
     NSString    *possible_labels;
+    PTItemOrientation orientation;
+    BOOL        selected;
 }
 
-@property (nonatomic) NSInteger order_id;
-@property (nonatomic) NSInteger question_row;
-@property (nonatomic, strong) NSString* path;
+@property (nonatomic) NSString *order_id;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* label;
 @property (nonatomic, strong) NSString* description;
 @property (nonatomic) NSInteger upload_status;
-@property (nonatomic, strong) NSString* date_sent;
 @property (nonatomic, strong) NSString* user_id;
 @property (nonatomic, strong) NSString* photo_data;
 @property (nonatomic, strong) NSString* thumb_data;
+@property (nonatomic) NSInteger question_row;
 @property (nonatomic) NSInteger required;
-@property (nonatomic, strong) NSString* question_id;
-@property (nonatomic, strong) NSString* possible_labels;
+@property (nonatomic) PTItemOrientation orientation;
+@property (nonatomic) BOOL selected;
 
--(id)initWithOrderId:(NSInteger)anOrderId
-            andQuestionRow:(NSInteger)aQuestionRow
-            andPath:(NSString*)aPath
-            andName:(NSString*)aName
+-(id)initWithOrderId:(NSString *)anOrderId
+             andName:(NSString*)aName
             andLabel:(NSString*)aLabel
-            andDescription:(NSString*)aDescription
-            andUploadStatus:(NSInteger)anUploadStatus
-            andDateSent:(NSString*)aDateSent
-            andUserId:(NSString*)aUserId
-            andPhotoData:(NSString*)aPhotoData
-            andThumbData:(NSString*)aThumbData
-            andRequired:(NSInteger)aRequired
-            andQuestionId:(NSString*)aQuestionId
-            andPossibleLabels:(NSString*)aPossibleLabels;
+      andDescription:(NSString*)aDescription
+     andUploadStatus:(NSNumber*)anUploadStatus
+           andUserId:(NSString*)aUserId
+        andPhotoData:(NSString*)aPhotoData
+        andThumbData:(NSString*)aThumbData
+         andRequired:(NSNumber*)aRequired;
+
+-(id)initWithOrderId:(NSString *)anOrderId
+             andName:(NSString*)aName
+           andUserId:(NSString*)aUserId;
+
++(NSMutableArray *)getPhotos:(NSString *)withOrderId andUserId:(NSString *)aUserId;
++(Photo *)getPhoto:(NSString *)withOrderId andUserId:(NSString *)aUserId andName:(NSString *)aName andCreateIfNotInDB:(BOOL)aCreateFlag;
+-(NSString *)photoPath;
+-(NSString *)thumbPath;
+
+-(BOOL)updateDatabaseEntry;
+-(BOOL)deleteDatabaseEntry;
 
 @end

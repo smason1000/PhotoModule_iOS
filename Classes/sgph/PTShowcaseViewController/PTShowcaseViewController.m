@@ -12,6 +12,8 @@
 // Detail
 #import "PTGroupDetailViewController.h"
 #import "PTImageDetailViewController.h"
+#import "Photo.h"
+
 #import <MediaPlayer/MediaPlayer.h>
 
 #define THUMBNAIL_TAG   1
@@ -91,7 +93,6 @@
     // Internal
     self.showcaseView.dataSource = self; // this will trigger 'reloadData' automatically
     self.showcaseView.actionDelegate = self;
-    
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -450,12 +451,12 @@
 
     UILabel *textLabel = (UILabel *)[cell viewWithTag:TEXT_TAG];
     
-    NSDictionary* md = [gSingleton.mainData objectAtIndex:index];
+    Photo *photo = (Photo *)[gSingleton.mainData objectAtIndex:index];
     
-    if ([[md objectForKey: @"description"] length] == 0)
-        textLabel.text = [md objectForKey: @"text"];
+    if ([photo.description length] == 0)
+        textLabel.text = photo.label;
     else
-        textLabel.text = [md objectForKey: @"description"];
+        textLabel.text = photo.description;
     
     NSString *uniqueName = [self.showcaseView uniqueNameForItemAtIndex:index];
     
@@ -463,13 +464,16 @@
     cell.lab = textLabel;
     cell.ind = index;
     
-    if ([[md objectForKey: @"selected"] intValue] == 0)
+    // start listening to label events
+    [cell initEvents];
+    
+    if (photo.selected)
     {
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor blueColor];
     }
     else
     {
-        cell.backgroundColor = [UIColor blueColor];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     //cell.backgroundColor = [UIColor greenColor];
@@ -484,9 +488,9 @@
 
 -(void)eventHandlerExpandOn: (NSNotification *) notification
 {
-    NSLog(@"PTShowcaseViewController expand ON");
+    NSLog(@"PTShowcaseViewController expand ON at index %d", gSingleton.expandedViewIndex);
     
-    PTImageDetailViewController *detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.relativeIndex];
+    PTImageDetailViewController *detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.expandedViewIndex];
     detailViewController.data = self.showcaseView.imageItems;
     detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
@@ -534,7 +538,11 @@
     //NSString *uniqueName = [self.showcaseView uniqueNameForItemAtIndex:position];
     //NSString *path = [self.showcaseView pathForItemAtIndex:position];
     //NSString *text = [self.showcaseView textForItemAtIndex:position];
-    gSingleton.relativeIndex = [self.showcaseView relativeIndexForItemAtIndex:position withContentType:contentType];
+    
+    if (gSingleton.showTrace)
+        NSLog(@"itemTap (GridViewCell) %d", position);
+    
+    gSingleton.expandedViewIndex = position;
     
     switch (contentType)
     {

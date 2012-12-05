@@ -151,7 +151,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 {
     if (gSingleton.showTrace)
         NSLog(@"orientationForItemAtIndex()");
-    return [[[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"Orientation"] integerValue];
+    return [[[[self recursiveSearchForItems:self.demoItems forUniqueName:showcaseView.uniqueName] objectAtIndex:index] objectForKey:@"orientation"] integerValue];
 }
 
 #pragma mark - PTShowcaseViewDataSource

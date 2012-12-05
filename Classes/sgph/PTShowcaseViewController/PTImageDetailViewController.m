@@ -1,4 +1,5 @@
 #import "PTImageDetailViewController.h"
+#import "Photo.h"
 
 @implementation PTImageDetailViewController
 
@@ -47,19 +48,22 @@
 
 - (CGSize)imageAlbumView:(PTImageAlbumView *)imageAlbumView sizeForImageAtIndex:(NSInteger)index
 {
-    return [[UIImage imageWithContentsOfFile:[[self.data objectAtIndex:index] objectForKey:@"path"]] size];
+    Photo *photo = (Photo *)[self.data objectAtIndex:index];
+    return [[UIImage imageWithContentsOfFile:[photo photoPath]] size];
 }
 
 - (UIImage *)imageAlbumView:(PTImageAlbumView *)imageAlbumView imageAtIndex:(NSInteger)index
 {
     //NSLog(@"CURRENT INDEX: %d", index);
     
-    return [UIImage imageWithContentsOfFile:[[self.data objectAtIndex:index] objectForKey:@"path"]];
+    Photo *photo = (Photo *)[self.data objectAtIndex:index];
+    return [UIImage imageWithContentsOfFile:[photo photoPath]];
 }
 
 - (NSString *)imageAlbumView:(PTImageAlbumView *)imageAlbumView sourceForThumbnailImageAtIndex:(NSInteger)index
 {
-    return [[self.data objectAtIndex:index] objectForKey:@"thumbnailImageSource"];
+    Photo *photo = (Photo *)[self.data objectAtIndex:index];
+    return [photo thumbPath];
 }
 
 @end

@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "DataController.h"
+#import "Photo.h"
 
 NSComparisonResult compareLetters(id t1, id t2, void* context);
 
@@ -8,7 +10,6 @@ NSComparisonResult compareLetters(id t1, id t2, void* context);
 
 @class MySingleton;
 extern MySingleton *gSingleton;
-
 
 typedef enum
 {
@@ -29,14 +30,40 @@ typedef enum
     
 } PHAppState;
 
+#pragma mark Duplicated Constants
+
 typedef enum
 {
-    PHPSNotReady,		// no photo is assigned to this label, or no label is assigned to this photo
-    PHPSPendingOrder,	// photo is ready, but waiting for the order to be sent
-    PHPSReady,			// Photo Ready to send
-    PHPSUploaded,		// Photo has been sent
-    PHPSUploadFailed    // Photo failed to send
-} PHPhotoStatus;
+    kStatusOpen = 2,
+    kStatusRejected = 4,
+    kStatusCompleted = 5,
+    kStatusApproved = 6,
+    kStatusWaitingForApproval = 13,
+    kStatusFollowUp = 52,
+    kStatusFollowUpRejected = 54,
+    kStatusSubmitted = 105
+} STATUS_ID;
+
+typedef enum
+{
+    kStatusPhotoNotReady = 0,		// no photo is assigned to this label, or no label is assigned to this photo
+    kStatusPhotoPendingOrder = 1,	// photo is ready, but waiting for the order to be sent
+    kStatusPhotoReady = 2,			// Photo Ready to send
+    kStatusPhotoUploaded = 3,		// Photo has been sent
+    kStatusPhotoUploadFailed = 4    // Photo failed to send
+} PHOTO_STATUS_ID;
+
+#define UNLABELED_STRING	[NSString stringWithFormat:@"[No Label]"]
+
+//work order status:
+typedef enum
+{
+    kOrderStatusNotStarted = 0,		//0:Order Not Started
+    kOrderStatusStarted = 1, 		//1:Order Started
+    kOrderStatusComplete = 2, 		//2:Order Complete
+    kOrderStatusSubmitted = 3, 		//3:Order Submitted
+    kOrderStatusSubmitFailed = 4 	//4:Order Failed to Submit
+} ORDER_STATUS_ID;
 
 @interface MySingleton : NSObject
 {
@@ -54,10 +81,6 @@ typedef enum
     PHFilterMode currentFilterMode;
     PHAppState currentAppState;
     
-    NSMutableArray* msgQ;
-    
-    NSMutableDictionary* infoDict;
-    NSMutableDictionary* selDict;
     NSMutableArray* mainData;
     NSMutableArray *labelArr;
     NSMutableArray *requiredLabelArr;
@@ -66,16 +89,15 @@ typedef enum
     NSArray *hashValsReq;
     NSArray *curHashVals;
     NSString *currentLabelString;
-    NSInteger relativeIndex;
+    NSInteger expandedViewIndex;
     NSInteger photoCount; 
     NSInteger requiredCount; 
     NSInteger labeledCount;
+    NSString* userId;
     NSString* orderNumber;
     NSString* docDir;
-    
-    
-    NSMutableArray *dirContents;
-    
+    NSString* dbPath;
+        
     NSArray* curLetArray;
 }
 
@@ -95,19 +117,15 @@ typedef enum
 @property (nonatomic) PHFilterMode currentFilterMode;
 @property (nonatomic) PHAppState currentAppState;
 
-@property (nonatomic) NSInteger relativeIndex;
+@property (nonatomic) NSInteger expandedViewIndex;
 @property (nonatomic) NSInteger photoCount;
 @property (nonatomic) NSInteger requiredCount;
 @property (nonatomic) NSInteger labeledCount;
 
 
-@property (nonatomic, strong) NSMutableArray *dirContents;
 @property (nonatomic, strong) NSArray* curLetArray;
-@property (nonatomic, strong) NSMutableArray* msgQ;
 
 @property (nonatomic, strong) NSMutableArray* mainData;
-@property (nonatomic, strong) NSMutableDictionary* selDict;
-@property (nonatomic, strong) NSMutableDictionary* infoDict;
 @property (nonatomic, strong) NSMutableArray *labelArr;
 @property (nonatomic, strong) NSMutableArray *requiredLabelArr;
 
@@ -120,7 +138,10 @@ typedef enum
 @property (nonatomic, strong) NSString *currentLabelString;
 @property (nonatomic, strong) NSString *currentLabelDescription;
 
+@property (nonatomic, strong) NSString* dbPath;
+@property (nonatomic, strong) DataController *dbController;
 @property (nonatomic, strong) NSString* orderNumber;
+@property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* rootPhotoFolder;
 @property (nonatomic, strong) NSString* todaysPhotoFolder;
 @property (nonatomic, strong) NSString* docDir;
@@ -134,21 +155,16 @@ typedef enum
 - (NSString*) getThumbDirFull;
 - (NSString*) getThumbDirRelative;
 
-- (NSMutableDictionary*) getInfoEntry:(NSString *)key;
-- (void)loadList;
-- (void)saveList;
 - (BOOL) isReqLab:(NSString*)testLabel;
 - (void) updateLabelHash;
 
-
-- (NSMutableArray*) getPhotoDirContents;
-- (NSInteger) getDirCount;
-- (void)delImage:(NSString *)name;
+- (void)delImage:(Photo *)photo;
 - (void)saveImage:(UIImage *)image withName:(NSString *)name;
-- (void)renameImage:(NSString *)oldName withName:(NSString *)newName;
+//- (void)renameImage:(NSString *)oldName withName:(NSString *)newName;
 
 
 - (void) writeToLog:(NSString *)format, ...;
+- (void) setDBName:(NSString *)dbName;
 - (void) setTrace:(BOOL)traceOn;
 - (void) setLabels:(NSString*)newLabels;
 - (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate;
@@ -156,8 +172,7 @@ typedef enum
 - (void) setRootPhotoFolder:(NSString *)aFolder;
 - (void) setTodaysPhotoFolder:(NSString *)aFolder;
 - (void) setReqCount:(NSString *)newCount;
-- (void) updateLabelDB:(NSString*)name;
 - (void) setHashReq:(BOOL)isReq;
-- (void) clearAllKeys;
+- (void) unselectAll;
 
 @end

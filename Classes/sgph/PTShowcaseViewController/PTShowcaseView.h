@@ -5,7 +5,8 @@
 @protocol PTShowcaseViewDelegate;
 @protocol PTShowcaseViewDataSource;
 
-@interface PTShowcaseView : GMGridView {
+@interface PTShowcaseView : GMGridView
+{
     NSTimer *myTimer;
 }
 
@@ -28,8 +29,6 @@
 - (NSString *)uniqueNameForItemAtIndex:(NSInteger)index;
 - (NSString *)sourceForThumbnailImageOfItemAtIndex:(NSInteger)index;
 - (NSString *)textForItemAtIndex:(NSInteger)index;
-
-- (NSInteger)relativeIndexForItemAtIndex:(NSInteger)index withContentType:(PTContentType)contentType;
 
 - (void)reloadData;
 

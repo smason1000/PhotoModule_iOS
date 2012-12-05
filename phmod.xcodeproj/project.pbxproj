@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF515C72425008C5364 /* ExpandyButton.h */; };
 		22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */; };
+		22E70507166F036800DF0F3C /* DataController.h in Resources */ = {isa = PBXBuildFile; fileRef = 22E70506166F036800DF0F3C /* DataController.h */; };
+		22E70509166F038100DF0F3C /* Photo.h in Resources */ = {isa = PBXBuildFile; fileRef = 22E70508166F038100DF0F3C /* Photo.h */; };
 		AA747D9F0F9514B9006C5449 /* ComPhmod_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComPhmod_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		AE76FDE215770FE4006F380E /* MySingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = AE76FD9215770FE4006F380E /* MySingleton.h */; };
@@ -137,6 +139,8 @@
 /* Begin PBXFileReference section */
 		22E6ACF515C72425008C5364 /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandyButton.h; path = Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h; sourceTree = "<group>"; };
 		22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamCaptureManager.h; path = Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.h; sourceTree = "<group>"; };
+		22E70506166F036800DF0F3C /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataController.h; path = Classes/sgph/Examples/ShowcaseDemo/DataController.h; sourceTree = "<group>"; };
+		22E70508166F038100DF0F3C /* Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Classes/sgph/Examples/ShowcaseDemo/Photo.h; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ComPhmod_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPhmod_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -328,6 +332,8 @@
 		AE5CDA18156BEF91006FDD19 /* importedheaders */ = {
 			isa = PBXGroup;
 			children = (
+				22E70508166F038100DF0F3C /* Photo.h */,
+				22E70506166F036800DF0F3C /* DataController.h */,
 				AE76FD9215770FE4006F380E /* MySingleton.h */,
 				AE76FD9315770FE4006F380E /* MainViewController.h */,
 				AE76FD9415770FE4006F380E /* SampleViewController.h */,
@@ -591,6 +597,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E70507166F036800DF0F3C /* DataController.h in Resources */,
+				22E70509166F038100DF0F3C /* Photo.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

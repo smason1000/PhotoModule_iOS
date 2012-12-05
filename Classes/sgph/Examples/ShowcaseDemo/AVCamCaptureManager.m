@@ -49,6 +49,7 @@
 #import "AVCamUtilities.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "Photo.h"
 
 @interface AVCamCaptureManager (AVCaptureFileOutputRecordingDelegate) <AVCaptureFileOutputRecordingDelegate>
 @end
@@ -530,14 +531,8 @@
     return img;
 }
 
-- (void) finishCapture:(NSMutableDictionary *)dict
+- (void) finishCapture
 {
-    UIInterfaceOrientation imgOr = [UIApplication sharedApplication].statusBarOrientation;
-    
-    [dict setObject:[NSString stringWithFormat:@"%d", imgOr] forKey:@"orientation"];
-    
-    [gSingleton saveList];
-    
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"clearEvent"
      object:nil ];
@@ -566,13 +561,7 @@
     self.filename = [NSString stringWithFormat:@"%@/p%i.jpg", gSingleton.todaysPhotoFolder, timestamp];
     // change this when the key is refactored
     //curLS = [NSMutableString stringWithFormat:@"%@_%i.jpg", gSingleton.currentLabelString, timestamp];  
-        
-    //AVCaptureVideoOrientation imgOr = AVCaptureVideoOrientationPortrait;
-        
-    NSMutableDictionary *dict = [gSingleton getInfoEntry:self.filename];
-    [dict setObject:gSingleton.currentLabelString forKey:@"label"];
-    [dict setObject:gSingleton.currentLabelDescription forKey:@"description"];
-        
+    
     //ShowcaseDemo.bundle/
         
     if (emu)
@@ -616,7 +605,7 @@
             [delegate captureManagerStillImageCaptured];
         }
         */
-        [self finishCapture:dict];
+        [self finishCapture];
     }
     else
     {
@@ -687,7 +676,7 @@
                                 //{
                                 //   [delegate captureManagerStillImageCaptured];
                                 //}
-            [self finishCapture:dict];
+            [self finishCapture];
         }];
     }
 }

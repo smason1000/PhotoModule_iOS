@@ -259,6 +259,16 @@
         [mSingleton.myPHS setOrderNum:newValue];
     }
 
+    if ([key isEqualToString:@"dbName"])
+    {
+        [mSingleton.myPHS setDBName:newValue];
+    }
+
+    if ([key isEqualToString:@"userId"])
+    {
+        [mSingleton.myPHS setUserId:newValue];
+    }
+
     if ([key isEqualToString:@"rootPhotoFolder"])
     {
         [mSingleton.myPHS setRootPhotoFolder:newValue];
@@ -287,19 +297,9 @@
     
     if ([key isEqualToString:@"isReady"])
     {
+        // this was used when the msgQ was used to update the database
+        // it is kept here for legacy calls
         logProp = NO;
-        if ([mSingleton.myPHS.msgQ count] > 0)
-        {
-            //logProp = NO;
-            
-            event = [mSingleton.myPHS.msgQ objectAtIndex:0];
-            [self fireEvent:@"propertyChange" withObject:event];
-            [mSingleton.myPHS.msgQ removeObjectAtIndex:0];
-        }
-        //else if ([oldValue isEqual:newValue])
-        //{
-        //    logProp = NO;
-        //}
     }
     
     if (logProp)

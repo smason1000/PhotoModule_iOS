@@ -1386,6 +1386,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     if (cell) 
     {
         [_reusableCells removeObject:cell];
+        [cell initEvents];
     }
     
     return cell;
@@ -1407,6 +1408,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     if (cell) 
     {
         [_reusableCells removeObject:cell];
+        [cell initEvents];
     }
     
     return cell;

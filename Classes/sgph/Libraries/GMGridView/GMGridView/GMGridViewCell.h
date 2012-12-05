@@ -42,11 +42,12 @@
 @property (atomic) NSInteger ind;
 
 @property BOOL flag;
+@property BOOL eventsInited;
 
 - (void) toggleSel;
 
 /// Override to release custom data before cell is reused.
+- (void)initEvents;
 - (void)prepareForReuse;
-
 
 @end

@@ -11,12 +11,14 @@
 		221DDA91166661A400B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
 		221DDA92166661C100B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
 		221DDA931666640B00B62FE8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
-		221DDA941666649F00B62FE8 /* DBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* DBPhoto.m */; };
+		221DDA941666649F00B62FE8 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* Photo.m */; };
 		22CABB5E1665A07900E6CBBB /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
-		22CABB601665A12B00E6CBBB /* DBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* DBPhoto.m */; };
+		22CABB601665A12B00E6CBBB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* Photo.m */; };
 		22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
 		22CC0B6A15C62660002A3535 /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
 		22CC0B6B15C626A0002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
+		22E70504166E413300DF0F3C /* WorkOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FDE32F16695618006C48E6 /* WorkOrder.m */; };
+		22FDE33016695618006C48E6 /* WorkOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FDE32F16695618006C48E6 /* WorkOrder.m */; };
 		50265E2C14FD45DA0094A642 /* PTVideoThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2B14FD45DA0094A642 /* PTVideoThumbnailImageView.m */; };
 		50265E2F14FD46080094A642 /* PTPdfThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2E14FD46080094A642 /* PTPdfThumbnailImageView.m */; };
 		50265E3614FE72D10094A642 /* PTGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E3514FE72D10094A642 /* PTGroupDetailViewController.m */; };
@@ -170,11 +172,13 @@
 		221DDA90166661A400B62FE8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		22CABB5616659BD300E6CBBB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		22CABB5B16659C4E00E6CBBB /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
-		22CABB5C16659CED00E6CBBB /* DBPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBPhoto.h; sourceTree = "<group>"; };
+		22CABB5C16659CED00E6CBBB /* Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		22CABB5D1665A07900E6CBBB /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
-		22CABB5F1665A12B00E6CBBB /* DBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPhoto.m; sourceTree = "<group>"; };
+		22CABB5F1665A12B00E6CBBB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		22CC0B6615C61E42002A3535 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamCaptureManager.h; sourceTree = "<group>"; };
 		22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
+		22FDE32E1669560D006C48E6 /* WorkOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkOrder.h; sourceTree = "<group>"; };
+		22FDE32F16695618006C48E6 /* WorkOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkOrder.m; sourceTree = "<group>"; };
 		50265E2A14FD45DA0094A642 /* PTVideoThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTVideoThumbnailImageView.h; sourceTree = "<group>"; };
 		50265E2B14FD45DA0094A642 /* PTVideoThumbnailImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTVideoThumbnailImageView.m; sourceTree = "<group>"; };
 		50265E2D14FD46080094A642 /* PTPdfThumbnailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPdfThumbnailImageView.h; sourceTree = "<group>"; };
@@ -394,8 +398,10 @@
 			children = (
 				22CABB5B16659C4E00E6CBBB /* DataController.h */,
 				22CABB5D1665A07900E6CBBB /* DataController.m */,
-				22CABB5C16659CED00E6CBBB /* DBPhoto.h */,
-				22CABB5F1665A12B00E6CBBB /* DBPhoto.m */,
+				22CABB5C16659CED00E6CBBB /* Photo.h */,
+				22CABB5F1665A12B00E6CBBB /* Photo.m */,
+				22FDE32E1669560D006C48E6 /* WorkOrder.h */,
+				22FDE32F16695618006C48E6 /* WorkOrder.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -915,7 +921,8 @@
 				AE9FA73A15514E4500B554F2 /* AVCamViewController.m in Sources */,
 				AE1ED86C1563F07B003ACBFC /* MySingleton.m in Sources */,
 				22CABB5E1665A07900E6CBBB /* DataController.m in Sources */,
-				22CABB601665A12B00E6CBBB /* DBPhoto.m in Sources */,
+				22CABB601665A12B00E6CBBB /* Photo.m in Sources */,
+				22FDE33016695618006C48E6 /* WorkOrder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +930,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221DDA941666649F00B62FE8 /* DBPhoto.m in Sources */,
+				22E70504166E413300DF0F3C /* WorkOrder.m in Sources */,
+				221DDA941666649F00B62FE8 /* Photo.m in Sources */,
 				221DDA931666640B00B62FE8 /* DataController.m in Sources */,
 				AEA46BA1156A9A7C00743108 /* SampleViewController.m in Sources */,
 				AEA46B9C156A94F100743108 /* MainViewController.m in Sources */,

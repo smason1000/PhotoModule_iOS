@@ -485,13 +485,11 @@
 
     //NSLog(@"PHOTOINDEX: %d",[pagingScrollView centerPageIndex]);
     
-    gSingleton.relativeIndex = [pagingScrollView centerPageIndex];
+    gSingleton.expandedViewIndex = [pagingScrollView centerPageIndex];
     
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"galScrollEvent"
      object:nil ];
-    
-    
     
   [self refreshChromeState];
 }
