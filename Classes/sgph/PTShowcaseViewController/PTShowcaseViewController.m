@@ -529,6 +529,7 @@
     }
     
     gSingleton.expandOn = NO;
+    gSingleton.expandedViewIndex = -1;
     detailOn = NO;
 }
 

@@ -153,7 +153,7 @@ MySingleton *gSingleton = nil;
 
         self.expandedViewIndex = -1;
         self.photoCount = [[self mainData] count];
-        self.requiredCount = 0;
+        self.requiredCount = 2;
         self.labeledCount = 0;
         
         //not mutable, so can't do this in a loop...(probably a way, but too lazy to look it up :D)
@@ -227,14 +227,14 @@ MySingleton *gSingleton = nil;
         self.itemArray = [[NSMutableArray alloc] init];
         
         self.labelArr = [NSMutableArray arrayWithObjects:nil];
-        self.requiredLabelArr = [NSMutableArray arrayWithObjects:nil];
         
         [self setLabels:
-         @"[No Label],a picture of the house,back of house,center of house,demolition,eviction notice,Other: With Description,f,g,Hg,gh,gha,a1,b1,c1,d1,E1,f1,g1,a2,b2,c2,d2,e2,f2,g2,a3,b3,c3,D3,e3,f3,g3,a11,b11,c11,d11,e11,f11,w11,x11,y11,z11"
+         @"[No Label],Front of House,Street Scene,House #/Address Sign,Supporting,Back of House,Side of House,center of house,demolition,eviction notice,Other: With Description,f,g,Hg,gh,gha,a1,b1,c1,d1,E1,f1,g1,a2,b2,c2,d2,e2,f2,g2,a3,b3,c3,D3,e3,f3,g3,a11,b11,c11,d11,e11,f11,w11,x11,y11,z11"
          ];
-        //g11,h11,i11,j11,K11,l11,m11,n11,o11,p11,q11,r11,s11,t11,u11,v11,
-        [self setReqLabels: @"g2,a3,b3,c3,d3,e3" withUpdate:NO
-         ];
+        
+        self.requiredLabelArr = [[NSMutableArray alloc] init];
+        NSString *labelsWithDupe = @"a3,Front of House,Street Scene,House #/Address Sign,Supporting,Front of House";
+        [self setReqLabels:labelsWithDupe withUpdate:NO];
         
         if (emu)
         {
@@ -435,26 +435,24 @@ MySingleton *gSingleton = nil;
     
     [self.requiredLabelArr removeAllObjects];
     
-    NSMutableArray *tempArr;    
-    NSInteger i;
-    
     if ([newLabels isEqualToString:@""])
     {
         // do nothing
     }
     else
     {
-        tempArr= (NSMutableArray*)[newLabels componentsSeparatedByString: @","];
-        for (i = 0; i < [tempArr count]; i++)
+        NSArray *tempArr = (NSArray*)[newLabels componentsSeparatedByString: @","];
+        
+        for (id obj in tempArr)
         {
-            //[requiredLabelArr addObject: [[tempArr objectAtIndex:i] capitalizedString] ];
-            [self.requiredLabelArr addObject: [tempArr objectAtIndex:i] ];
+            if (![self.requiredLabelArr containsObject:obj])
+            {
+                [self.requiredLabelArr addObject:obj];
+            }
         }
     }
-
     [self updateLabelHashReq];
 
-    
     if (doDBUpdate)
     {
         [self updateRequiredLabelsInDB];

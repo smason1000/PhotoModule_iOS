@@ -302,20 +302,23 @@
     
     if (gSingleton.expandOn)
     {
-        Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
-        wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
-        
-        photo.label = gSingleton.currentLabelString;
-        photo.description = gSingleton.currentLabelDescription;
-        [photo updateDatabaseEntry];
-
-        isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
-        if (wasLabeled != isLabeled)
+        if (gSingleton.expandedViewIndex >= 0)
         {
-            if (wasLabeled)
-                gSingleton.labeledCount--;
-            else
-                gSingleton.labeledCount++;
+            Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+            wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+        
+            photo.label = gSingleton.currentLabelString;
+            photo.description = gSingleton.currentLabelDescription;
+            [photo updateDatabaseEntry];
+
+            isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+            if (wasLabeled != isLabeled)
+            {
+                if (wasLabeled)
+                    gSingleton.labeledCount--;
+                else
+                    gSingleton.labeledCount++;
+            }
         }
     }
     else
@@ -350,21 +353,24 @@
      object:nil ];
     
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"ulcEvent"
-     object:nil ];
+    postNotificationName:@"ulcEvent"
+    object:nil ];
 }
 
 -(void)eventHandlerDelete:(NSNotification *) notification
 {
     if (gSingleton.expandOn)
     {
-        Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
-        [gSingleton delImage:photo];
+        if (gSingleton.expandedViewIndex >= 0)
+        {
+            Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+            [gSingleton delImage:photo];
         
-        gSingleton.expandOn = NO;
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"expandOffEvent"
-         object:nil ];
+            gSingleton.expandOn = NO;
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"expandOffEvent"
+             object:nil ];
+        }
     }
     else
     {
