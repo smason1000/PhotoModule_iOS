@@ -92,7 +92,7 @@ preFillData:tnn
             {
                 aWorkOrder = [[WorkOrder alloc] init];
                 
-                int i = 1;
+                int i = 0;
                 
                 // order_id
                 char *text = (char *) sqlite3_column_text(stmt,i++);

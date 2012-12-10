@@ -8,7 +8,8 @@
 #import "TiUIView.h"
 #import "ComPhmodSingleton.h"
 
-@interface ComPhmodDemoView : TiUIView {
+@interface ComPhmodDemoView : TiUIView
+{
 
 @private
 	UIView *square;

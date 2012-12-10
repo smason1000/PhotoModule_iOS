@@ -1,5 +1,3 @@
-
-
 #import "PhotoHubLib.h"
 
 @implementation PhotoHubLib
@@ -9,10 +7,10 @@
 
 - (void) initAll
 {
+    NSLog(@"[PhotoHubLib] initAll");
+
     gSingleton = [MySingleton sharedSingleton];
-    
     gSingleton.isModule = YES;
-    
     pSingleton = gSingleton;
     
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -44,8 +42,6 @@
     
     //[self.window setRootViewController:mainViewController];
 
-    
-    
     ////////
     
     /*
@@ -63,13 +59,18 @@
                                                              diskPath:[SDURLCache defaultCachePath]];
     [NSURLCache setSharedURLCache:urlCache];
     
-    
-    
     ////
     
     //[self.window makeKeyAndVisible];
-
-    
 }
 
+-(void)shutdown
+{
+    NSLog(@"[PhotoHubLib] shutdown");
+    [mainViewController.view removeFromSuperview];
+    [mainViewController shutdown];
+    [gSingleton shutdown];
+    pSingleton = nil;
+    mainViewController = nil;
+}
 @end

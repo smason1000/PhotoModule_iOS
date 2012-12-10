@@ -135,11 +135,6 @@
         */
         [self updateKeys];
     }
-    else
-    {
-        if (gSingleton.showTrace)
-            NSLog(@"labelEvent ignored (GridViewCell) %d, %d, %@", self.ind, gSingleton.expandedViewIndex, gSingleton.expandOn ? @"YES" : @"NO");
-    }
 }
 
 - (void) toggleSel

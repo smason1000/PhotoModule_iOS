@@ -1,12 +1,12 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "WorkOrder.h"
 
 int main(int argc, char *argv[])
 {
-    gSingleton = [MySingleton sharedSingleton];
-    
     @autoreleasepool
     {
+        gSingleton = [MySingleton sharedSingleton];
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

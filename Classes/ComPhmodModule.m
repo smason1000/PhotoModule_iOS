@@ -4,8 +4,6 @@
 #import "TiUtils.h"
 #import "TIBlob.h"
 
-
-
 @implementation ComPhmodModule
 
 #pragma mark Internal
@@ -36,11 +34,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// this method is called when the module is first loaded
 	// you *must* call the superclass
 	[super startup];
-	
-    mSingleton = [ComPhmodSingleton sharedSingleton];
-    
-    if (mSingleton.showTrace)
-        NSLog(@"[INFO] %@ loaded",self);
+	    
+    NSLog(@"[INFO] %@ loaded",self);
 }
 
 -(void)shutdown:(id)sender
@@ -49,6 +44,8 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// typically this is during shutdown. make sure you don't do too
 	// much processing here or the app will be quit forceably
 	
+    NSLog(@"[INFO] %@ shutdown",self);
+
 	// you *must* call the superclass
 	[super shutdown:sender];
 }
@@ -88,36 +85,12 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 
 #pragma Public APIs
 
--(id)example:(id)args
-{
-	// example method
-	return @"hello world";
-}
-
--(id)exampleProp
-{
-	// example property getter
-	return @"hello world";
-}
-
--(void)setExampleProp:(id)value
-{
-	// example property setter
-}
-
-
-
-//%%%%%
-
-
-
 -(id)init
 {
 	// This is the designated initializer method and will always be called
 	// when the proxy is created.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] init");
+    NSLog(@"[MODULE LIFECYCLE EVENT] init");
 	
 	return [super init];
 }
@@ -127,8 +100,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is called from the dealloc method and is good place to
 	// release any objects and memory that have been allocated for the module.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] _destroy");
+    NSLog(@"[MODULE LIFECYCLE EVENT] _destroy");
 	
 	[super _destroy];
 }
@@ -138,17 +110,14 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is called when the proxy is being deallocated. The superclass
 	// method calls the _destroy method.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] dealloc");
-	
+    NSLog(@"[MODULE LIFECYCLE EVENT] dealloc");
 }
 
 -(void)suspend:(id)sender
 {
 	// This method is called when the application is being suspended
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] suspend");
+    NSLog(@"[MODULE LIFECYCLE EVENT] suspend");
 	
 	[super suspend:sender];
 }
@@ -157,8 +126,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	// This method is called when the application is being resumed
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] resume");
+    NSLog(@"[MODULE LIFECYCLE EVENT] resume");
 	
 	[super resume:sender];
 }
@@ -167,8 +135,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 {
 	// This method is called when the application has been resumed
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] resumed");
+    NSLog(@"[MODULE LIFECYCLE EVENT] resumed");
 	
 	[super resumed:sender];
 }
@@ -180,8 +147,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// This method is also called from the other _initWithPageContext method.
 	// The superclass method calls the init and _configure methods.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (no arguments)");
+    NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (no arguments)");
 	
 	return [super _initWithPageContext:context];
 }
@@ -193,8 +159,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// The superclass method calls the _initWithPageContext method without
 	// arguments.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (arguments)");
+    NSLog(@"[MODULE LIFECYCLE EVENT] _initWithPageContext (arguments)");
 	
 	return [super _initWithPageContext:context_ args:args];
 }
@@ -205,8 +170,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// custom configuration of the module before startup. The superclass
 	// method calls the startup method.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] _configure");
+    NSLog(@"[MODULE LIFECYCLE EVENT] _configure");
 	
 	[super _configure];
 }
@@ -219,8 +183,7 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	// proxy create method since most of the initialization has been completed
 	// at this point.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[MODULE LIFECYCLE EVENT] _initWithProperties");
+    NSLog(@"[MODULE LIFECYCLE EVENT] _initWithProperties");
 	
 	[super _initWithProperties:properties];
 }
@@ -235,73 +198,4 @@ MAKE_SYSTEM_PROP(DEMO_BOOLEAN,YES);
 	[super didReceiveMemoryWarning:notification];
 }
 
-#pragma Assets Demo Methods
-
--(NSString*)getPathToModuleAsset:(NSString*) fileName
-{
-	// The module assets are copied to the application bundle into the folder pattern
-	// "module/<moduleid>". One way to access these assets is to build a path from the
-	// mainBundle of the application.
-	
-	NSString *pathComponent = [NSString stringWithFormat:@"modules/%@/%@", [self moduleId], fileName];
-	NSString *result = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:pathComponent];
-	
-	return result;
-}
-
--(NSString*)getPathToApplicationAsset:(NSString*) fileName
-{
-	// The application assets can be accessed by building a path from the mainBundle of the application.
-	
-	NSString *result = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
-	
-	return result;
-}
-
--(TiBlob*)loadImageFromModule:(id)args
-{
-	ENSURE_SINGLE_ARG(args,NSString);
-	
-    if (mSingleton.showTrace)
-        NSLog(@"[ASSETSDEMO] loadImageFromModule %@", args);
-	
-	// Load the image from the module assets
-	NSString *imagePath = [self getPathToModuleAsset:args];
-	UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-	if (image == nil) {
-		return nil;
-	}
-	
-	// The image must be converted to a TiBlob before returning
-	TiBlob *result = [[TiBlob alloc] initWithImage:image];
-	
-    if (mSingleton.showTrace)
-        NSLog(@"[ASSETSDEMO] %@", result);
-	
-	return result;	
-}
-
--(TiBlob*)loadImageFromApplication:(id)args
-{
-	ENSURE_SINGLE_ARG(args,NSString);
-	
-    if (mSingleton.showTrace)
-        NSLog(@"[ASSETSDEMO] loadImageFromApplication %@", args);
-	
-	// Load the image from the application assets
-	NSString *imagePath = [self getPathToApplicationAsset:args];
-	UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-	if (image == nil) {
-		return nil;
-	}
-	
-	// The image must be converted to a TiBlob before returning
-	TiBlob *result = [[TiBlob alloc] initWithImage:image];
-	
-    if (mSingleton.showTrace)
-        NSLog(@"[ASSETSDEMO] %@", result);
-	
-	return result;	
-}
-//%%%%%
 @end

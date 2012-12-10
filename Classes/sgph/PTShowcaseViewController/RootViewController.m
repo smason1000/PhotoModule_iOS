@@ -351,10 +351,6 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"labelEvent"
      object:nil ];
-    
-    [[NSNotificationCenter defaultCenter]
-    postNotificationName:@"ulcEvent"
-    object:nil ];
 }
 
 -(void)eventHandlerDelete:(NSNotification *) notification
@@ -382,6 +378,8 @@
             }
         }
     }
+    gSingleton.expandedViewIndex = -1;
+
     // force a reload of the data to update images and indexes
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"clearEvent"

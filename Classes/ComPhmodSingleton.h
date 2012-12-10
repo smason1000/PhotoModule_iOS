@@ -16,5 +16,7 @@ extern ComPhmodSingleton *mSingleton;
 @property (nonatomic) BOOL showTrace;
 
 + (id)sharedSingleton;
+-(void)startup;
+-(void)shutdown;
 
 @end

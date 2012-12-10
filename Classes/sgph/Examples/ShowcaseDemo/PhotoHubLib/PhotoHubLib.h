@@ -10,14 +10,16 @@
 #import "AVCamViewController.h"
 #import "RootViewController.h"
 
-@interface PhotoHubLib : NSObject {
-    MainViewController *mainViewController;
+@interface PhotoHubLib : NSObject
+{
+    MainViewController* mainViewController;
     MySingleton* pSingleton;
 }
 
-@property (nonatomic, retain) MainViewController *mainViewController;
-@property (nonatomic, retain) MySingleton* pSingleton;
+@property (nonatomic, strong) MainViewController *mainViewController;
+@property (nonatomic, strong) MySingleton* pSingleton;
 
 - (void) initAll;
+- (void) shutdown;
 
 @end

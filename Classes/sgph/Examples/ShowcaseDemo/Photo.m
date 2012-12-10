@@ -124,8 +124,7 @@ const int QUESTION_ROW_HUB = -42;
     */
     BOOL rc;
     
-    WorkOrder *aWorkOrder = [WorkOrder getWorkOrder:[self order_id] andUserId:[self user_id]];
-    NSNumber *uploadStatus = [self getPhotoUploadStatus:aWorkOrder andLabel:[self label]];
+    NSNumber *uploadStatus = [self getPhotoUploadStatus:gSingleton.workOrder andLabel:[self label]];
     
     NSString *sql = @"INSERT INTO photos (order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
@@ -173,6 +172,7 @@ const int QUESTION_ROW_HUB = -42;
         NSString *sql = @"SELECT order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row FROM photos WHERE order_id = ? and user_id = ? and question_row = ?";
         
         sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, withOrderId, aUserId, NUMINT(QUESTION_ROW_HUB), nil]];
+
         @try
         {
             // get the rows and put them in the return array
@@ -206,10 +206,10 @@ const int QUESTION_ROW_HUB = -42;
                 // thumb_data
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.thumb_data = text != NULL ? [NSString stringWithUTF8String:text] : @"";
-                // question_row
-                aPhoto.question_row = sqlite3_column_int(stmt,i++);
                 // required
                 aPhoto.required = sqlite3_column_int(stmt,i++);
+                // question_row
+                aPhoto.question_row = sqlite3_column_int(stmt,i++);
                 // selected
                 aPhoto.selected = NO;
                 
@@ -276,10 +276,10 @@ const int QUESTION_ROW_HUB = -42;
                 // thumb_data
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.thumb_data = text != NULL ? [NSString stringWithUTF8String:text] : @"";
-                // question_row
-                aPhoto.question_row = sqlite3_column_int(stmt,i++);
                 // required
                 aPhoto.required = sqlite3_column_int(stmt,i++);
+                // question_row
+                aPhoto.question_row = sqlite3_column_int(stmt,i++);
                 // selected
                 aPhoto.selected = NO;
             }
@@ -333,29 +333,9 @@ const int QUESTION_ROW_HUB = -42;
         if (photoInDb == nil)
             return [self insertDatabaseEntry];
         
-        // we know that we just need to update our phot entry since it's already in the database
-        WorkOrder *aWorkOrder = [WorkOrder getWorkOrder:[self order_id] andUserId:[self user_id]];
-        NSNumber *uploadStatus = [self getPhotoUploadStatus:aWorkOrder andLabel:[self label]];
+        // we know that we just need to update our photo entry since it's already in the database
+        NSNumber *uploadStatus = [self getPhotoUploadStatus:gSingleton.workOrder andLabel:[self label]];
     
-        /*
-         Ti.API.info(String.format("Update operation: %s,%s,%s,'%s'", e.order_id, e.name, e.label, desc));
-         var photoRow;
-         photoRow = getSelectFirstRow("photos",{order_id:e.order_id, name:e.name},true);
-    
-         if (photoRow)
-         {
-            // the photo was in the database, make sure we don't edit an already uploaded photo
-            if (photoRow.upload_status !== app.global.PHOTO_STATUS_ID.uploaded)
-            {
-                uploadStatus = getPhotoUploadStatus(e.order_id, e.label);
-                executeUpdateSql("photos",{upload_status:uploadStatus, label:e.label, description:desc},{order_id:e.order_id, name:e.name},true);
-            }
-         }
-         else
-         {
-            Ti.API.error("Property update operation without database entry!");
-         }
-         */
         // the photo was in the database, make sure we don't edit an already uploaded photo
 
         if (photoInDb.upload_status != kStatusPhotoUploaded)

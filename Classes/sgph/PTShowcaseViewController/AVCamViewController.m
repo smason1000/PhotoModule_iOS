@@ -395,6 +395,9 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 {
     [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode"];
     [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.flashMode"];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
 }
 
 - (void)viewDidLoad

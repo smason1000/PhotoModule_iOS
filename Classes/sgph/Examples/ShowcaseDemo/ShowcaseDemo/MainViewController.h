@@ -74,8 +74,10 @@
 //@property (strong, nonatomic) UIWindow *window;
 
 - (void) updateButtonLabels;
+- (void) updateStatusBarLabel:(NSObject *)anObject;
 - (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
 - (void) setBoundsAndLayout:(CGRect)frameRect;
+- (void) shutdown;
 
 @end
 

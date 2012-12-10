@@ -7,13 +7,13 @@
 
 @implementation MainViewController
 
-@synthesize avcHolderView;
-@synthesize ptHolderView;
-@synthesize ssHolderView;
-@synthesize togHolderView;
-@synthesize rvHolderView;
-@synthesize navView;
-@synthesize headerView;
+@synthesize avcHolderView = _avcHolderView;
+@synthesize ptHolderView = _ptHolderView;
+@synthesize ssHolderView = _ssHolderView;
+@synthesize togHolderView = _togHolderView;
+@synthesize rvHolderView = _rvHolderView;
+@synthesize navView = _navView;
+@synthesize headerView = _headerView;
 
 @synthesize avcHolderViewController = _avcHolderViewController;
 @synthesize ptHolderViewController = _ptHolderViewController;
@@ -27,11 +27,11 @@
 @synthesize avcController = _avcController;
 @synthesize rvController = _rvController;
 
-@synthesize titleLabel;
+@synthesize titleLabel = _titleLabel;
 
-@synthesize labItem;
-@synthesize hudItem;
-@synthesize hudHidden;
+@synthesize labItem = _labItem;
+@synthesize hudItem = _hudItem;
+@synthesize hudHidden = _hudHidden;
 
 @synthesize cameraItem = _cameraItem;
 @synthesize snapPhotoItem = _snapPhotoItem;
@@ -85,58 +85,63 @@
 
 #pragma mark - Child View Controllers
 
+/*
 - (void)updateAvcHolderView
 {
-    _avcHolderViewController.view.frame = avcHolderView.bounds;
+    avcHolderViewController.view.frame = avcHolderView.bounds;
     [avcHolderView addSubview:_avcHolderViewController.view];    
 }
 
 - (void)updatePtHolderView
 {
-    _ptHolderViewController.view.frame = ptHolderView.bounds;
+    //_ptHolderViewController.view.frame = ptHolderView.bounds;
     [ptHolderView addSubview:_ptHolderViewController.view];
 }
 
 - (void)updateSsHolderView
 {
-    _ssHolderViewController.view.frame = ssHolderView.bounds;
+    //_ssHolderViewController.view.frame = ssHolderView.bounds;
     [ssHolderView addSubview:_ssHolderViewController.view];
 }
 
 - (void)updateTogHolderView
 {
-    _togHolderViewController.view.frame = togHolderView.bounds;
+    //_togHolderViewController.view.frame = togHolderView.bounds;
     [togHolderView addSubview:_togHolderViewController.view];
 }
 
 - (void)updateRvHolderView
 {
-    _rvHolderViewController.view.frame = rvHolderView.bounds;
+    //_rvHolderViewController.view.frame = rvHolderView.bounds;
     [rvHolderView addSubview:_rvHolderViewController.view];    
 }
 
 - (void)updateNavView
 {
-    _navViewController.view.frame = navView.bounds;
+    //_navViewController.view.frame = navView.bounds;
     [navView addSubview:_navViewController.view];    
 }
 
 - (void)updateHeaderView
 {
-    _headerViewController.view.frame = headerView.bounds;
+    //_headerViewController.view.frame = headerView.bounds;
     [headerView addSubview:_headerViewController.view];    
 }
 
 - (void)setAvcHolderViewController:(SampleViewController *)avcHolderViewController
 {
-    _avcHolderViewController = avcHolderViewController;
+    //_avcHolderViewController = avcHolderViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_avcHolderViewController];
-    [_avcHolderViewController didMoveToParentViewController:self];
+    if (avcHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_avcHolderViewController];
+        [_avcHolderViewController didMoveToParentViewController:self];
     
-    if ([self isViewLoaded]) {
-        [self updateAvcHolderView];
+        if ([self isViewLoaded])
+        {
+            [self updateAvcHolderView];
+        }
     }
 }
 
@@ -144,12 +149,16 @@
 {
     _ptHolderViewController = ptHolderViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_ptHolderViewController];
-    [ptHolderViewController didMoveToParentViewController:self];
+    if (ptHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_ptHolderViewController];
+        [ptHolderViewController didMoveToParentViewController:self];
     
-    if([self isViewLoaded]) {
-        [self updatePtHolderView];
+        if([self isViewLoaded])
+        {
+            [self updatePtHolderView];
+        }
     }
 }
 
@@ -157,12 +166,16 @@
 {
     _ssHolderViewController = ssHolderViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_ssHolderViewController];
-    [ssHolderViewController didMoveToParentViewController:self];
+    if (ssHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_ssHolderViewController];
+        [ssHolderViewController didMoveToParentViewController:self];
     
-    if([self isViewLoaded]) {
-        [self updateSsHolderView];
+        if([self isViewLoaded])
+        {
+            [self updateSsHolderView];
+        }
     }
 }
 
@@ -170,12 +183,16 @@
 {
     _togHolderViewController = togHolderViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_togHolderViewController];
-    [togHolderViewController didMoveToParentViewController:self];
+    if (togHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_togHolderViewController];
+        [togHolderViewController didMoveToParentViewController:self];
     
-    if([self isViewLoaded]) {
-        [self updateTogHolderView];
+        if([self isViewLoaded])
+        {
+            [self updateTogHolderView];
+        }
     }
 }
 
@@ -183,12 +200,16 @@
 {
     _rvHolderViewController = rvHolderViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_rvHolderViewController];
-    [_rvHolderViewController didMoveToParentViewController:self];
+    if (rvHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_rvHolderViewController];
+        [_rvHolderViewController didMoveToParentViewController:self];
     
-    if ([self isViewLoaded]) {
-        [self updateRvHolderView];
+        if ([self isViewLoaded])
+        {
+            [self updateRvHolderView];
+        }
     }
 }
 
@@ -196,12 +217,16 @@
 {
     _navViewController = navViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_navViewController];
-    [_navViewController didMoveToParentViewController:self];
+    if (navViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_navViewController];
+        [_navViewController didMoveToParentViewController:self];
     
-    if ([self isViewLoaded]) {
-        [self updateNavView];
+        if ([self isViewLoaded])
+        {
+            [self updateNavView];
+        }
     }
 }
 
@@ -209,14 +234,19 @@
 {
     _headerViewController = headerViewController;
     
-    // handle view controller hierarchy
-    [self addChildViewController:_headerViewController];
-    [_headerViewController didMoveToParentViewController:self];
+    if (headerViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:_headerViewController];
+        [_headerViewController didMoveToParentViewController:self];
     
-    if ([self isViewLoaded]) {
-        [self updateHeaderView];
+        if ([self isViewLoaded])
+        {
+            [self updateHeaderView];
+        }
     }
 }
+*/
 
 #pragma mark - View lifecycle
 
@@ -225,8 +255,11 @@
     if (gSingleton.showTrace)
         NSLog(@"MainViewController viewDidLoad");
     
+    gSingleton.workOrder = [WorkOrder getWorkOrder:gSingleton.orderNumber andUserId:gSingleton.userId];
+    NSLog(@"Initializing workorder: %@ for user: %@, status: %d", gSingleton.workOrder.order_id, gSingleton.workOrder.user_id, gSingleton.workOrder.status_id);
+
     fBounds = self.view.bounds;//CGRectMake(0.0, 0.0, 0.0, 0.0);
-    hudHidden = NO;
+    self.hudHidden = NO;
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -382,17 +415,17 @@
                                                         action:@selector(delAction:)];
     [self.delItem setTintColor:[UIColor redColor]];
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 320, 21.0f)];
-    [titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
-    [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setTextColor:[UIColor whiteColor]];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 320, 21.0f)];
+    [self.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
+    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    [self.titleLabel setTextColor:[UIColor whiteColor]];
     
     if (gSingleton.iPadDevice) {
-        [titleLabel setTextColor:[UIColor darkGrayColor]];
+        [self.titleLabel setTextColor:[UIColor darkGrayColor]];
     }
     
-    [titleLabel setText:@""];
-    [titleLabel setTextAlignment:UITextAlignmentCenter];
+    [self.titleLabel setText:@""];
+    [self.titleLabel setTextAlignment:UITextAlignmentCenter];
      
     /*
     UILabel* titleLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 50, 21.0f)];
@@ -410,7 +443,7 @@
     [titleLabel3 setTextAlignment:UITextAlignmentRight];
     */
     
-    self.reqCountItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    self.reqCountItem = [[UIBarButtonItem alloc] initWithCustomView:self.titleLabel];
     //self.labCountItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel2];
     //self.totCountItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel3];    
     
@@ -484,11 +517,9 @@
     
     
     [self updateButtonLabels];
-    [self.avcController updateHudButtons:hudHidden];
+    [self.avcController updateHudButtons:self.hudHidden];
 
-    
-    if (gSingleton.showTrace)
-        NSLog(@"MainViewController viewDidLoad");
+    /*
     [self updateAvcHolderView];
     [self updatePtHolderView];
     [self updateSsHolderView];
@@ -496,9 +527,9 @@
     [self updateRvHolderView];
     [self updateNavView];
     [self updateHeaderView];
+    */
     
     [super viewDidLoad];
-    
     
     [self.avcHolderView addSubview:self.avcController.view];
     [self.ptHolderView addSubview:self.ptController.view];
@@ -531,17 +562,91 @@
      name:@"cameraReadyEvent"
      object:nil ];
     
-    //refTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
-    //                                            target:self selector:@selector(doRefTimer:)
-    //                                          userInfo:nil
-    //                                           repeats:YES];
+    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                target:self selector:@selector(doRefTimer:)
+                                              userInfo:nil
+                                               repeats:NO];
+}
+
+-(void) shutdown
+{
+    NSLog(@"[MainViewController] shutdown");
+
+    [self.avcHolderView willMoveToSuperview:nil];
+    [self.avcHolderView removeFromSuperview];
+    [self.avcController removeFromParentViewController];
+    self.avcHolderView = nil;
+    self.avcController = nil;
+    
+    [self.ptHolderView willMoveToSuperview:nil];
+    [self.ptHolderView removeFromSuperview];
+    [self.ptController removeFromParentViewController];
+    self.ptHolderView = nil;
+    self.ptController = nil;
+
+    [self.rvHolderView willMoveToSuperview:nil];
+    [self.rvHolderView removeFromSuperview];
+    [self.rvController removeFromParentViewController];
+    self.rvHolderView = nil;
+    self.rvController = nil;
+
+    [self.navView willMoveToSuperview:nil];
+    [self.navView removeFromSuperview];
+    [self.navigationController removeFromParentViewController];
+    self.navView = nil;
+    self.navViewController = nil;
+    
+    [self.headerView willMoveToSuperview:nil];
+    [self.headerView removeFromSuperview];
+    [self.headerViewController removeFromParentViewController];
+    self.headerView = nil;
+    self.headerViewController = nil;
+    
+    [self.ssHolderView willMoveToSuperview:nil];
+    [self.ssHolderView removeFromSuperview];
+    [self.ssHolderViewController removeFromParentViewController];
+    self.ssHolderView = nil;
+    self.ssHolderViewController = nil;
+    
+    [self.togHolderView willMoveToSuperview:nil];
+    [self.togHolderView removeFromSuperview];
+    [self.togHolderViewController removeFromParentViewController];
+    self.togHolderView = nil;
+    self.togHolderViewController = nil;
+    
+    self.actionSheet = nil;
+    self.cameraItem = nil;
+    self.snapPhotoItem = nil;
+    self.galleryItem = nil;
+    self.expandItem = nil;
+    self.filterItem = nil;
+    self.toggleFilterItem = nil;
+    self.toggleFilterItem2 = nil;
+    self.editItem = nil;
+    self.labItem = nil;
+    self.curLabItem = nil;
+    self.delItem = nil;
+    bbarItems = nil;
+    self.titleLabel = nil;
+    self.reqCountItem = nil;
+    headerItems = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"galScrollEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ulcEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraReadyEvent" object:nil];
+
+    if (refTimer != nil)
+    {
+        [refTimer invalidate];
+        refTimer = nil;
+    }
 }
 
 - (void)doRefTimer:(NSTimer *)timer
 {
-    
-    //[refTimer invalidate];
-    //refTimer = nil;
+    [refTimer invalidate];
+    refTimer = nil;
     
     if (gSingleton.doRef)
     {
@@ -559,17 +664,13 @@
         
         [self updateTableView];
         [self updateButtonLabels];
-        
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"clearEvent"
-         object:nil ];
     }
 }
 
 -(void)eventHandlerLabel:(NSNotification *) notification
 {
     if (gSingleton.showTrace)
-        NSLog(@"labelEvent (MainViewController)");
+        NSLog(@"labelEvent (MainViewController) %d", gSingleton.currentAppState);
     
     if (gSingleton.currentAppState == PHASLabelFS)
     {
@@ -578,11 +679,14 @@
         
         [self updateButtonLabels];
     }
+    else
+    {
+        [self updateStatusBar:nil];
+    }
 }
 
 - (void)camTimer:(NSTimer *)timer
 {
-    
     [myTimer invalidate];
     myTimer = nil;
     self.snapPhotoItem.enabled = YES;
@@ -591,7 +695,8 @@
 -(void)eventHandlerCameraReady: (NSNotification *) notification
 {
     
-    if (!myTimer) {
+    if (!myTimer)
+    {
         myTimer = [NSTimer scheduledTimerWithTimeInterval:0.4
                                                    target:self selector:@selector(camTimer:)
                                                  userInfo:nil
@@ -633,15 +738,10 @@
     [self updateButtonLabels];
 }
 
-
 -(void) delAction:(id) sender{
     
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"delEvent"
-     object:nil ];
-    
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"clearEvent"
      object:nil ];
 }
 
@@ -679,6 +779,7 @@
 -(void) galleryAction:(id) sender{
     gSingleton.currentAppState = PHASGrid;
     gSingleton.expandOn = NO;
+    gSingleton.expandedViewIndex = -1;
     
     [self updateButtonLabels];
 
@@ -688,11 +789,12 @@
     
     gSingleton.expandOn = !gSingleton.expandOn;
     
-    if (gSingleton.expandOn) {
+    if (gSingleton.expandOn)
+    {
         gSingleton.currentAppState = PHASExpanded;
         
-        
-        if (gSingleton.currentFilterMode != PHFilterModeAll) {
+        if (gSingleton.currentFilterMode != PHFilterModeAll)
+        {
             gSingleton.currentFilterMode = PHFilterModeAll;
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"clearEvent"
@@ -703,15 +805,15 @@
          postNotificationName:@"expandOnEvent"
          object:nil ];
     }
-    else {
+    else
+    {
         gSingleton.currentAppState = PHASGrid;
-        
+        gSingleton.expandedViewIndex = -1;        
         
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"expandOffEvent"
          object:nil ];
     }
-    
     [self updateButtonLabels];
 }
 
@@ -752,8 +854,8 @@
 
 -(void) hudAction:(id) sender
 {
-    hudHidden = !hudHidden;
-    [self.avcController updateHudButtons:hudHidden];
+    self.hudHidden = !self.hudHidden;
+    [self.avcController updateHudButtons:self.hudHidden];
 }
 
 -(void) labAction:(id) sender{
@@ -827,17 +929,17 @@
     [self layoutForOrientation:[self interfaceOrientation]];
 }
 
--(void)updateStatusBar:(NSNotification *)notification
+-(void)updateStatusBarLabel:(NSObject *)anObject
 {
     if (gSingleton.showTrace)
         NSLog(@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, gSingleton.labeledCount, gSingleton.photoCount);
     
-    [titleLabel setText:[NSString stringWithFormat:@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, gSingleton.labeledCount, gSingleton.photoCount ]];
-    
-    //self.nreqCountItem.title = [NSString stringWithFormat:@"%d",[gSingleton.requiredLabelArr count]];
-    //self.nlabCountItem.title = [NSString stringWithFormat:@"%d",lCount];
-    //self.ntotCountItem.title = [NSString stringWithFormat:@"%d",gSingleton.photoCount];
+    [self.titleLabel setText:[NSString stringWithFormat:@"Required: %d     Labeled: %d     Total: %d", gSingleton.requiredCount, gSingleton.labeledCount, gSingleton.photoCount ]];
+}
 
+-(void)updateStatusBar:(NSNotification *)notification
+{
+    [self performSelector:@selector(updateStatusBarLabel:) withObject:[NSNull null] afterDelay:0.2];
 }
 
 - (void)viewDidUnload
@@ -917,11 +1019,10 @@
     //[self.ssHolderViewController.navigationBar sizeToFit];
     
     [self.navViewController.toolbar sizeToFit];
-    navView.frame = CGRectMake(0, h-toolbarHeight, w, toolbarHeight);
+    self.navView.frame = CGRectMake(0, h-toolbarHeight, w, toolbarHeight);
     
     [self.headerViewController.toolbar sizeToFit];
-    headerView.frame = CGRectMake(0, 0, w, toolbarHeight);
-    
+    self.headerView.frame = CGRectMake(0, 0, w, toolbarHeight);
     
     if (gSingleton.iPadDevice)
     {
@@ -947,11 +1048,11 @@
     
     /////
     
-    rvHolderView.hidden = NO;
-    avcHolderView.hidden = NO;
-    ptHolderView.hidden = NO;
-    ssHolderView.hidden = NO;
-    togHolderView.hidden = NO;
+    self.rvHolderView.hidden = NO;
+    self.avcHolderView.hidden = NO;
+    self.ptHolderView.hidden = NO;
+    self.ssHolderView.hidden = NO;
+    self.togHolderView.hidden = NO;
     
     
     switch (gSingleton.currentAppState)
@@ -960,33 +1061,33 @@
             
             //[self.rvController.searchDC.searchBar setHidden:YES];
             
-            avcHolderView.hidden = YES;
-            ptHolderView.hidden = YES;
-            ssHolderView.hidden = YES;
-            togHolderView.hidden = YES;
+            self.avcHolderView.hidden = YES;
+            self.ptHolderView.hidden = YES;
+            self.ssHolderView.hidden = YES;
+            self.togHolderView.hidden = YES;
             
             contentPaneWidth = w - (borderSize * 2);
             contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
-            rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+            self.rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             
             break;
         
         case PHASViewfinder:
             
-            rvHolderView.hidden = YES;
-            ptHolderView.hidden = YES;
-            ssHolderView.hidden = YES;
-            togHolderView.hidden = YES;
+            self.rvHolderView.hidden = YES;
+            self.ptHolderView.hidden = YES;
+            self.ssHolderView.hidden = YES;
+            self.togHolderView.hidden = YES;
             
             contentPaneWidth = w - (borderSize * 2);
             contentPaneHeight = h - (toolbarHeight + (borderSize * 2));
-            avcHolderView.frame = CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+            self.avcHolderView.frame = CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             
             break;
             
         default:
             
-            avcHolderView.hidden = YES;
+            self.avcHolderView.hidden = YES;
             
             if (gSingleton.editOn)
             {
@@ -996,23 +1097,23 @@
                     contentPaneWidth = (w - (borderSize * 2)) / 2;
                 
                 contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
-                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
-                rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
+                self.ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                self.rvHolderView.frame =  CGRectMake(leftPaneWidth + borderSize, borderSize+toolbarHeight, rightPaneWidth - (borderSize*2), contentPaneHeight);
             }
             else
             {
-                ssHolderView.hidden = YES;
-                rvHolderView.hidden = YES;
-                togHolderView.hidden = YES;
+                self.ssHolderView.hidden = YES;
+                self.rvHolderView.hidden = YES;
+                self.togHolderView.hidden = YES;
                 
                 contentPaneWidth = w - (borderSize * 2);
                 contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
-                ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
-                rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                self.ptHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
+                self.rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             }
             
-            ssHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y, rvHolderView.frame.size.width, toolbarHeight);
-            togHolderView.frame = CGRectMake(rvHolderView.frame.origin.x, rvHolderView.frame.origin.y+rvHolderView.frame.size.height-toolbarHeight, rvHolderView.frame.size.width, toolbarHeight);
+            self.ssHolderView.frame = CGRectMake(self.rvHolderView.frame.origin.x, self.rvHolderView.frame.origin.y, self.rvHolderView.frame.size.width, toolbarHeight);
+            self.togHolderView.frame = CGRectMake(self.rvHolderView.frame.origin.x, self.rvHolderView.frame.origin.y+self.rvHolderView.frame.size.height-toolbarHeight, self.rvHolderView.frame.size.width, toolbarHeight);
             
             break;
     }
@@ -1020,21 +1121,21 @@
     int flagVal = 0;
     int rvViewTop = 0;
     
-    if (!ssHolderView.hidden)
+    if (!self.ssHolderView.hidden)
     {
-        rvViewTop = ssHolderView.frame.size.height;
+        rvViewTop = self.ssHolderView.frame.size.height;
         flagVal++;
     }
-    if (!togHolderView.hidden)
+    if (!self.togHolderView.hidden)
     {
         flagVal++;
     }
     
     /////
     
-    self.avcController.view.frame = CGRectMake(0, 0, avcHolderView.frame.size.width, avcHolderView.frame.size.height);
-    self.ptController.view.frame = CGRectMake(0, 0, ptHolderView.frame.size.width, ptHolderView.frame.size.height);
-    self.rvController.view.frame = CGRectMake(0, rvViewTop, rvHolderView.frame.size.width, rvHolderView.frame.size.height-toolbarHeight*flagVal);    
+    self.avcController.view.frame = CGRectMake(0, 0, self.avcHolderView.frame.size.width, self.avcHolderView.frame.size.height);
+    self.ptController.view.frame = CGRectMake(0, 0, self.ptHolderView.frame.size.width, self.ptHolderView.frame.size.height);
+    self.rvController.view.frame = CGRectMake(0, rvViewTop, self.rvHolderView.frame.size.width, self.rvHolderView.frame.size.height-toolbarHeight*flagVal);
 }
 
 - (void)viewWillAppear:(BOOL)animated

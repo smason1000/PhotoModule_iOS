@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22933083167107A600A14697 /* WorkOrder.h in Resources */ = {isa = PBXBuildFile; fileRef = 22933082167107A600A14697 /* WorkOrder.h */; };
 		22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF515C72425008C5364 /* ExpandyButton.h */; };
 		22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */; };
 		22E70507166F036800DF0F3C /* DataController.h in Resources */ = {isa = PBXBuildFile; fileRef = 22E70506166F036800DF0F3C /* DataController.h */; };
@@ -137,6 +138,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22933082167107A600A14697 /* WorkOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkOrder.h; path = Classes/sgph/Examples/ShowcaseDemo/WorkOrder.h; sourceTree = "<group>"; };
 		22E6ACF515C72425008C5364 /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandyButton.h; path = Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h; sourceTree = "<group>"; };
 		22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamCaptureManager.h; path = Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.h; sourceTree = "<group>"; };
 		22E70506166F036800DF0F3C /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataController.h; path = Classes/sgph/Examples/ShowcaseDemo/DataController.h; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		AE5CDA18156BEF91006FDD19 /* importedheaders */ = {
 			isa = PBXGroup;
 			children = (
+				22933082167107A600A14697 /* WorkOrder.h */,
 				22E70508166F038100DF0F3C /* Photo.h */,
 				22E70506166F036800DF0F3C /* DataController.h */,
 				AE76FD9215770FE4006F380E /* MySingleton.h */,
@@ -599,6 +602,7 @@
 			files = (
 				22E70507166F036800DF0F3C /* DataController.h in Resources */,
 				22E70509166F038100DF0F3C /* Photo.h in Resources */,
+				22933083167107A600A14697 /* WorkOrder.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

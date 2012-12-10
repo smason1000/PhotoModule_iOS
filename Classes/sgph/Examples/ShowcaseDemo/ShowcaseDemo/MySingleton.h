@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DataController.h"
+#import "WorkOrder.h"
 #import "Photo.h"
 
 NSComparisonResult compareLetters(id t1, id t2, void* context);
@@ -26,7 +27,7 @@ typedef enum
     PHASLabelFS,
     PHASViewfinder,
     PHASGrid,
-    PHASExpanded,
+    PHASExpanded
     
 } PHAppState;
 
@@ -140,6 +141,7 @@ typedef enum
 
 @property (nonatomic, strong) NSString* dbPath;
 @property (nonatomic, strong) DataController *dbController;
+@property (nonatomic, strong) WorkOrder *workOrder;
 @property (nonatomic, strong) NSString* orderNumber;
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* rootPhotoFolder;
@@ -147,6 +149,7 @@ typedef enum
 @property (nonatomic, strong) NSString* docDir;
 
 + (id)sharedSingleton;
+-(void)shutdown;
 
 - (NSString*) getDataDirFull;
 - (NSString*) getDataDirRelative;

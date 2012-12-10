@@ -47,7 +47,6 @@ static int nextProxyId = 1;
 	
     if (mSingleton.showTrace)
         NSLog(@"[PROXY LIFECYCLE EVENT] dealloc proxy with id %d", proxyId);
-	
 }
 
 -(id)_initWithPageContext:(id<TiEvaluator>)context

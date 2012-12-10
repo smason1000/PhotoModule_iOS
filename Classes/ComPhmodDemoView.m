@@ -55,7 +55,6 @@
 {
 	// Return the square view. If this is the first time then allocate and
 	// initialize it.
-	
     
     if (square == nil)
     {
@@ -68,34 +67,11 @@
         square = mSingleton.myPhotoHubLib.mainViewController.view;
         
         self.backgroundColor = [UIColor blackColor];
-        
         square.backgroundColor = [UIColor blackColor];
         
         [self addSubview:square];
 	}
-    
 	return square;
-}
-
--(void)notifyOfColorChange:(TiColor*)newColor
-{
-    if (mSingleton.showTrace)
-        NSLog(@"[VIEW LIFECYCLE EVENT] notifyOfColorChange");
-	
-	// The event listeners for a view are actually attached to the view proxy.
-	// You must reference 'self.proxy' to get the proxy for this view
-	
-	// It is a good idea to check if there are listeners for the event that
-	// is about to fired. There could be zero or multiple listeners for the
-	// specified event.
-	if ([self.proxy _hasListeners:@"colorChange"]) {
-		NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-							   newColor,@"color",
-							   nil
-							   ];
-
-		[self.proxy fireEvent:@"colorChange" withObject:event];
-	}
 }
 
 -(void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
@@ -104,20 +80,20 @@
 	// This method is called each time the frame / bounds / center changes
 	// within Titanium. 
 	
-    if (square == nil)
-        [self square];
-    
-    if (mSingleton.showTrace)
-        NSLog(@"[VIEW LIFECYCLE EVENT] frameSizeChanged");
+    if (square != nil)
+    {
+        if (mSingleton.showTrace)
+            NSLog(@"[VIEW LIFECYCLE EVENT] frameSizeChanged");
 
-    // You must call the special method 'setView:positionRect' against
-	// the TiUtils helper class. This method will correctly layout your
-	// child view within the correct layout boundaries of the new bounds
-	// of your view.
+        // You must call the special method 'setView:positionRect' against
+        // the TiUtils helper class. This method will correctly layout your
+        // child view within the correct layout boundaries of the new bounds
+        // of your view.
 		
-	[TiUtils setView:square positionRect:bounds];
+        [TiUtils setView:square positionRect:bounds];
         
-    [mSingleton.myPhotoHubLib.mainViewController setBoundsAndLayout:bounds];
+        [mSingleton.myPhotoHubLib.mainViewController setBoundsAndLayout:bounds];
+    }
 }
 
 -(void)setColor_:(id)color
@@ -126,25 +102,14 @@
 	// view. View property methods are named using a special, required
 	// convention (the underscore suffix).
 	
-	if (square != nil)
-    {
-        if (mSingleton.showTrace)
-            NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
+    if (mSingleton.showTrace)
+        NSLog(@"[VIEW LIFECYCLE EVENT] Property Set: setColor_");
 	
-        // Use the TiUtils methods to get the values from the arguments
-        TiColor *newColor = [TiUtils colorValue:color];
-        UIColor *clr = [newColor _color];
-        UIView *sq = [self square];
-        //sq.backgroundColor = [UIColor blackColor];
-        sq.backgroundColor = clr;
-	
-        // Signal a property change notification to demonstrate the use
-        // of the proxy for the event listeners
-        [self notifyOfColorChange:newColor];
-    }
-    else
-    {
-        NSLog(@"[VIEW LIFECYCLE EVENT] WARN: Property Set: setColor_ with null view");
-    }
+    // Use the TiUtils methods to get the values from the arguments
+    TiColor *newColor = [TiUtils colorValue:color];
+    UIColor *clr = [newColor _color];
+    UIView *sq = [self square];
+    sq.backgroundColor = clr;
 }
+
 @end

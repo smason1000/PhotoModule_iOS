@@ -17,9 +17,12 @@
 	// This is the designated initializer method and will always be called
 	// when the view proxy is created.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[VIEWPROXY LIFECYCLE EVENT] init");
+    NSLog(@"[VIEWPROXY LIFECYCLE EVENT] init");
 	
+    // this is the start of the PhotoHubLib app
+    mSingleton = [ComPhmodSingleton sharedSingleton];
+    [mSingleton startup];
+
 	return [super init];
 }
 
@@ -28,9 +31,11 @@
 	// This method is called from the dealloc method and is good place to
 	// release any objects and memory that have been allocated for the view proxy.
 	
-    if (mSingleton.showTrace)
-        NSLog(@"[VIEWPROXY LIFECYCLE EVENT] _destroy");
+    NSLog(@"[VIEWPROXY LIFECYCLE EVENT] _destroy");
 	
+    // this is the end of the PhotoHubLib app
+    [mSingleton shutdown];
+
 	[super _destroy];
 }
 
@@ -41,7 +46,6 @@
 	
     if (mSingleton.showTrace)
         NSLog(@"[VIEWPROXY LIFECYCLE EVENT] dealloc");
-	
 }
 
 -(id)_initWithPageContext:(id<TiEvaluator>)context

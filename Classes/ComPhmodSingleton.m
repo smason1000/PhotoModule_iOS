@@ -22,20 +22,29 @@ ComPhmodSingleton *mSingleton = nil;
     return shared;
 }
 
-
 - (id)init
 {
     if (self = [super init])
     {
-        myPhotoHubLib = [[PhotoHubLib alloc] init];
-        [myPhotoHubLib initAll];
-        
-        myPHS = myPhotoHubLib.pSingleton;
         showTrace = YES;
     }
     return self;
 }
 
+-(void)startup
+{
+    myPhotoHubLib = [[PhotoHubLib alloc] init];
+    
+    [myPhotoHubLib initAll];
+    
+    myPHS = myPhotoHubLib.pSingleton;
+}
+-(void)shutdown
+{
+    [myPhotoHubLib shutdown];
+    myPhotoHubLib = nil;
+    myPHS = nil;
+}
 - (void)dealloc
 {
     // Should never be called, but just here for clarity really.

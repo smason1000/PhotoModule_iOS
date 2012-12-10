@@ -73,7 +73,6 @@ void onUncaughtException(NSException *exception)
         
     [self.window makeKeyAndVisible];
     
-    
     return YES;
 }
 

@@ -16,6 +16,7 @@ MySingleton *gSingleton = nil;
 @synthesize openToGallery;
 @synthesize applyCaptureDefaults;
 @synthesize dbController;
+@synthesize workOrder;
 @synthesize dbPath;
 @synthesize orderNumber;
 @synthesize userId;
@@ -79,9 +80,13 @@ MySingleton *gSingleton = nil;
 {
     if (self = [super init])
     {
+        NSLog(@"[PhotoHubLib] Singleton startup");
         self.mainData = [[NSMutableArray alloc] init];
 
         // mimic the way INSPI will initialize the application
+        //NSString *emuOrder = @"59590951";   // open
+        NSString *emuOrder = @"59608755";   // submitted
+        
         BOOL emu = NO;
         NSString *model = [[UIDevice currentDevice] model];
         if ([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPad Simulator"])
@@ -98,7 +103,7 @@ MySingleton *gSingleton = nil;
         
         if (emu)
         {
-            [self setRootPhotoFolder:@"123_EASY_ST_12345678"];
+            [self setRootPhotoFolder:[NSString stringWithFormat:@"123_EASY_ST_%@", emuOrder]];
 
             NSDate *date = [NSDate date];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
@@ -247,10 +252,30 @@ MySingleton *gSingleton = nil;
             
             // photo folder needs to be set before this point
             
-            [self setOrderNum:@"12345678"];
+            [self setOrderNum:emuOrder];
         }
     }
     return self;
+}
+
+-(void)shutdown
+{
+    NSLog(@"[PhotoHubLib] Singleton shutdown");
+
+    // do anything and everything needed to clear out all the data from a previous order
+    [[self mainData] removeAllObjects];
+    [self setRootPhotoFolder:@""];
+    [self setTodaysPhotoFolder:@""];
+    self.orderNumber = @"0";
+    
+    self.expandedViewIndex = -1;
+    self.photoCount = 0;
+    self.requiredCount = 0;
+    self.labeledCount = 0;
+    
+    [self setDBName:@""];
+    [self setUserId:@""];
+    self.dbController = nil;;
 }
 
 - (void) updateLabelHash
@@ -356,10 +381,18 @@ MySingleton *gSingleton = nil;
 
 - (void) setDBName:(NSString *)name
 {
-    self.dbController = [[DataController alloc] init];
-    [self setDbPath:[self.dbController dbPath:name]];
-    bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+    if ([name length] > 0)
+    {
+        if (self.dbController == nil)
+            self.dbController = [[DataController alloc] init];
+        [self setDbPath:[self.dbController dbPath:name]];
+        bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+        NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+    }
+    else
+    {
+        [self setDbPath:@""];
+    }
 }
 
 
@@ -372,6 +405,7 @@ MySingleton *gSingleton = nil;
     //requiredCount = 0;
     self.editOn = YES;
     self.expandOn = NO;
+    self.expandedViewIndex = -1;
     self.filterOn = NO;
     self.applyCaptureDefaults = YES;
     
@@ -380,14 +414,8 @@ MySingleton *gSingleton = nil;
         self.editOn = NO;
         self.currentAppState = PHASGrid;
     }
-
     self.doRef = YES;
     [self writeToLog:@"OrderNumber: %@, folder = %@", self.orderNumber, self.rootPhotoFolder];
-
-    // force a reload of the data to update images and indexes
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"clearEvent"
-     object:nil];
 }
 
 - (void) setReqCount:(NSString *)newCount

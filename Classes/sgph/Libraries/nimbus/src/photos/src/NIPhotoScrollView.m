@@ -149,12 +149,6 @@
 
     [_scrollView addSubview:_imageView];
     [self addSubview:_scrollView];
-
-    [[NSNotificationCenter defaultCenter]
-       addObserver:self
-       selector:@selector(eventHandlerContentFrameChanged:)
-       name:@"contentFrameChangedEvent"
-       object:nil ];
   }
   return self;
 }
@@ -162,8 +156,6 @@
 - (void) dealloc
 {
     NSLog(@"NIPhotoScrollView dealloc");
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter removeObserver:self];
 }
 
 
@@ -588,13 +580,5 @@
 
   [_scrollView setNeedsLayout];
 }
-
--(void)eventHandlerContentFrameChanged: (NSNotification *) notification
-{
-    CGRect rect = [[notification.userInfo valueForKey:@"rectValue"] CGRectValue];
-    NSLog(@"NIPhotoScrollView frameChanged %@ to %@", NSStringFromCGRect(self.frame), NSStringFromCGRect(rect));
-    [_scrollView setFrame:rect];
-}
-
 
 @end
