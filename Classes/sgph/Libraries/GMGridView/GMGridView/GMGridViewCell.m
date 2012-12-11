@@ -137,6 +137,17 @@
     }
 }
 
+-(void) dealloc
+{
+    //NSLog(@"GMGridViewCell dealloc %d", self.ind);
+    if (self.eventsInited)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
+        self.eventsInited = NO;
+    }
+}
+
 - (void) toggleSel
 {
     if (self.flag == NO)
@@ -351,9 +362,12 @@
 
 - (void)prepareForReuse
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
-    self.eventsInited = NO;
+    if (self.eventsInited)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
+        self.eventsInited = NO;
+    }
 
     self.fullSize = CGSizeZero;
     self.fullSizeView = nil;

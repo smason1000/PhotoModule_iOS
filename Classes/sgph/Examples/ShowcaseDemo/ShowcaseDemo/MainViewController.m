@@ -15,13 +15,13 @@
 @synthesize navView = _navView;
 @synthesize headerView = _headerView;
 
-@synthesize avcHolderViewController = _avcHolderViewController;
-@synthesize ptHolderViewController = _ptHolderViewController;
-@synthesize ssHolderViewController = _ssHolderViewController;
-@synthesize togHolderViewController = _togHolderViewController;
-@synthesize rvHolderViewController = _rvHolderViewController;
+//@synthesize avcHolderViewController = _avcHolderViewController;
+//@synthesize ptHolderViewController = _ptHolderViewController;
+//@synthesize rvHolderViewController = _rvHolderViewController;
 @synthesize navViewController = _navViewController;
 @synthesize headerViewController = _headerViewController;
+@synthesize ssHolderViewController = _ssHolderViewController;
+@synthesize togHolderViewController = _togHolderViewController;
 
 @synthesize ptController = _ptController;
 @synthesize avcController = _avcController;
@@ -88,8 +88,8 @@
 /*
 - (void)updateAvcHolderView
 {
-    avcHolderViewController.view.frame = avcHolderView.bounds;
-    [avcHolderView addSubview:_avcHolderViewController.view];    
+    self.avcHolderViewController.view.frame = self.avcHolderView.bounds;
+    [self.avcHolderView addSubview:self.avcHolderViewController.view];
 }
 
 - (void)updatePtHolderView
@@ -98,36 +98,38 @@
     [ptHolderView addSubview:_ptHolderViewController.view];
 }
 
-- (void)updateSsHolderView
+ - (void)updateRvHolderView
 {
-    //_ssHolderViewController.view.frame = ssHolderView.bounds;
-    [ssHolderView addSubview:_ssHolderViewController.view];
+ //_rvHolderViewController.view.frame = rvHolderView.bounds;
+ [rvHolderView addSubview:_rvHolderViewController.view];
 }
-
-- (void)updateTogHolderView
-{
-    //_togHolderViewController.view.frame = togHolderView.bounds;
-    [togHolderView addSubview:_togHolderViewController.view];
-}
-
-- (void)updateRvHolderView
-{
-    //_rvHolderViewController.view.frame = rvHolderView.bounds;
-    [rvHolderView addSubview:_rvHolderViewController.view];    
-}
+*/
 
 - (void)updateNavView
 {
-    //_navViewController.view.frame = navView.bounds;
-    [navView addSubview:_navViewController.view];    
+    self.navViewController.view.frame = self.navView.bounds;
+    [self.navView addSubview:self.navViewController.view];
 }
 
 - (void)updateHeaderView
 {
-    //_headerViewController.view.frame = headerView.bounds;
-    [headerView addSubview:_headerViewController.view];    
+    self.headerViewController.view.frame = self.headerView.bounds;
+    [self.headerView addSubview:self.headerViewController.view];
 }
 
+- (void)updateSsHolderView
+{
+    self.ssHolderViewController.view.frame = self.ssHolderView.bounds;
+    [self.ssHolderView addSubview:self.ssHolderViewController.view];
+}
+
+- (void)updateTogHolderView
+{
+    self.togHolderViewController.view.frame = self.togHolderView.bounds;
+    [self.togHolderView addSubview:self.togHolderViewController.view];
+}
+
+/*
 - (void)setAvcHolderViewController:(SampleViewController *)avcHolderViewController
 {
     //_avcHolderViewController = avcHolderViewController;
@@ -162,66 +164,33 @@
     }
 }
 
-- (void)setSsHolderViewController:(SampleNavigationController *)ssHolderViewController
-{
-    _ssHolderViewController = ssHolderViewController;
-    
-    if (ssHolderViewController != nil)
-    {
-        // handle view controller hierarchy
-        [self addChildViewController:_ssHolderViewController];
-        [ssHolderViewController didMoveToParentViewController:self];
-    
-        if([self isViewLoaded])
-        {
-            [self updateSsHolderView];
-        }
-    }
-}
+ - (void)setRvHolderViewController:(SampleViewController *)rvHolderViewController
+ {
+ _rvHolderViewController = rvHolderViewController;
+ 
+ if (rvHolderViewController != nil)
+ {
+ // handle view controller hierarchy
+ [self addChildViewController:_rvHolderViewController];
+ [_rvHolderViewController didMoveToParentViewController:self];
+ 
+ if ([self isViewLoaded])
+ {
+ [self updateRvHolderView];
+ }
+ }
+ }
+*/
 
-- (void)setTogHolderViewController:(SampleNavigationController *)togHolderViewController
+- (void)initNavViewController:(SampleNavigationController *)navViewController
 {
-    _togHolderViewController = togHolderViewController;
+    self.navViewController = navViewController;
     
-    if (togHolderViewController != nil)
+    if (self.navViewController != nil)
     {
         // handle view controller hierarchy
-        [self addChildViewController:_togHolderViewController];
-        [togHolderViewController didMoveToParentViewController:self];
-    
-        if([self isViewLoaded])
-        {
-            [self updateTogHolderView];
-        }
-    }
-}
-
-- (void)setRvHolderViewController:(SampleViewController *)rvHolderViewController
-{
-    _rvHolderViewController = rvHolderViewController;
-    
-    if (rvHolderViewController != nil)
-    {
-        // handle view controller hierarchy
-        [self addChildViewController:_rvHolderViewController];
-        [_rvHolderViewController didMoveToParentViewController:self];
-    
-        if ([self isViewLoaded])
-        {
-            [self updateRvHolderView];
-        }
-    }
-}
-
-- (void)setNavViewOtherController:(SampleNavigationController *)navViewController
-{
-    _navViewController = navViewController;
-    
-    if (navViewController != nil)
-    {
-        // handle view controller hierarchy
-        [self addChildViewController:_navViewController];
-        [_navViewController didMoveToParentViewController:self];
+        [self addChildViewController:self.navViewController];
+        [self.navViewController didMoveToParentViewController:self];
     
         if ([self isViewLoaded])
         {
@@ -230,15 +199,15 @@
     }
 }
 
-- (void)setHeaderViewController:(SampleNavigationController *)headerViewController
+- (void)initHeaderViewController:(SampleNavigationController *)headerViewController
 {
-    _headerViewController = headerViewController;
+    self.headerViewController = headerViewController;
     
-    if (headerViewController != nil)
+    if (self.headerViewController != nil)
     {
         // handle view controller hierarchy
-        [self addChildViewController:_headerViewController];
-        [_headerViewController didMoveToParentViewController:self];
+        [self addChildViewController:self.headerViewController];
+        [self.headerViewController didMoveToParentViewController:self];
     
         if ([self isViewLoaded])
         {
@@ -246,7 +215,40 @@
         }
     }
 }
-*/
+
+- (void)initSSHolderViewController:(SampleNavigationController *)ssHolderViewController
+{
+    self.ssHolderViewController = ssHolderViewController;
+    
+    if (self.ssHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:self.ssHolderViewController];
+        [self.ssHolderViewController didMoveToParentViewController:self];
+        
+        if([self isViewLoaded])
+        {
+            [self updateSsHolderView];
+        }
+    }
+}
+
+- (void)initTogHolderViewController:(SampleNavigationController *)togHolderViewController
+{
+    self.togHolderViewController = togHolderViewController;
+    
+    if (self.togHolderViewController != nil)
+    {
+        // handle view controller hierarchy
+        [self addChildViewController:self.togHolderViewController];
+        [self.togHolderViewController didMoveToParentViewController:self];
+        
+        if([self isViewLoaded])
+        {
+            [self updateTogHolderView];
+        }
+    }
+}
 
 #pragma mark - View lifecycle
 
@@ -267,15 +269,15 @@
     self.rvController = [[RootViewController alloc] init];
     self.avcController = [[AVCamViewController alloc] init];
         
-    self.avcHolderView = [[UIView alloc] init];
-    [self.view addSubview:self.avcHolderView];
-    
     self.ptHolderView = [[UIView alloc] init];
     [self.view addSubview:self.ptHolderView];
     
     self.rvHolderView = [[UIView alloc] init];
     [self.view addSubview:self.rvHolderView];
     
+    self.avcHolderView = [[UIView alloc] init];
+    [self.view addSubview:self.avcHolderView];
+
     self.navView = [[UIView alloc] init];
     [self.view addSubview:self.navView];
     
@@ -357,8 +359,6 @@
     
     
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    
     
     bbarItems = [NSArray arrayWithObjects: 
                       
@@ -493,48 +493,21 @@
                        
                        nil];
     
-    [self.ssHolderViewController setToolbarHidden:NO];
-    [self.ssHolderViewController.toolbar setBarStyle:UIBarStyleDefault];//UIBarStyleBlackOpaque];
-    self.ssHolderViewController.toolbar.items = [NSArray arrayWithObjects: 
-                                                 flexible,
-                                                 self.delItem,
-                                                 flexible,
-                                                 nil];
-    
-    [self.togHolderViewController setToolbarHidden:NO];
-    [self.togHolderViewController.toolbar setBarStyle:UIBarStyleDefault];//UIBarStyleBlackOpaque];
-    self.togHolderViewController.toolbar.items = [NSArray arrayWithObjects:
-                                                  flexible,
-                                                  self.toggleFilterItem2,
-                                                  flexible,
-                                                  nil],
-    
-    [self.navViewController setToolbarHidden:NO];
-    [self.navViewController.toolbar setBarStyle:UIBarStyleDefault];
-    
-    [self.headerViewController setToolbarHidden:NO];
-    [self.headerViewController.toolbar setBarStyle:UIBarStyleDefault];
-    
-    
-    [self updateButtonLabels];
+    //[self updateButtonLabels];
     [self.avcController updateHudButtons:self.hudHidden];
+    
+    [self initNavViewController:[[SampleNavigationController alloc] init]];
+    [self initHeaderViewController:[[SampleNavigationController alloc] init]];
+    [self initSSHolderViewController:[[SampleNavigationController alloc] init]];
+    [self initTogHolderViewController:[[SampleNavigationController alloc] init]];
 
-    /*
-    [self updateAvcHolderView];
-    [self updatePtHolderView];
-    [self updateSsHolderView];
-    [self updateTogHolderView];
-    [self updateRvHolderView];
-    [self updateNavView];
-    [self updateHeaderView];
-    */
-    
-    [super viewDidLoad];
-    
     [self.avcHolderView addSubview:self.avcController.view];
     [self.ptHolderView addSubview:self.ptController.view];
     [self.rvHolderView addSubview:self.rvController.view];
-    
+    [self.navView addSubview:self.navViewController.view];
+    [self.headerView addSubview:self.headerViewController.view];
+    [self.ssHolderView addSubview:self.ssHolderViewController.view];
+    [self.togHolderView addSubview:self.togHolderViewController.view];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -562,7 +535,9 @@
      name:@"cameraReadyEvent"
      object:nil ];
     
-    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+    [super viewDidLoad];
+
+    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                 target:self selector:@selector(doRefTimer:)
                                               userInfo:nil
                                                repeats:NO];
@@ -572,47 +547,47 @@
 {
     NSLog(@"[MainViewController] shutdown");
 
+    [self.avcController removeFromParentViewController];
+    self.avcController = nil;
     [self.avcHolderView willMoveToSuperview:nil];
     [self.avcHolderView removeFromSuperview];
-    [self.avcController removeFromParentViewController];
     self.avcHolderView = nil;
-    self.avcController = nil;
     
+    [self.ptController removeFromParentViewController];
+    self.ptController = nil;
     [self.ptHolderView willMoveToSuperview:nil];
     [self.ptHolderView removeFromSuperview];
-    [self.ptController removeFromParentViewController];
     self.ptHolderView = nil;
-    self.ptController = nil;
 
+    [self.rvController removeFromParentViewController];
+    self.rvController = nil;
     [self.rvHolderView willMoveToSuperview:nil];
     [self.rvHolderView removeFromSuperview];
-    [self.rvController removeFromParentViewController];
     self.rvHolderView = nil;
-    self.rvController = nil;
 
+    [self.navViewController removeFromParentViewController];
+    self.navViewController = nil;
     [self.navView willMoveToSuperview:nil];
     [self.navView removeFromSuperview];
-    [self.navigationController removeFromParentViewController];
     self.navView = nil;
-    self.navViewController = nil;
     
+    [self.headerViewController removeFromParentViewController];
+    self.headerViewController = nil;
     [self.headerView willMoveToSuperview:nil];
     [self.headerView removeFromSuperview];
-    [self.headerViewController removeFromParentViewController];
     self.headerView = nil;
-    self.headerViewController = nil;
     
+    [self.ssHolderViewController removeFromParentViewController];
+    self.ssHolderViewController = nil;
     [self.ssHolderView willMoveToSuperview:nil];
     [self.ssHolderView removeFromSuperview];
-    [self.ssHolderViewController removeFromParentViewController];
     self.ssHolderView = nil;
-    self.ssHolderViewController = nil;
     
+    [self.togHolderViewController removeFromParentViewController];
+    self.togHolderViewController = nil;
     [self.togHolderView willMoveToSuperview:nil];
     [self.togHolderView removeFromSuperview];
-    [self.togHolderViewController removeFromParentViewController];
     self.togHolderView = nil;
-    self.togHolderViewController = nil;
     
     self.actionSheet = nil;
     self.cameraItem = nil;
@@ -662,6 +637,29 @@
              object:nil ];
         }
         
+        UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+        [self.ssHolderViewController setToolbarHidden:NO];
+        [self.ssHolderViewController.toolbar setBarStyle:UIBarStyleDefault];//UIBarStyleBlackOpaque];
+        self.ssHolderViewController.toolbar.items = [NSArray arrayWithObjects:
+                                                     flexible,
+                                                     self.delItem,
+                                                     flexible,
+                                                     nil];
+        
+        [self.togHolderViewController setToolbarHidden:NO];
+        [self.togHolderViewController.toolbar setBarStyle:UIBarStyleDefault];//UIBarStyleBlackOpaque];
+        self.togHolderViewController.toolbar.items = [NSArray arrayWithObjects:
+                                                      flexible,
+                                                      self.toggleFilterItem2,
+                                                      flexible,
+                                                      nil],
+        
+        [self.navViewController setToolbarHidden:NO];
+        [self.navViewController.toolbar setBarStyle:UIBarStyleDefault];
+        
+        [self.headerViewController setToolbarHidden:NO];
+        [self.headerViewController.toolbar setBarStyle:UIBarStyleDefault];
         [self updateTableView];
         [self updateButtonLabels];
     }
@@ -946,11 +944,11 @@
 {
     if (gSingleton.showTrace)
         NSLog(@"MainViewController viewDidUnload");    
-    [self setAvcHolderViewController:nil];
-    [self setPtHolderViewController:nil];
+    //[self setAvcHolderViewController:nil];
+    //[self setPtHolderViewController:nil];
     [self setSsHolderViewController:nil];
     [self setTogHolderViewController:nil];
-    [self setRvHolderViewController:nil];
+    //[self setRvHolderViewController:nil];
     [self setNavViewController:nil];
     [self setHeaderViewController:nil];
     [self setAvcHolderView:nil];

@@ -20,6 +20,7 @@
 }
 
 @property (strong, nonatomic) UILabel* titleLabel;
+
 @property (strong, nonatomic) UIView *avcHolderView;
 @property (strong, nonatomic) UIView *ptHolderView;
 @property (strong, nonatomic) UIView *ssHolderView;
@@ -28,9 +29,9 @@
 @property (strong, nonatomic) UIView *navView;
 @property (strong, nonatomic) UIView *headerView;
 
-@property (strong, nonatomic) SampleViewController *avcHolderViewController;
-@property (strong, nonatomic) SampleViewController *ptHolderViewController;
-@property (strong, nonatomic) SampleViewController *rvHolderViewController;
+//@property (strong, nonatomic) SampleViewController *avcHolderViewController;
+//@property (strong, nonatomic) SampleViewController *ptHolderViewController;
+//@property (strong, nonatomic) SampleViewController *rvHolderViewController;
 @property (strong, nonatomic) SampleNavigationController *navViewController;
 @property (strong, nonatomic) SampleNavigationController *headerViewController;
 @property (strong, nonatomic) SampleNavigationController *ssHolderViewController;

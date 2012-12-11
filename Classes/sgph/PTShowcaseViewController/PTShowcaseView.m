@@ -37,6 +37,11 @@
     return self;
 }
 
+-(void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];    
+}
+
 #pragma mark - Instance properties
 
 - (NSArray *)imageItems

@@ -47,7 +47,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
         return root;
     }
     
-    for (NSDictionary *item in root) {
+    for (NSDictionary *item in root)
+    {
         if ([[item objectForKey:@"ContentType"] integerValue] == PTContentTypeGroup) {
             if ([uniqueName isEqualToString:[item objectForKey:@"UniqueName"]]) {
                 return [item objectForKey:@"Items"];
@@ -62,9 +63,6 @@ UITabBarItem *tabBarItem = [self tabBarItem];
     
     return nil;
 }
-
-
-
 
 - (NSArray *)demoItems
 {
@@ -99,10 +97,6 @@ UITabBarItem *tabBarItem = [self tabBarItem];
     self.view.backgroundColor = [UIColor blackColor];//[UIColor scrollViewTexturedBackgroundColor]; // this is the default by the way ;-)
     
     ////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
 }
 
 - (void)viewDidUnload
@@ -155,8 +149,6 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 }
 
 #pragma mark - PTShowcaseViewDataSource
-
-
 
 - (NSInteger)numberOfItemsInShowcaseView:(PTShowcaseView *)showcaseView
 {

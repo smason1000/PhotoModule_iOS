@@ -10,6 +10,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize mainViewController = _mainViewController;
 
 void onUncaughtException(NSException *exception) 
 {
@@ -26,8 +27,9 @@ void onUncaughtException(NSException *exception)
     
     // Override point for customization after application launch.
     
-    MainViewController *mainViewController = [[MainViewController alloc] init];
+    mainViewController = [[MainViewController alloc] init];
     
+    /*
     SampleViewController *avcHolderViewController = [[SampleViewController alloc] init];
     mainViewController.avcHolderViewController = avcHolderViewController;
     
@@ -48,7 +50,7 @@ void onUncaughtException(NSException *exception)
     
     SampleNavigationController *togHolderViewController = [[SampleNavigationController alloc] init];
     mainViewController.togHolderViewController = togHolderViewController;
-    
+    */
     
     [self.window setRootViewController:mainViewController];
 

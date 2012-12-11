@@ -19,6 +19,7 @@
     
     mainViewController = [[MainViewController alloc] init];
     
+    /*
     SampleViewController *avcHolderViewController = [[SampleViewController alloc] init];
     mainViewController.avcHolderViewController = avcHolderViewController;
     
@@ -39,6 +40,7 @@
     
     SampleNavigationController *togHolderViewController = [[SampleNavigationController alloc] init];
     mainViewController.togHolderViewController = togHolderViewController;
+    */
     
     //[self.window setRootViewController:mainViewController];
 
