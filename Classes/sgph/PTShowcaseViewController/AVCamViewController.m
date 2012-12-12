@@ -442,7 +442,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
                 self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(21, 1, 278, 370)];
                 //self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 320, 370)];
             }
-            [self applyDefaults:YES];
+            [self applyDefaults:NO];
             
             self.videoPreviewView.backgroundColor = [UIColor blackColor];
                         

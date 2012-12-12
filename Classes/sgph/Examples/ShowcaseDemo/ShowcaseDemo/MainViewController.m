@@ -28,6 +28,7 @@
 @synthesize rvController = _rvController;
 
 @synthesize titleLabel = _titleLabel;
+@synthesize titleCurrentLabel = _titleCurrentLabel;
 
 @synthesize labItem = _labItem;
 @synthesize hudItem = _hudItem;
@@ -351,12 +352,7 @@
                                                    target:self
                                                    action:@selector(hudAction:)];
     */
-    
-    self.curLabItem = [[UIBarButtonItem alloc] initWithTitle:@""
-                                                     style:UIBarButtonItemStylePlain
-                                                    target:self
-                                                    action:@selector(curLabAction:)];
-    
+        
     
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -415,18 +411,34 @@
                                                         action:@selector(delAction:)];
     [self.delItem setTintColor:[UIColor redColor]];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 320, 21.0f)];
+    // Title Label for Counts in grid view
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 11.0f, 320, 21.0f)];
     [self.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
     [self.titleLabel setBackgroundColor:[UIColor clearColor]];
     [self.titleLabel setTextColor:[UIColor whiteColor]];
-    
-    if (gSingleton.iPadDevice) {
+    if (gSingleton.iPadDevice)
+    {
         [self.titleLabel setTextColor:[UIColor darkGrayColor]];
     }
-    
     [self.titleLabel setText:@""];
     [self.titleLabel setTextAlignment:UITextAlignmentCenter];
-     
+
+    self.reqCountItem = [[UIBarButtonItem alloc] initWithCustomView:self.titleLabel];
+
+    // Title Label for Current Item in navigation views
+    self.titleCurrentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 11.0f, 320, 21.0f)];
+    [self.titleCurrentLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
+    [self.titleCurrentLabel setBackgroundColor:[UIColor clearColor]];
+    [self.titleCurrentLabel setTextColor:[UIColor whiteColor]];
+    if (gSingleton.iPadDevice)
+    {
+        [self.titleCurrentLabel setTextColor:[UIColor darkGrayColor]];
+    }
+    [self.titleCurrentLabel setText:@""];
+    [self.titleCurrentLabel setTextAlignment:UITextAlignmentCenter];
+
+    self.curLabItem = [[UIBarButtonItem alloc] initWithCustomView:self.titleCurrentLabel];
+    
     /*
     UILabel* titleLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, 50, 21.0f)];
     [titleLabel2 setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
@@ -443,7 +455,7 @@
     [titleLabel3 setTextAlignment:UITextAlignmentRight];
     */
     
-    self.reqCountItem = [[UIBarButtonItem alloc] initWithCustomView:self.titleLabel];
+    
     //self.labCountItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel2];
     //self.totCountItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel3];    
     
@@ -492,9 +504,6 @@
                         nil],
                        
                        nil];
-    
-    //[self updateButtonLabels];
-    [self.avcController updateHudButtons:self.hudHidden];
     
     [self initNavViewController:[[SampleNavigationController alloc] init]];
     [self initHeaderViewController:[[SampleNavigationController alloc] init]];
@@ -603,6 +612,7 @@
     self.delItem = nil;
     bbarItems = nil;
     self.titleLabel = nil;
+    self.titleCurrentLabel = nil;
     self.reqCountItem = nil;
     headerItems = nil;
 
@@ -677,6 +687,13 @@
         
         [self updateButtonLabels];
     }
+    else if (gSingleton.currentAppState == PHASExpanded)
+    {
+        if ([gSingleton.currentLabelDescription length] > 0)
+            [self.titleCurrentLabel setText:gSingleton.currentLabelDescription];
+        else
+            [self.titleCurrentLabel setText:gSingleton.currentLabelString];
+    }
     else
     {
         [self updateStatusBar:nil];
@@ -706,14 +723,15 @@
 {
     if ([gSingleton.mainData count] > 0)
     {
-        if (gSingleton.showTrace)
-            NSLog(@"Gallery Scroll event (%d)", gSingleton.expandedViewIndex);
-
         Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+
+        if (gSingleton.showTrace)
+            NSLog(@"Gallery Scroll event (%d) %@", gSingleton.expandedViewIndex, photo.label);
+
         if ([photo.description length] == 0)
-            self.curLabItem.title = photo.label;
+            [self.titleCurrentLabel setText:photo.label];
         else
-            self.curLabItem.title = photo.description;
+            [self.titleCurrentLabel setText:photo.description];
     }
 }
 
@@ -798,7 +816,9 @@
              postNotificationName:@"clearEvent"
              object:nil ];     
         }
-        
+        if (gSingleton.expandedViewIndex == -1 && gSingleton.photoCount > 0)
+            gSingleton.expandedViewIndex = 0;
+            
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"expandOnEvent"
          object:nil ];
@@ -883,20 +903,18 @@
     else
     {
         self.expandItem.title = @"Expand";
+        if ([gSingleton.currentLabelDescription length] > 0)
+            [self.titleCurrentLabel setText:gSingleton.currentLabelDescription];
+        else
+            [self.titleCurrentLabel setText:gSingleton.currentLabelString];
     }
-    
-    if ([gSingleton.currentLabelDescription length] > 0)
-        self.curLabItem.title = gSingleton.currentLabelDescription;
-    else
-        self.curLabItem.title = gSingleton.currentLabelString;
     
     if (gSingleton.currentAppState == PHASViewfinder || gSingleton.currentAppState == PHASLabelFS)
     {
         curInd = 1;
     }
-    
     self.headerViewController.toolbar.items = [headerItems objectAtIndex:curInd];
-
+    
     if (gSingleton.filterOn)
     {
         self.toggleFilterItem.title = @"Show All";
@@ -968,7 +986,7 @@
     if (gSingleton.showTrace)
         NSLog(@"MainViewController shouldAutorotateToInterfaceOrientation %d", interfaceOrientation);    
     // Return YES for supported orientations
-	return YES;
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
 }
 
 - (void) setBoundsAndLayout:(CGRect)frameRect

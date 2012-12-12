@@ -20,6 +20,7 @@
 }
 
 @property (strong, nonatomic) UILabel* titleLabel;
+@property (strong, nonatomic) UILabel* titleCurrentLabel;
 
 @property (strong, nonatomic) UIView *avcHolderView;
 @property (strong, nonatomic) UIView *ptHolderView;
