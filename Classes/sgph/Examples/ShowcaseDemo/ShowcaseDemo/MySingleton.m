@@ -272,7 +272,20 @@ MySingleton *gSingleton = nil;
     self.photoCount = 0;
     self.requiredCount = 0;
     self.labeledCount = 0;
+
+    self.newPhotos = NO;
+    self.expandOn = NO;
+    self.editOn = YES;
+    self.filterOn = NO;
+    self.doRef = YES;
+    self.openToGallery = NO;
+    self.isModule = YES;
     
+    self.showTrace = YES;
+    
+    self.currentFilterMode = PHFilterModeAll;
+    self.currentAppState = PHASLabelFS;
+
     [self setDBName:@""];
     [self setUserId:@""];
     self.dbController = nil;;

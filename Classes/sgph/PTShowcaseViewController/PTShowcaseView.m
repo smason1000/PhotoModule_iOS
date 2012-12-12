@@ -104,6 +104,7 @@
         NSLog(@"reloadData()");
     
     // clear out the current array
+    [self clearData];
     [gSingleton.mainData removeAllObjects];
 
     // read the photos from the database

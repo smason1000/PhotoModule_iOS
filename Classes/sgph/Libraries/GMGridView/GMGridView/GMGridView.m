@@ -1009,7 +1009,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     return _transformingItem != nil;
 }
 
-- (void)clearSelections {
+- (void)clearSelections
+{
     
 }
 
@@ -1414,6 +1415,23 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 //////////////////////////////////////////////////////////////
 #pragma mark public methods
 //////////////////////////////////////////////////////////////
+
+- (void)clearData
+{
+    [[self itemSubviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop)
+     {
+         if ([obj isKindOfClass:[GMGridViewCell class]])
+         {
+             [(UIView *)obj removeFromSuperview];
+             [self queueReusableCell:(GMGridViewCell *)obj];
+         }
+     }];
+    
+    self.firstPositionLoaded = GMGV_INVALID_POSITION;
+    self.lastPositionLoaded  = GMGV_INVALID_POSITION;    
+
+    [self setSubviewsCacheAsInvalid];
+}
 
 - (void)reloadData
 {

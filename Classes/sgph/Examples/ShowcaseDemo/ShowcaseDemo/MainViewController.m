@@ -546,7 +546,7 @@
     
     [super viewDidLoad];
 
-    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.2
+    refTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                                 target:self selector:@selector(doRefTimer:)
                                               userInfo:nil
                                                repeats:NO];
@@ -670,6 +670,7 @@
         
         [self.headerViewController setToolbarHidden:NO];
         [self.headerViewController.toolbar setBarStyle:UIBarStyleDefault];
+        
         [self updateTableView];
         [self updateButtonLabels];
     }
