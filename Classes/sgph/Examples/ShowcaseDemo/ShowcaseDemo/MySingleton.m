@@ -65,6 +65,7 @@ MySingleton *gSingleton = nil;
 }
 */
 
+/*
 +(id)sharedSingleton
 {
     static dispatch_once_t pred;
@@ -75,6 +76,7 @@ MySingleton *gSingleton = nil;
     });
     return shared;
 }
+*/
 
 - (id)init
 {

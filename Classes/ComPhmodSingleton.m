@@ -9,6 +9,7 @@ ComPhmodSingleton *mSingleton = nil;
 @synthesize myPHS;
 @synthesize showTrace;
 
+/*
 #pragma mark Singleton Methods
 
 +(id)sharedSingleton 
@@ -21,6 +22,7 @@ ComPhmodSingleton *mSingleton = nil;
     });
     return shared;
 }
+*/
 
 - (id)init
 {

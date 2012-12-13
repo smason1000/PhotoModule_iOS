@@ -146,6 +146,11 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
         self.eventsInited = NO;
     }
+    NSArray *viewsToRemove = [self subviews];
+    for (UIView *v in viewsToRemove)
+    {
+        [v removeFromSuperview];
+    }
 }
 
 - (void) toggleSel

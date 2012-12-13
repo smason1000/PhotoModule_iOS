@@ -20,7 +20,7 @@
     NSLog(@"[VIEWPROXY LIFECYCLE EVENT] init");
 	
     // this is the start of the PhotoHubLib app
-    mSingleton = [ComPhmodSingleton sharedSingleton];
+    mSingleton = [[ComPhmodSingleton alloc] init];
     [mSingleton startup];
 
 	return [super init];
@@ -35,7 +35,8 @@
 	
     // this is the end of the PhotoHubLib app
     [mSingleton shutdown];
-
+    mSingleton = nil;
+    
 	[super _destroy];
 }
 

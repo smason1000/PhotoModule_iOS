@@ -148,7 +148,7 @@ typedef enum
 @property (nonatomic, strong) NSString* todaysPhotoFolder;
 @property (nonatomic, strong) NSString* docDir;
 
-+ (id)sharedSingleton;
+//+ (id)sharedSingleton;
 -(void)shutdown;
 
 - (NSString*) getDataDirFull;

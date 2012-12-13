@@ -9,7 +9,7 @@
 {
     NSLog(@"[PhotoHubLib] initAll");
 
-    gSingleton = [MySingleton sharedSingleton];
+    gSingleton = [[MySingleton alloc] init];
     gSingleton.isModule = YES;
     pSingleton = gSingleton;
     
@@ -54,13 +54,14 @@
     
     // Nimbus implements its own in-memory cache for network images. Because of
     // this we don't allocate any memory for NSURLCache.
+    /*
     static const NSUInteger kMemoryCapacity = 0;
     static const NSUInteger kDiskCapacity = 1024*1024*50; // 50MB disk cache
     SDURLCache *urlCache = [[SDURLCache alloc] initWithMemoryCapacity:kMemoryCapacity
                                                          diskCapacity:kDiskCapacity
                                                              diskPath:[SDURLCache defaultCachePath]];
     [NSURLCache setSharedURLCache:urlCache];
-    
+    */
     ////
     
     //[self.window makeKeyAndVisible];
@@ -73,6 +74,7 @@
     [mainViewController shutdown];
     [gSingleton shutdown];
     pSingleton = nil;
+    gSingleton = nil;
     mainViewController = nil;
 }
 @end

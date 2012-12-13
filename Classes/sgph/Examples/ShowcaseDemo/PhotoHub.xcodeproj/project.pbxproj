@@ -39,7 +39,6 @@
 		508F7CFC14EEA26A000140D6 /* PTImageAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F7CFA14EEA26A000140D6 /* PTImageAlbumView.m */; };
 		508F7D0014EEA358000140D6 /* PTImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F7CFF14EEA358000140D6 /* PTImageDetailViewController.m */; };
 		508F7D0614EEB066000140D6 /* NimbusPhotos.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 508F7D0514EEB066000140D6 /* NimbusPhotos.bundle */; };
-		50918CD114F508A00005AD9C /* SDURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50918CD014F508A00005AD9C /* SDURLCache.m */; };
 		50925E0214F4032D009A05D1 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50925E0114F4032D009A05D1 /* NetworkPhotoAlbumViewController.m */; };
 		5093F24E14E532F1004DC805 /* PTShowcaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5093F24D14E532F1004DC805 /* PTShowcaseViewController.m */; };
 		5093F25314E53496004DC805 /* PTShowcaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5093F25214E53496004DC805 /* PTShowcaseView.m */; };
@@ -141,7 +140,6 @@
 		AEA4691C156A38B200743108 /* PTImageAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505AE96214ED785700BBFC05 /* PTImageAlbumViewController.m */; };
 		AEA4691D156A38B200743108 /* PTImageAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 508F7CFA14EEA26A000140D6 /* PTImageAlbumView.m */; };
 		AEA4691E156A38B200743108 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50925E0114F4032D009A05D1 /* NetworkPhotoAlbumViewController.m */; };
-		AEA4691F156A38B200743108 /* SDURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 50918CD014F508A00005AD9C /* SDURLCache.m */; };
 		AEA46922156A38D900743108 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9FA73B15514EBC00B554F2 /* MobileCoreServices.framework */; };
 		AEA46923156A38D900743108 /* PSPDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088D9C91521EAEA00A1A9DE /* PSPDFKit.framework */; };
 		AEA46926156A38D900743108 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088D9D21521EC2B00A1A9DE /* ImageIO.framework */; };
@@ -223,8 +221,6 @@
 		508F7CFE14EEA358000140D6 /* PTImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTImageDetailViewController.h; sourceTree = "<group>"; };
 		508F7CFF14EEA358000140D6 /* PTImageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTImageDetailViewController.m; sourceTree = "<group>"; };
 		508F7D0514EEB066000140D6 /* NimbusPhotos.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NimbusPhotos.bundle; path = ../../Libraries/nimbus/src/photos/resources/NimbusPhotos.bundle; sourceTree = "<group>"; };
-		50918CCF14F508A00005AD9C /* SDURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDURLCache.h; path = ../../Libraries/SDURLCache/SDURLCache.h; sourceTree = "<group>"; };
-		50918CD014F508A00005AD9C /* SDURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDURLCache.m; path = ../../Libraries/SDURLCache/SDURLCache.m; sourceTree = "<group>"; };
 		50925E0014F4032D009A05D1 /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkPhotoAlbumViewController.h; path = ../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		50925E0114F4032D009A05D1 /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkPhotoAlbumViewController.m; path = ../../Libraries/nimbus/examples/photos/NetworkPhotoAlbums/src/NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		5093F24C14E532F1004DC805 /* PTShowcaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTShowcaseViewController.h; sourceTree = "<group>"; };
@@ -487,15 +483,6 @@
 			name = Details;
 			sourceTree = "<group>";
 		};
-		50918CCE14F508930005AD9C /* SDURLCache */ = {
-			isa = PBXGroup;
-			children = (
-				50918CCF14F508A00005AD9C /* SDURLCache.h */,
-				50918CD014F508A00005AD9C /* SDURLCache.m */,
-			);
-			name = SDURLCache;
-			sourceTree = "<group>";
-		};
 		50925DFF14F40301009A05D1 /* NetworkPhotoAlbumViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,7 +500,6 @@
 				50B977B914EC10EB00873F87 /* Nimbus */,
 				505AE96014ED785700BBFC05 /* PTImageAlbumViewController */,
 				50925DFF14F40301009A05D1 /* NetworkPhotoAlbumViewController */,
-				50918CCE14F508930005AD9C /* SDURLCache */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -907,7 +893,6 @@
 				508F7CFC14EEA26A000140D6 /* PTImageAlbumView.m in Sources */,
 				508F7D0014EEA358000140D6 /* PTImageDetailViewController.m in Sources */,
 				50925E0214F4032D009A05D1 /* NetworkPhotoAlbumViewController.m in Sources */,
-				50918CD114F508A00005AD9C /* SDURLCache.m in Sources */,
 				50A6019D14F536E8002076AB /* GMGridView.m in Sources */,
 				50A6019E14F536E8002076AB /* GMGridViewCell.m in Sources */,
 				50A6019F14F536E8002076AB /* GMGridViewLayoutStrategies.m in Sources */,
@@ -985,7 +970,6 @@
 				AEA4691C156A38B200743108 /* PTImageAlbumViewController.m in Sources */,
 				AEA4691D156A38B200743108 /* PTImageAlbumView.m in Sources */,
 				AEA4691E156A38B200743108 /* NetworkPhotoAlbumViewController.m in Sources */,
-				AEA4691F156A38B200743108 /* SDURLCache.m in Sources */,
 				AEA4688C1569FD2100743108 /* PhotoHubLib.m in Sources */,
 				220CDE7B15C47CF10074CC8D /* ExpandyButton.m in Sources */,
 				22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */,
