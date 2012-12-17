@@ -661,6 +661,9 @@
 }
 
 -(void) cameraAction:(id) sender{
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"expandOffEvent"
+     object:nil ];
     gSingleton.currentAppState = PHASLabelFS;
     [self updateButtonLabels];
 }
