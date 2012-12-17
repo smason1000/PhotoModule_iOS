@@ -91,8 +91,8 @@
 @dynamic focusMode;
 @dynamic exposureMode;
 @dynamic whiteBalanceMode;
-@synthesize cameraZoom;
-@synthesize viewportSize;
+@synthesize cameraZoom = _cameraZoom;
+@synthesize viewportSize = _viewportSize;
 @synthesize movieFileOutput = _movieFileOutput;
 @synthesize stillImageOutput = _stillImageOutput;
 @synthesize deviceConnectedObserver = _deviceConnectedObserver;
@@ -100,34 +100,39 @@
 @synthesize backgroundRecordingID = _backgroundRecordingID;
 @synthesize delegate = _delegate;
 @dynamic recording;
-@synthesize filename;
+@synthesize filename = _filename;
 
 - (id) init
 {
     self = [super init];
-    if (self != nil) {
+    if (self != nil)
+    {
+        __weak AVCamCaptureManager *weakSelf = self;
+
         void (^deviceConnectedBlock)(NSNotification *) = ^(NSNotification *notification) {
-            AVCaptureSession *session = [self session];
-            AVCaptureDeviceInput *newAudioInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self audioDevice] error:nil];
-            AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backFacingCamera] error:nil];
+            AVCaptureSession *session = [weakSelf session];
+            AVCaptureDeviceInput *newAudioInput = [[AVCaptureDeviceInput alloc] initWithDevice:[weakSelf audioDevice] error:nil];
+            AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[weakSelf backFacingCamera] error:nil];
             
             [session beginConfiguration];
-            [session removeInput:[self audioInput]];
+            [session removeInput:[weakSelf audioInput]];
             if ([session canAddInput:newAudioInput]) {                
                 [session addInput:newAudioInput];
             }
-            [session removeInput:[self videoInput]];
+            [session removeInput:[weakSelf videoInput]];
             if ([session canAddInput:newVideoInput]) {
                 [session addInput:newVideoInput];
             }
             [session commitConfiguration];
             
-            [self setAudioInput:newAudioInput];
+            [weakSelf setAudioInput:newAudioInput];
             //[newAudioInput release];
-            [self setVideoInput:newVideoInput];
+            newAudioInput = nil;
+            [weakSelf setVideoInput:newVideoInput];
             //[newVideoInput release];
+            newVideoInput = nil;
             
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(captureManagerDeviceConfigurationChanged)]) {
                 [delegate captureManagerDeviceConfigurationChanged];
             }
@@ -136,20 +141,20 @@
                 [session startRunning];
         };
         void (^deviceDisconnectedBlock)(NSNotification *) = ^(NSNotification *notification) {
-            AVCaptureSession *session = [self session];
+            AVCaptureSession *session = [weakSelf session];
             
             [session beginConfiguration];
             
-            if (![[[self audioInput] device] isConnected])
-                [session removeInput:[self audioInput]];
-            if (![[[self videoInput] device] isConnected])
-                [session removeInput:[self videoInput]];
+            if (![[[weakSelf audioInput] device] isConnected])
+                [session removeInput:[weakSelf audioInput]];
+            if (![[[weakSelf videoInput] device] isConnected])
+                [session removeInput:[weakSelf videoInput]];
                 
             [session commitConfiguration];
             
-            [self setAudioInput:nil];
+            [weakSelf setAudioInput:nil];
             
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(captureManagerDeviceConfigurationChanged)]) {
                 [delegate captureManagerDeviceConfigurationChanged];
             }
@@ -158,21 +163,25 @@
                 [session startRunning];
         };
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        [self setDeviceConnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasConnectedNotification object:nil queue:nil usingBlock:deviceConnectedBlock]];
-        [self setDeviceDisconnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasDisconnectedNotification object:nil queue:nil usingBlock:deviceDisconnectedBlock]];            
+        [weakSelf setDeviceConnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasConnectedNotification object:nil queue:nil usingBlock:deviceConnectedBlock]];
+        [weakSelf setDeviceDisconnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasDisconnectedNotification object:nil queue:nil usingBlock:deviceDisconnectedBlock]];
     }
     return self;
 }
 
-
-- (void) dealloc
+-(void)removeObservers
 {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:[self deviceConnectedObserver]];
     [notificationCenter removeObserver:[self deviceDisconnectedObserver]];
 
     [[self session] stopRunning];
-    //[super dealloc];
+    self.delegate = nil;
+}
+
+- (void) dealloc
+{
+    NSLog(@"[AVCamCaptureManager] dealloc");
 }
 
 - (BOOL) setupSessionWithPreset:(NSString *)sessionPreset error:(NSError **)error
@@ -183,8 +192,8 @@
     AVCaptureDeviceInput *videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backFacingCamera] error:error];
     [self setVideoInput:videoInput];
     
-    AVCaptureDeviceInput *audioInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self audioDevice] error:error];
-    [self setAudioInput:audioInput];
+    //AVCaptureDeviceInput *audioInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self audioDevice] error:error];
+    //[self setAudioInput:audioInput];
     
     // Setup the default file outputs
     AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
@@ -192,11 +201,11 @@
                                     AVVideoCodecJPEG, AVVideoCodecKey,
                                     nil];
     [stillImageOutput setOutputSettings:outputSettings];
-    //[outputSettings release];
+    outputSettings = nil;
     [self setStillImageOutput:stillImageOutput];
     
-    AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-    [self setMovieFileOutput:movieFileOutput];
+    //AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
+    //[self setMovieFileOutput:movieFileOutput];
     //[movieFileOutput release];
     
     // Add inputs and output to the capture session, set the preset, and start it running
@@ -205,13 +214,13 @@
     if ([session canAddInput:videoInput]) {
         [session addInput:videoInput];
     }
-    if ([session canAddInput:audioInput]) {
-        [session addInput:audioInput];
-    }
-    if ([session canAddOutput:movieFileOutput]) {
-        [session addOutput:movieFileOutput];
-        [self setMirroringMode:AVCamMirroringAuto];
-    }
+    //if ([session canAddInput:audioInput]) {
+    //    [session addInput:audioInput];
+    //}
+    //if ([session canAddOutput:movieFileOutput]) {
+    //    [session addOutput:movieFileOutput];
+    //    [self setMirroringMode:AVCamMirroringAuto];
+    //}
     if ([session canAddOutput:stillImageOutput]) {
         [session addOutput:stillImageOutput];
     }
@@ -224,7 +233,8 @@
     
     success = YES;
     
-    id delegate = [self delegate];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    id delegate = [weakSelf delegate];
     if ([delegate respondsToSelector:@selector(captureManagerDeviceConfigurationChanged)]) {
         [delegate captureManagerDeviceConfigurationChanged];
     }
@@ -239,17 +249,18 @@
 
 - (void) startRecording
 {
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
     if ([[UIDevice currentDevice] isMultitaskingSupported]) {
-        [self setBackgroundRecordingID:[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{}]];
+        [weakSelf setBackgroundRecordingID:[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{}]];
     }
     
-    AVCaptureConnection *videoConnection = [AVCamCaptureManager connectionWithMediaType:AVMediaTypeVideo fromConnections:[[self movieFileOutput] connections]];
+    AVCaptureConnection *videoConnection = [AVCamCaptureManager connectionWithMediaType:AVMediaTypeVideo fromConnections:[[weakSelf movieFileOutput] connections]];
     if ([videoConnection isVideoOrientationSupported]) {
-        [videoConnection setVideoOrientation:[self orientation]];
+        [videoConnection setVideoOrientation:[weakSelf orientation]];
     }
     
-    [[self movieFileOutput] startRecordingToOutputFileURL:[self tempFileURL]
-                                        recordingDelegate:self];
+    [[self movieFileOutput] startRecordingToOutputFileURL:[weakSelf tempFileURL]
+                                        recordingDelegate:weakSelf];
 }
 
 - (void) stopRecording
@@ -565,11 +576,12 @@
                                 completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
         {
                                                                      
+                                __unsafe_unretained AVCamCaptureManager *weakSelf = self;
                                 ALAssetsLibraryWriteImageCompletionBlock completionBlock = ^(NSURL *assetURL, NSError *error)
                                 {
                                     if (error)
                                     {
-                                        id delegate = [self delegate];
+                                        id delegate = [weakSelf delegate];
                                         if ([delegate respondsToSelector:@selector(captureStillImageFailedWithError:didFailWithError:)])
                                         {
                                             [delegate captureStillImageFailedWithError:error];
@@ -584,7 +596,7 @@
                                     
                                     NSLog(@"Image Size: %.f x %.f", image.size.width, image.size.height);
                                     
-                                    float scale = [self cameraZoom];
+                                    float scale = [weakSelf cameraZoom];
                                     
                                     if (scale > 1.0) 
                                     {
@@ -601,10 +613,10 @@
                                         NSLog(@"cropRect: (%.f,%.f) %.f x %.f", offsetX, offsetY, cropWidth, cropHeight);
                                         
                                         // crop the image from the offset position to the original width and height
-                                        image = [self croppedImage:image croppedTo:CGRectMake(offsetX, offsetY, cropWidth, cropHeight)];
+                                        image = [weakSelf croppedImage:image croppedTo:CGRectMake(offsetX, offsetY, cropWidth, cropHeight)];
                                     }
                                     //UIImage *newImage = [self fixOrientation:image];
-                                    [gSingleton saveImage:image withName:self.filename];
+                                    [gSingleton saveImage:image withName:weakSelf.filename];
                                     
                                     //ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
                                     /*
@@ -630,16 +642,17 @@
 - (BOOL) cameraToggle
 {
     BOOL success = NO;
-    
-    if ([self cameraCount] > 1) {
+
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    if ([weakSelf cameraCount] > 1) {
         NSError *error;
-        AVCaptureDeviceInput *videoInput = [self videoInput];
+        AVCaptureDeviceInput *videoInput = [weakSelf videoInput];
         AVCaptureDeviceInput *newVideoInput;
         AVCaptureDevicePosition position = [[videoInput device] position];
         BOOL mirror;
         if (position == AVCaptureDevicePositionBack) {
-            newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self frontFacingCamera] error:&error];
-            switch ([self mirroringMode]) {
+            newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[weakSelf frontFacingCamera] error:&error];
+            switch ([weakSelf mirroringMode]) {
                 case AVCamMirroringOff:
                     mirror = NO;
                     break;
@@ -652,8 +665,8 @@
                     break;
             }
         } else if (position == AVCaptureDevicePositionFront) {
-            newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[self backFacingCamera] error:&error];
-            switch ([self mirroringMode]) {
+            newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:[weakSelf backFacingCamera] error:&error];
+            switch ([weakSelf mirroringMode]) {
                 case AVCamMirroringOff:
                     mirror = NO;
                     break;
@@ -669,7 +682,7 @@
             goto bail;
         }
         
-        AVCaptureSession *session = [self session];
+        AVCaptureSession *session = [weakSelf session];
         if (newVideoInput != nil) {
             [session beginConfiguration];
             [session removeInput:videoInput];
@@ -683,7 +696,7 @@
                 if ([connection isVideoMirroringSupported]) {
                     [connection setVideoMirrored:mirror];
                 }
-                [self setVideoInput:newVideoInput];
+                [weakSelf setVideoInput:newVideoInput];
             } else {
                 [session setSessionPreset:currentPreset];
                 [session addInput:videoInput];
@@ -692,7 +705,7 @@
             success = YES;
             //[newVideoInput release];
         } else if (error) {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(someOtherError:)]) {
                 [delegate someOtherError:error];
             }
@@ -725,14 +738,15 @@ bail:
 
 - (void) setFlashMode:(AVCaptureFlashMode)flashMode
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isFlashModeSupported:flashMode] && [device flashMode] != flashMode) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
             [device setFlashMode:flashMode];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -752,14 +766,15 @@ bail:
 
 - (void) setTorchMode:(AVCaptureTorchMode)torchMode
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isTorchModeSupported:torchMode] && [device torchMode] != torchMode) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
             [device setTorchMode:torchMode];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -783,14 +798,15 @@ bail:
 
 - (void) setFocusMode:(AVCaptureFocusMode)focusMode
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isFocusModeSupported:focusMode] && [device focusMode] != focusMode) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
             [device setFocusMode:focusMode];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -817,14 +833,15 @@ bail:
     if (exposureMode == 1) {
         exposureMode = 2;
     }
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isExposureModeSupported:exposureMode] && [device exposureMode] != exposureMode) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
             [device setExposureMode:exposureMode];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -850,14 +867,15 @@ bail:
     if (whiteBalanceMode == 1) {
         whiteBalanceMode = 2;
     }    
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isWhiteBalanceModeSupported:whiteBalanceMode] && [device whiteBalanceMode] != whiteBalanceMode) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
             [device setWhiteBalanceMode:whiteBalanceMode];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -865,24 +883,10 @@ bail:
     }
 }
 
-- (float) cameraZoom
-{
-    return cameraZoom;
-}
-
-- (void) setCameraZoom:(float)zoom
-{
-    cameraZoom = zoom;
-}
-
-- (void) setViewportSize:(CGSize)size
-{
-    viewportSize = size;
-}
-
 - (void) focusAtPoint:(CGPoint)point
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isFocusPointOfInterestSupported] && [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
@@ -890,7 +894,7 @@ bail:
             [device setFocusMode:AVCaptureFocusModeAutoFocus];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -900,7 +904,8 @@ bail:
 
 - (void) continuousFocusAtPoint:(CGPoint)point
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isFocusPointOfInterestSupported] && [device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
@@ -908,7 +913,7 @@ bail:
             [device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -918,7 +923,8 @@ bail:
 
 - (void) exposureAtPoint:(CGPoint)point
 {
-    AVCaptureDevice *device = [[self videoInput] device];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureDevice *device = [[weakSelf videoInput] device];
     if ([device isExposurePointOfInterestSupported] && [device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
         NSError *error;
         if ([device lockForConfiguration:&error]) {
@@ -926,7 +932,7 @@ bail:
             [device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
             [device unlockForConfiguration];
         } else {
-            id delegate = [self delegate];
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(acquiringDeviceLockFailedWithError:)]) {
                 [delegate acquiringDeviceLockFailedWithError:error];
             }
@@ -941,8 +947,9 @@ bail:
 
 - (void) setSessionPreset:(NSString *)sessionPreset
 {
-    AVCaptureSession *session = [self session];
-    if (![sessionPreset isEqualToString:[self sessionPreset]] && [session canSetSessionPreset:sessionPreset]) {
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    AVCaptureSession *session = [weakSelf session];
+    if (![sessionPreset isEqualToString:[weakSelf sessionPreset]] && [session canSetSessionPreset:sessionPreset]) {
         [session beginConfiguration];
         [session setSessionPreset:sessionPreset];
         [session commitConfiguration];
@@ -1064,7 +1071,8 @@ bail:
     if ([fileManager fileExistsAtPath:outputPath]) {
         NSError *error;
         if ([fileManager removeItemAtPath:outputPath error:&error] == NO) {
-            id delegate = [self delegate];
+            __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+            id delegate = [weakSelf delegate];
             if ([delegate respondsToSelector:@selector(someOtherError:)]) {
                 [delegate someOtherError:error];
             }            
@@ -1083,7 +1091,8 @@ bail:
 didStartRecordingToOutputFileAtURL:(NSURL *)fileURL
                    fromConnections:(NSArray *)connections
 {
-    id delegate = [self delegate];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    id delegate = [weakSelf delegate];
     if ([delegate respondsToSelector:@selector(captureManagerRecordingBegan)]) {
         [delegate captureManagerRecordingBegan];
     }
@@ -1094,7 +1103,8 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
                     fromConnections:(NSArray *)connections
                               error:(NSError *)error
 {
-    id delegate = [self delegate];
+    __unsafe_unretained AVCamCaptureManager *weakSelf = self;
+    id delegate = [weakSelf delegate];
     if (error && [delegate respondsToSelector:@selector(someOtherError:)]) {
         [delegate someOtherError:error];
     }
@@ -1116,7 +1126,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     //[library release];    
     
     if ([[UIDevice currentDevice] isMultitaskingSupported]) {
-        [[UIApplication sharedApplication] endBackgroundTask:[self backgroundRecordingID]];
+        [[UIApplication sharedApplication] endBackgroundTask:[weakSelf backgroundRecordingID]];
     }
     
     if ([delegate respondsToSelector:@selector(captureManagerRecordingFinished)]) {

@@ -39,12 +39,13 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)shutdown_NIToolbarPhotoViewController {
-  _toolbar = nil;
-  _photoAlbumView = nil;
-  _nextButton = nil;
-  _previousButton = nil;
-  _photoScrubberView = nil;
+- (void)shutdown_NIToolbarPhotoViewController
+{
+  self.toolbar = nil;
+  self.photoAlbumView = nil;
+  self.nextButton = nil;
+  self.previousButton = nil;
+  self.photoScrubberView = nil;
   _tapGesture = nil;
 }
 
@@ -52,16 +53,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+    
     // Default Configuration Settings
     self.toolbarIsTranslucent = YES;
-      self.hidesChromeWhenScrolling = NO;//YES;
+    self.hidesChromeWhenScrolling = NO;//YES;
     self.chromeCanBeHidden = YES;
     self.animateMovingToNextAndPreviousPhotos = NO;
     
     // The scrubber is better use of the extra real estate on the iPad.
     // If you ask me, though, the scrubber works pretty well on the iPhone too. It's up
     // to you if you want to use it in your own implementations.
-    self.scrubberIsEnabled = NIIsPad();
+      self.scrubberIsEnabled = YES; //NIIsPad();
 
     // Allow the photos to display beneath the status bar.
     self.wantsFullScreenLayout = YES;
@@ -69,6 +71,10 @@
   return self;
 }
 
+-(void)dealloc
+{
+    NSLog(@"[NIToolbarPhotoViewController] dealloc");
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)addTapGestureToView {
@@ -96,17 +102,17 @@
                                                  action: nil];
 
   if ([self isScrubberEnabled]) {
-    _nextButton = nil;
-    _previousButton = nil;
+    self.nextButton = nil;
+    self.previousButton = nil;
 
-    if (nil == _photoScrubberView) {
+    if (nil == self.photoScrubberView) {
       CGRect scrubberFrame = CGRectMake(0, 0,
                                         self.toolbar.bounds.size.width,
                                         self.toolbar.bounds.size.height);
-      _photoScrubberView = [[NIPhotoScrubberView alloc] initWithFrame:scrubberFrame];
-      _photoScrubberView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+      self.photoScrubberView = [[NIPhotoScrubberView alloc] initWithFrame:scrubberFrame];
+      self.photoScrubberView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                              | UIViewAutoresizingFlexibleHeight);
-      _photoScrubberView.delegate = self;
+      self.photoScrubberView.delegate = self;
     }
 
     UIBarButtonItem* scrubberItem =
@@ -115,12 +121,12 @@
                           flexibleSpace, scrubberItem, flexibleSpace,
                           nil];
 
-    [_photoScrubberView setSelectedPhotoIndex:self.photoAlbumView.centerPageIndex];
+    [self.photoScrubberView setSelectedPhotoIndex:self.photoAlbumView.centerPageIndex];
     
   } else {
-    _photoScrubberView = nil;
+    self.photoScrubberView = nil;
 
-    if (nil == _nextButton) {
+    if (nil == self.nextButton) {
       UIImage* nextIcon = [UIImage imageWithContentsOfFile:
                            NIPathForBundleResource(nil, @"NimbusPhotos.bundle/gfx/next.png")];
 
@@ -132,14 +138,14 @@
       // copied in the Copy Bundle Resources phase.
       NIDASSERT(nil != nextIcon);
 
-      _nextButton = [[UIBarButtonItem alloc] initWithImage: nextIcon
+      self.nextButton = [[UIBarButtonItem alloc] initWithImage: nextIcon
                                                      style: UIBarButtonItemStylePlain
                                                     target: self
                                                     action: @selector(didTapNextButton)];
       
     }
 
-    if (nil == _previousButton) {
+    if (nil == self.previousButton) {
       UIImage* previousIcon = [UIImage imageWithContentsOfFile:
                                NIPathForBundleResource(nil, @"NimbusPhotos.bundle/gfx/previous.png")];
 
@@ -151,7 +157,7 @@
       // copied in the Copy Bundle Resources phase.
       NIDASSERT(nil != previousIcon);
 
-      _previousButton = [[UIBarButtonItem alloc] initWithImage: previousIcon
+      self.previousButton = [[UIBarButtonItem alloc] initWithImage: previousIcon
                                                          style: UIBarButtonItemStylePlain
                                                         target: self
                                                         action: @selector(didTapPreviousButton)];
@@ -168,38 +174,38 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
+- (void)loadView
+{
   [super loadView];
 
-  CGRect bounds = self.view.bounds;
+    CGRect bounds = CGRectMake(0,0,320,328); //self.view.bounds;
 
   // Toolbar Setup
 
   CGFloat toolbarHeight = NIToolbarHeightForOrientation(NIInterfaceOrientation());
-  CGRect toolbarFrame = CGRectMake(0, bounds.size.height - toolbarHeight,
+  CGRect toolbarFrame = CGRectMake(0, (bounds.size.height - toolbarHeight) + 108 ,
                                    bounds.size.width, toolbarHeight);
 
-  _toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-  _toolbar.barStyle = UIBarStyleBlack;
-  _toolbar.translucent = self.toolbarIsTranslucent;
-  _toolbar.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+  self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+  self.toolbar.barStyle = UIBarStyleBlack;
+  self.toolbar.translucent = self.toolbarIsTranslucent;
+  self.toolbar.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                | UIViewAutoresizingFlexibleTopMargin);
-
   [self updateToolbarItems];
 
   // Photo Album View Setup
 
-  CGRect photoAlbumFrame = bounds;
+  CGRect photoAlbumFrame = CGRectMake(0, 88, 320, 328);
   if (!self.toolbarIsTranslucent) {
     photoAlbumFrame = NIRectContract(bounds, 0, toolbarHeight);
   }
-  _photoAlbumView = [[NIPhotoAlbumScrollView alloc] initWithFrame:photoAlbumFrame];
-  _photoAlbumView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+  self.photoAlbumView = [[NIPhotoAlbumScrollView alloc] initWithFrame:photoAlbumFrame];
+  self.photoAlbumView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                       | UIViewAutoresizingFlexibleHeight);
-  _photoAlbumView.delegate = self;
+  self.photoAlbumView.delegate = self;
 
-  [self.view addSubview:_photoAlbumView];
-  [self.view addSubview:_toolbar];
+  [self.view addSubview:self.photoAlbumView];
+  [self.view addSubview:self.toolbar];
 
 
   if (self.hidesChromeWhenScrolling) {
@@ -209,7 +215,17 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidUnload {
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.view.frame = CGRectMake(0, 88, 320, 328);
+    self.view.bounds = CGRectMake(0, 0, 320, 328);    
+}
+
+- (void)viewDidUnload
+{
   [self shutdown_NIToolbarPhotoViewController];
 
   [super viewDidUnload];
@@ -231,8 +247,8 @@
   navBar.barStyle = UIBarStyleBlack;
   navBar.translucent = YES;
 
-  _previousButton.enabled = [self.photoAlbumView hasPrevious];
-  _nextButton.enabled = [self.photoAlbumView hasNext];
+  self.previousButton.enabled = [self.photoAlbumView hasPrevious];
+  self.nextButton.enabled = [self.photoAlbumView hasNext];
 }
 
 
@@ -564,7 +580,7 @@
   _chromeCanBeHidden = canBeHidden;
 
   if (!canBeHidden) {
-    self.hidesChromeWhenScrolling = NO;
+    _hidesChromeWhenScrolling = NO;
 
     if ([self isViewLoaded]) {
       // Ensure that the toolbar is visible.

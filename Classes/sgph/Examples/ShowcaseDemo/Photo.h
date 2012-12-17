@@ -31,22 +31,22 @@ var photosObj = {
 
 @interface Photo : NSObject
 {
-    NSInteger   order_id;
-    NSInteger   question_row;
-    NSString    *path;
-    NSString    *name;
-    NSString    *label;
-    NSString    *description;
-    NSInteger   upload_status;
-    NSString    *date_sent;
-    NSString    *user_id;
-    NSString    *photo_data;
-    NSString    *thumb_data;
-    NSInteger   *required;
-    NSString    *question_id;
-    NSString    *possible_labels;
-    PTItemOrientation orientation;
-    BOOL        selected;
+    NSString    *_order_id;
+    NSInteger   _question_row;
+    NSString    *_path;
+    NSString    *_name;
+    NSString    *_label;
+    NSString    *_description;
+    NSInteger   _upload_status;
+    NSString    *_date_sent;
+    NSString    *_user_id;
+    NSString    *_photo_data;
+    NSString    *_thumb_data;
+    NSInteger   _required;
+    NSString    *_question_id;
+    NSString    *_possible_labels;
+    PTItemOrientation _orientation;
+    BOOL        _selected;
 }
 
 @property (nonatomic) NSString *order_id;

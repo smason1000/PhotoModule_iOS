@@ -36,18 +36,19 @@
 
 @implementation PTShowcaseViewController
 
-@synthesize detailOn;
+@synthesize detailOn = _detailOn;
 @synthesize showcaseView = _showcaseView;
+@synthesize detailViewController = _detailViewController;
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
-        _showcaseView = [[PTShowcaseView alloc] initWithUniqueName:nil];
-        _showcaseView.showcaseDelegate = self;
-        _showcaseView.showcaseDataSource = self;
-
+        self.showcaseView = [[PTShowcaseView alloc] initWithUniqueName:nil];
+        self.showcaseView.showcaseDelegate = self;
+        self.showcaseView.showcaseDataSource = self;
     }
     return self;
 }
@@ -55,11 +56,12 @@
 - (id)initWithUniqueName:(NSString *)uniqueName
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
-        _showcaseView = [[PTShowcaseView alloc] initWithUniqueName:uniqueName];
-        _showcaseView.showcaseDelegate = self;
-        _showcaseView.showcaseDataSource = self;
+        self.showcaseView = [[PTShowcaseView alloc] initWithUniqueName:uniqueName];
+        self.showcaseView.showcaseDelegate = self;
+        self.showcaseView.showcaseDataSource = self;
     }
     return self;
 }
@@ -77,7 +79,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    detailOn = NO;
+    self.detailOn = NO;
     
     self.showcaseView.centerGrid = NO;
     [self setupShowcaseViewForInterfaceOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
@@ -94,6 +96,9 @@
     self.showcaseView.dataSource = self; // this will trigger 'reloadData' automatically
     self.showcaseView.actionDelegate = self;
     
+    self.view.frame = CGRectMake(0, 88, 320, 328);
+    self.view.bounds = CGRectMake(0, 0, 320, 328);
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(eventHandlerExpandOn:)
@@ -105,6 +110,13 @@
      selector:@selector(eventHandlerExpandOff:)
      name:@"expandOffEvent"
      object:nil ];
+}
+
+-(void) dealloc
+{
+    NSLog(@"[PTShowcaseViewController] dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"expandOnEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"expandOffEvent" object:nil];
 }
 
 - (void)viewDidUnload
@@ -119,12 +131,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return interfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(interfaceOrientation);
-    }
+    //if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    //{
+    //    return interfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    //}
     
-    return YES;
+    //return YES;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -142,7 +156,13 @@
 
 - (void)dismissImageDetailViewController
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    if (self.detailViewController != nil)
+    {
+        __unsafe_unretained PTShowcaseViewController *weakSelf = self;
+        [self dismissViewControllerAnimated:YES completion:^{
+            weakSelf.detailViewController = nil;
+        }];
+    }
 }
 
 /* =============================================================================
@@ -490,12 +510,11 @@
 {
     NSLog(@"PTShowcaseViewController expand ON at index %d", gSingleton.expandedViewIndex);
     
-    PTImageDetailViewController *detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.expandedViewIndex];
-    detailViewController.data = self.showcaseView.imageItems;
-    detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    if (self.detailViewController == nil)
+        self.detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.expandedViewIndex];
     
-    detailViewController.view.backgroundColor = [UIColor blackColor];
-    
+    self.detailViewController.data = self.showcaseView.imageItems;
+    self.detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     //[detailViewController.navigationItem setLeftBarButtonItem:
     // [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -507,30 +526,33 @@
     
     
     // TODO zoom in/out (just like in Photos.app in the iPad)
-    
-    [self presentViewController:detailViewController animated:YES completion:NULL];
-    
-    detailOn = YES;
-    gSingleton.expandOn = YES;
-    
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"galScrollEvent"
-     object:nil ];
-    
+
+    __unsafe_unretained PTShowcaseViewController *weakSelf = self;
+    UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:self.detailViewController];
+    [self presentViewController:navCtrl animated:YES completion:^{
+        weakSelf.detailViewController.view.backgroundColor = [UIColor clearColor];
+        weakSelf.detailViewController.wantsFullScreenLayout = YES;
+        weakSelf.detailOn = YES;
+        gSingleton.expandOn = YES;
+
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"galScrollEvent"
+         object:nil ];
+    }];
 }
 
 -(void)eventHandlerExpandOff: (NSNotification *) notification
 {
     NSLog(@"PTShowcaseViewController expand OFF");
 
-    if (detailOn)
+    if (self.detailOn)
     {
        [self dismissImageDetailViewController];
     }
     
     gSingleton.expandOn = NO;
     gSingleton.expandedViewIndex = -1;
-    detailOn = NO;
+    self.detailOn = NO;
 }
 
 - (void)GMGridView:(GMGridView *)gridView didTapOnItemAtIndex:(NSInteger)position

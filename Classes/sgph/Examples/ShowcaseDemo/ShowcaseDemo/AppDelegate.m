@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "TestViewController.h"
 #import "SampleViewController.h"
 #import "PTShowcaseView.h"
 //#import "SDURLCache.h"
@@ -10,7 +10,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize mainViewController = _mainViewController;
+@synthesize testViewController = _testViewController;
 
 void onUncaughtException(NSException *exception) 
 {
@@ -21,13 +21,14 @@ void onUncaughtException(NSException *exception)
 {
     NSSetUncaughtExceptionHandler(&onUncaughtException);
 
-    gSingleton.isModule = NO;
+    //gSingleton = [[MySingleton alloc] init];
+    //gSingleton.isModule = NO;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     
-    mainViewController = [[MainViewController alloc] init];
+    testViewController = [[TestViewController alloc] init];
     
     /*
     SampleViewController *avcHolderViewController = [[SampleViewController alloc] init];
@@ -52,7 +53,7 @@ void onUncaughtException(NSException *exception)
     mainViewController.togHolderViewController = togHolderViewController;
     */
     
-    [self.window setRootViewController:mainViewController];
+    [self.window setRootViewController:testViewController];
 
     ////////
     

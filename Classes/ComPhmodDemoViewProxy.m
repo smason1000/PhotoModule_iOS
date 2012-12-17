@@ -32,11 +32,7 @@
 	// release any objects and memory that have been allocated for the view proxy.
 	
     NSLog(@"[VIEWPROXY LIFECYCLE EVENT] _destroy");
-	
-    // this is the end of the PhotoHubLib app
-    [mSingleton shutdown];
-    mSingleton = nil;
-    
+	   
 	[super _destroy];
 }
 
@@ -47,6 +43,10 @@
 	
     if (mSingleton.showTrace)
         NSLog(@"[VIEWPROXY LIFECYCLE EVENT] dealloc");
+
+    // this is the end of the PhotoHubLib app
+    [mSingleton shutdown];
+    mSingleton = nil;
 }
 
 -(id)_initWithPageContext:(id<TiEvaluator>)context

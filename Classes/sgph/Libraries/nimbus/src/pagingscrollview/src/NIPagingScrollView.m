@@ -46,7 +46,8 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)commonInit {
+- (void)commonInit
+{
   // Default state.
   self.pageHorizontalMargin = NIPagingScrollViewDefaultPageHorizontalMargin;
 
@@ -76,8 +77,10 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithFrame:(CGRect)frame {
-  if ((self = [super initWithFrame:frame])) {
+- (id)initWithFrame:(CGRect)frame
+{
+  if ((self = [super initWithFrame:frame]))
+  {
     [self commonInit];
   }
   return self;
@@ -92,6 +95,10 @@ const CGFloat NIPagingScrollViewDefaultPageHorizontalMargin = 10;
   return self;
 }
 
+-(void)dealloc
+{
+    NSLog(@"[NIPagingScrollView] dealloc");
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)didMoveToSuperview {

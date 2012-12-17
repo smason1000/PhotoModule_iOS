@@ -96,20 +96,20 @@ typedef NSInteger AVCamMirroringMode;
 }
 
 @property (nonatomic,readonly,strong) AVCaptureSession *session;
-@property (nonatomic,assign) AVCaptureVideoOrientation orientation;
+@property (nonatomic) AVCaptureVideoOrientation orientation;
 @property (nonatomic,readonly,strong) AVCaptureAudioChannel *audioChannel;
-@property (nonatomic,weak) NSString *sessionPreset;
+@property (nonatomic, weak) NSString *sessionPreset;
 @property (nonatomic,strong) NSString *filename;
-@property (nonatomic,assign) AVCamMirroringMode mirroringMode;
+@property (nonatomic) AVCamMirroringMode mirroringMode;
 @property (nonatomic,readonly,strong) AVCaptureDeviceInput *videoInput;
 @property (nonatomic,readonly,strong) AVCaptureDeviceInput *audioInput;
-@property (nonatomic,assign) AVCaptureFlashMode flashMode;
-@property (nonatomic,assign) AVCaptureTorchMode torchMode;
-@property (nonatomic,assign) AVCaptureFocusMode focusMode;
-@property (nonatomic,assign) AVCaptureExposureMode exposureMode;
-@property (nonatomic,assign) AVCaptureWhiteBalanceMode whiteBalanceMode;
-@property (nonatomic,assign) float cameraZoom;
-@property (nonatomic,assign) CGSize viewportSize;
+@property (nonatomic) AVCaptureFlashMode flashMode;
+@property (nonatomic) AVCaptureTorchMode torchMode;
+@property (nonatomic) AVCaptureFocusMode focusMode;
+@property (nonatomic) AVCaptureExposureMode exposureMode;
+@property (nonatomic) AVCaptureWhiteBalanceMode whiteBalanceMode;
+@property (nonatomic) float cameraZoom;
+@property (nonatomic) CGSize viewportSize;
 @property (nonatomic,readonly,strong) AVCaptureMovieFileOutput *movieFileOutput;
 @property (nonatomic,strong) id <AVCamCaptureManagerDelegate> delegate;
 @property (nonatomic,readonly,getter=isRecording) BOOL recording;
@@ -131,6 +131,7 @@ typedef NSInteger AVCamMirroringMode;
 - (void) exposureAtPoint:(CGPoint)point;
 - (void) setConnectionWithMediaType:(NSString *)mediaType enabled:(BOOL)enabled;
 - (BOOL) supportsMirroring;
+- (void) removeObservers;
 + (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections;
 
 @end

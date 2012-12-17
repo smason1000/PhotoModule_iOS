@@ -12,51 +12,33 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-@synthesize filteredListContent;
+@synthesize filteredListContent = _filteredListContent;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    
     emptyArray = [NSArray arrayWithObjects:
                   nil];
     
     self.filteredListContent = [NSMutableArray arrayWithCapacity:200]; //[self.listContent count]
     
     
-    
-    //####
-    
-    //UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
-    //[searchBar sizeToFit];
-    //searchBar.delegate = self;
-    //searchBar.placeholder = @"Search";
-    //self.tableView.tableHeaderView = searchBar;
-    //searchDC = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    
-    // The above assigns self.searchDisplayController, but without retaining.
-    // Force the read-only property to be set and retained. 
-    //[self performSelector:@selector(setSearchDisplayController:) withObject:searchDC];
-    
-    //searchDC.delegate = self;
-    //searchDC.searchResultsDataSource = self;
-    //searchDC.searchResultsDelegate = self;
-    
-    //####
-    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(eventHandlerDelete:)
      name:@"delEvent"
      object:nil ];
-    
-    //self.tableView.rowHeight = 50;
 }
 
+-(void)dealloc
+{
+    NSLog(@"[RootViewController] dealloc");
+    emptyArray = nil;
+    self.filteredListContent = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"delEvent" object:nil];
+}
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -112,7 +94,7 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        return [filteredListContent count];
+        return [self.filteredListContent count];
     }
 	else
 	{
@@ -125,7 +107,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"BadgeViewCell";
     
     DDBadgeViewCell *cell = (DDBadgeViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -137,7 +119,7 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        cell.summary = [filteredListContent objectAtIndex:indexPath.row];
+        cell.summary = [self.filteredListContent objectAtIndex:indexPath.row];
     }
 	else
 	{
@@ -164,21 +146,10 @@
             cell.contentView.backgroundColor = [UIColor whiteColor];
         }
     }
-    
-    /*
-    if (isReq) {
-        cell.badgeText = @"Required";//[NSString stringWithFormat:@"Required", indexPath.row];
-        cell.badgeColor = [UIColor redColor];
-    }
-    else {*/
-        cell.badgeText = @"";//[NSString stringWithFormat:@"", indexPath.row];
-        cell.badgeColor = [UIColor clearColor];
-    //}
-    
+     
     return cell;
 }
 
-	
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -260,7 +231,7 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        gSingleton.currentLabelString = [filteredListContent objectAtIndex:indexPath.row];
+        gSingleton.currentLabelString = [self.filteredListContent objectAtIndex:indexPath.row];
     }
 	else
 	{

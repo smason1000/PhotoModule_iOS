@@ -12,44 +12,44 @@ MySingleton *gSingleton = nil;
 
 @implementation MySingleton
 
-@synthesize doRef;
-@synthesize openToGallery;
-@synthesize applyCaptureDefaults;
-@synthesize dbController;
-@synthesize workOrder;
-@synthesize dbPath;
-@synthesize orderNumber;
-@synthesize userId;
-@synthesize rootPhotoFolder;
-@synthesize todaysPhotoFolder;
-@synthesize hashVals;
-@synthesize curHashVals;
-@synthesize hashValsReq;
-@synthesize docDir;
-@synthesize curLetArray;
-@synthesize mainData;
-@synthesize showTrace;
+@synthesize doRef = _doRef;
+@synthesize openToGallery = _openToGallery;
+@synthesize applyCaptureDefaults = _applyCaptureDefaults;
+@synthesize dbController = _dbController;
+@synthesize workOrder = _workOrder;
+@synthesize dbPath = _dbPath;
+@synthesize orderNumber = _orderNumber;
+@synthesize userId = _userId;
+@synthesize rootPhotoFolder = _rootPhotoFolder;
+@synthesize todaysPhotoFolder = _todaysPhotoFolder;
+@synthesize hashVals = _hashVals;
+@synthesize curHashVals = _curHashVals;
+@synthesize hashValsReq = _hashValsReq;
+@synthesize docDir = _docDir;
+@synthesize curLetArray = _curLetArray;
+@synthesize mainData = _mainData;
+@synthesize showTrace = _showTrace;
 
-@synthesize newPhotos;
-@synthesize expandOn;
-@synthesize editOn;
-@synthesize filterOn;
-@synthesize iPadDevice;
+@synthesize newPhotos = _newPhotos;
+@synthesize expandOn = _expandOn;
+@synthesize editOn = _editOn;
+@synthesize filterOn = _filterOn;
+@synthesize iPadDevice = _iPadDevice;
 @synthesize isModule;
 
-@synthesize currentFilterMode;
-@synthesize currentAppState;
+@synthesize currentFilterMode = _currentFilterMode;
+@synthesize currentAppState = _currentAppState;
 
-@synthesize expandedViewIndex;
-@synthesize photoCount;
-@synthesize requiredCount;
-@synthesize labeledCount;
+@synthesize expandedViewIndex = _expandedViewIndex;
+@synthesize photoCount = _photoCount;
+@synthesize requiredCount = _requiredCount;
+@synthesize labeledCount = _labeledCount;
 
-@synthesize labelArr;
-@synthesize itemArray;
-@synthesize currentLabelString;
-@synthesize currentLabelDescription;
-@synthesize requiredLabelArr;
+@synthesize labelArr = _labelArr;
+@synthesize itemArray = _itemArray;
+@synthesize currentLabelString = _currentLabelString;
+@synthesize currentLabelDescription = _currentLabelDescription;
+@synthesize requiredLabelArr = _requiredLabelArr;
 
 #pragma mark Singleton Methods
 
@@ -87,7 +87,7 @@ MySingleton *gSingleton = nil;
 
         // mimic the way INSPI will initialize the application
         //NSString *emuOrder = @"59590951";   // open
-        NSString *emuOrder = @"59608755";   // submitted
+        NSString *emuOrder = @"59772717";   // submitted
         
         BOOL emu = NO;
         NSString *model = [[UIDevice currentDevice] model];
@@ -153,7 +153,7 @@ MySingleton *gSingleton = nil;
         self.openToGallery = NO;
         self.isModule = YES;
         
-        self.showTrace = YES;
+        self.showTrace = NO;
         
         self.currentFilterMode = PHFilterModeAll;
         self.currentAppState = PHASLabelFS;
@@ -247,7 +247,7 @@ MySingleton *gSingleton = nil;
         {
             self.openToGallery = NO;
             [self setDBName:@"inspi"];
-            [self setUserId:@"PhotoHub"];
+            [self setUserId:@"TrojanM"];
             
             // labels set appropriately above
             //updatePHReqLabels({});
@@ -260,37 +260,55 @@ MySingleton *gSingleton = nil;
     return self;
 }
 
--(void)shutdown
+-(void)dealloc
 {
-    NSLog(@"[PhotoHubLib] Singleton shutdown");
+    NSLog(@"[PhotoHubLib] Singleton dealloc");
 
-    // do anything and everything needed to clear out all the data from a previous order
     [[self mainData] removeAllObjects];
-    [self setRootPhotoFolder:@""];
-    [self setTodaysPhotoFolder:@""];
-    self.orderNumber = @"0";
-    
-    self.expandedViewIndex = -1;
-    self.photoCount = 0;
-    self.requiredCount = 0;
-    self.labeledCount = 0;
+    [[self labelArr] removeAllObjects];
+    [[self requiredLabelArr] removeAllObjects];
+    [[self itemArray] removeAllObjects];
 
-    self.newPhotos = NO;
-    self.expandOn = NO;
-    self.editOn = YES;
-    self.filterOn = NO;
-    self.doRef = YES;
-    self.openToGallery = NO;
-    self.isModule = YES;
+    /*
+    //self.doRef = nil;
+    //self.openToGallery = nil;
+    //self.applyCaptureDefaults = nil;
+    self.dbController = nil;
+    self.workOrder = nil;
+    self.dbPath = nil;
+    self.orderNumber = nil;
+    self.userId = nil;
+    self.rootPhotoFolder = nil;
+    self.todaysPhotoFolder = nil;
+    self.hashVals = nil;
+    self.curHashVals = nil;
+    self.hashValsReq = nil;
+    self.docDir = nil;
+    self.curLetArray = nil;
+    self.mainData = nil;
+    //self.showTrace = nil;
     
-    self.showTrace = YES;
+    //self.newPhotos = nil;
+    //self.expandOn = nil;
+    //self.editOn = nil;
+    //self.filterOn = nil;
+    //self.iPadDevice = nil;
+    //self.isModule = nil;
     
-    self.currentFilterMode = PHFilterModeAll;
-    self.currentAppState = PHASLabelFS;
-
-    [self setDBName:@""];
-    [self setUserId:@""];
-    self.dbController = nil;;
+    //self.currentFilterMode = nil;
+    //self.currentAppState = nil;
+    
+    //self.expandedViewIndex = nil;
+    //self.photoCount = nil;
+    //self.requiredCount = nil;
+    //self.labeledCount = nil;
+    
+    self.labelArr = nil;
+    self.itemArray = nil;
+    self.currentLabelString = nil;
+    self.currentLabelDescription = nil;
+    self.requiredLabelArr = nil;
+    */
 }
 
 - (void) updateLabelHash
@@ -401,8 +419,8 @@ MySingleton *gSingleton = nil;
         if (self.dbController == nil)
             self.dbController = [[DataController alloc] init];
         [self setDbPath:[self.dbController dbPath:name]];
-        bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-        NSLog(@"dbPath: %@ exists:%@", dbPath, databaseExists ? @"YES" : @"NO");
+        bool databaseExists = [[NSFileManager defaultManager] fileExistsAtPath:self.dbPath];
+        NSLog(@"dbPath: %@ exists:%@", self.dbPath, databaseExists ? @"YES" : @"NO");
     }
     else
     {
@@ -436,7 +454,7 @@ MySingleton *gSingleton = nil;
 - (void) setReqCount:(NSString *)newCount
 {
     //NSLog(@"setReqCount %@", newCount);
-    requiredCount = [newCount intValue];
+    self.requiredCount = [newCount intValue];
 }
 
 - (void) setHashReq:(BOOL)isReq
@@ -464,7 +482,7 @@ MySingleton *gSingleton = nil;
         [self.labelArr addObject: [tempArr objectAtIndex:i] ];
     }
     
-    self.currentLabelString = [labelArr objectAtIndex:0];
+    self.currentLabelString = [self.labelArr objectAtIndex:0];
     self.currentLabelDescription = @"";
     
     [self updateLabelHash];
@@ -725,7 +743,7 @@ MySingleton *gSingleton = nil;
     [fileManager createFileAtPath:fullPath2 contents:data2 attributes:nil];
     
     int req = 0;
-    if ([self isReqLab:currentLabelString])
+    if ([self isReqLab:self.currentLabelString])
     {
         req = 1;
     }
@@ -741,7 +759,7 @@ MySingleton *gSingleton = nil;
     
     if ([photo updateDatabaseEntry])
     {
-        [mainData addObject:photo];
+        [self.mainData addObject:photo];
         self.photoCount++;
         self.newPhotos = YES;
     }

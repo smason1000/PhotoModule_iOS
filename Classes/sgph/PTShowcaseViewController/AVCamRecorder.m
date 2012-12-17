@@ -7,10 +7,10 @@
 
 @implementation AVCamRecorder
 
-@synthesize session;
-@synthesize movieFileOutput;
-@synthesize outputFileURL;
-@synthesize delegate;
+@synthesize session = _session;
+@synthesize movieFileOutput = _movieFileOutput;
+@synthesize outputFileURL = _outputFileURL;
+@synthesize delegate = _delegate;
 
 - (id) initWithSession:(AVCaptureSession *)aSession outputFileURL:(NSURL *)anOutputFileURL
 {
@@ -30,6 +30,7 @@
 
 - (void) dealloc
 {
+    NSLog(@"[AVCamRecorder] dealloc");
     [[self session] removeOutput:[self movieFileOutput]];
 }
 

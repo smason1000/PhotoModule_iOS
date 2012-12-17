@@ -37,8 +37,10 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-  [self shutdown_NetworkPhotoAlbumViewController];
+- (void)dealloc
+{
+    NSLog(@"[NetworkPhotoAlbumViewController] dealloc");
+    [self shutdown_NetworkPhotoAlbumViewController];
 }
 
 
@@ -92,9 +94,13 @@
 
   NSString* photoIndexKey = [self cacheKeyForPhotoIndex:photoIndex];
 
-  // The completion block will be executed on the main thread, so we must be careful not
+
+    __unsafe_unretained NetworkPhotoAlbumViewController *weakSelf = self;
+    
+    // The completion block will be executed on the main thread, so we must be careful not
   // to do anything computationally expensive here.
-  [readOp setDidFinishBlock:^(NIOperation* operation) {
+  [readOp setDidFinishBlock:^(NIOperation* operation)
+    {
     UIImage* image = [UIImage imageWithData:weakOp.data];
 
     // Store the image in the correct image cache.
@@ -109,12 +115,12 @@
 
     // If you decide to move this code around then ensure that this method is called from
     // the main thread. Calling it from any other thread will have undefined results.
-    [self.photoAlbumView didLoadPhoto: image
+    [weakSelf.photoAlbumView didLoadPhoto: image
                               atIndex: photoIndex
                             photoSize: photoSize];
 
     if (isThumbnail) {
-      [self.photoScrubberView didLoadThumbnail:image atIndex:photoIndex];
+      [weakSelf.photoScrubberView didLoadThumbnail:image atIndex:photoIndex];
     }
 
     [_activeRequests removeObject:identifierKey];
@@ -162,7 +168,8 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
+- (void)loadView
+{
   [super loadView];
 
   _activeRequests = [[NSMutableSet alloc] init];
@@ -180,9 +187,17 @@
                                       NIPathForBundleResource(nil, @"NimbusPhotos.bundle/gfx/default.png")];
 }
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.view.frame = CGRectMake(0, 88, 320, 328);
+    self.view.bounds = CGRectMake(0, 0, 320, 328);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
   [self shutdown_NetworkPhotoAlbumViewController];
 
   [super viewDidUnload];

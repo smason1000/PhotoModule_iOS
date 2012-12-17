@@ -122,10 +122,11 @@ UITabBarItem *tabBarItem = [self tabBarItem];
         return interfaceOrientation == UIInterfaceOrientationPortrait;
     }
     */
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
     
-    if (interfaceOrientation == UIInterfaceOrientationPortrait) return YES;
-    if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) return YES;
-    if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) return YES;
+    //if (interfaceOrientation == UIInterfaceOrientationPortrait) return YES;
+    //if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) return YES;
+    //if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) return YES;
     
 
     ////////////////////////////////////////////////////////////////////////////

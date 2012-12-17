@@ -12,11 +12,8 @@
 @class PTImageDetailViewController;
 
 @interface MainViewController : UIViewController <UIActionSheetDelegate> { //<PTShowcaseViewDelegate, PTShowcaseViewDataSource>
-    CGRect fBounds;
-    NSArray* bbarItems;
-    NSArray* headerItems;
-    NSTimer *myTimer;
-    NSTimer *refTimer;
+    NSArray* _bbarItems;
+    NSArray* _headerItems;
 }
 
 @property (strong, nonatomic) UILabel* titleLabel;
@@ -30,9 +27,6 @@
 @property (strong, nonatomic) UIView *navView;
 @property (strong, nonatomic) UIView *headerView;
 
-//@property (strong, nonatomic) SampleViewController *avcHolderViewController;
-//@property (strong, nonatomic) SampleViewController *ptHolderViewController;
-//@property (strong, nonatomic) SampleViewController *rvHolderViewController;
 @property (strong, nonatomic) SampleNavigationController *navViewController;
 @property (strong, nonatomic) SampleNavigationController *headerViewController;
 @property (strong, nonatomic) SampleNavigationController *ssHolderViewController;
@@ -59,59 +53,19 @@
 @property (strong, nonatomic) UIBarButtonItem *delItem;
 
 @property (strong, nonatomic) UIBarButtonItem *reqCountItem;
-@property (strong, nonatomic) UIBarButtonItem *labCountItem;
-@property (strong, nonatomic) UIBarButtonItem *totCountItem;
-@property (strong, nonatomic) UIBarButtonItem *nreqCountItem;
-@property (strong, nonatomic) UIBarButtonItem *nlabCountItem;
-@property (strong, nonatomic) UIBarButtonItem *ntotCountItem;
 
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 
-@property (nonatomic) CGRect fBounds;
 @property (nonatomic) BOOL hudHidden;
 
 @property (strong, nonatomic) NSArray* bbarItems;
 @property (strong, nonatomic) NSArray* headerItems;
 
-//@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSTimer *myTimer;
 
 - (void) updateButtonLabels;
 - (void) updateStatusBarLabel:(NSObject *)anObject;
-- (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
+- (void) layoutForOrientation:(UIInterfaceOrientation)orientation andRect:(CGRect)frameRect;
 - (void) setBoundsAndLayout:(CGRect)frameRect;
-- (void) shutdown;
 
 @end
-
-/*
- -(void)eventHandlerExpandOn: (NSNotification *) notification
- {
- 
- 
- PTImageDetailViewController *detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.relativeIndex];
- detailViewController.data = self.showcaseView.imageItems;
- detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
- 
- 
- //[detailViewController.navigationItem setLeftBarButtonItem:
- // [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
- //                                               target:self
- //                                               action:@selector(dismissImageDetailViewController)]];
- 
- 
- UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:detailViewController];
- 
- 
- // TODO zoom in/out (just like in Photos.app in the iPad)
- 
- [self presentViewController:navCtrl animated:YES completion:NULL];
- 
- 
- 
- }
- 
- -(void)eventHandlerExpandOff: (NSNotification *) notification
- {
- [self dismissImageDetailViewController];
- }
- */

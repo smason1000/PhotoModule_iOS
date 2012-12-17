@@ -1,13 +1,13 @@
 #import <UIKit/UIKit.h>
 #import "MySingleton.h"
-#import "MainViewController.h"
+#import "TestViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    MainViewController *mainViewController;
+    TestViewController *testViewController;
 }
 
-@property (nonatomic, strong) MainViewController *mainViewController;
+@property (nonatomic, strong) TestViewController *testViewController;
 
 void onUncaughtException(NSException *exception);
 

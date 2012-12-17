@@ -111,15 +111,15 @@
 
 #pragma mark Views
 
-@property (nonatomic, readonly, strong) UIToolbar* toolbar;
-@property (nonatomic, readonly, strong) NIPhotoAlbumScrollView* photoAlbumView;
-@property (nonatomic, readonly, strong) NIPhotoScrubberView* photoScrubberView;
+@property (nonatomic, readwrite, strong) UIToolbar* toolbar;
+@property (nonatomic, readwrite, strong) NIPhotoAlbumScrollView* photoAlbumView;
+@property (nonatomic, readwrite, strong) NIPhotoScrubberView* photoScrubberView;
 
 
 #pragma mark Toolbar Buttons
 
-@property (nonatomic, readonly, strong) UIBarButtonItem* nextButton;
-@property (nonatomic, readonly, strong) UIBarButtonItem* previousButton;
+@property (nonatomic, readwrite, strong) UIBarButtonItem* nextButton;
+@property (nonatomic, readwrite, strong) UIBarButtonItem* previousButton;
 
 @end
 

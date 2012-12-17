@@ -51,11 +51,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    if (gSingleton.showTrace)
+        NSLog(@"SampleViewController viewDidLoad");
     
     [super viewDidLoad];
     [self updateLayout];
-    if (gSingleton.showTrace)
-        NSLog(@"SampleViewController viewDidLoad");    
 }
 
 - (void)viewDidUnload
@@ -72,7 +72,7 @@
     if (gSingleton.showTrace)
         NSLog(@"SampleViewController shouldAutorotateToInterfaceOrientation");
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

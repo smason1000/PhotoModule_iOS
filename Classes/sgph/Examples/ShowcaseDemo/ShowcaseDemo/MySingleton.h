@@ -69,37 +69,37 @@ typedef enum
 @interface MySingleton : NSObject
 {
     //NSString *someProperty;
-    BOOL newPhotos;
-    BOOL expandOn;
-    BOOL editOn;
-    BOOL filterOn;
-    BOOL iPadDevice;
-    BOOL isModule;
-    BOOL doRef;
-    BOOL openToGallery;
-    BOOL applyCaptureDefaults;
+    BOOL _newPhotos;
+    BOOL _expandOn;
+    BOOL _editOn;
+    BOOL _filterOn;
+    BOOL _iPadDevice;
+    BOOL _isModule;
+    BOOL _doRef;
+    BOOL _openToGallery;
+    BOOL _applyCaptureDefaults;
     
-    PHFilterMode currentFilterMode;
-    PHAppState currentAppState;
+    PHFilterMode _currentFilterMode;
+    PHAppState _currentAppState;
     
-    NSMutableArray* mainData;
-    NSMutableArray *labelArr;
-    NSMutableArray *requiredLabelArr;
-    NSMutableArray *itemArray;
-    NSArray *hashVals;
-    NSArray *hashValsReq;
-    NSArray *curHashVals;
-    NSString *currentLabelString;
-    NSInteger expandedViewIndex;
-    NSInteger photoCount; 
-    NSInteger requiredCount; 
-    NSInteger labeledCount;
-    NSString* userId;
-    NSString* orderNumber;
-    NSString* docDir;
-    NSString* dbPath;
+    NSMutableArray* _mainData;
+    NSMutableArray *_labelArr;
+    NSMutableArray *_requiredLabelArr;
+    NSMutableArray *_itemArray;
+    NSArray *_hashVals;
+    NSArray *_hashValsReq;
+    NSArray *_curHashVals;
+    NSString *_currentLabelString;
+    NSInteger _expandedViewIndex;
+    NSInteger _photoCount;
+    NSInteger _requiredCount;
+    NSInteger _labeledCount;
+    NSString* _userId;
+    NSString* _orderNumber;
+    NSString* _docDir;
+    NSString* _dbPath;
         
-    NSArray* curLetArray;
+    NSArray* _curLetArray;
 }
 
 //@property (nonatomic, retain) NSString *someProperty;
@@ -149,7 +149,6 @@ typedef enum
 @property (nonatomic, strong) NSString* docDir;
 
 //+ (id)sharedSingleton;
--(void)shutdown;
 
 - (NSString*) getDataDirFull;
 - (NSString*) getDataDirRelative;

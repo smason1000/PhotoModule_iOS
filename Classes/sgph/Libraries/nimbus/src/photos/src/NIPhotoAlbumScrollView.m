@@ -42,6 +42,10 @@
   return self;
 }
 
+-(void)dealloc
+{
+    NSLog(@"[NIPhotoAlbumScrollView] dealloc");
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setBackgroundColor:(UIColor *)backgroundColor {

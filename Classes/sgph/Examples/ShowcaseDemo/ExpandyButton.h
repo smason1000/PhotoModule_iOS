@@ -63,8 +63,8 @@
 - (id)initWithPoint:(CGPoint)point title:(NSString *)title buttonNames:(NSArray *)buttonNames selectedItem:(NSInteger)selectedItem;
 - (id)initWithPoint:(CGPoint)point title:(NSString *)title buttonNames:(NSArray *)buttonNames;
 
-@property (nonatomic,readonly,strong) UILabel *titleLabel;
-@property (nonatomic,readonly,strong) NSArray *labels;
+@property (nonatomic,readonly,strong) UILabel *_titleLabel;
+@property (nonatomic,readonly,strong) NSArray *_labels;
 @property (nonatomic,assign) NSInteger selectedItem;
 
 @end

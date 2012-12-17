@@ -1,6 +1,5 @@
 #import "AVCamViewController.h"
 #import "AVCamCaptureManager.h"
-#import "AVCamRecorder.h"
 #import "ExpandyButton.h"
 
 
@@ -24,8 +23,8 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
 //@synthesize recordButton;
 //@synthesize stillButton;
 //@synthesize focusModeLabel;
-@synthesize videoPreviewView;
-@synthesize captureVideoPreviewLayer;
+@synthesize videoPreviewView = _videoPreviewView;
+@synthesize captureVideoPreviewLayer = _captureVideoPreviewLayer;
 
 @synthesize flash = _flash;
 @synthesize torch = _torch;
@@ -310,7 +309,7 @@ UIView *focusView = nil;
         // create the zoom slider
         if (self.zoomSlider == nil)
         {
-            self.zoomSlider = [[UISlider alloc] initWithFrame:CGRectMake(8.f, view.frame.size.height - 55, view.frame.size.width - 16.f, 24)];   
+            self.zoomSlider = [[UISlider alloc] initWithFrame:CGRectMake(8.f, view.frame.size.height - 40, view.frame.size.width - 16.f, 24)];
             //UIImage *sliderLeftTrackImage = [[UIImage imageNamed: @"slider_body_min.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];   
             //UIImage *sliderRightTrackImage = [[UIImage imageNamed: @"slider_body_max.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];   
             //UIImage *sliderThumb = [[UIImage imageNamed: @"slider_thumb.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];   
@@ -352,8 +351,8 @@ UIView *focusView = nil;
 	effectiveScale = 1.0;
 	effectiveRotationRadians = 0.0;
 	effectiveTranslation = CGPointMake(0.0, 0.0);
-	[captureVideoPreviewLayer setAffineTransform:CGAffineTransformIdentity];
-	captureVideoPreviewLayer.frame = videoPreviewView.layer.bounds;
+	[self.captureVideoPreviewLayer setAffineTransform:CGAffineTransformIdentity];
+	self.captureVideoPreviewLayer.frame = self.videoPreviewView.layer.bounds;
     
     [[self captureManager] setOrientation:AVCaptureVideoOrientationPortrait];
     [[self captureManager] setSessionPreset:AVCaptureSessionPresetPhoto];
@@ -393,11 +392,25 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode"];
-    [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.flashMode"];
-
+    NSLog(@"[AVCamViewController] dealloc");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"[AVCamViewController] viewWillDisappear");
+    if (self.captureManager != nil)
+    {
+        [self.captureManager removeObservers];
+    }
+    [self removeObserver:self forKeyPath:@"captureManager.videoInput.device.focusMode"];
+
+    if (focusView != nil)
+    {
+        [focusView removeFromSuperview];
+    }
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad
@@ -425,9 +438,10 @@ UITabBarItem *tabBarItem = [self tabBarItem];
          name:@"labelEvent"
          object:nil ];
 		
-		[[self captureManager] setDelegate:self];
+        __unsafe_unretained AVCamViewController *weakSelf = self;
+		[[weakSelf captureManager] setDelegate:weakSelf];
 
-		if ([[self captureManager] setupSessionWithPreset:AVCaptureSessionPresetPhoto error:&error])
+		if ([[weakSelf captureManager] setupSessionWithPreset:AVCaptureSessionPresetPhoto error:&error])
         {
             // Create video preview layer and add it to the UI
             
@@ -439,8 +453,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
             //}
             //else
             {
-                self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(21, 1, 278, 370)];
-                //self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, 320, 370)];
+                //self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(21, 1, 278, 370)];
+                self.videoPreviewView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 132)];
             }
             [self applyDefaults:NO];
             
@@ -468,7 +482,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 			
             // Start the session. This is done asychronously since -startRunning doesn't return until the session is running.
 			dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-				[[[self captureManager] session] startRunning];
+				[[[weakSelf captureManager] session] startRunning];
 			});
 			
             [self updateButtonStates];
@@ -484,7 +498,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 			//[self setFocusModeLabel:newFocusModeLabel];
             
             // Create the focus mode UI overlay
-            if ([[self captureManager] hasFocus])
+            if ([[weakSelf captureManager] hasFocus])
             {
                 focusView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width / 2) - 52, (self.view.frame.size.height / 2) - 70, 70, 70)];
                 [focusView setBackgroundColor:[UIColor clearColor]];
@@ -501,13 +515,13 @@ UITabBarItem *tabBarItem = [self tabBarItem];
             
             // Add a single tap gesture to focus on the point tapped, then lock focus
 			UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToAutoFocus:)];
-			[singleTap setDelegate:self];
+			[singleTap setDelegate:weakSelf];
 			[singleTap setNumberOfTapsRequired:1];
 			[view addGestureRecognizer:singleTap];
             
             // Add a double tap gesture to reset the focus mode to continuous auto focus
 			UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToContinouslyAutoFocus:)];
-			[doubleTap setDelegate:self];
+			[doubleTap setDelegate:weakSelf];
 			[doubleTap setNumberOfTapsRequired:2];
 			[singleTap requireGestureRecognizerToFail:doubleTap];
 			[view addGestureRecognizer:doubleTap];
@@ -523,8 +537,8 @@ UITabBarItem *tabBarItem = [self tabBarItem];
             //[view addGestureRecognizer:recognizer];
             //[recognizer release];
             
-            recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
-            recognizer.delegate = self;
+            recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:weakSelf action:@selector(handlePinchFrom:)];
+            recognizer.delegate = weakSelf;
             [view addGestureRecognizer:recognizer];
             //[recognizer release];
             
@@ -544,7 +558,6 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 		}		
 	}
-		
     [super viewDidLoad];
     
     //captureManager
@@ -637,7 +650,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 	}
 	if ( [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] )
     {
-        CGPoint location = [gestureRecognizer locationInView:videoPreviewView];
+        CGPoint location = [gestureRecognizer locationInView:self.videoPreviewView];
         beginGestureTranslation = CGPointMake(effectiveTranslation.x - location.x, effectiveTranslation.x - location.y);
 	}
 	return YES;
@@ -645,25 +658,25 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-	if ( touch.view == videoPreviewView )
+	if ( touch.view == self.videoPreviewView )
 		return YES;
 	return NO;
 }
 
 - (void)handleSingleTapFrom:(UITapGestureRecognizer *)recognizer
 {
-	CGPoint location = [recognizer locationInView:videoPreviewView];
-	CGPoint convertedLocation = [captureVideoPreviewLayer convertPoint:location fromLayer:captureVideoPreviewLayer.superlayer];
-	if ( [captureVideoPreviewLayer containsPoint:convertedLocation] )
+	CGPoint location = [recognizer locationInView:self.videoPreviewView];
+	CGPoint convertedLocation = [self.captureVideoPreviewLayer convertPoint:location fromLayer:self.captureVideoPreviewLayer.superlayer];
+	if ( [self.captureVideoPreviewLayer containsPoint:convertedLocation] )
     {
 		// cycle to next video gravity mode.
-		NSString *videoGravity = captureVideoPreviewLayer.videoGravity;
+		NSString *videoGravity = self.captureVideoPreviewLayer.videoGravity;
 		if ( [videoGravity isEqualToString:AVLayerVideoGravityResizeAspect] )
-			captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+			self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 		else if ( [videoGravity isEqualToString:AVLayerVideoGravityResizeAspectFill] )
-			captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResize;
+			self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResize;
 		else if ( [videoGravity isEqualToString:AVLayerVideoGravityResize] )
-			captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+			self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
 	}
 }
 
@@ -672,9 +685,9 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 	BOOL allTouchesAreOnThePreviewLayer = YES;
 	NSUInteger numTouches = [recognizer numberOfTouches], i;
 	for ( i = 0; i < numTouches; ++i ) {
-		CGPoint location = [recognizer locationOfTouch:i inView:videoPreviewView];
-		CGPoint convertedLocation = [captureVideoPreviewLayer convertPoint:location fromLayer:captureVideoPreviewLayer.superlayer];
-		if ( ! [captureVideoPreviewLayer containsPoint:convertedLocation] ) {
+		CGPoint location = [recognizer locationOfTouch:i inView:self.videoPreviewView];
+		CGPoint convertedLocation = [self.captureVideoPreviewLayer convertPoint:location fromLayer:self.captureVideoPreviewLayer.superlayer];
+		if ( ! [self.captureVideoPreviewLayer containsPoint:convertedLocation] ) {
 			allTouchesAreOnThePreviewLayer = NO;
 			break;
 		}
@@ -688,10 +701,10 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 
 - (void)handleDragFrom:(UIPanGestureRecognizer *)recognizer
 {
-	CGPoint location = [recognizer locationInView:videoPreviewView];
-	CGPoint convertedLocation = [captureVideoPreviewLayer convertPoint:location fromLayer:captureVideoPreviewLayer.superlayer];
+	CGPoint location = [recognizer locationInView:self.videoPreviewView];
+	CGPoint convertedLocation = [self.captureVideoPreviewLayer convertPoint:location fromLayer:self.captureVideoPreviewLayer.superlayer];
 	
-	if ( [captureVideoPreviewLayer containsPoint:convertedLocation] )
+	if ( [self.captureVideoPreviewLayer containsPoint:convertedLocation] )
     {
         effectiveTranslation = CGPointMake(beginGestureTranslation.x + location.x, beginGestureTranslation.y + location.y);
         [self makeAndApplyAffineTransform];
@@ -713,9 +726,9 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 	NSUInteger numTouches = [recognizer numberOfTouches], i;
 	for ( i = 0; i < numTouches; ++i )
     {
-		CGPoint location = [recognizer locationOfTouch:i inView:videoPreviewView];
-		CGPoint convertedLocation = [captureVideoPreviewLayer convertPoint:location fromLayer:captureVideoPreviewLayer.superlayer];
-		if ( ! [captureVideoPreviewLayer containsPoint:convertedLocation] )
+		CGPoint location = [recognizer locationOfTouch:i inView:self.videoPreviewView];
+		CGPoint convertedLocation = [self.captureVideoPreviewLayer convertPoint:location fromLayer:self.captureVideoPreviewLayer.superlayer];
+		if ( ! [self.captureVideoPreviewLayer containsPoint:convertedLocation] )
         {
 			allTouchesAreOnThePreviewLayer = NO;
 			break;
@@ -748,7 +761,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 	affineTransform = CGAffineTransformRotate(affineTransform, effectiveRotationRadians);
 	[CATransaction begin];
 	[CATransaction setAnimationDuration:.025];
-	[captureVideoPreviewLayer setAffineTransform:affineTransform];
+	[self.captureVideoPreviewLayer setAffineTransform:affineTransform];
 	[CATransaction commit];
 }
 
@@ -1020,11 +1033,11 @@ UITabBarItem *tabBarItem = [self tabBarItem];
     CGPoint pointOfInterest = CGPointMake(.5f, .5f);
     CGSize frameSize = [[self videoPreviewView] frame].size;
     
-    if ([captureVideoPreviewLayer isMirrored]) {
+    if ([self.captureVideoPreviewLayer isMirrored]) {
         viewCoordinates.x = frameSize.width - viewCoordinates.x;
     }    
 
-    if ( [[captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResize] ) {
+    if ( [[self.captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResize] ) {
 		// Scale, switch x and y, and reverse x
         pointOfInterest = CGPointMake(viewCoordinates.y / frameSize.height, 1.f - (viewCoordinates.x / frameSize.width));
     } else {
@@ -1052,7 +1065,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
                 CGFloat xc = .5f;
                 CGFloat yc = .5f;
                 
-                if ( [[captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResizeAspect] ) {
+                if ( [[self.captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResizeAspect] ) {
                     if (viewRatio > apertureRatio) {
                         CGFloat y2 = frameSize.height;
                         CGFloat x2 = frameSize.height * apertureRatio;
@@ -1076,7 +1089,7 @@ UITabBarItem *tabBarItem = [self tabBarItem];
                             yc = 1.f - (point.x / x2);
                         }
                     }
-                } else if ([[captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
+                } else if ([[self.captureVideoPreviewLayer videoGravity] isEqualToString:AVLayerVideoGravityResizeAspectFill]) {
 					// Scale, switch x and y, and reverse x
                     if (viewRatio > apertureRatio) {
                         CGFloat y2 = apertureSize.width * (frameSize.width / apertureSize.height);

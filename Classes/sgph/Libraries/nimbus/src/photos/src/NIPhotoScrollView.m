@@ -63,7 +63,7 @@
         frameToCenter.origin.x = 0;
         frameToCenter.origin.y = 0;
     }
-    NSLog(@"NICenteringScrollView layoutSubviews %@", NSStringFromCGRect(frameToCenter));
+    //NSLog(@"NICenteringScrollView layoutSubviews %@", NSStringFromCGRect(frameToCenter));
     
   // Center horizontally.
   if (frameToCenter.size.width < boundsSize.width)
@@ -155,7 +155,7 @@
 
 - (void) dealloc
 {
-    NSLog(@"NIPhotoScrollView dealloc");
+    NSLog(@"[NIPhotoScrollView] dealloc");
 }
 
 

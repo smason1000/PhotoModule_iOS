@@ -71,10 +71,7 @@
 {
     NSLog(@"[PhotoHubLib] shutdown");
     [mainViewController.view removeFromSuperview];
-    [mainViewController shutdown];
-    [gSingleton shutdown];
-    pSingleton = nil;
+    [mainViewController removeFromParentViewController];
     gSingleton = nil;
-    mainViewController = nil;
 }
 @end

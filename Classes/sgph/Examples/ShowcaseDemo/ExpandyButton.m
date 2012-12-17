@@ -89,6 +89,7 @@ const CGFloat borderWidth = 1.f;
 @synthesize buttonWidth = _buttonWidth;
 @synthesize titleLabel = _titleLabel;
 @synthesize labels = _labels;
+
 @dynamic selectedItem;
 
 - (id)initWithPoint:(CGPoint)point title:(NSString *)title buttonNames:(NSArray *)buttonNames selectedItem:(NSInteger)selectedItem buttonWidth:(CGFloat)buttonWidth

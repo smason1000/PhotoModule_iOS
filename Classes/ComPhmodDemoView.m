@@ -17,6 +17,10 @@
         NSLog(@"[VIEW LIFECYCLE EVENT] dealloc");
 	
 	// Release objects and memory allocated by the view
+    [[self subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop)
+    {
+          [(UIView *)obj removeFromSuperview];
+    }];
     square = nil;
 }
 

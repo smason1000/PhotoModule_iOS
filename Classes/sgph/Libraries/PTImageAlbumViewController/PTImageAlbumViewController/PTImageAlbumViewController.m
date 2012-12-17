@@ -18,11 +18,12 @@
 - (id)init
 {
     self = [super initWithNibName:nil bundle:nil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
-        _initialIndex = 0;
-        _imageAlbumView = [[PTImageAlbumView alloc] init];
-        _imageAlbumView.imageAlbumDataSource = self;
+        self.initialIndex = 0;
+        self.imageAlbumView = [[PTImageAlbumView alloc] init];
+        self.imageAlbumView.imageAlbumDataSource = self;
     }
     return self;
 }
@@ -30,11 +31,17 @@
 - (id)initWithImageAtIndex:(NSInteger)index
 {
     self = [self init];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
-        _initialIndex = index;
+        self.initialIndex = index;
     }
     return self;
+}
+
+-(void)dealloc
+{
+    NSLog(@"[PTImageAlbumViewController] dealloc");
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +66,9 @@
 {
     [super viewDidLoad];
     
+    self.view.frame = CGRectMake(0, 88, 320, 328);
+    self.view.bounds = CGRectMake(0, 0, 320, 328);
+
     // Internal
     self.photoAlbumView.dataSource = self;
     self.photoScrubberView.dataSource = self;
@@ -99,11 +109,14 @@
 {
     // Return YES for supported orientations
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return interfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(interfaceOrientation);
-    }
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
+
+    //if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    //{
+    //    return interfaceOrientation == UIInterfaceOrientationPortrait || UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    //}
     
-    return YES;
+    //return YES;
 }
 
 #pragma mark - Private

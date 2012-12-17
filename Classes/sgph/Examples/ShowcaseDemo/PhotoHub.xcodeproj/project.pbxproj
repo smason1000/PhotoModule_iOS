@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		220CDE7B15C47CF10074CC8D /* ExpandyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDE7915C47CF10074CC8D /* ExpandyButton.m */; };
+		221811D6167B665F0061A5B0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 221811D5167B665F0061A5B0 /* TestViewController.m */; };
+		221811D8167B6E2F0061A5B0 /* PhotoHubLib.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA4688B1569FD2100743108 /* PhotoHubLib.m */; };
+		221811DA167BC84D0061A5B0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 221811D9167BC84D0061A5B0 /* Default-568h@2x.png */; };
 		221DDA91166661A400B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
 		221DDA92166661C100B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
 		221DDA931666640B00B62FE8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
 		221DDA941666649F00B62FE8 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* Photo.m */; };
+		22B0B484167D7FA100672882 /* DDBadgeViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B0B482167D7FA100672882 /* DDBadgeViewCell.h */; };
+		22B0B485167D7FA100672882 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B483167D7FA100672882 /* DDBadgeViewCell.m */; };
+		22B0B486167D7FA100672882 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B483167D7FA100672882 /* DDBadgeViewCell.m */; };
 		22CABB5E1665A07900E6CBBB /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
 		22CABB601665A12B00E6CBBB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* Photo.m */; };
 		22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */; };
@@ -85,9 +91,7 @@
 		AE1ED84F155C9DFF003ACBFC /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED849155C9DB4003ACBFC /* SampleViewController.m */; };
 		AE1ED858155CFB1C003ACBFC /* SampleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED856155CFB0F003ACBFC /* SampleNavigationController.m */; };
 		AE1ED86C1563F07B003ACBFC /* MySingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED86B1563F07B003ACBFC /* MySingleton.m */; };
-		AE28739515584B4200B93478 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE28738F15584AB300B93478 /* DDBadgeViewCell.m */; };
 		AE28739615584B4200B93478 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE28739015584AB300B93478 /* RootViewController.m */; };
-		AE9FA73815514E4500B554F2 /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA72F15514E0000B554F2 /* AVCamRecorder.m */; };
 		AE9FA73915514E4500B554F2 /* AVCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA73015514E0000B554F2 /* AVCamUtilities.m */; };
 		AE9FA73A15514E4500B554F2 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA73115514E0000B554F2 /* AVCamViewController.m */; };
 		AE9FA73C15514EBC00B554F2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9FA73B15514EBC00B554F2 /* MobileCoreServices.framework */; };
@@ -96,7 +100,6 @@
 		AEA468861569FD2100743108 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FC0D1B14E3D44300F28648 /* Foundation.framework */; };
 		AEA4688C1569FD2100743108 /* PhotoHubLib.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA4688B1569FD2100743108 /* PhotoHubLib.m */; };
 		AEA468F1156A38B200743108 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA73115514E0000B554F2 /* AVCamViewController.m */; };
-		AEA468F3156A38B200743108 /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA72F15514E0000B554F2 /* AVCamRecorder.m */; };
 		AEA468F4156A38B200743108 /* AVCamUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9FA73015514E0000B554F2 /* AVCamUtilities.m */; };
 		AEA468F5156A38B200743108 /* PTVideoThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2B14FD45DA0094A642 /* PTVideoThumbnailImageView.m */; };
 		AEA468F6156A38B200743108 /* PTPdfThumbnailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50265E2E14FD46080094A642 /* PTPdfThumbnailImageView.m */; };
@@ -154,7 +157,6 @@
 		AEA46B9C156A94F100743108 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED848155C9DB4003ACBFC /* MainViewController.m */; };
 		AEA46B9D156A94F100743108 /* SampleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED856155CFB0F003ACBFC /* SampleNavigationController.m */; };
 		AEA46B9E156A94F100743108 /* PTDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5093F29014E557A3004DC805 /* PTDemoViewController.m */; };
-		AEA46B9F156A94F100743108 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE28738F15584AB300B93478 /* DDBadgeViewCell.m */; };
 		AEA46BA0156A94F100743108 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE28739015584AB300B93478 /* RootViewController.m */; };
 		AEA46BA1156A9A7C00743108 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1ED849155C9DB4003ACBFC /* SampleViewController.m */; };
 		AEA46BA2156A9C9E00743108 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088D9D61521EC3E00A1A9DE /* AVFoundation.framework */; };
@@ -167,7 +169,12 @@
 /* Begin PBXFileReference section */
 		220CDE7815C47CF10074CC8D /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandyButton.h; sourceTree = "<group>"; };
 		220CDE7915C47CF10074CC8D /* ExpandyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandyButton.m; sourceTree = "<group>"; };
+		221811D4167B665F0061A5B0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		221811D5167B665F0061A5B0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		221811D9167BC84D0061A5B0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		221DDA90166661A400B62FE8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		22B0B482167D7FA100672882 /* DDBadgeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDBadgeViewCell.h; path = ../../PTShowcaseViewController/DDBadgeViewCell.h; sourceTree = "<group>"; };
+		22B0B483167D7FA100672882 /* DDBadgeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDBadgeViewCell.m; path = ../../PTShowcaseViewController/DDBadgeViewCell.m; sourceTree = "<group>"; };
 		22CABB5616659BD300E6CBBB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		22CABB5B16659C4E00E6CBBB /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		22CABB5C16659CED00E6CBBB /* Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
@@ -319,14 +326,10 @@
 		AE1ED857155CFB0F003ACBFC /* SampleNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleNavigationController.h; sourceTree = "<group>"; };
 		AE1ED86A1563F07A003ACBFC /* MySingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySingleton.h; sourceTree = "<group>"; };
 		AE1ED86B1563F07B003ACBFC /* MySingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySingleton.m; sourceTree = "<group>"; };
-		AE28738F15584AB300B93478 /* DDBadgeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DDBadgeViewCell.m; path = ../../PTShowcaseViewController/DDBadgeViewCell.m; sourceTree = "<group>"; };
 		AE28739015584AB300B93478 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../../PTShowcaseViewController/RootViewController.m; sourceTree = "<group>"; };
-		AE28739115584AB300B93478 /* DDBadgeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DDBadgeViewCell.h; path = ../../PTShowcaseViewController/DDBadgeViewCell.h; sourceTree = "<group>"; };
 		AE28739215584AB300B93478 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../../PTShowcaseViewController/RootViewController.h; sourceTree = "<group>"; };
-		AE9FA72F15514E0000B554F2 /* AVCamRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AVCamRecorder.m; path = ../../PTShowcaseViewController/AVCamRecorder.m; sourceTree = "<group>"; };
 		AE9FA73015514E0000B554F2 /* AVCamUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AVCamUtilities.m; path = ../../PTShowcaseViewController/AVCamUtilities.m; sourceTree = "<group>"; };
 		AE9FA73115514E0000B554F2 /* AVCamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AVCamViewController.m; path = ../../PTShowcaseViewController/AVCamViewController.m; sourceTree = "<group>"; };
-		AE9FA73315514E0000B554F2 /* AVCamRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AVCamRecorder.h; path = ../../PTShowcaseViewController/AVCamRecorder.h; sourceTree = "<group>"; };
 		AE9FA73415514E0000B554F2 /* AVCamUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AVCamUtilities.h; path = ../../PTShowcaseViewController/AVCamUtilities.h; sourceTree = "<group>"; };
 		AE9FA73515514E0000B554F2 /* AVCamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AVCamViewController.h; path = ../../PTShowcaseViewController/AVCamViewController.h; sourceTree = "<group>"; };
 		AE9FA73B15514EBC00B554F2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -621,6 +624,7 @@
 		50FC0D0A14E3D44300F28648 = {
 			isa = PBXGroup;
 			children = (
+				221811D9167BC84D0061A5B0 /* Default-568h@2x.png */,
 				221DDA90166661A400B62FE8 /* libsqlite3.dylib */,
 				50FC0D1F14E3D44300F28648 /* PhotoHub */,
 				AE28738E15584AA100B93478 /* BadgeList */,
@@ -704,6 +708,8 @@
 				AE1ED849155C9DB4003ACBFC /* SampleViewController.m */,
 				AE1ED857155CFB0F003ACBFC /* SampleNavigationController.h */,
 				AE1ED856155CFB0F003ACBFC /* SampleNavigationController.m */,
+				221811D4167B665F0061A5B0 /* TestViewController.h */,
+				221811D5167B665F0061A5B0 /* TestViewController.m */,
 			);
 			name = NestedViews;
 			sourceTree = "<group>";
@@ -717,8 +723,6 @@
 				AE9FA73115514E0000B554F2 /* AVCamViewController.m */,
 				22CC0B6615C61E42002A3535 /* AVCamCaptureManager.h */,
 				22CC0B6715C61E42002A3535 /* AVCamCaptureManager.m */,
-				AE9FA73315514E0000B554F2 /* AVCamRecorder.h */,
-				AE9FA72F15514E0000B554F2 /* AVCamRecorder.m */,
 				AE9FA73415514E0000B554F2 /* AVCamUtilities.h */,
 				AE9FA73015514E0000B554F2 /* AVCamUtilities.m */,
 			);
@@ -728,10 +732,10 @@
 		AE28738E15584AA100B93478 /* BadgeList */ = {
 			isa = PBXGroup;
 			children = (
+				22B0B482167D7FA100672882 /* DDBadgeViewCell.h */,
+				22B0B483167D7FA100672882 /* DDBadgeViewCell.m */,
 				AE28739215584AB300B93478 /* RootViewController.h */,
 				AE28739015584AB300B93478 /* RootViewController.m */,
-				AE28739115584AB300B93478 /* DDBadgeViewCell.h */,
-				AE28738F15584AB300B93478 /* DDBadgeViewCell.m */,
 			);
 			name = BadgeList;
 			sourceTree = "<group>";
@@ -761,6 +765,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B0B484167D7FA100672882 /* DDBadgeViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +844,7 @@
 				50A601B014F55D99002076AB /* ShowcaseDemo.bundle in Resources */,
 				50A2F63614F63EE0009EE464 /* ShowcaseDemo.plist in Resources */,
 				5088D9DA1521EC9F00A1A9DE /* PSPDFKit.bundle in Resources */,
+				221811DA167BC84D0061A5B0 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +861,6 @@
 				AE1ED84D155C9DFF003ACBFC /* AppDelegate.m in Sources */,
 				AE1ED84E155C9DFF003ACBFC /* MainViewController.m in Sources */,
 				AE1ED84F155C9DFF003ACBFC /* SampleViewController.m in Sources */,
-				AE28739515584B4200B93478 /* DDBadgeViewCell.m in Sources */,
 				AE28739615584B4200B93478 /* RootViewController.m in Sources */,
 				50FC0D2614E3D44300F28648 /* main.m in Sources */,
 				5093F24E14E532F1004DC805 /* PTShowcaseViewController.m in Sources */,
@@ -901,13 +906,15 @@
 				50265E2C14FD45DA0094A642 /* PTVideoThumbnailImageView.m in Sources */,
 				50265E2F14FD46080094A642 /* PTPdfThumbnailImageView.m in Sources */,
 				50265E3614FE72D10094A642 /* PTGroupDetailViewController.m in Sources */,
-				AE9FA73815514E4500B554F2 /* AVCamRecorder.m in Sources */,
 				AE9FA73915514E4500B554F2 /* AVCamUtilities.m in Sources */,
 				AE9FA73A15514E4500B554F2 /* AVCamViewController.m in Sources */,
 				AE1ED86C1563F07B003ACBFC /* MySingleton.m in Sources */,
 				22CABB5E1665A07900E6CBBB /* DataController.m in Sources */,
 				22CABB601665A12B00E6CBBB /* Photo.m in Sources */,
 				22FDE33016695618006C48E6 /* WorkOrder.m in Sources */,
+				221811D6167B665F0061A5B0 /* TestViewController.m in Sources */,
+				221811D8167B6E2F0061A5B0 /* PhotoHubLib.m in Sources */,
+				22B0B485167D7FA100672882 /* DDBadgeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,11 +929,9 @@
 				AEA46B9C156A94F100743108 /* MainViewController.m in Sources */,
 				AEA46B9D156A94F100743108 /* SampleNavigationController.m in Sources */,
 				AEA46B9E156A94F100743108 /* PTDemoViewController.m in Sources */,
-				AEA46B9F156A94F100743108 /* DDBadgeViewCell.m in Sources */,
 				AEA46BA0156A94F100743108 /* RootViewController.m in Sources */,
 				AEA46B95156A921700743108 /* MySingleton.m in Sources */,
 				AEA468F1156A38B200743108 /* AVCamViewController.m in Sources */,
-				AEA468F3156A38B200743108 /* AVCamRecorder.m in Sources */,
 				AEA468F4156A38B200743108 /* AVCamUtilities.m in Sources */,
 				AEA468F5156A38B200743108 /* PTVideoThumbnailImageView.m in Sources */,
 				AEA468F6156A38B200743108 /* PTPdfThumbnailImageView.m in Sources */,
@@ -973,6 +978,7 @@
 				AEA4688C1569FD2100743108 /* PhotoHubLib.m in Sources */,
 				220CDE7B15C47CF10074CC8D /* ExpandyButton.m in Sources */,
 				22CC0B6915C61E42002A3535 /* AVCamCaptureManager.m in Sources */,
+				22B0B486167D7FA100672882 /* DDBadgeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

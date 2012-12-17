@@ -4,14 +4,10 @@
 
 @interface RootViewController : UITableViewController <UISearchDisplayDelegate/*, UISearchBarDelegate*/>
 {
-    //PTAppDelegate *ptAppDelegate;
-    NSArray* emptyArray;
-    NSMutableArray* filteredListContent;
-    //UISearchDisplayController *searchDC;
+    NSArray*        emptyArray;
+    NSMutableArray* _filteredListContent;
 }
 
-//@property (nonatomic, retain) PTAppDelegate *ptAppDelegate;
 @property (nonatomic, strong) NSMutableArray *filteredListContent;
-//@property (nonatomic, strong) UISearchDisplayController *searchDC;
 
 @end

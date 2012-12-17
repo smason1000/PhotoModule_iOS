@@ -39,7 +39,8 @@
 
 -(void) dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];    
+    NSLog(@"[PTShowcaseView] dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"clearEvent" object:nil];
 }
 
 #pragma mark - Instance properties

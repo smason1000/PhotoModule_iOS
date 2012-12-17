@@ -5,10 +5,10 @@
 @class ComPhmodSingleton;
 extern ComPhmodSingleton *mSingleton;
 
-
-@interface ComPhmodSingleton : NSObject {
-    PhotoHubLib *myPhotoHubLib;
-    MySingleton *myPHS;
+@interface ComPhmodSingleton : NSObject
+{
+    PhotoHubLib *_myPhotoHubLib;
+    MySingleton *_myPHS;
 }
 
 @property (nonatomic, strong) PhotoHubLib *myPhotoHubLib;

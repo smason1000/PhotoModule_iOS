@@ -31,8 +31,8 @@ var photosObj = {
 
 @interface WorkOrder : NSObject
 {
-    NSInteger   order_id;
-    NSString    *user_id;
+    NSString    *_order_id;
+    NSString    *_user_id;
 }
 
 @property (nonatomic) NSString *order_id;

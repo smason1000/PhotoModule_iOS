@@ -139,7 +139,7 @@
 
 -(void) dealloc
 {
-    //NSLog(@"GMGridViewCell dealloc %d", self.ind);
+    NSLog(@"[GMGridViewCell] dealloc %d", self.ind);
     if (self.eventsInited)
     {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
@@ -263,11 +263,12 @@
     if (editing != _editing) {
         _editing = editing;
         if (animated) {
+            __gm_weak GMGridViewCell *weakSelf = self;
             [UIView animateWithDuration:0.2f
                                   delay:0.f
                                 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseOut
                              animations:^{
-                                 self.deleteButton.alpha = editing ? 1.f : 0.f;
+                                 weakSelf.deleteButton.alpha = editing ? 1.f : 0.f;
                              }
                              completion:nil];
         }else {
@@ -392,6 +393,7 @@
 
 - (void)switchToFullSizeMode:(BOOL)fullSizeEnabled
 {    
+    __gm_weak GMGridViewCell *weakSelf = self;
     if (fullSizeEnabled)
     {
         self.fullSizeView.autoresizingMask = self.defaultFullsizeViewResizingMask;
@@ -405,14 +407,14 @@
         self.fullSizeView.alpha = MAX(self.fullSizeView.alpha, self.contentView.alpha);
         self.contentView.alpha  = 0;
         
-        [UIView animateWithDuration:0.3 
+        [UIView animateWithDuration:0.3
                          animations:^{
-                             self.fullSizeView.alpha = 1;
-                             self.fullSizeView.frame = CGRectMake(self.fullSizeView.frame.origin.x, self.fullSizeView.frame.origin.y, self.fullSize.width, self.fullSize.height);
-                             self.fullSizeView.center = center;
+                             weakSelf.fullSizeView.alpha = 1;
+                             weakSelf.fullSizeView.frame = CGRectMake(self.fullSizeView.frame.origin.x, self.fullSizeView.frame.origin.y, self.fullSize.width, self.fullSize.height);
+                             weakSelf.fullSizeView.center = center;
                          } 
                          completion:^(BOOL finished){
-                             [self setNeedsLayout];
+                             [weakSelf setNeedsLayout];
                          }
         ];
     }
@@ -426,11 +428,11 @@
         
         [UIView animateWithDuration:0.3 
                          animations:^{
-                             self.contentView.alpha  = 1;
-                             self.fullSizeView.frame = self.bounds;
+                             weakSelf.contentView.alpha  = 1;
+                             weakSelf.fullSizeView.frame = weakSelf.bounds;
                          } 
                          completion:^(BOOL finished){
-                             [self setNeedsLayout];
+                             [weakSelf setNeedsLayout];
                          }
          ];
     }

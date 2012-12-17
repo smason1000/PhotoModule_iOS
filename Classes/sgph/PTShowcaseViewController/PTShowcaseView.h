@@ -7,7 +7,7 @@
 
 @interface PTShowcaseView : GMGridView
 {
-    NSTimer *myTimer;
+    NSTimer *_myTimer;
 }
 
 @property (nonatomic, weak) id<PTShowcaseViewDelegate> showcaseDelegate;

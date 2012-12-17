@@ -2,16 +2,28 @@
 
 @implementation SampleNavigationController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize name = _name;
+
+- (id)initWithName:(NSString *)name
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (gSingleton.showTrace)
+        NSLog(@"[NavigationController] (%@) init", name);
+    
+    self = [super init];
+    if (self)
+    {
+        self.name = name;
+        
         // Custom initialization
         [[self view] setBackgroundColor:[UIColor blackColor]];
     }
-    if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController initWithNibName");
     return self;
+}
+
+- (void)dealloc
+{
+    NSLog(@"[NavigationController] dealloc %@", self.name);
+    self.name = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -19,7 +31,7 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController didReceiveMemoryWarning");
+        NSLog(@"[NavigationController] (%@) didReceiveMemoryWarning", self.name);
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -44,18 +56,18 @@
 {
     [super loadView];
     if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController loadView");
+        NSLog(@"[NavigationController] (%@) loadView", self.name);
 }
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    if (gSingleton.showTrace)
+        NSLog(@"[NavigationController] (%@) viewDidLoad", self.name);
     
     [super viewDidLoad];
     [self updateLayout];
-    if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController viewDidLoad");    
 }
 
 - (void)viewDidUnload
@@ -64,23 +76,25 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController viewDidUnload");    
+        NSLog(@"[NavigationController] (%@) viewDidUnload", self.name);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController shouldAutorotateToInterfaceOrientation");
+        NSLog(@"[NavigationController] (%@) shouldAutorotateToInterfaceOrientation", self.name);
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (gSingleton.showTrace)
-        NSLog(@"SampleNavigationController willRotateToInterfaceOrientation");
+        NSLog(@"[NavigationController] (%@) willRotateToInterfaceOrientation", self.name);
+    
+    __unsafe_unretained SampleNavigationController *weakSelf = self;
     [UIView animateWithDuration:duration animations:^{
-        [self layoutForOrientation:toInterfaceOrientation];
+        [weakSelf layoutForOrientation:toInterfaceOrientation];
     }];
 }
 

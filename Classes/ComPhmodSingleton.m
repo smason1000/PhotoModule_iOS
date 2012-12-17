@@ -5,8 +5,8 @@ ComPhmodSingleton *mSingleton = nil;
 
 @implementation ComPhmodSingleton
 
-@synthesize myPhotoHubLib;
-@synthesize myPHS;
+@synthesize myPhotoHubLib = _myPhotoHubLib;
+@synthesize myPHS = _myPHS;
 @synthesize showTrace;
 
 /*
@@ -35,18 +35,22 @@ ComPhmodSingleton *mSingleton = nil;
 
 -(void)startup
 {
-    myPhotoHubLib = [[PhotoHubLib alloc] init];
+    self.myPhotoHubLib = [[PhotoHubLib alloc] init];
     
-    [myPhotoHubLib initAll];
+    [self.myPhotoHubLib initAll];
     
-    myPHS = myPhotoHubLib.pSingleton;
+    self.myPHS = self.myPhotoHubLib.pSingleton;
 }
 -(void)shutdown
 {
-    [myPhotoHubLib shutdown];
-    myPhotoHubLib = nil;
-    myPHS = nil;
+    if (self.myPhotoHubLib != nil)
+    {
+        [self.myPhotoHubLib shutdown];
+        self.myPhotoHubLib = nil;
+        self.myPHS = nil;
+    }
 }
+
 - (void)dealloc
 {
     // Should never be called, but just here for clarity really.
