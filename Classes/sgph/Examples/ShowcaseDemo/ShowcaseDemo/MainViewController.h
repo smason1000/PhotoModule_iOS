@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) UILabel* titleLabel;
 @property (strong, nonatomic) UILabel* titleCurrentLabel;
+@property (strong, nonatomic) UILabel* titleExpandedLabel;
+@property (strong, nonatomic) UILabel* titleExpandedCount;
 
 @property (strong, nonatomic) UIView *avcHolderView;
 @property (strong, nonatomic) UIView *ptHolderView;
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) UIView *navView;
 @property (strong, nonatomic) UIView *headerView;
 @property (strong, nonatomic) UIView *detailView;
+@property (strong, nonatomic) UIView *expandedLabelView;
 
 @property (strong, nonatomic) SampleNavigationController *navViewController;
 @property (strong, nonatomic) SampleNavigationController *headerViewController;
@@ -49,6 +52,7 @@
 @property (strong, nonatomic) UIBarButtonItem *hudItem;
 @property (strong, nonatomic) UIBarButtonItem *labItem;
 @property (strong, nonatomic) UIBarButtonItem *curLabItem;
+@property (strong, nonatomic) UIBarButtonItem *expandedLabItem;
 
 @property (strong, nonatomic) UIBarButtonItem *delItem;
 

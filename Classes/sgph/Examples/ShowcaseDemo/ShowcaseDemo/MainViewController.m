@@ -15,6 +15,7 @@
 @synthesize navView = _navView;
 @synthesize headerView = _headerView;
 @synthesize detailView = _detailView;
+@synthesize expandedLabelView = _expandedLabelView;
 
 @synthesize navViewController = _navViewController;
 @synthesize headerViewController = _headerViewController;
@@ -28,6 +29,8 @@
 
 @synthesize titleLabel = _titleLabel;
 @synthesize titleCurrentLabel = _titleCurrentLabel;
+@synthesize titleExpandedLabel = _titleExpandedLabel;
+@synthesize titleExpandedCount = _titleExpandedCount;
 
 @synthesize labItem = _labItem;
 @synthesize hudItem = _hudItem;
@@ -42,6 +45,7 @@
 @synthesize toggleFilterItem2 = _toggleFilterItem2;
 @synthesize editItem = _editItem;
 @synthesize curLabItem = _curLabItem;
+@synthesize expandedLabItem = _expandedLabItem;
 
 @synthesize reqCountItem = _reqCountItem;
 
@@ -62,9 +66,6 @@
         // Custom initialization
         if (gSingleton.showTrace)
             NSLog(@"MainViewController initWithNibName");
-
-        gSingleton.workOrder = [WorkOrder getWorkOrder:gSingleton.orderNumber andUserId:gSingleton.userId];
-        NSLog(@"Initializing workorder: %@ for user: %@, status: %d", gSingleton.workOrder.order_id, gSingleton.workOrder.user_id, gSingleton.workOrder.status_id);
         
         self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Filter By:"
                                                        delegate:self
@@ -208,23 +209,56 @@
         [self.titleCurrentLabel setText:@""];
         [self.titleCurrentLabel setTextAlignment:UITextAlignmentCenter];
         
+        // Title Labels for Expanded View
+        self.titleExpandedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 5.0f, 320, 21.0f)];
+        [self.titleExpandedLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18]];
+        [self.titleExpandedLabel setBackgroundColor:[UIColor clearColor]];
+        [self.titleExpandedLabel setTextColor:[UIColor whiteColor]];
+        if (gSingleton.iPadDevice)
+        {
+            [self.titleExpandedLabel setTextColor:[UIColor darkGrayColor]];
+        }
+        [self.titleExpandedLabel setText:@"Label Name"];
+        [self.titleExpandedLabel setTextAlignment:UITextAlignmentCenter];
+
+        self.titleExpandedCount = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 23.0f, 320, 17.0f)];
+        [self.titleExpandedCount setFont:[UIFont fontWithName:@"Helvetica" size:13]];
+        [self.titleExpandedCount setBackgroundColor:[UIColor clearColor]];
+        [self.titleExpandedCount setTextColor:[UIColor whiteColor]];
+        if (gSingleton.iPadDevice)
+        {
+            [self.titleExpandedCount setTextColor:[UIColor darkGrayColor]];
+        }
+        [self.titleExpandedCount setText:@"(1 of 32)"];
+        [self.titleExpandedCount setTextAlignment:UITextAlignmentCenter];
+        self.expandedLabelView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [self.expandedLabelView addSubview:self.titleExpandedLabel];
+        [self.expandedLabelView addSubview:self.titleExpandedCount];
+        
         self.curLabItem = [[UIBarButtonItem alloc] initWithCustomView:self.titleCurrentLabel];
+        self.expandedLabItem = [[UIBarButtonItem alloc] initWithCustomView:self.expandedLabelView];
         
         self.headerItems = [NSArray arrayWithObjects:
                        
-                       [NSArray arrayWithObjects:
+                    [NSArray arrayWithObjects:
                         flexible,
                         self.reqCountItem,
                         flexible,
                         nil],
                        
-                       [NSArray arrayWithObjects:
+                    [NSArray arrayWithObjects:
                         flexible,
                         self.curLabItem,
                         flexible,
                         nil],
                        
-                       nil];
+                    [NSArray arrayWithObjects:
+                        flexible,
+                        self.expandedLabItem,
+                        flexible,
+                        nil],
+                            
+                    nil];
         
         self.hudHidden = NO;
         
@@ -390,6 +424,9 @@
         NSLog(@"MainViewController viewDidLoad");
 
     [super viewDidLoad];
+
+    gSingleton.workOrder = [WorkOrder getWorkOrder:gSingleton.orderNumber andUserId:gSingleton.userId];
+    NSLog(@"Initializing workorder: %@ for user: %@, status: %d", gSingleton.workOrder.order_id, gSingleton.workOrder.user_id, gSingleton.workOrder.status_id);
 
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
@@ -577,6 +614,11 @@
         [self.detailView removeFromSuperview];
     }
     
+    if (self.expandedLabelView)
+    {
+        [self.expandedLabelView removeFromSuperview];
+    }
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"galScrollEvent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ulcEvent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
@@ -638,9 +680,15 @@
     else if (gSingleton.currentAppState == PHASExpanded)
     {
         if ([gSingleton.currentLabelDescription length] > 0)
+        {
             [self.titleCurrentLabel setText:gSingleton.currentLabelDescription];
+            [self.titleExpandedLabel setText:gSingleton.currentLabelDescription];
+        }
         else
+        {
             [self.titleCurrentLabel setText:gSingleton.currentLabelString];
+            [self.titleExpandedLabel setText:gSingleton.currentLabelString];
+        }
     }
     else
     {
@@ -676,9 +724,16 @@
             NSLog(@"Gallery Scroll event (%d) %@", gSingleton.expandedViewIndex, photo.label);
 
         if ([photo.description length] == 0)
+        {
             [self.titleCurrentLabel setText:photo.label];
+            [self.titleExpandedLabel setText:photo.label];
+        }
         else
+        {
             [self.titleCurrentLabel setText:photo.description];
+            [self.titleExpandedLabel setText:photo.description];
+        }
+        [self.titleExpandedCount setText:[NSString stringWithFormat:@"(%d of %d)", gSingleton.expandedViewIndex + 1, [gSingleton.mainData count]]];
     }
 }
 
@@ -703,9 +758,31 @@
 
 -(void) delAction:(id) sender
 {
+    if (gSingleton.expandOn)
+    {
+        if (gSingleton.expandedViewIndex >= 0)
+        {
+            Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
+            [gSingleton delImage:photo];
+            [self showExpandedView:NO];
+        }
+    }
+    else
+    {
+        for (Photo *photo in gSingleton.mainData)
+        {
+            if (photo.selected)
+            {
+                [gSingleton delImage:photo];
+            }
+        }
+    }
+    gSingleton.expandedViewIndex = -1;
+        
+    // force a reload of the data to update images and indexes
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"delEvent"
-     object:nil ];
+     postNotificationName:@"clearEvent"
+     object:nil];
 }
 
 -(void) snapPhotoAction:(id) sender
@@ -833,7 +910,7 @@
     
     if (gSingleton.expandOn)
     {
-        curInd = 1;
+        curInd = 2;
         self.expandItem.title = @"Grid";
     }
     else

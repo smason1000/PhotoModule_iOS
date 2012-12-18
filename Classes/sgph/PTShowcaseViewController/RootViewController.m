@@ -22,13 +22,6 @@
                   nil];
     
     self.filteredListContent = [NSMutableArray arrayWithCapacity:200]; //[self.listContent count]
-    
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerDelete:)
-     name:@"delEvent"
-     object:nil ];
 }
 
 -(void)dealloc
@@ -36,8 +29,6 @@
     NSLog(@"[RootViewController] dealloc");
     emptyArray = nil;
     self.filteredListContent = nil;
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"delEvent" object:nil];
 }
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -322,39 +313,6 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"labelEvent"
      object:nil ];
-}
-
--(void)eventHandlerDelete:(NSNotification *) notification
-{
-    if (gSingleton.expandOn)
-    {
-        if (gSingleton.expandedViewIndex >= 0)
-        {
-            Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
-            [gSingleton delImage:photo];
-        
-            gSingleton.expandOn = NO;
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"expandOffEvent"
-             object:nil ];
-        }
-    }
-    else
-    {
-        for (Photo *photo in gSingleton.mainData)
-        {
-            if (photo.selected)
-            {
-                [gSingleton delImage:photo];
-            }
-        }
-    }
-    gSingleton.expandedViewIndex = -1;
-
-    // force a reload of the data to update images and indexes
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"clearEvent"
-     object:nil];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
