@@ -35,7 +35,7 @@ MySingleton *gSingleton = nil;
 @synthesize editOn = _editOn;
 @synthesize filterOn = _filterOn;
 @synthesize iPadDevice = _iPadDevice;
-@synthesize isModule;
+@synthesize isModule = _isModule;
 
 @synthesize currentFilterMode = _currentFilterMode;
 @synthesize currentAppState = _currentAppState;

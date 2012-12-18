@@ -15,6 +15,5 @@
 @property (nonatomic) BOOL detailOn;
 
 - (id)initWithUniqueName:(NSString *)uniqueName;
-- (void)dismissImageDetailViewController;
 
 @end

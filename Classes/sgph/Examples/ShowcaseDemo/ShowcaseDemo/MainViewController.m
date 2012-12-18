@@ -14,11 +14,13 @@
 @synthesize rvHolderView = _rvHolderView;
 @synthesize navView = _navView;
 @synthesize headerView = _headerView;
+@synthesize detailView = _detailView;
 
 @synthesize navViewController = _navViewController;
 @synthesize headerViewController = _headerViewController;
 @synthesize ssHolderViewController = _ssHolderViewController;
 @synthesize togHolderViewController = _togHolderViewController;
+@synthesize detailViewController = _detailViewController;
 
 @synthesize ptController = _ptController;
 @synthesize avcController = _avcController;
@@ -376,7 +378,7 @@
     {
         // handle view controller hierarchy
         [self addChildViewController:self.togHolderViewController];
-        [self.togHolderViewController didMoveToParentViewController:self];        
+        [self.togHolderViewController didMoveToParentViewController:self];
     }
 }
 
@@ -447,7 +449,17 @@
                                                   flexible,
                                                   self.toggleFilterItem2,
                                                   flexible,
-                                                  nil],
+                                                  nil];
+    
+    // initialize the image detail (expanded) view
+    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
+    if ([UIApplication sharedApplication].statusBarHidden)
+        statusBarHeight = 0 - statusBarHeight;
+    
+    self.detailView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 348 - statusBarHeight)];
+    
+    self.detailView.backgroundColor = [UIColor greenColor];
     
     [self.navViewController setToolbarHidden:NO];
     [self.navViewController.toolbar setBarStyle:UIBarStyleDefault];
@@ -484,6 +496,7 @@
     // add the views here - note that the order they are added is important since the last added is topmost
     [self.view addSubview:self.navView];
     [self.view addSubview:self.headerView];
+    [self.view addSubview:self.detailView];
     [self.view addSubview:self.ptHolderView];
     [self.view addSubview:self.avcHolderView];
     [self.view addSubview:self.rvHolderView];
@@ -554,10 +567,60 @@
         [self.togHolderView removeFromSuperview];
     }
     
+    if (self.detailView)
+    {
+        if (self.detailViewController)
+        {
+            [self.detailViewController.view removeFromSuperview];
+            [self.detailViewController removeFromParentViewController];
+        }
+        [self.detailView removeFromSuperview];
+    }
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"galScrollEvent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ulcEvent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraReadyEvent" object:nil];
+}
+
+-(void)showExpandedView:(BOOL)shouldShow
+{
+    if (shouldShow)
+    {
+        NSLog(@"[MainViewController] expand ON at index %d", gSingleton.expandedViewIndex);
+
+        if (self.detailViewController == nil)
+        {
+            self.detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.expandedViewIndex];
+        
+            self.detailViewController.data = ((PTShowcaseView *)self.ptController.view).imageItems;
+            self.detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+            self.detailViewController.view.backgroundColor = [UIColor blackColor];
+            self.detailViewController.wantsFullScreenLayout = NO;
+            
+            gSingleton.expandOn = YES;
+            
+            [self.detailView addSubview:self.detailViewController.view];
+            
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"galScrollEvent"
+             object:nil ];
+        }
+    }
+    else
+    {
+        NSLog(@"[MainViewController] expand OFF at index %d", gSingleton.expandedViewIndex);
+
+        if (self.detailViewController != nil)
+        {
+            gSingleton.expandOn = NO;
+            gSingleton.expandedViewIndex = -1;
+            [self.detailViewController.view removeFromSuperview];
+            [self.detailViewController removeFromParentViewController];
+            self.detailViewController = nil;
+        }
+    }
 }
 
 -(void)eventHandlerLabel:(NSNotification *) notification
@@ -638,21 +701,20 @@
     [self updateButtonLabels];
 }
 
--(void) delAction:(id) sender{
-    
+-(void) delAction:(id) sender
+{
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"delEvent"
      object:nil ];
 }
 
--(void) snapPhotoAction:(id) sender {
-    
-    if (self.snapPhotoItem.enabled) {
+-(void) snapPhotoAction:(id) sender
+{
+    if (self.snapPhotoItem.enabled)
+    {
         self.snapPhotoItem.enabled = NO;
         
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"expandOffEvent"
-         object:nil ];
+        [self showExpandedView:NO];
         
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"cameraEvent"
@@ -660,22 +722,21 @@
     }
 }
 
--(void) cameraAction:(id) sender{
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"expandOffEvent"
-     object:nil ];
+-(void) cameraAction:(id) sender
+{
+    [self showExpandedView:NO];
     gSingleton.currentAppState = PHASLabelFS;
     [self updateButtonLabels];
 }
 
 
--(void) galleryAction:(id) sender{
+-(void) galleryAction:(id) sende
+{
     gSingleton.currentAppState = PHASGrid;
     gSingleton.expandOn = NO;
     gSingleton.expandedViewIndex = -1;
     
     [self updateButtonLabels];
-
 }
 
 -(void) expandAction:(id) sender{
@@ -695,19 +756,17 @@
         }
         if (gSingleton.expandedViewIndex == -1 && gSingleton.photoCount > 0)
             gSingleton.expandedViewIndex = 0;
-            
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"expandOnEvent"
-         object:nil ];
+        
+        // open up expanded view
+        [self showExpandedView:YES];
     }
     else
     {
         gSingleton.currentAppState = PHASGrid;
         gSingleton.expandedViewIndex = -1;        
         
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"expandOffEvent"
-         object:nil ];
+        // close expanded view
+        [self showExpandedView:NO];
     }
     [self updateButtonLabels];
 }
@@ -942,6 +1001,7 @@
     self.ptHolderView.hidden = NO;
     self.ssHolderView.hidden = NO;
     self.togHolderView.hidden = NO;
+    self.detailView.hidden = !gSingleton.expandOn;
     
     switch (gSingleton.currentAppState)
     {

@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UIView *rvHolderView;
 @property (strong, nonatomic) UIView *navView;
 @property (strong, nonatomic) UIView *headerView;
+@property (strong, nonatomic) UIView *detailView;
 
 @property (strong, nonatomic) SampleNavigationController *navViewController;
 @property (strong, nonatomic) SampleNavigationController *headerViewController;
@@ -35,8 +36,7 @@
 @property (strong, nonatomic) PTDemoViewController *ptController;
 @property (strong, nonatomic) AVCamViewController *avcController;
 @property (strong, nonatomic) RootViewController *rvController;
-//@property (strong, nonatomic) PTImageDetailViewController *ssController;
-
+@property (strong, nonatomic) PTImageDetailViewController *detailViewController;
 
 @property (strong, nonatomic) UIBarButtonItem *toggleFilterItem;
 @property (strong, nonatomic) UIBarButtonItem *toggleFilterItem2;

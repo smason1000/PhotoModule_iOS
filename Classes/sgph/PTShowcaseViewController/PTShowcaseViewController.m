@@ -95,28 +95,11 @@
     // Internal
     self.showcaseView.dataSource = self; // this will trigger 'reloadData' automatically
     self.showcaseView.actionDelegate = self;
-    
-    self.view.frame = CGRectMake(0, 88, 320, 328);
-    self.view.bounds = CGRectMake(0, 0, 320, 328);
-
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerExpandOn:)
-     name:@"expandOnEvent"
-     object:nil ];
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(eventHandlerExpandOff:)
-     name:@"expandOffEvent"
-     object:nil ];
 }
 
 -(void) dealloc
 {
     NSLog(@"[PTShowcaseViewController] dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"expandOnEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"expandOffEvent" object:nil];
 }
 
 - (void)viewDidUnload
@@ -152,17 +135,6 @@
 {
     self.showcaseView.minEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     self.showcaseView.itemSpacing = 0;
-}
-
-- (void)dismissImageDetailViewController
-{
-    if (self.detailViewController != nil)
-    {
-        __unsafe_unretained PTShowcaseViewController *weakSelf = self;
-        [self dismissViewControllerAnimated:YES completion:^{
-            weakSelf.detailViewController = nil;
-        }];
-    }
 }
 
 /* =============================================================================
@@ -505,55 +477,6 @@
 #pragma mark - GMGridViewActionDelegate
 
 //
-
--(void)eventHandlerExpandOn: (NSNotification *) notification
-{
-    NSLog(@"PTShowcaseViewController expand ON at index %d", gSingleton.expandedViewIndex);
-    
-    if (self.detailViewController == nil)
-        self.detailViewController = [[PTImageDetailViewController alloc] initWithImageAtIndex:gSingleton.expandedViewIndex];
-    
-    self.detailViewController.data = self.showcaseView.imageItems;
-    self.detailViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    //[detailViewController.navigationItem setLeftBarButtonItem:
-    // [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-    //                                               target:self
-    //                                               action:@selector(dismissImageDetailViewController)]];
-    
-    
-    //UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    
-    
-    // TODO zoom in/out (just like in Photos.app in the iPad)
-
-    __unsafe_unretained PTShowcaseViewController *weakSelf = self;
-    UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:self.detailViewController];
-    [self presentViewController:navCtrl animated:YES completion:^{
-        weakSelf.detailViewController.view.backgroundColor = [UIColor clearColor];
-        weakSelf.detailViewController.wantsFullScreenLayout = YES;
-        weakSelf.detailOn = YES;
-        gSingleton.expandOn = YES;
-
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"galScrollEvent"
-         object:nil ];
-    }];
-}
-
--(void)eventHandlerExpandOff: (NSNotification *) notification
-{
-    NSLog(@"PTShowcaseViewController expand OFF");
-
-    if (self.detailOn)
-    {
-       [self dismissImageDetailViewController];
-    }
-    
-    gSingleton.expandOn = NO;
-    gSingleton.expandedViewIndex = -1;
-    self.detailOn = NO;
-}
 
 - (void)GMGridView:(GMGridView *)gridView didTapOnItemAtIndex:(NSInteger)position
 {

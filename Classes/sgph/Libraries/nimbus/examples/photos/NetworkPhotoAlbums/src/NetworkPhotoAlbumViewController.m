@@ -190,9 +190,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.frame = CGRectMake(0, 88, 320, 328);
-    self.view.bounds = CGRectMake(0, 0, 320, 328);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

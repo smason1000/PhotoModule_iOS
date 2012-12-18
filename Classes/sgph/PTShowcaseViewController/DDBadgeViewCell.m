@@ -44,7 +44,7 @@
 	//CGContextRef context = UIGraphicsGetCurrentContext();
 
     UIColor *currentSummaryColor = [UIColor blackColor];
-    UIColor *currentDetailColor = [UIColor grayColor];
+    UIColor *currentDetailColor;
     UIColor *currentBadgeColor = self.cell.badgeColor;
     if (!currentBadgeColor)
     {

@@ -176,41 +176,42 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadView
 {
-  [super loadView];
+    [super loadView];
 
-    CGRect bounds = CGRectMake(0,0,320,328); //self.view.bounds;
+    CGRect bounds = self.view.bounds;
 
-  // Toolbar Setup
+    // Toolbar Setup
 
-  CGFloat toolbarHeight = NIToolbarHeightForOrientation(NIInterfaceOrientation());
-  CGRect toolbarFrame = CGRectMake(0, (bounds.size.height - toolbarHeight) + 108 ,
-                                   bounds.size.width, toolbarHeight);
+    CGFloat toolbarHeight = NIToolbarHeightForOrientation(NIInterfaceOrientation());
+    CGRect toolbarFrame = CGRectMake(0, (bounds.size.height - toolbarHeight), bounds.size.width, toolbarHeight);
 
-  self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-  self.toolbar.barStyle = UIBarStyleBlack;
-  self.toolbar.translucent = self.toolbarIsTranslucent;
-  self.toolbar.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+    self.toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+    self.toolbar.barStyle = UIBarStyleBlack;
+    self.toolbar.translucent = self.toolbarIsTranslucent;
+    self.toolbar.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                | UIViewAutoresizingFlexibleTopMargin);
-  [self updateToolbarItems];
+    [self updateToolbarItems];
 
-  // Photo Album View Setup
+    // Photo Album View Setup
 
-  CGRect photoAlbumFrame = CGRectMake(0, 88, 320, 328);
-  if (!self.toolbarIsTranslucent) {
-    photoAlbumFrame = NIRectContract(bounds, 0, toolbarHeight);
-  }
-  self.photoAlbumView = [[NIPhotoAlbumScrollView alloc] initWithFrame:photoAlbumFrame];
-  self.photoAlbumView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+    CGRect photoAlbumFrame = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+    if (!self.toolbarIsTranslucent)
+    {
+        photoAlbumFrame = NIRectContract(bounds, 0, toolbarHeight);
+    }
+    self.photoAlbumView = [[NIPhotoAlbumScrollView alloc] initWithFrame:photoAlbumFrame];
+    self.photoAlbumView.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                       | UIViewAutoresizingFlexibleHeight);
-  self.photoAlbumView.delegate = self;
+    self.photoAlbumView.delegate = self;
 
-  [self.view addSubview:self.photoAlbumView];
-  [self.view addSubview:self.toolbar];
+    self.photoAlbumView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.photoAlbumView];
+    [self.view addSubview:self.toolbar];
 
-
-  if (self.hidesChromeWhenScrolling) {
-    [self addTapGestureToView];
-  }
+    if (self.hidesChromeWhenScrolling)
+    {
+        [self addTapGestureToView];
+    }
 }
 
 
@@ -219,9 +220,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.frame = CGRectMake(0, 88, 320, 328);
-    self.view.bounds = CGRectMake(0, 0, 320, 328);    
 }
 
 - (void)viewDidUnload
