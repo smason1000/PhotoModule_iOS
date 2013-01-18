@@ -58,7 +58,7 @@
             int code = sqlite3_open([databasePath UTF8String], &databaseHandle);
             if (code != SQLITE_OK)
             {
-                [self showSQLiteError:@"Database Close" code:NUMINT(code)];
+                [self showSQLiteError:@"Database Open" code:NUMINT(code)];
                 databaseHandle = nil;
             }
         }
