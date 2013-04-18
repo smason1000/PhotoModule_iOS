@@ -393,8 +393,10 @@ UITabBarItem *tabBarItem = [self tabBarItem];
 - (void)dealloc
 {
     NSLog(@"[AVCamViewController] dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraEvent" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"cameraEvent" object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"labelEvent" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

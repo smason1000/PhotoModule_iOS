@@ -4,8 +4,10 @@
 #import "DataController.h"
 #import "WorkOrder.h"
 #import "Photo.h"
+#import "PhotoLabel.h"
 
-NSComparisonResult compareLetters(id t1, id t2, void* context);
+
+NSComparisonResult compareLabels(id t1, id t2, void* context);
 
 //./build.py;unzip -o com.phmod-iphone-0.1.zip -d ~/Desktop/Safeguard
 
@@ -89,7 +91,8 @@ typedef enum
     NSArray *_hashVals;
     NSArray *_hashValsReq;
     NSArray *_curHashVals;
-    NSString *_currentLabelString;
+    PhotoLabel *_currentPhotoLabel;
+    PhotoLabel *_preSelectedLabel;
     NSInteger _expandedViewIndex;
     NSInteger _photoCount;
     NSInteger _requiredCount;
@@ -98,7 +101,7 @@ typedef enum
     NSString* _orderNumber;
     NSString* _docDir;
     NSString* _dbPath;
-        
+    
     NSArray* _curLetArray;
 }
 
@@ -136,7 +139,7 @@ typedef enum
 
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
-@property (nonatomic, strong) NSString *currentLabelString;
+@property (nonatomic, strong) PhotoLabel *currentPhotoLabel;
 @property (nonatomic, strong) NSString *currentLabelDescription;
 
 @property (nonatomic, strong) NSString* dbPath;
@@ -147,6 +150,7 @@ typedef enum
 @property (nonatomic, strong) NSString* rootPhotoFolder;
 @property (nonatomic, strong) NSString* todaysPhotoFolder;
 @property (nonatomic, strong) NSString* docDir;
+@property (nonatomic, strong) PhotoLabel* preSelectedLabel;
 
 //+ (id)sharedSingleton;
 
@@ -161,20 +165,22 @@ typedef enum
 - (void) updateLabelHash;
 
 - (void)delImage:(Photo *)photo;
-- (void)saveImage:(UIImage *)image withName:(NSString *)name;
+- (void)saveImage:(UIImage *)image withName:(NSString *)name andMetaData:(NSDictionary *)metadata;
 //- (void)renameImage:(NSString *)oldName withName:(NSString *)newName;
 
-
+- (id)init:(BOOL)isAppModule;
 - (void) writeToLog:(NSString *)format, ...;
 - (void) setDBName:(NSString *)dbName;
 - (void) setTrace:(BOOL)traceOn;
-- (void) setLabels:(NSString*)newLabels;
-- (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate;
+- (void) parseLabels:(NSString*)newLabels;
+//- (void) setReqLabels;
+- (void) parsePreSelectedLabel:(NSString*)newLabel;
 - (void) setOrderNum:(NSString *)orderNum;
 - (void) setRootPhotoFolder:(NSString *)aFolder;
 - (void) setTodaysPhotoFolder:(NSString *)aFolder;
 - (void) setReqCount:(NSString *)newCount;
 - (void) setHashReq:(BOOL)isReq;
 - (void) unselectAll;
+- (void)setPhotoLabelFromDisplayText:(NSString *)displayText;
 
 @end

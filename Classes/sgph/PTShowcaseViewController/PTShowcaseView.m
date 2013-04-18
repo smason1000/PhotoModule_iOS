@@ -87,7 +87,7 @@
 
 - (NSString *)textForItemAtIndex:(NSInteger)index
 {
-    id object = ((Photo *)[gSingleton.mainData objectAtIndex:index]).label;
+    id object = ((Photo *)[gSingleton.mainData objectAtIndex:index]).label.getDisplayText;
     return object == [NSNull null] ? nil : object;
 }
 
@@ -122,7 +122,7 @@
         totalCount++;
         
         showImg = YES;
-        isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+        isLabeled = !([photo.label.label isEqualToString:((PhotoLabel *)[gSingleton.labelArr objectAtIndex:0]).label]);
         
         if (isLabeled)
         {
@@ -157,7 +157,7 @@
                 break;
             
             case PHFilterModeRequiredLabels:
-                showImg = [gSingleton isReqLab:photo.label];
+                showImg = [gSingleton isReqLab:photo.label.getDisplayText];
                 break;
         }
         

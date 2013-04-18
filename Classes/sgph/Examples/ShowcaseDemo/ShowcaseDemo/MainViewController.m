@@ -65,7 +65,7 @@
     {
         // Custom initialization
         if (gSingleton.showTrace)
-            NSLog(@"MainViewController initWithNibName");
+            NSLog(@"[MainViewController] initWithNibName");
         
         self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Filter By:"
                                                        delegate:self
@@ -262,7 +262,20 @@
         
         self.hudHidden = NO;
         
-        gSingleton.currentAppState = PHASGrid;
+        if (gSingleton.openToGallery)
+        {
+            gSingleton.currentAppState = PHASGrid;
+        }
+        else
+        {
+            if (gSingleton.preSelectedLabel != nil)
+            {
+                gSingleton.currentPhotoLabel = gSingleton.preSelectedLabel;
+                gSingleton.preSelectedLabel = nil;
+                gSingleton.currentLabelDescription = @"";
+                gSingleton.currentAppState = PHASViewfinder;
+            }
+        }
         gSingleton.editOn = NO;
     }
     return self;
@@ -275,7 +288,7 @@
     
     // Release any cached data, images, etc that aren't in use.
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController didReceiveMemoryWarning");    
+        NSLog(@"[MainViewController] didReceiveMemoryWarning");
 }
 
 #pragma mark - Child View Controllers
@@ -421,12 +434,14 @@
 - (void)viewDidLoad
 {
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController viewDidLoad");
+        NSLog(@"[MainViewController] viewDidLoad");
 
     [super viewDidLoad];
 
-    gSingleton.workOrder = [WorkOrder getWorkOrder:gSingleton.orderNumber andUserId:gSingleton.userId];
-    NSLog(@"Initializing workorder: %@ for user: %@, status: %d", gSingleton.workOrder.order_id, gSingleton.workOrder.user_id, gSingleton.workOrder.status_id);
+    if (gSingleton.orderNumber != nil)
+    {
+        gSingleton.workOrder = [WorkOrder getWorkOrder:gSingleton.orderNumber andUserId:gSingleton.userId];
+    }
 
     UIBarButtonItem *flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
@@ -686,8 +701,8 @@
         }
         else
         {
-            [self.titleCurrentLabel setText:gSingleton.currentLabelString];
-            [self.titleExpandedLabel setText:gSingleton.currentLabelString];
+            [self.titleCurrentLabel setText:gSingleton.currentPhotoLabel.getDisplayText];
+            [self.titleExpandedLabel setText:gSingleton.currentPhotoLabel.getDisplayText];
         }
     }
     else
@@ -725,8 +740,8 @@
 
         if ([photo.description length] == 0)
         {
-            [self.titleCurrentLabel setText:photo.label];
-            [self.titleExpandedLabel setText:photo.label];
+            [self.titleCurrentLabel setText:photo.label.getDisplayText];
+            [self.titleExpandedLabel setText:photo.label.getDisplayText];
         }
         else
         {
@@ -807,7 +822,7 @@
 }
 
 
--(void) galleryAction:(id) sende
+-(void) galleryAction:(id) sender
 {
     gSingleton.currentAppState = PHASGrid;
     gSingleton.expandOn = NO;
@@ -919,7 +934,7 @@
         if ([gSingleton.currentLabelDescription length] > 0)
             [self.titleCurrentLabel setText:gSingleton.currentLabelDescription];
         else
-            [self.titleCurrentLabel setText:gSingleton.currentLabelString];
+            [self.titleCurrentLabel setText:gSingleton.currentPhotoLabel.getDisplayText];
     }
     
     if (gSingleton.currentAppState == PHASViewfinder || gSingleton.currentAppState == PHASLabelFS)
@@ -974,7 +989,7 @@
 - (void)viewDidUnload
 {
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController viewDidUnload");    
+        NSLog(@"[MainViewController] viewDidUnload");
     //[self setAvcHolderViewController:nil];
     //[self setPtHolderViewController:nil];
     [self setSsHolderViewController:nil];
@@ -997,7 +1012,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController shouldAutorotateToInterfaceOrientation %d", interfaceOrientation);    
+        NSLog(@"[MainViewController] shouldAutorotateToInterfaceOrientation %d", interfaceOrientation);
     // Return YES for supported orientations
 	return interfaceOrientation == UIInterfaceOrientationMaskPortrait;
 }
@@ -1095,6 +1110,11 @@
             contentPaneHeight = h - ((toolbarHeight * 2) + (borderSize * 2));
             self.rvHolderView.frame =  CGRectMake(borderSize, borderSize+toolbarHeight, contentPaneWidth, contentPaneHeight);
             self.rvHolderView.bounds =  CGRectMake(0, 0, contentPaneWidth, contentPaneHeight);
+            
+            // spin up the GPS and location services
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"startGPSEvent"
+             object:nil ];
 
             break;
         
@@ -1114,6 +1134,11 @@
             
         default:
             
+            // stop tracking GPS events
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"stopGPSEvent"
+             object:nil ];
+
             self.avcHolderView.hidden = YES;
             
             if (gSingleton.editOn)
@@ -1176,15 +1201,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (gSingleton.openToGallery && (gSingleton.preSelectedLabel != nil))
+    {
+        if (gSingleton.showTrace)
+            NSLog(@"[MainViewController] opening to Viewfinder with label: %@", gSingleton.preSelectedLabel.getDisplayText);
+        gSingleton.currentPhotoLabel = gSingleton.preSelectedLabel;
+        gSingleton.preSelectedLabel = nil;
+        gSingleton.currentLabelDescription = @"";
+        gSingleton.currentAppState = PHASViewfinder;
+    }
     [self layoutForOrientation:[[UIApplication sharedApplication] statusBarOrientation] andRect:self.view.frame];
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController viewWillAppear");    
+        NSLog(@"[MainViewController] viewWillAppear");
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     if (gSingleton.showTrace)
-        NSLog(@"MainViewController viewWillRotateToInterfaceOrientation");    
+        NSLog(@"[MainViewController] viewWillRotateToInterfaceOrientation");
     __gm_weak MainViewController *weakSelf = self;
     [UIView animateWithDuration:duration animations:^{
         [weakSelf layoutForOrientation:toInterfaceOrientation andRect:self.view.frame];

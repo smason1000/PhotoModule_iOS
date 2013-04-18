@@ -95,7 +95,10 @@
             return;
             
         case SQLITE_ERROR:
-            sqliteErrorMessage = @"SQL Error or missing database";
+            if (databaseHandle != nil)
+                sqliteErrorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(databaseHandle)];
+            else
+                sqliteErrorMessage = @"SQL Error or missing database";
             break;
         case SQLITE_INTERNAL:
             sqliteErrorMessage = @"Internal logic error";
@@ -155,7 +158,7 @@
             sqliteErrorMessage = @"Data type mismatch";
             break;
         case SQLITE_MISUSE:
-            sqliteErrorMessage = @"Database Library being used incorrectly";
+            sqliteErrorMessage = @"Database missing or being used incorrectly";
             break;
         case SQLITE_NOLFS:
             sqliteErrorMessage = @"Attempt to use unsupported OS feature";

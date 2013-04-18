@@ -5,11 +5,11 @@
 @synthesize mainViewController;
 @synthesize pSingleton;
 
-- (void) initAll
+- (void) initAll:(BOOL)isAppModule
 {
     NSLog(@"[PhotoHubLib] initAll");
 
-    gSingleton = [[MySingleton alloc] init];
+    gSingleton = [[MySingleton alloc] init:isAppModule];
     gSingleton.isModule = YES;
     pSingleton = gSingleton;
     

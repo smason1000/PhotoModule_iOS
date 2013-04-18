@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22769F581708F99F00F71CDB /* PhotoLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22769F571708F99F00F71CDB /* PhotoLabel.h */; };
 		22933083167107A600A14697 /* WorkOrder.h in Resources */ = {isa = PBXBuildFile; fileRef = 22933082167107A600A14697 /* WorkOrder.h */; };
 		22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF515C72425008C5364 /* ExpandyButton.h */; };
 		22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */; };
@@ -138,6 +139,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22769F571708F99F00F71CDB /* PhotoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoLabel.h; path = Classes/sgph/Examples/ShowcaseDemo/PhotoLabel.h; sourceTree = "<group>"; };
 		22933082167107A600A14697 /* WorkOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkOrder.h; path = Classes/sgph/Examples/ShowcaseDemo/WorkOrder.h; sourceTree = "<group>"; };
 		22E6ACF515C72425008C5364 /* ExpandyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandyButton.h; path = Classes/sgph/Examples/ShowcaseDemo/ExpandyButton.h; sourceTree = "<group>"; };
 		22E6ACF715C72447008C5364 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVCamCaptureManager.h; path = Classes/sgph/Examples/ShowcaseDemo/AVCamCaptureManager.h; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		AE5CDA18156BEF91006FDD19 /* importedheaders */ = {
 			isa = PBXGroup;
 			children = (
+				22769F571708F99F00F71CDB /* PhotoLabel.h */,
 				22933082167107A600A14697 /* WorkOrder.h */,
 				22E70508166F038100DF0F3C /* Photo.h */,
 				22E70506166F036800DF0F3C /* DataController.h */,
@@ -518,6 +521,7 @@
 				AE76FE3115770FE4006F380E /* PhotoHubLib.h in Headers */,
 				22E6ACF615C72425008C5364 /* ExpandyButton.h in Headers */,
 				22E6ACF815C72447008C5364 /* AVCamCaptureManager.h in Headers */,
+				22769F581708F99F00F71CDB /* PhotoLabel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

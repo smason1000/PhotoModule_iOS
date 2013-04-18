@@ -122,7 +122,7 @@
 {
     myPhotoHubLib = [[PhotoHubLib alloc] init];
     
-    [myPhotoHubLib initAll];
+    [myPhotoHubLib initAll:NO];
     gSingleton.isModule = NO;
     CGRect bounds = CGRectMake(0, self.headerView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - self.headerView.frame.size.height);
     [self setView:myPhotoHubLib.mainViewController.view positionRect:bounds];

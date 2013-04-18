@@ -22,7 +22,6 @@ const int QUESTION_ROW_HUB = -42;
 @synthesize user_id = _user_id;
 @synthesize photo_data = _photo_data;
 @synthesize thumb_data = _thumb_data;
-@synthesize required = _required;
 @synthesize orientation = _orientation;
 @synthesize selected = _selected;
 @synthesize question_row = _question_row;
@@ -31,13 +30,12 @@ const int QUESTION_ROW_HUB = -42;
 
 -(id)initWithOrderId:(NSString*)anOrderId
              andName:(NSString*)aName
-            andLabel:(NSString*)aLabel
+            andLabel:(PhotoLabel*)aLabel
       andDescription:(NSString*)aDescription
      andUploadStatus:(NSNumber*)anUploadStatus
            andUserId:(NSString*)aUserId
         andPhotoData:(NSString*)aPhotoData
         andThumbData:(NSString*)aThumbData
-         andRequired:(NSNumber*)aRequired
 {
     self = [super init];
     if (self)
@@ -50,7 +48,6 @@ const int QUESTION_ROW_HUB = -42;
         self.user_id = aUserId;
         self.photo_data = aPhotoData;
         self.thumb_data = aThumbData;
-        self.required = [aRequired integerValue];
         self.orientation = PTItemOrientationPortrait;
         self.question_row = QUESTION_ROW_HUB;
         self.selected = NO;
@@ -66,13 +63,14 @@ const int QUESTION_ROW_HUB = -42;
     {
         self.order_id = anOrderId;
         self.name = aName;
-        self.label = @"";
+        self.label = [[PhotoLabel alloc] init];
+        self.label.required = 0;
+        self.label.question_id = @"";
         self.description = @"";
         self.upload_status = -1;
         self.user_id = aUserId;
         self.photo_data = @"";
         self.thumb_data = @"";
-        self.required = 0;
         self.question_row = QUESTION_ROW_HUB;
         self.orientation = PTItemOrientationPortrait;
         self.selected = NO;
@@ -82,13 +80,13 @@ const int QUESTION_ROW_HUB = -42;
 
 #pragma mark Internal Methods
 
--(NSNumber *)getPhotoUploadStatus:(WorkOrder *)aWorkOrder andLabel:(NSString *)aLabel
+-(NSNumber *)getPhotoUploadStatus:(WorkOrder *)aWorkOrder andLabel:(PhotoLabel *)aLabel
 {
 	//check if the photo's order has been submitted so its status can be set appropriately...
 	NSNumber *uploadStatus = NUMINT(kStatusPhotoPendingOrder);
     
 	// make sure we have a label and a photo file
-	if ([UNLABELED_STRING isEqualToString:aLabel])
+	if ([UNLABELED_STRING isEqualToString:aLabel.label])
 	{
 		uploadStatus = NUMINT(kStatusPhotoNotReady);
 	}
@@ -126,9 +124,9 @@ const int QUESTION_ROW_HUB = -42;
     
     NSNumber *uploadStatus = [self getPhotoUploadStatus:gSingleton.workOrder andLabel:[self label]];
     
-    NSString *sql = @"INSERT INTO photos (order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    NSString *sql = @"INSERT INTO photos (order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row, question_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-    sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, self.order_id, self.name, self.label, self.description, uploadStatus, self.user_id, self.photo_data, self.thumb_data, NUMINT(self.required), NUMINT(self.question_row), nil]];
+    sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, self.order_id, self.name, self.label.getDisplayText, self.description, uploadStatus, self.user_id, self.photo_data, self.thumb_data, NUMINT(self.required), NUMINT(self.question_row), self.label.question_id, nil]];
     @try
     {
         if (sqlite3_step(stmt) == SQLITE_DONE)
@@ -169,7 +167,7 @@ const int QUESTION_ROW_HUB = -42;
     NSMutableArray *photoArray = [[NSMutableArray alloc] init];
     @try
     {
-        NSString *sql = @"SELECT order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row FROM photos WHERE order_id = ? and user_id = ? and question_row = ?";
+        NSString *sql = @"SELECT order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row, question_id FROM photos WHERE order_id = ? and user_id = ? and question_row = ?";
         
         sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, withOrderId, aUserId, NUMINT(QUESTION_ROW_HUB), nil]];
 
@@ -180,6 +178,7 @@ const int QUESTION_ROW_HUB = -42;
             while (sqlite3_step(stmt) == SQLITE_ROW)
             {
                 Photo *aPhoto = [[Photo alloc] init];
+                aPhoto.label = [[PhotoLabel alloc] init];
                 
                 int i = 0;
                 
@@ -191,7 +190,7 @@ const int QUESTION_ROW_HUB = -42;
                 aPhoto.name = text != NULL ? [NSString stringWithUTF8String:text] : [NSNull null];
                 // label
                 text = (char *) sqlite3_column_text(stmt,i++);
-                aPhoto.label = text != NULL ? [NSString stringWithUTF8String:text] : @"";
+                aPhoto.label.label = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // description
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.description = text != NULL ? [NSString stringWithUTF8String:text] : @"";
@@ -207,13 +206,18 @@ const int QUESTION_ROW_HUB = -42;
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.thumb_data = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // required
-                aPhoto.required = sqlite3_column_int(stmt,i++);
+                aPhoto.label.required = sqlite3_column_int(stmt,i++);
                 // question_row
                 aPhoto.question_row = sqlite3_column_int(stmt,i++);
+                // question_id
+                text = (char *) sqlite3_column_text(stmt,i++);
+                aPhoto.label.question_id = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // selected
                 aPhoto.selected = NO;
                 
                 [photoArray addObject:[aPhoto self]];
+                
+                NSLog(@"getPhoto(1) order_id: %@, name: %@, user_id: %@, label: %@, question_id: %@", aPhoto.order_id, aPhoto.name, aPhoto.user_id, aPhoto.label.getDisplayText, aPhoto.label.question_id);
             }
         }
         @catch (NSException *e)
@@ -241,7 +245,7 @@ const int QUESTION_ROW_HUB = -42;
     Photo *aPhoto = nil;
     @try
     {
-        NSString *sql = @"SELECT order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row FROM photos WHERE order_id = ? and user_id = ? and name = ?";
+        NSString *sql = @"SELECT order_id, name, label, description, upload_status, user_id, photo_data, thumb_data, required, question_row, question_id FROM photos WHERE order_id = ? and user_id = ? and name = ?";
         
         sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, withOrderId, aUserId, aName, nil]];
         @try
@@ -250,6 +254,7 @@ const int QUESTION_ROW_HUB = -42;
             if (sqlite3_step(stmt) == SQLITE_ROW)
             {
                 aPhoto = [[Photo alloc] init];
+                aPhoto.label = [[PhotoLabel alloc] init];
 
                 int i = 0;
 
@@ -261,7 +266,7 @@ const int QUESTION_ROW_HUB = -42;
                 aPhoto.name = text != NULL ? [NSString stringWithUTF8String:text] : [NSNull null];
                 // label
                 text = (char *) sqlite3_column_text(stmt,i++);
-                aPhoto.label = text != NULL ? [NSString stringWithUTF8String:text] : @"";
+                aPhoto.label.label = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // description
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.description = text != NULL ? [NSString stringWithUTF8String:text] : @"";
@@ -277,9 +282,12 @@ const int QUESTION_ROW_HUB = -42;
                 text = (char *) sqlite3_column_text(stmt,i++);
                 aPhoto.thumb_data = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // required
-                aPhoto.required = sqlite3_column_int(stmt,i++);
+                aPhoto.label.required = sqlite3_column_int(stmt,i++);
                 // question_row
                 aPhoto.question_row = sqlite3_column_int(stmt,i++);
+                // question_id
+                text = (char *) sqlite3_column_text(stmt,i++);
+                aPhoto.label.question_id = text != NULL ? [NSString stringWithUTF8String:text] : @"";
                 // selected
                 aPhoto.selected = NO;
             }
@@ -288,19 +296,22 @@ const int QUESTION_ROW_HUB = -42;
                 if (aCreateFlag)
                 {
                     aPhoto = [[Photo alloc] init];
+                    aPhoto.label = [[PhotoLabel alloc] init];
 
                     aPhoto.order_id = withOrderId;
                     aPhoto.user_id = aUserId;
                     aPhoto.name = aName;
-                    aPhoto.label = @"";
+                    aPhoto.label.label = @"";
                     aPhoto.description = @"";
                     aPhoto.photo_data = @"";
                     aPhoto.thumb_data = @"";
                     aPhoto.required = 0;
                     aPhoto.question_row = QUESTION_ROW_HUB;
+                    aPhoto.label.question_id = @"";
                     aPhoto.selected = NO;
                 }
             }
+            NSLog(@"getPhoto(2) order_id: %@, name: %@, user_id: %@, label: %@, question_id: %@", aPhoto.order_id, aPhoto.name, aPhoto.user_id, aPhoto.label.getDisplayText, aPhoto.label.question_id);
         }
         @catch (NSException *e)
         {
@@ -340,17 +351,22 @@ const int QUESTION_ROW_HUB = -42;
 
         if (photoInDb.upload_status != kStatusPhotoUploaded)
         {
-            NSString *sql = @"UPDATE photos SET upload_status = ?, label = ?, description = ?, photo_data = ?, thumb_data = ?, required = ?, question_row = ? WHERE order_id = ? AND name = ? AND user_id = ?";
+            NSString *sql = @"UPDATE photos SET upload_status = ?, label = ?, description = ?, photo_data = ?, thumb_data = ?, required = ?, question_row = ?, question_id = ? WHERE order_id = ? AND name = ? AND user_id = ?";
             
-            sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, uploadStatus, self.label, self.description, self.photo_data, self.thumb_data, NUMINT(self.required), NUMINT(self.question_row), self.order_id, self.name, self.user_id, nil]];
+            sqlite3_stmt *stmt = [gSingleton.dbController execute:[NSArray arrayWithObjects:sql, uploadStatus, self.label.getDisplayText, self.description, self.photo_data, self.thumb_data, NUMINT(self.required), NUMINT(self.question_row), self.label.question_id, self.order_id, self.name, self.user_id, nil]];
+            
+            NSLog(@"updatePhoto order_id: %@, name: %@, user_id: %@, label: %@, question_id: %@", self.order_id, self.name, self.user_id, self.label.getDisplayText, self.label.question_id);
+
             @try
             {
-                if (sqlite3_step(stmt) == SQLITE_DONE)
+                int code = sqlite3_step(stmt);
+                if (code == SQLITE_DONE)
                 {
                     rc = YES;
                 }
                 else
                 {
+                    [gSingleton.dbController showSQLiteError:@"Update Photo Error (Exec)" code:NUMINT(code)];
                     rc = NO;
                 }
             }

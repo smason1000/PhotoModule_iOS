@@ -15,6 +15,9 @@
 		221DDA92166661C100B62FE8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 221DDA90166661A400B62FE8 /* libsqlite3.dylib */; };
 		221DDA931666640B00B62FE8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5D1665A07900E6CBBB /* DataController.m */; };
 		221DDA941666649F00B62FE8 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CABB5F1665A12B00E6CBBB /* Photo.m */; };
+		222D1ED316C3FB1200A3CDC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D1ED216C3FB1200A3CDC6 /* CoreLocation.framework */; };
+		22769F561708F50600F71CDB /* PhotoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22769F551708F50600F71CDB /* PhotoLabel.m */; };
+		22769F5A1709427700F71CDB /* PhotoLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22769F551708F50600F71CDB /* PhotoLabel.m */; };
 		22B0B484167D7FA100672882 /* DDBadgeViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B0B482167D7FA100672882 /* DDBadgeViewCell.h */; };
 		22B0B485167D7FA100672882 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B483167D7FA100672882 /* DDBadgeViewCell.m */; };
 		22B0B486167D7FA100672882 /* DDBadgeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B0B483167D7FA100672882 /* DDBadgeViewCell.m */; };
@@ -173,6 +176,9 @@
 		221811D5167B665F0061A5B0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		221811D9167BC84D0061A5B0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		221DDA90166661A400B62FE8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		222D1ED216C3FB1200A3CDC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22769F541708F50600F71CDB /* PhotoLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLabel.h; sourceTree = "<group>"; };
+		22769F551708F50600F71CDB /* PhotoLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLabel.m; sourceTree = "<group>"; };
 		22B0B482167D7FA100672882 /* DDBadgeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDBadgeViewCell.h; path = ../../PTShowcaseViewController/DDBadgeViewCell.h; sourceTree = "<group>"; };
 		22B0B483167D7FA100672882 /* DDBadgeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDBadgeViewCell.m; path = ../../PTShowcaseViewController/DDBadgeViewCell.m; sourceTree = "<group>"; };
 		22CABB5616659BD300E6CBBB /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -347,6 +353,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222D1ED316C3FB1200A3CDC6 /* CoreLocation.framework in Frameworks */,
 				AEA46BA9156AA47B00743108 /* CoreMedia.framework in Frameworks */,
 				50FC0D1A14E3D44300F28648 /* UIKit.framework in Frameworks */,
 				50FC0D1C14E3D44300F28648 /* Foundation.framework in Frameworks */,
@@ -401,6 +408,8 @@
 				22CABB5F1665A12B00E6CBBB /* Photo.m */,
 				22FDE32E1669560D006C48E6 /* WorkOrder.h */,
 				22FDE32F16695618006C48E6 /* WorkOrder.m */,
+				22769F541708F50600F71CDB /* PhotoLabel.h */,
+				22769F551708F50600F71CDB /* PhotoLabel.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 		50FC0D0A14E3D44300F28648 = {
 			isa = PBXGroup;
 			children = (
+				222D1ED216C3FB1200A3CDC6 /* CoreLocation.framework */,
 				221811D9167BC84D0061A5B0 /* Default-568h@2x.png */,
 				221DDA90166661A400B62FE8 /* libsqlite3.dylib */,
 				50FC0D1F14E3D44300F28648 /* PhotoHub */,
@@ -812,7 +822,7 @@
 		50FC0D0C14E3D44300F28648 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Apex-net srl";
 			};
 			buildConfigurationList = 50FC0D0F14E3D44300F28648 /* Build configuration list for PBXProject "PhotoHub" */;
@@ -915,6 +925,7 @@
 				221811D6167B665F0061A5B0 /* TestViewController.m in Sources */,
 				221811D8167B6E2F0061A5B0 /* PhotoHubLib.m in Sources */,
 				22B0B485167D7FA100672882 /* DDBadgeViewCell.m in Sources */,
+				22769F561708F50600F71CDB /* PhotoLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +933,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22769F5A1709427700F71CDB /* PhotoLabel.m in Sources */,
 				22E70504166E413300DF0F3C /* WorkOrder.m in Sources */,
 				221DDA941666649F00B62FE8 /* Photo.m in Sources */,
 				221DDA931666640B00B62FE8 /* DataController.m in Sources */,
@@ -1010,7 +1022,10 @@
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1025,6 +1040,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Libraries/GMGridView/GMGridView\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1049,7 +1065,10 @@
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1057,6 +1076,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../Libraries/GMGridView/GMGridView\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1077,7 +1097,6 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Libraries/PSPDFKit\"",
@@ -1107,7 +1126,6 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Libraries/PSPDFKit\"",
@@ -1133,7 +1151,6 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/PhotoHubLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1166,7 +1183,6 @@
 					armv7,
 				);
 				"ARCHS[sdk=iphonesimulator*]" = i386;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Safeguard Properties LLC";
 				DSTROOT = /tmp/PhotoHubLib.dst;
 				FRAMEWORK_SEARCH_PATHS = (

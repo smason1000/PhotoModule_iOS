@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "PTShowcase.h"
+#import "PhotoLabel.h"
+
 /*
 from schema.js
  
@@ -35,7 +37,7 @@ var photosObj = {
     NSInteger   _question_row;
     NSString    *_path;
     NSString    *_name;
-    NSString    *_label;
+    PhotoLabel  *_label;
     NSString    *_description;
     NSInteger   _upload_status;
     NSString    *_date_sent;
@@ -43,7 +45,6 @@ var photosObj = {
     NSString    *_photo_data;
     NSString    *_thumb_data;
     NSInteger   _required;
-    NSString    *_question_id;
     NSString    *_possible_labels;
     PTItemOrientation _orientation;
     BOOL        _selected;
@@ -51,7 +52,7 @@ var photosObj = {
 
 @property (nonatomic) NSString *order_id;
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSString* label;
+@property (nonatomic, strong) PhotoLabel* label;
 @property (nonatomic, strong) NSString* description;
 @property (nonatomic) NSInteger upload_status;
 @property (nonatomic, strong) NSString* user_id;
@@ -62,15 +63,14 @@ var photosObj = {
 @property (nonatomic) PTItemOrientation orientation;
 @property (nonatomic) BOOL selected;
 
--(id)initWithOrderId:(NSString *)anOrderId
+-(id)initWithOrderId:(NSString*)anOrderId
              andName:(NSString*)aName
-            andLabel:(NSString*)aLabel
+            andLabel:(PhotoLabel*)aLabel
       andDescription:(NSString*)aDescription
      andUploadStatus:(NSNumber*)anUploadStatus
            andUserId:(NSString*)aUserId
         andPhotoData:(NSString*)aPhotoData
-        andThumbData:(NSString*)aThumbData
-         andRequired:(NSNumber*)aRequired;
+        andThumbData:(NSString*)aThumbData;
 
 -(id)initWithOrderId:(NSString *)anOrderId
              andName:(NSString*)aName

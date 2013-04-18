@@ -219,20 +219,21 @@
     
     if ([key isEqualToString:@"reqLabels"])
     {
-        if ([newValue isEqualToString:@""])
-        {
-            [mSingleton.myPHS setReqLabels:newValue withUpdate:NO];
-        }
-        else
-        {
-            [mSingleton.myPHS setReqLabels:newValue withUpdate:YES];
-        }
+        NSLog(@"reqLabels is deprecated in favor of required value on labels array");
+        //if ([newValue isEqualToString:@""])
+        //{
+        //   [mSingleton.myPHS setReqLabels:newValue withUpdate:NO];
+        //}
+        //else
+        //{
+        //    [mSingleton.myPHS setReqLabels:newValue withUpdate:YES];
+        //}
         
     }
     
     if ([key isEqualToString:@"labels"])
     {
-        [mSingleton.myPHS setLabels:newValue];
+        [mSingleton.myPHS parseLabels:newValue];
     }
     
     if ([key isEqualToString:@"openToGallery"])
@@ -263,10 +264,15 @@
     {
         [mSingleton.myPHS setDBName:newValue];
     }
-
+    
     if ([key isEqualToString:@"userId"])
     {
         [mSingleton.myPHS setUserId:newValue];
+    }
+    
+    if ([key isEqualToString:@"preSelectedLabel"])
+    {
+        [mSingleton.myPHS parsePreSelectedLabel:newValue];
     }
 
     if ([key isEqualToString:@"rootPhotoFolder"])
@@ -287,6 +293,7 @@
     if ([key isEqualToString:@"showTrace"])
     {
         BOOL traceValue = [newValue isEqualToString:@"1"];
+        NSLog(@"Trace is %@", traceValue ? @"ON" : @"OFF");
         [mSingleton.myPHS setTrace:traceValue];
         mSingleton.showTrace = traceValue;
     }
@@ -304,9 +311,6 @@
     
     if (logProp)
     {
-        if (mSingleton.showTrace)
-            NSLog(@"[KROLLDEMO] Property %@ changed from %@ to %@", key, oldValue, newValue);
-        
         // If is a good idea to check if there are listeners for the event that
         // is about to fired. There could be zero or multiple listeners for the
         // specified event.
@@ -319,6 +323,11 @@
                                    nil
                                    ];
             [self fireEvent:@"propertyChange" withObject:event];
+        }
+        else
+        {
+            if (mSingleton.showTrace)
+                NSLog(@"[KROLLDEMO] Property %@ changed from %@ to %@", key, oldValue, newValue);
         }
     }
 }

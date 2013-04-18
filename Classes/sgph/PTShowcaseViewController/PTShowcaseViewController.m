@@ -23,7 +23,7 @@
 @interface PTShowcaseViewController () <GMGridViewDataSource, GMGridViewActionDelegate>
 
 - (void)setupShowcaseViewForInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
-- (void)dismissImageDetailViewController;
+//- (void)dismissImageDetailViewController;
 
 // Supported cells for content types
 - (GMGridViewCell *)GMGridView:(GMGridView *)gridView cellForContentType:(PTContentType)contentType withOrientation:(PTItemOrientation)orientation;
@@ -446,7 +446,7 @@
     Photo *photo = (Photo *)[gSingleton.mainData objectAtIndex:index];
     
     if ([photo.description length] == 0)
-        textLabel.text = photo.label;
+        textLabel.text = photo.label.getDisplayText;
     else
         textLabel.text = photo.description;
     

@@ -37,10 +37,11 @@ ComPhmodSingleton *mSingleton = nil;
 {
     self.myPhotoHubLib = [[PhotoHubLib alloc] init];
     
-    [self.myPhotoHubLib initAll];
+    [self.myPhotoHubLib initAll:YES];
     
     self.myPHS = self.myPhotoHubLib.pSingleton;
 }
+
 -(void)shutdown
 {
     if (self.myPhotoHubLib != nil)

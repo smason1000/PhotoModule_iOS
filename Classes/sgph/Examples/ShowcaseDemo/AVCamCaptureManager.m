@@ -49,6 +49,8 @@
 #import "AVCamUtilities.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <ImageIO/CGImageProperties.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Photo.h"
 
 @interface AVCamCaptureManager (AVCaptureFileOutputRecordingDelegate) <AVCaptureFileOutputRecordingDelegate>
@@ -64,6 +66,7 @@
 @property (nonatomic,strong) id deviceConnectedObserver;
 @property (nonatomic,strong) id deviceDisconnectedObserver;
 @property (nonatomic,assign) UIBackgroundTaskIdentifier backgroundRecordingID;
+@property (nonatomic,strong) CLLocationManager *locationManager;
 
 @end
 
@@ -101,6 +104,7 @@
 @synthesize delegate = _delegate;
 @dynamic recording;
 @synthesize filename = _filename;
+@synthesize locationManager = _locationManager;
 
 - (id) init
 {
@@ -162,11 +166,58 @@
             if (![session isRunning])
                 [session startRunning];
         };
+        // start up location services
+        if ([CLLocationManager locationServicesEnabled])
+        {
+            locationManager = [[CLLocationManager alloc] init];
+            locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        }
+        else
+        {
+            NSLog(@"[AVCamCaptureManager] Location services are disabled!");
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Photo Hub Error"
+                                                                message:@"Location services are disabled. Please enable location services and restart the photo hub."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         [weakSelf setDeviceConnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasConnectedNotification object:nil queue:nil usingBlock:deviceConnectedBlock]];
         [weakSelf setDeviceDisconnectedObserver:[notificationCenter addObserverForName:AVCaptureDeviceWasDisconnectedNotification object:nil queue:nil usingBlock:deviceDisconnectedBlock]];
+        
+        [[NSNotificationCenter defaultCenter]
+         addObserver:weakSelf
+         selector:@selector(startLocationUpdating:)
+         name:@"startGPSEvent"
+         object:nil ];
+
+        [[NSNotificationCenter defaultCenter]
+         addObserver:weakSelf
+         selector:@selector(stopLocationUpdating:)
+         name:@"stopGPSEvent"
+         object:nil ];
+
     }
     return self;
+}
+
+-(void)startLocationUpdating: (NSNotification *) notification
+{
+    if (locationManager)
+    {
+        NSLog(@"[AVCamCaptureManager] Starting location updating");
+        [locationManager startUpdatingLocation];
+    }
+}
+
+-(void)stopLocationUpdating: (NSNotification *) notification
+{
+    if (locationManager)
+    {
+        NSLog(@"[AVCamCaptureManager] Stopping location updating");
+        [locationManager stopUpdatingLocation];
+    }
 }
 
 -(void)removeObservers
@@ -174,8 +225,10 @@
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter removeObserver:[self deviceConnectedObserver]];
     [notificationCenter removeObserver:[self deviceDisconnectedObserver]];
+    [notificationCenter removeObserver:self name:@"startGPSEvent" object:nil];
+    [notificationCenter removeObserver:self name:@"stopGPSEvent" object:nil];
 
-    [[self session] stopRunning];
+    [[self session] stopRunning];    
     self.delegate = nil;
 }
 
@@ -501,6 +554,68 @@
      object:nil ];
 }
 
+- (NSString *)getUTCFormattedDate:(NSDate *)localDate
+{
+    static NSDateFormatter *dateFormatter;
+    if (dateFormatter == nil)
+    {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        [dateFormatter setTimeZone:timeZone];
+        [dateFormatter setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
+    }
+    NSString *dateString = [dateFormatter stringFromDate:localDate];
+    return dateString;
+}
+
+- (void)setLocation:(CLLocation *)location fromMetaData:(NSMutableDictionary *)metadata
+{
+    NSLog(@"setLocation(%@)", location);
+    
+    if (location && location.horizontalAccuracy >= 0)
+    {
+        CLLocationDegrees exifLatitude  = location.coordinate.latitude;
+        CLLocationDegrees exifLongitude = location.coordinate.longitude;
+        
+        NSString *latRef;
+        NSString *lngRef;
+        if (exifLatitude < 0.0)
+        {
+            exifLatitude = exifLatitude * -1.0f;
+            latRef = @"S";
+        }
+        else
+        {
+            latRef = @"N";
+        }
+        
+        if (exifLongitude < 0.0)
+        {
+            exifLongitude = exifLongitude * -1.0f;
+            lngRef = @"W";
+        }
+        else
+        {
+            lngRef = @"E";
+        }
+        
+        NSMutableDictionary *locDict = [[NSMutableDictionary alloc] init];
+        if ([metadata objectForKey:(NSString*)kCGImagePropertyGPSDictionary])
+        {
+            [locDict addEntriesFromDictionary:[metadata objectForKey:(NSString*)kCGImagePropertyGPSDictionary]];
+        }
+        [locDict setObject:[self getUTCFormattedDate:location.timestamp] forKey:(NSString*)kCGImagePropertyGPSTimeStamp];
+        [locDict setObject:latRef forKey:(NSString*)kCGImagePropertyGPSLatitudeRef];
+        [locDict setObject:[NSNumber numberWithFloat:exifLatitude] forKey:(NSString*)kCGImagePropertyGPSLatitude];
+        [locDict setObject:lngRef forKey:(NSString*)kCGImagePropertyGPSLongitudeRef];
+        [locDict setObject:[NSNumber numberWithFloat:exifLongitude] forKey:(NSString*)kCGImagePropertyGPSLongitude];
+        [locDict setObject:[NSNumber numberWithFloat:location.horizontalAccuracy] forKey:(NSString*)kCGImagePropertyGPSDOP];
+        [locDict setObject:[NSNumber numberWithFloat:location.altitude] forKey:(NSString*)kCGImagePropertyGPSAltitude];
+        
+        [metadata setObject:locDict forKey:(NSString*)kCGImagePropertyGPSDictionary];
+    }
+}
+
 - (void) captureStillImage
 {
     if (gSingleton.showTrace)
@@ -554,7 +669,7 @@
             fakeImage = [self croppedImage:fakeImage croppedTo:CGRectMake(offsetX, offsetY, origSize.width / scale, origSize.height / scale)];
         }
             
-        [gSingleton saveImage:fakeImage withName:self.filename];
+        [gSingleton saveImage:fakeImage withName:self.filename andMetaData:nil];
         
         /*
         id delegate = [self delegate];
@@ -588,12 +703,24 @@
                                         }
                                     }
                                 };
-                                                                     
+            
                                 if (imageDataSampleBuffer != NULL)
                                 {
+                                    NSMutableDictionary *metadata = nil;
+                                    if (locationManager)
+                                    {
+                                        CFDictionaryRef exifAttachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, NULL);
+                                        metadata = (__bridge NSMutableDictionary*)exifAttachments;
+                                        if(!metadata)
+                                        {
+                                            //if the image does not have an EXIF dictionary (not all images do), then create one for us to use
+                                            metadata = [NSMutableDictionary dictionary];
+                                        }
+                                        [weakSelf setLocation:locationManager.location fromMetaData:metadata];
+                                        NSLog(@"%@",metadata);
+                                    }
                                     NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                                     UIImage *image = [[UIImage alloc] initWithData:imageData];
-                                    
                                     NSLog(@"Image Size: %.f x %.f", image.size.width, image.size.height);
                                     
                                     float scale = [weakSelf cameraZoom];
@@ -616,7 +743,7 @@
                                         image = [weakSelf croppedImage:image croppedTo:CGRectMake(offsetX, offsetY, cropWidth, cropHeight)];
                                     }
                                     //UIImage *newImage = [self fixOrientation:image];
-                                    [gSingleton saveImage:image withName:weakSelf.filename];
+                                    [gSingleton saveImage:image withName:weakSelf.filename andMetaData:metadata];
                                     
                                     //ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
                                     /*

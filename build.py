@@ -164,7 +164,7 @@ def build_module(manifest,config):
 	rc = os.system("xcodebuild -sdk iphoneos -configuration Release")
 	if rc != 0:
 		die("xcodebuild failed")
-	rc = os.system("xcodebuild -sdk iphonesimulator6.0 -configuration Release ARCHS=i386")
+	rc = os.system("xcodebuild -sdk iphonesimulator6.1 -configuration Release ARCHS=i386")
 	if rc != 0:
 		die("xcodebuild failed")
     # build the merged library using lipo

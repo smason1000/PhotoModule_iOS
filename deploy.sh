@@ -1,2 +1,2 @@
 #!/bin/sh
-./build.py;unzip -o com.phmod-iphone-1.0.zip -d ~/Documents/Titanium\ Studio\ Workspace/inspi/
+./build.py;unzip -o com.phmod-iphone-1.14.zip -d ~/Documents/Titanium_Studio_Workspace/inspi/

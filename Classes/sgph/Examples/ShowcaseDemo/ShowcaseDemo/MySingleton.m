@@ -1,10 +1,50 @@
 #import "MySingleton.h"
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+
 //#import "DataController.h"
 //#import "Photo.h"
 
-NSComparisonResult compareLetters(id t1, id t2, void* context)
-{    
-    return [ [t1 lowercaseString] compare: [t2 lowercaseString] ];
+NSComparisonResult compareLabels(PhotoLabel *label1, PhotoLabel *label2, void* context)
+{
+    //PhotoLabel *label1 = (PhotoLabel *)t1;
+    //PhotoLabel *label2 = (PhotoLabel *)t2;
+    NSComparisonResult comparison = [[label1.label lowercaseString] compare:[label2.label lowercaseString]];
+    if (comparison == NSOrderedSame)
+    {
+        // check the prefixes to see if we can sort this out further
+        
+        int ordinal1 = 42;
+        if ([label1.prefix isEqualToString:@"Before"])
+            ordinal1 = 1;
+        else if ([label1.prefix isEqualToString:@"During"])
+            ordinal1 = 2;
+        else if ([label1.prefix isEqualToString:@"After"])
+            ordinal1 = 3;
+        
+        int ordinal2 = 42;
+        if ([label2.prefix isEqualToString:@"Before"])
+            ordinal2 = 1;
+        else if ([label2.prefix isEqualToString:@"During"])
+            ordinal2 = 2;
+        else if ([label2.prefix isEqualToString:@"After"])
+            ordinal2 = 3;
+        
+        if (ordinal1 == 42 || ordinal2 == 42)
+        {
+            comparison = [[label1.prefix lowercaseString] compare: [label2.prefix lowercaseString]];
+        }
+        else
+        {
+            if (ordinal1 < ordinal2)
+                comparison = NSOrderedAscending;
+            else if (ordinal1 > ordinal2)
+                comparison = NSOrderedDescending;
+            else
+                comparison = NSOrderedSame;
+        }
+    }
+    return comparison;
 }
 
 MySingleton *gSingleton = nil;
@@ -47,9 +87,10 @@ MySingleton *gSingleton = nil;
 
 @synthesize labelArr = _labelArr;
 @synthesize itemArray = _itemArray;
-@synthesize currentLabelString = _currentLabelString;
+@synthesize currentPhotoLabel = _currentPhotoLabel;
 @synthesize currentLabelDescription = _currentLabelDescription;
 @synthesize requiredLabelArr = _requiredLabelArr;
+@synthesize preSelectedLabel = _preSelectedLabel;
 
 #pragma mark Singleton Methods
 
@@ -78,7 +119,7 @@ MySingleton *gSingleton = nil;
 }
 */
 
-- (id)init
+- (id)init:(BOOL)isAppModule
 {
     if (self = [super init])
     {
@@ -89,13 +130,6 @@ MySingleton *gSingleton = nil;
         //NSString *emuOrder = @"59590951";   // open
         NSString *emuOrder = @"59772717";   // submitted
         
-        BOOL emu = NO;
-        NSString *model = [[UIDevice currentDevice] model];
-        if ([model isEqualToString:@"iPhone Simulator"] || [model isEqualToString:@"iPad Simulator"])
-        {
-            emu = YES;
-        }
-
         self.iPadDevice = NO;
         
 #ifdef UI_USER_INTERFACE_IDIOM
@@ -103,10 +137,21 @@ MySingleton *gSingleton = nil;
 #endif
         self.docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-        if (emu)
+        if (!isAppModule)
         {
             [self setRootPhotoFolder:[NSString stringWithFormat:@"123_EASY_ST_%@", emuOrder]];
-
+            
+            NSDate *date = [NSDate date];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+            [dateFormat setDateFormat:@"YYYY_MM_dd"];
+            [self setTodaysPhotoFolder:[dateFormat stringFromDate:date]];
+        }
+        else
+        {
+            // setup some defaults, just in case the app forgets :)
+            // this was put in to make Vendor Web Mobile work properly during development
+            [self setRootPhotoFolder:[NSString stringWithFormat:@"unknown"]];
+            
             NSDate *date = [NSDate date];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
             [dateFormat setDateFormat:@"YYYY_MM_dd"];
@@ -157,7 +202,8 @@ MySingleton *gSingleton = nil;
         
         self.currentFilterMode = PHFilterModeAll;
         self.currentAppState = PHASLabelFS;
-
+        self.preSelectedLabel = nil;
+        
         self.expandedViewIndex = -1;
         self.photoCount = [[self mainData] count];
         self.requiredCount = 2;
@@ -235,17 +281,24 @@ MySingleton *gSingleton = nil;
         
         self.labelArr = [NSMutableArray arrayWithObjects:nil];
         
-        [self setLabels:
-         @"[No Label],Front of House,Street Scene,House #/Address Sign,Supporting,Back of House,Side of House,center of house,demolition,eviction notice,Other: With Description,f,g,Hg,gh,gha,a1,b1,c1,d1,E1,f1,g1,a2,b2,c2,d2,e2,f2,g2,a3,b3,c3,D3,e3,f3,g3,a11,b11,c11,d11,e11,f11,w11,x11,y11,z11"
-         ];
-        
         self.requiredLabelArr = [[NSMutableArray alloc] init];
-        NSString *labelsWithDupe = @"a3,Front of House,Street Scene,House #/Address Sign,Supporting,Front of House";
-        [self setReqLabels:labelsWithDupe withUpdate:NO];
         
-        if (emu)
+        if (!isAppModule)
         {
-            self.openToGallery = NO;
+            [self parseLabels:
+             @"[{\"label\":\"[No Label]\",\"prefix\":\"\",\"questionId\":\"\",\"category\":\"\",\"required\":0},\
+                {\"label\":\"Front of House\",\"prefix\":\"\",\"questionId\":\"\",\"category\":\"\",\"required\":1},\
+                {\"label\":\"Side of House\",\"prefix\":\"\",\"questionId\":\"\",\"category\":\"\",\"required\":1,\"count\":2},\
+                {\"label\":\"Rear of House\",\"prefix\":\"\",\"questionId\":\"\",\"category\":\"\",\"required\":1},\
+                {\"label\":\"Remove Leaves\",\"prefix\":\"Before\",\"questionId\":\"leaves.1\",\"category\":\"Yard\",\"required\":0},\
+                {\"label\":\"Remove Leaves\",\"prefix\":\"During\",\"questionId\":\"leaves.2\",\"category\":\"Yard\",\"required\":0},\
+                {\"label\":\"Remove Leaves\",\"prefix\":\"After\",\"questionId\":\"leaves.3\",\"category\":\"Yard\",\"required\":0}]"
+             ];
+            
+            //{label:Front of House,Street Scene,House #/Address Sign,Supporting,Back of House,Side of House,center of house,demolition,eviction notice,Other: With Description,f,g,Hg,gh,gha,a1,b1,c1,d1,E1,f1,g1,a2,b2,c2,d2,e2,f2,g2,a3,b3,c3,D3,e3,f3,g3,a11,b11,c11,d11,e11,f11,w11,x11,y11,z11"
+
+            [self parsePreSelectedLabel:@"{\"label\":\"Front of House\",\"prefix\":\"\",\"questionId\":\"\",\"category\":\"\",\"required\":1}"];
+            [self setOpenToGallery:NO];
             [self setDBName:@"inspi"];
             [self setUserId:@"TrojanM"];
             
@@ -313,7 +366,7 @@ MySingleton *gSingleton = nil;
 
 - (void) updateLabelHash
 {
-    [self.labelArr sortUsingFunction:compareLetters context:nil];
+    [self.labelArr sortUsingFunction:compareLabels context:nil];
     
     int i;
     
@@ -327,12 +380,12 @@ MySingleton *gSingleton = nil;
     }
     
     NSMutableArray* curHash;
-    NSString* curString;
+    PhotoLabel* curLabel;
     
     for (i = 0; i < [self.labelArr count]; i++)
     {
-        curString = [self.labelArr objectAtIndex:i];
-        testLetter = [curString characterAtIndex:0];
+        curLabel = [self.labelArr objectAtIndex:i];
+        testLetter = [curLabel.label characterAtIndex:0];
         
         if (testLetter >= 65 && testLetter <= 90)
         {
@@ -350,13 +403,13 @@ MySingleton *gSingleton = nil;
         }
         
         curHash = [self.hashVals objectAtIndex:currentIndex];
-        [curHash addObject:curString];
+        [curHash addObject:curLabel.getDisplayText];
     }
 }
 
 - (void) updateLabelHashReq
 {
-    [self.requiredLabelArr sortUsingFunction:compareLetters context:nil];
+    [self.requiredLabelArr sortUsingFunction:compareLabels context:nil];
 
     int i;
     
@@ -369,12 +422,12 @@ MySingleton *gSingleton = nil;
     }
     
     NSMutableArray* curHash;
-    NSString* curString;
+    PhotoLabel* curLabel;
     
     for (i = 0; i < [self.requiredLabelArr count]; i++)
     {
-        curString = [self.requiredLabelArr objectAtIndex:i];
-        testLetter = [curString characterAtIndex:0];
+        curLabel = [self.requiredLabelArr objectAtIndex:i];
+        testLetter = [curLabel.label characterAtIndex:0];
         
         if (testLetter >= 65 && testLetter <= 90)
         {
@@ -392,7 +445,7 @@ MySingleton *gSingleton = nil;
         }
         
         curHash = [self.hashValsReq objectAtIndex:currentIndex];
-        [curHash addObject:curString];
+        [curHash addObject:curLabel.getDisplayText];
     }
 }
 
@@ -428,14 +481,15 @@ MySingleton *gSingleton = nil;
     }
 }
 
-
 - (void) setOrderNum:(NSString *)orderNum
 {    
     self.orderNumber = orderNum;
-    self.currentAppState = PHASLabelFS;
     //self.photoCount = [self getPhotoCount];
     // make sure requiredCount is set before this call
     //requiredCount = 0;
+    
+    self.workOrder = [WorkOrder getWorkOrder:self.orderNumber andUserId:self.userId];
+
     self.editOn = YES;
     self.expandOn = NO;
     self.expandedViewIndex = -1;
@@ -444,8 +498,25 @@ MySingleton *gSingleton = nil;
     
     if (self.openToGallery)
     {
+        NSLog(@"Opening to Gallery");
         self.editOn = NO;
         self.currentAppState = PHASGrid;
+    }
+    else
+    {
+        if (self.preSelectedLabel  != nil)
+        {
+            NSLog(@"Opening to Viewfinder with label: %@", self.preSelectedLabel.getDisplayText);
+            self.currentPhotoLabel = self.preSelectedLabel;
+            self.preSelectedLabel = nil;
+            self.currentLabelDescription = @"";
+            self.currentAppState = PHASViewfinder;
+        }
+        else
+        {
+            NSLog(@"Opening to Labeler");
+            self.currentAppState = PHASLabelFS;
+        }
     }
     self.doRef = YES;
     [self writeToLog:@"OrderNumber: %@, folder = %@", self.orderNumber, self.rootPhotoFolder];
@@ -469,54 +540,53 @@ MySingleton *gSingleton = nil;
     }
 }
 
-- (void) setLabels:(NSString*)newLabels
+- (void) parseLabels:(NSString*)newLabels
 {
     [self.labelArr removeAllObjects];
+    [self.requiredLabelArr removeAllObjects];
     
-    NSMutableArray *tempArr = (NSMutableArray*)[newLabels componentsSeparatedByString: @","];
+    //NSLog(@"labels: %@", newLabels);
+
+    NSData* jsonData = [newLabels dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSInteger i;
-    for (i = 0; i < [tempArr count]; i++)
+    NSError *e;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&e];
+    if([jsonObject isKindOfClass:[NSArray class]])
     {
-        //[labelArr addObject: [[tempArr objectAtIndex:i] capitalizedString] ];
-        [self.labelArr addObject: [tempArr objectAtIndex:i] ];
-    }
+        NSArray *jsonArray = (NSArray *)jsonObject;
+        //NSLog(@"jsonLabels: %@", jsonArray);
     
-    self.currentLabelString = [self.labelArr objectAtIndex:0];
+        NSInteger i;
+        for (i = 0; i < [jsonArray count]; i++)
+        {
+            NSDictionary *jsonItem = [jsonArray objectAtIndex:i];
+            PhotoLabel *label = [[PhotoLabel alloc] initWithDictionaryItem:jsonItem];
+            [self.labelArr addObject: label];
+            if (label.required == 1)
+                [self.requiredLabelArr addObject:label];
+        }
+    }
+    self.currentPhotoLabel = [self.labelArr objectAtIndex:0];
     self.currentLabelDescription = @"";
     
     [self updateLabelHash];
+    [self updateLabelHashReq];
     
     [self setHashReq:NO];
 }
 
-- (void) setReqLabels:(NSString*)newLabels withUpdate:(BOOL)doDBUpdate
+- (void) parsePreSelectedLabel:(NSString*)newLabel
 {
-    //requiredLabelArr = (NSMutableArray*)[newLabels componentsSeparatedByString: @","];
+    self.preSelectedLabel = nil;
+    if ([newLabel length] > 0)
+    {
+        NSData *jsonData = [newLabel dataUsingEncoding:NSUTF8StringEncoding];
     
-    [self.requiredLabelArr removeAllObjects];
+        NSError *e;
+        NSDictionary *jsonItem = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&e];
+        //NSLog(@"preSelectedLabel: %@", jsonItem);
     
-    if ([newLabels isEqualToString:@""])
-    {
-        // do nothing
-    }
-    else
-    {
-        NSArray *tempArr = (NSArray*)[newLabels componentsSeparatedByString: @","];
-        
-        for (id obj in tempArr)
-        {
-            if (![self.requiredLabelArr containsObject:obj])
-            {
-                [self.requiredLabelArr addObject:obj];
-            }
-        }
-    }
-    [self updateLabelHashReq];
-
-    if (doDBUpdate)
-    {
-        [self updateRequiredLabelsInDB];
+        self.preSelectedLabel = [[PhotoLabel alloc] initWithDictionaryItem:jsonItem];
     }
 }
 
@@ -527,7 +597,7 @@ MySingleton *gSingleton = nil;
     
     for (i = 0; i < tot; i++)
     {
-        if ([testLabel isEqualToString:[self.requiredLabelArr objectAtIndex:i]])
+        if ([testLabel isEqualToString:((PhotoLabel *)[self.requiredLabelArr objectAtIndex:i]).getDisplayText])
         {
             return YES;
         }
@@ -543,6 +613,18 @@ MySingleton *gSingleton = nil;
     }
 }
 
+- (void)setPhotoLabelFromDisplayText:(NSString *)displayText
+{
+    for (PhotoLabel *label in self.labelArr)
+    {
+        if ([label.getDisplayText isEqualToString:displayText])
+        {
+            self.currentPhotoLabel = label;
+            return;
+        }
+    }
+    self.currentPhotoLabel = nil;
+}
 
 //####
 
@@ -675,25 +757,21 @@ MySingleton *gSingleton = nil;
             else
                 [self writeToLog:@"Labeling image - filename: %@ label: %@: %@", photo.name, photo.label, photo.description];
             
-            if ([self isReqLab:photo.label])
-                photo.required = 1;
-            else
-                photo.required = 0;
             [photo updateDatabaseEntry];
         }
     }
 }
 
--(void) saveImage:(UIImage*)image withName:(NSString *)name
+-(void) saveImage:(UIImage*)image withName:(NSString *)name andMetaData:(NSDictionary *)metadata
 {    
     CGSize origSize = [image size];//image.size;
     CGSize largeSize;
     CGSize smallSize;
     
     if ([self.currentLabelDescription length] == 0)
-        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@", origSize.width, origSize.height, name, self.currentLabelString];
+        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@", origSize.width, origSize.height, name, self.currentPhotoLabel.getDisplayText];
     else
-        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@: %@", origSize.width, origSize.height, name, self.currentLabelString, self.currentLabelDescription];
+        [self writeToLog:@"Saving image (%.f x %.f) filename: %@ label: %@: %@", origSize.width, origSize.height, name, self.currentPhotoLabel.getDisplayText, self.currentLabelDescription];
     
     if (origSize.height > origSize.width)
     {
@@ -725,6 +803,56 @@ MySingleton *gSingleton = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSData *data = UIImageJPEGRepresentation(largeImage, 1.0);
+    
+    // set the metadata in the large image
+    if (metadata != nil)
+    {
+        BOOL success = NO;
+        CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)(data), NULL);
+        if (source)
+        {
+            success = YES;
+        }
+        else
+        {
+            NSLog(@"*** Could not create image source ***");
+        }
+
+        //this will be the data CGImageDestinationRef will write into
+        NSMutableData *dest_data = [NSMutableData data];
+        CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)dest_data,kUTTypeJPEG,1,NULL);
+        
+        if(destination)
+        {
+            //add the image contained in the image source to the destination, overidding the old metadata with our modified metadata
+            CGImageDestinationAddImageFromSource(destination,source,0, (__bridge CFDictionaryRef) metadata);
+        }
+        else
+        {
+            success = NO;
+            NSLog(@"*** Could not create image destination ***");
+        }
+        
+        //tell the destination to write the image data and metadata into our data object.
+        //It will return false if something goes wrong
+        if (success)
+            success = CGImageDestinationFinalize(destination);
+        
+        if(success)
+        {
+            data = dest_data;
+        }
+        else
+        {
+            NSLog(@"*** Could not create data from image destination, using original image ***");
+        }
+        
+        //cleanup
+        if (destination)
+            CFRelease(destination);
+        if (source)
+            CFRelease(source);
+    }
     NSString *fullPath = [[self getPhotoDirFull] stringByAppendingPathComponent:name];
     if (gSingleton.showTrace)
         NSLog(@"fullPath: %@", fullPath);
@@ -741,14 +869,8 @@ MySingleton *gSingleton = nil;
     if (gSingleton.showTrace)
         NSLog(@"relativePath2: %@", relativePath2);
     [fileManager createFileAtPath:fullPath2 contents:data2 attributes:nil];
-    
-    int req = 0;
-    if ([self isReqLab:self.currentLabelString])
-    {
-        req = 1;
-    }
-    
-    Photo *photo = [[Photo alloc] initWithOrderId:self.orderNumber andName:name andLabel:self.currentLabelString andDescription:self.currentLabelDescription andUploadStatus:NUMINT(kStatusPhotoNotReady) andUserId:gSingleton.userId andPhotoData:relativePath andThumbData:relativePath2 andRequired:NUMINT(req)];
+        
+    Photo *photo = [[Photo alloc] initWithOrderId:self.orderNumber andName:name andLabel:self.currentPhotoLabel andDescription:self.currentLabelDescription andUploadStatus:NUMINT(kStatusPhotoNotReady) andUserId:gSingleton.userId andPhotoData:relativePath andThumbData:relativePath2];
     photo.selected = NO;
 
     UIInterfaceOrientation imgOr = [UIApplication sharedApplication].statusBarOrientation;

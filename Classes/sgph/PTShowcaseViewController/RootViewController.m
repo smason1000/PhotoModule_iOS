@@ -222,14 +222,14 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        gSingleton.currentLabelString = [self.filteredListContent objectAtIndex:indexPath.row];
+        [gSingleton setPhotoLabelFromDisplayText:[self.filteredListContent objectAtIndex:indexPath.row]];
     }
 	else
 	{
-        gSingleton.currentLabelString = [ [gSingleton.curHashVals objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [gSingleton setPhotoLabelFromDisplayText:[[gSingleton.curHashVals objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
     }
 
-    if ([gSingleton.currentLabelString isEqualToString:@"Other: With Description"])
+    if ([gSingleton.currentPhotoLabel.getDisplayText isEqualToString:@"Other: With Description"])
     {
         // user selected other, we need to gather the description
         if (gSingleton.showTrace)
@@ -267,13 +267,13 @@
         if (gSingleton.expandedViewIndex >= 0)
         {
             Photo *photo = [gSingleton.mainData objectAtIndex:gSingleton.expandedViewIndex];
-            wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+            wasLabeled = !([photo.label.label isEqualToString:((PhotoLabel *)[gSingleton.labelArr objectAtIndex:0]).label]);
         
-            photo.label = gSingleton.currentLabelString;
+            photo.label = gSingleton.currentPhotoLabel;
             photo.description = gSingleton.currentLabelDescription;
             [photo updateDatabaseEntry];
 
-            isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+            isLabeled = !([photo.label.label isEqualToString:((PhotoLabel *)[gSingleton.labelArr objectAtIndex:0]).label]);
             if (wasLabeled != isLabeled)
             {
                 if (wasLabeled)
@@ -289,13 +289,13 @@
         {
             if (photo.selected)
             {
-                wasLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+                wasLabeled = !([photo.label.label isEqualToString:((PhotoLabel *)[gSingleton.labelArr objectAtIndex:0]).label]);
 
-                photo.label = gSingleton.currentLabelString;
+                photo.label = gSingleton.currentPhotoLabel;
                 photo.description = gSingleton.currentLabelDescription;
                 [photo updateDatabaseEntry];
 
-                isLabeled = !([photo.label isEqualToString:[gSingleton.labelArr objectAtIndex:0]]);
+                isLabeled = !([photo.label.label isEqualToString:((PhotoLabel *)[gSingleton.labelArr objectAtIndex:0]).label]);
                 if (wasLabeled != isLabeled)
                 {
                     if (wasLabeled)

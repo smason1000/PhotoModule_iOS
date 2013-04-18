@@ -116,7 +116,7 @@
             NSLog(@"labelEvent (GridViewCell) %d, %d, %@", self.ind, gSingleton.expandedViewIndex, gSingleton.expandOn ? @"YES" : @"NO");
 
         if ([[gSingleton currentLabelDescription] length] == 0)
-            self.lab.text = [gSingleton currentLabelString];
+            self.lab.text = [gSingleton currentPhotoLabel].getDisplayText;
         else
             self.lab.text = [gSingleton currentLabelDescription];
         self.backgroundColor = [UIColor clearColor];

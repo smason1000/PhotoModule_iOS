@@ -103,10 +103,11 @@ preFillData:tnn
                 // status_id
                 aWorkOrder.status_id = sqlite3_column_int(stmt,i++);
             }
+            NSLog(@"Initializing workorder: %@ for user: %@, status: %d", aWorkOrder.order_id, aWorkOrder.user_id, aWorkOrder.status_id);
         }
         @catch (NSException *e)
         {
-            NSLog(@"Caught exception in updateRequired %@: %@", e.name, e.reason);
+            NSLog(@"Caught exception in getWorkOrder %@: %@", e.name, e.reason);
         }
         @finally
         {

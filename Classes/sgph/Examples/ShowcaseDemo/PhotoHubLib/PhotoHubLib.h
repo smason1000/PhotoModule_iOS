@@ -19,7 +19,7 @@
 @property (nonatomic, strong) MainViewController *mainViewController;
 @property (nonatomic, strong) MySingleton* pSingleton;
 
-- (void) initAll;
+- (void) initAll:(BOOL)isAppModule;
 - (void) shutdown;
 
 @end

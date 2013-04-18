@@ -47,7 +47,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-
+#import <CoreLocation/CoreLocation.h>
 enum {
     AVCamMirroringOff   = 1,
     AVCamMirroringOn    = 2,
@@ -93,6 +93,9 @@ typedef NSInteger AVCamMirroringMode;
     
     // Capture Manager delegate
     id <AVCamCaptureManagerDelegate> _delegate;
+    
+    // Location Services
+    CLLocationManager *locationManager;
 }
 
 @property (nonatomic,readonly,strong) AVCaptureSession *session;

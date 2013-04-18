@@ -117,6 +117,7 @@ void onUncaughtException(NSException *exception)
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    NSLog(@"applicationWillTerminate");
 }
 
 @end
