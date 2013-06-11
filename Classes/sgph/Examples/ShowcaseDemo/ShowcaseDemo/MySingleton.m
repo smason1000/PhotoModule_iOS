@@ -493,7 +493,10 @@ MySingleton *gSingleton = nil;
     self.editOn = YES;
     self.expandOn = NO;
     self.expandedViewIndex = -1;
-    self.filterOn = NO;
+    if ([self.requiredLabelArr count] == 0)
+        self.filterOn = NO;
+    else
+        self.filterOn = YES;
     self.applyCaptureDefaults = YES;
     
     if (self.openToGallery)

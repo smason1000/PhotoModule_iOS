@@ -509,7 +509,12 @@
     if ([UIApplication sharedApplication].statusBarHidden)
         statusBarHeight = 0 - statusBarHeight;
     
-    self.detailView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 348 - statusBarHeight)];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    // adjust the view to account for a title bar, header, footer each assumed to be 44 pixels tall
+    self.detailView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, (screenHeight - 132) - statusBarHeight)];
     
     self.detailView.backgroundColor = [UIColor greenColor];
     
